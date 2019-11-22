@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+    <property name="driver">com.mysql.jdbc.Driver</property>
+    <property name="url">jdbc:mysql://59.110.161.27:3306/shoesmall?charecterEncoding=utf8</property>
+    <property name="name">root</property>
+    <property name="password">1234</property>
+    <mappings>
+    	<mapping path="tan/pojo/mapping/UserMapping.xml"></mapping>
+    </mappings>
+</properties>
