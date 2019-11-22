@@ -1,0 +1,282 @@
+.input-group-addon{
+	background-color: #c40e0e;
+  	border: none;
+  	font-size: 24px;
+  	height: 40px;
+  	color: white;
+}	
+/*#logo_right_top{
+	width: 245px;
+	height: 40px;
+}*/
+header{
+	width: 100%;
+	height: 108px;
+	padding-top: 20px;
+	background-color: #c40e0e;
+}
+.nav_right{
+	height: 50px;
+	/*border: 1px solid #1B6D85;*/
+}
+
+input{
+	height: 50px;
+}
+header ul{
+	width:490px;
+	/*height: 22px;*/
+	padding-top: 10px;
+
+}
+header ul li a{
+	color: white;
+}
+header ul li a:hover{
+	text-decoration: none;
+}
+header ul li{
+	/*border: 1px solid #AFD9EE;*/
+	line-height: 28px;
+	padding: 0 10px 0 0;
+	font-size: 18px;
+	color: white;
+	float: left;
+	height: 28px;
+	padding-left: 10px;
+}
+header ul li:hover{
+	color: #c40e0e;
+	background: white;
+}
+header .container .row{
+	height: 80px;
+}
+header .navb{
+	padding:0;
+}
+.logo,.search{
+	height: 50px;
+	padding: 0;
+}
+.cart span{
+	padding-top: 5px;
+}
+#welcome,#exit,.cart{
+	display: none;
+}
+#regist{
+	float: right;
+}
+#login{
+	float: right;
+	margin-right: 10px;
+	
+}
+#welcome{
+	font-size: 18px;
+	line-height: 4px;
+	color: white;
+	float: left;
+}
+#exit{
+	float: right;
+	margin-right: 5px;
+}
+.cart{
+	margin: 0;
+	/*padding: 0;*/
+	line-height: 34px;
+	font-size: 18px;
+	color: white;
+	float: right;
+}
+.cart span{
+	margin:5px 4px 0px 10px;
+	/*border: 1px solid #23527C;*/
+	height: 20px;
+	line-height: 14px;
+	color: white;
+	display: inline-block;
+	font-size: 16px;
+}
+.cart a{
+	color: white;
+}
+.cart .text{
+	/*margin:2px 10px 0px ;*/
+	/*border: 1px solid orange;*/
+	display: inline-block;
+	font-size: 14px;
+	line-height: 14px;
+	color: white;
+}
+
+.banner{
+	width: 100%;
+	height: 40px;
+	background: #f5333f;
+	color: #fff;
+}
+.banner .container{
+	height: 40px;
+}
+.banner .container p{
+	margin: 0;
+	line-height: 38px;
+	font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+.subnav{
+	width: 100%;
+	background: white;
+	position: absolute;
+	z-index: 1000;
+	display: none;
+}
+.subnav .container ul{
+	margin-top: 20px;
+	
+}
+.subnav .container li{
+	padding-left: 35px;
+}
+.subnav .container div img{
+	margin-top: 30px;
+}
+.subnav .container li a{
+	color: black;
+	font-size: 14px;
+	line-height: 30px;
+}
+.subnav .container li button{
+	width: 220px;
+	height: 40px;
+	border: 2px solid black;
+	background: white;
+	color: black;
+	font-size: 16px;
+}
+.subnav .container li button:hover{
+	background: black;
+	color: white;
+}
+.subnav .container li a:hover{
+	color: red;
+	text-decoration: none;
+}
+.subnav .container li h3 a{
+	font-weight: bold;
+	font-size: 20px;
+}
+.subnav .container li h3 a:hover{
+	color: black;
+	text-decoration: none;
+}
+
+
+
+
+section{
+	width: 100%;
+}
+section .container{
+	/*margin: 0;*/
+	padding: 0;
+}
+.mainImg{
+	width: 890px;
+	height: 456px;
+	margin-top:20px ;
+	float: left;
+	/*animation-iteration-count:infinite;*/
+}
+.imgtop{
+	width: 258px;
+	height: 218px;
+	margin-top:20px ;
+	float:right;
+	/*animation-iteration-count:infinite;*/
+}
+.imgbottom{
+	width: 258px;
+	height: 218px;
+	margin-top:20px ;
+	float:right;
+	/*animation-iteration-count:infinite;*/
+}
+.centerImg .imgleft,
+.centerImg .imgright{
+	width: 574px;
+	height: 242px;
+	margin-top:20px ;
+	float:left;
+}
+.centerImg .imgright{
+	float: right;
+}
+.bottomImg .left{
+	
+}
+.bottomImg h1{
+	margin: 10px auto;
+	width: 300px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+}
+.bottomImg .content{
+	margin: 10px auto;
+	width: 1000px;
+	height: 242px;
+}
+/*.bottomImg .content .left,
+.bottomImg .content .center,
+.bottomImg .content .right{
+	height: 242px;
+}*/
+.bottomImg .content .left,
+.bottomImg .content .center,
+.bottomImg .content .right{
+	height: 242px;
+}
+
+footer{
+	width: 100%;
+    color: #53565a;
+    background: #f0f0f0;
+}
+/*footer ul li{
+	text-align: left;
+}*/
+footer .pay{
+	font-size: 20px;
+}
+section .findshop{
+	width: 80px;
+	height: 80px;
+	margin-top: 10px;
+	border: 1px solid red;
+	float: left;
+}
+section .contentText img{
+	margin-top:20px ;
+	width: 100%;
+	/* height: 100%; */
+}
+section .contentText .textImg{
+	/*animation-iteration-count:infinite;*/
+}
+section .content_img img{
+	width: 100%;
+	height: 100%;
+}
+

@@ -1,0 +1,151 @@
+/*全局变量*/
+*{
+	margin: 0px;
+	padding: 0px;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+img{
+	border: none;
+	vertical-align: bottom;
+}
+/*登陆模态框*/
+/*中间*/
+.modal-body{
+	padding-top: 20px;
+}
+.modal-body li .accountNumber,.password{
+	height: 40px;
+	width: 300px;
+	border: 1px solid #808080;
+	margin: 10px 0px;
+	padding-left: 10px;
+}
+.modal-body li .error{
+	display: none;
+}
+.modal-body li .error .error-con{
+	color: #ff6700;
+	margin-right: 265px;
+}
+.modal-body li .error em{
+	margin-left: 138px;
+	vertical-align:middle;
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+	background: url(../images/sprite_login.gif);
+	background-position: 0 -69px;
+}
+.modal-body li button{
+	height: 40px;
+	width: 300px;
+	background: #c40e0e;
+	margin-top: 10px;
+	color: white;
+}
+/*下*/
+.modal-footer .modal-footer-l{
+	color: #c40e0e;
+	float: left;
+}
+.modal-footer .modal-footer-r,
+.modal-footer .modal-footer-r span{
+	color: #999;
+	float: right;
+	padding-right: 5px;
+}
+
+/*注册模态框*/
+
+#registerModal .modal-body li .modal-body-l1,.modal-body-l2{
+	height: 40px;
+	width: 400px;
+	margin: 15px auto;
+	
+}
+#registerModal .modal-body li .modal-body-l1 span{
+	border: 1px solid #666;
+	height: 40px;
+	width: 100px;
+	float: left;
+	text-align: center;
+	font-size: 16px;
+	line-height: 36px;
+	border-top-left-radius:50px;
+	border-bottom-left-radius:50px;
+}
+#registerModal .modal-body li .modal-body-l1>input{
+	height: 40px;
+	width: 300px;
+	float: left;
+	border: 1px solid #666;
+	border-top-right-radius:50px;
+	border-bottom-right-radius:50px;
+	padding-left: 10px;
+}
+#registerModal .modal-body li .modal-body-l2 span{
+	border: 1px solid #666;
+	height: 40px;
+	width: 100px;
+	float: left;
+	text-align: center;
+	font-size: 16px;
+	line-height: 36px;
+	border-top-left-radius:50px;
+	border-bottom-left-radius:50px;
+}
+#registerModal .modal-body li .modal-body-l2>input{
+	height: 40px;
+	width: 150px;
+	float: left;
+	border: 1px solid #666;
+	padding-left: 10px;
+	border-top-right-radius:50px;
+	border-bottom-right-radius:50px;
+}
+#registerModal .modal-body li .modal-body-r{
+	height: 40px;
+	width: 150px;
+	float: left;
+	border: 1px solid #666;
+	padding-left: 10px;
+	border-radius: 50px;
+}
+#registerModal .modal-body button{
+	background: #c40e0e;
+	color: white;
+	margin-left: 185px;
+	height: 40px;
+	width: 200px;
+	border-radius: 50px;
+}
+#registerModal .modal-body li .p1{
+	margin-left: 190px;
+	font-size: 12px;
+	color: blue;
+	display: none;
+}
+#registerModal .modal-body li .p2{
+	background: url(../images/err_small.png) 0 0 no-repeat;
+	margin-left: 190px;
+	padding-left: 20px;
+	font-size: 12px;
+	color: red;
+	display: none;
+}
+#registerModal .modal-body li .p3{
+	background: url(../images/reg_icons.png) -80px 0 no-repeat;
+	margin-left: 190px;
+	width: 18px;
+	height: 18px;
+	display: none;
+}
+#code{
+	background: #666;
+	font-size: 20px;
+}

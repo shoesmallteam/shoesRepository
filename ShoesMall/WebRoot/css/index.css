@@ -1,0 +1,204 @@
+
+.input-group-addon{
+    background-color: white;
+    border: none;
+}
+.form-control{
+    border: none;
+}
+header{
+    width: 100%;
+    height: 108px;
+    padding-top: 20px;
+    background-color: #c40e0e;
+}
+.nav_right{
+    height: 20px;
+    /*border: 1px solid #1B6D85;*/
+}
+header .form-control{
+    height: 40px;
+}
+.input-group-addon{
+    /*display: block;*/
+    font-size: 24px;
+}
+/*input{
+	height: 50px;
+}*/
+nav ul{
+    width:490px;
+    /*height: 22px;*/
+    padding-top: 10px;
+}
+nav ul li{
+    /*border: 1px solid #AFD9EE;*/
+    line-height: 22px;
+    padding: 0 10px;
+    font-size: 18px;
+    color: white;
+    float: left;
+}
+nav ul li:hover{
+    color: #c40e0e;
+    background: white;
+}
+header .container .row{
+    height: 80px;
+}
+/*.col-xs-12{
+	height: 46px;
+}*/
+.logo,.search{
+    height: 50px;
+    padding: 0;
+}
+.cart{
+    margin: 0;
+    /*padding: 0;*/
+    line-height: 34px;
+    font-size: 16px;
+    color: white;
+    float: right;
+}
+.cart span{
+    margin:5px 4px 0px 10px;
+    /*border: 1px solid #23527C;*/
+    height: 20px;
+    line-height: 14px;
+    color: white;
+    display: inline-block;
+    font-size: 16px;
+}
+.cart a{
+    color: white;
+}
+.cart .text{
+    /*margin:2px 10px 0px ;*/
+    /*border: 1px solid orange;*/
+    display: inline-block;
+    font-size: 14px;
+    line-height: 14px;
+    color: white;
+}
+
+.banner{
+    width: 100%;
+    height: 40px;
+    background: #f5333f;
+    color: #fff;
+}
+.banner .container{
+    height: 40px;
+}
+.banner .container p{
+    margin: 0;
+    line-height: 38px;
+    font-size: 20px;
+}
+#login{
+    float: right;
+}
+#regist{
+    margin-left:20px ;
+    float:right;
+}
+.subnav{
+    width: 100%;
+    background: white;
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    /*float: left;*/
+}
+
+
+section{
+    width: 100%;
+}
+section .container{
+    /*margin: 0;*/
+    padding: 0;
+}
+.mainImg{
+    width: 890px;
+    height: 456px;
+    margin-top:20px ;
+    background-image: url(../images/mainPage/spot1-copycentered.jpg);
+    background-size: 100% 100%;
+    float: left;
+}
+.imgtop{
+    width: 258px;
+    height: 218px;
+    margin-top:20px ;
+    background-image: url(../images/mainPage/bogo-no-border.jpg);
+    background-size: 100% 100%;
+    float:right;
+}
+.imgbottom{
+    width: 258px;
+    height: 218px;
+    margin-top:20px ;
+    background-image: url(../images/mainPage/hp-banner-story2a-23.jpg);
+    background-size: 100% 100%;
+    float:right;
+}
+.centerImg .imgleft,
+.centerImg .imgright{
+    width: 574px;
+    height: 242px;
+    margin-top:20px ;
+    background-image: url(../images/mainPage/hpdesktopspot3caus-1.jpg);
+    background-size: 100% 100%;
+    float:left;
+}
+.centerImg .imgright{
+    background-image: url(../images/mainPage/hp-banner-story3-with-cta.jpg);
+    float: right;
+}
+.bottomImg .left{
+
+}
+.bottomImg h1{
+    margin: 10px auto;
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+.bottomImg .content{
+    margin: 10px auto;
+    width: 1000px;
+    height: 242px;
+}
+/*.bottomImg .content .left,
+.bottomImg .content .center,
+.bottomImg .content .right{
+	height: 242px;
+}*/
+.bottomImg .content .left{
+    height: 242px;
+    /*background: greenyellow;*/
+    background-image:url(../images/mainPage/hp-banner-story2a-combat.jpg) ;
+    background-size: 100% 100%;
+}
+.bottomImg .content .center{
+    height: 242px;
+    /*background: greenyellow;*/
+    background-image:url(../images/mainPage/hp-banner-s2a-1.jpg) ;
+    background-size: 100% 100%;
+}
+.bottomImg .content .right{
+    height: 242px;
+    /*background: greenyellow;*/
+    background-image:url(../images/mainPage/hp-banner-story2a-1.jpg) ;
+    background-size: 100% 100%;
+}
+
+
+footer{
+    width: 100%;
+    color: #53565a;
+    background: #f0f0f0;
+}

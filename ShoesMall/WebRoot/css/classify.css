@@ -1,0 +1,88 @@
+.goods-info{
+    position: relative;
+    margin-top: 10px;
+}
+.goods-info img{
+    width: 100%;
+}
+
+.goods-info>.info{
+    position: absolute;
+    left: 15px;
+    top: 0px;
+    background-color: rgba(0,0,0,0.1);
+    display: none;
+}
+.info p{
+    text-align: center;
+    line-height: 16px;
+    width: 100%;
+    color: #666;
+    text-decoration: none;
+}
+.info a:hover{
+    text-decoration: none;
+}
+.info p.goods-name{
+    font-weight: bold;
+    margin-top: 20%;
+}
+
+.info p.goods-desc{
+    margin-top: 20%;
+    line-height: 18px;
+}
+
+.price-and-star span{
+    display: block;
+    width: 40%;
+    height: 30px;
+    font-size: 20px;
+    border:1px solid rgba(251, 52, 65, 0.75);
+    /*background-color: #f5333f;*/
+    border-radius: 4px;
+    line-height: 30px;
+    text-align: center;
+    color: #000;
+}
+.price-and-star span b{
+    color: red;
+}
+
+.price-and-star{
+    position: absolute;
+    left: 15px;
+    bottom: 10%;
+}
+.price-and-star span.goods-price{
+    float: left;
+    margin-left: 5%;
+}
+.price-and-star span.goods-star{
+    margin-right: 5%;
+    float: right;
+}
+.join-to-cart{
+    display: block;
+    width: 100%;
+    height: 30px;
+    background-color: #f5333f;
+    color: white;
+    margin: 0px auto;
+    text-align: center;
+    line-height: 30px;
+}
+
+.load-more{
+    width: 50%;
+    background-color: #f5333f;
+    height: 50px;
+    border: 1px solid red;
+    margin:30px auto;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}

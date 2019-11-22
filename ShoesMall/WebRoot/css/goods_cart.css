@@ -1,0 +1,55 @@
+.goods-cart table tr {
+    height: 100px;
+    text-align: left;
+    /*line-height: 100px;*/
+}
+
+.goods-cart table tr{
+    border-bottom: 1px solid #f5333f;
+    /*box-shadow: 0px 1px 1px #666;*/
+    margin-top: 0px;
+}
+.goods-cart table tr:first-child{
+    border-bottom-width: 2px;
+}
+
+.goods-cart table img{
+    width: 80px;
+    height: 80px;
+}
+.selectArea{
+    width: 100%;
+}
+
+.count-add,.count-reduce,.count-number{
+    display: inline-block;
+    width: 30%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    text-align: center;
+    border: 2px solid white;
+    cursor: pointer;
+}
+.count-number{
+    width: 40%;
+    border: none;
+}
+@media (max-width: 768px) {
+    .count-add,.count-reduce,.count-number{
+        display: block;
+    }
+}
+
+.count-add:hover,.count-reduce:hover{
+    border: 2px solid orange;
+}
+
+
+.cart_total{
+    width: 200px;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}

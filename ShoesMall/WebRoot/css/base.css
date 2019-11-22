@@ -1,0 +1,22 @@
+/*全局样式*/
+*{
+    margin: 0px;
+    padding: 0px;
+}
+a{
+    text-decoration: none;
+}
+
+img{
+    border: none;
+    vertical-align: bottom;
+}
+
+li{
+    list-style: none;
+}
+
+iframe{
+    margin-bottom: 0px;
+}
+
