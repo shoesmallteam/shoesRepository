@@ -3,10 +3,6 @@
         <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/resource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/tfg"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/xyw"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/fyq"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/zwc"/>
         <property name="context-root" value="ShoesMall"/>
         <property name="java-output-path" value="/ShoesMall/WebRoot/WEB-INF/classes"/>
     </wb-module>
