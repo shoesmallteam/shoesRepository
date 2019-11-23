@@ -1,4 +1,4 @@
-/*全局变量*/
+/*鍏ㄥ眬鍙橀噺*/
 *{
 	margin: 0px;
 	padding: 0px;
@@ -13,8 +13,8 @@ img{
 	border: none;
 	vertical-align: bottom;
 }
-/*登陆模态框*/
-/*中间*/
+/*鐧婚檰妯℃�佹*/
+/*涓棿*/
 .modal-body{
 	padding-top: 20px;
 }
@@ -48,7 +48,7 @@ img{
 	margin-top: 10px;
 	color: white;
 }
-/*下*/
+/*涓�*/
 .modal-footer .modal-footer-l{
 	color: #c40e0e;
 	float: left;
@@ -60,7 +60,7 @@ img{
 	padding-right: 5px;
 }
 
-/*注册模态框*/
+/*娉ㄥ唽妯℃�佹*/
 
 #registerModal .modal-body li .modal-body-l1,.modal-body-l2{
 	height: 40px;
@@ -107,6 +107,16 @@ img{
 	padding-left: 10px;
 	border-top-right-radius:50px;
 	border-bottom-right-radius:50px;
+}
+#registerModal .modal-body li .modal-body-l2>img{
+	height: 40px;
+	width: 150px;
+	float: left;
+	border: 1px solid #666;
+	border-top-right-radius:50px;
+	border-bottom-right-radius:50px;
+	border-top-left-radius:50px;
+	border-bottom-left-radius:50px;
 }
 #registerModal .modal-body li .modal-body-r{
 	height: 40px;
