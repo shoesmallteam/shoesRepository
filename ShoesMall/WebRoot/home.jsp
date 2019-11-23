@@ -526,7 +526,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        	<div class="modal-footer">
 		        		<a href="" class="modal-footer-l">手机短信登陆</a>
 		        		<a href="#" class="modal-footer-r" data-toggle="modal" data-target="#registerModal">立即注册</a>
-		        		<span class="">|</span>
 		        		<a href="" class="modal-footer-r">忘记密码</a>
 	        		</div>
 	        	</div>
@@ -594,7 +593,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<div class="modal-body-l2">
 									<span>验证码</span>
 									<input type="text" id="checkCode" class="form-control" value="" placeholder="请输入验证码"/>
-									<input type = "button" id="code" class="modal-body-r form-control"/> 
+									<img id="i" src="img.do"/>
 								</div>
 							</li>
 						</ul>
@@ -604,7 +603,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="modal-footer">
 						<a href="" class="modal-footer-l">手机短信注册</a>
 						<a href="#" class="modal-footer-r" data-toggle="modal" data-target="#landModal">立即登录</a>
-						<span class="">|</span>
 		        		<a href="" class="modal-footer-r">已有帐号</a>
 					</div>
 				</div>
@@ -620,3 +618,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/register.js" ></script>
 <script type="text/javascript" src="js/login.js" ></script>
 <script type="text/javascript" src="js/loginRegist.js" ></script>
+

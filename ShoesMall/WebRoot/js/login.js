@@ -3,7 +3,7 @@ function checkLogin(){
   //获取localStorage  username  token
   var userName = localStorage.getItem('username');
   var token = localStorage.getItem('token');
-  console.log(token)
+  //console.log(token)
   //验证
   if(token){
     $('#regist, #login').hide();
