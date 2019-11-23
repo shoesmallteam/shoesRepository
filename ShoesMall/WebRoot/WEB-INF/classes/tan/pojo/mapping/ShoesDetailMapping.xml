@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<class name="tan.pojo.ShoesDetail" table="shoesdetail">
+    <property name="shoesdetialid" column="shoesdetialid" type="String"></property>
+    <property name="color" column="color" type="String"></property>
+    <property name="size" column="size" type="int"></property>
+    <property name="desc" column="desc" type="String"></property>
+    <property name="price" column="price" type="int"></property>
+    <property name="count" column="count" type="int"></property>
+    <property name="frequence" column="frequence" type="int"></property>
+    <property name="image" column="image" type="String"></property>
+
+    <select id="selectShoesDetail" returnType="tan.pojo.ShoesDetail">
+    	select * from shoesdetail inner into shoes where shoesdetail.shoesdetialid = shoes.shoesdetialid and shoesid=#{shoesid}
+    </select>
+	
+</class>
