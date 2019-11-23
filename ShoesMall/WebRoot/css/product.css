@@ -233,7 +233,7 @@ i{
     float: left;
 }
 
-/*放大镜滑块*/
+/*鏀惧ぇ闀滄粦鍧�*/
 .product .slide{
     width: 200px;
     height: 200px;
@@ -243,7 +243,7 @@ i{
     background: rgba(0,0,0,0.6);
     display: none;
 }
-/*内容区域的放大图片*/
+/*鍐呭鍖哄煙鐨勬斁澶у浘鐗�*/
 .product .banners .big-img{
     display: inline-block;
     width: 400px;
@@ -258,10 +258,10 @@ i{
     display: none;
 }
 
-/*尺码弹框*/
+/*灏虹爜寮规*/
 .more-size{
     width: 782px;
-    position: absolute;
+    position: fixed;
     left: 50%;
     margin-left: -391px;
     top: 50%;
