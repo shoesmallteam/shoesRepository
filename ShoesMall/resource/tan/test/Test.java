@@ -9,6 +9,7 @@ public class Test {
 	public static void main(String[] args) {
 		BaseDao dao = new BaseDaoImpl();
 		
+		
 		User user = new User();
 		
 		user.setUserid(PrimaryKeyGeneric.getPrimaryKey());
@@ -16,7 +17,6 @@ public class Test {
 		user.setCartid(PrimaryKeyGeneric.getPrimaryKey());
 		user.setNikename("tan");
 		user.setAddress("hello thank you");
-		
 		
 		
 		dao.insert("insertUser", user);

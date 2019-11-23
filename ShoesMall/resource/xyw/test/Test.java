@@ -1,5 +1,7 @@
 package xyw.test;
 
-public class Test {
+import tan.pojo.User;
 
+public class Test {
+	
 }
