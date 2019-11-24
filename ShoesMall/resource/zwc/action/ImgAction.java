@@ -19,7 +19,7 @@ import xyw.core.web.form.XywForm;
 public class ImgAction extends XywAction{
 	//图片的宽和高
 	private static int WIDTH = 150;
-	private static int HEIGHT = 40;
+	private static int HEIGHT = 35;
 	//随机验证码个数
 	private static int CODE = 4;
 	//干扰点个数
@@ -44,6 +44,7 @@ public class ImgAction extends XywAction{
 		//验证码
 		String content = sb1.toString();
 		//请求得到一个session,并把验证码存到session中
+		//System.out.println(content);
 		arg0.getSession().setAttribute("code", content);
 		//内存中一个缓存的图片对象
 		BufferedImage bi = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);

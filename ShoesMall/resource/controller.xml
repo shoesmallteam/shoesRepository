@@ -2,4 +2,6 @@
 <actions>
     <action name="img" class="zwc.action.ImgAction">
     </action>
+    <action name="register" class="zwc.action.RegisterAction">
+    </action>
 </actions>

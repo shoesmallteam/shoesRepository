@@ -7,4 +7,10 @@
     <mappings>
     	<mapping path="tan/pojo/mapping/UserMapping.xml"></mapping>
     </mappings>
+    <mappings>
+    	<mapping path="zwc/pojo/mapping/UserMapping.xml"></mapping>
+    </mappings>
+    <mappings>
+    	<mapping path="zwc/pojo/mapping/AccountMapping.xml"></mapping>
+    </mappings>
 </properties>

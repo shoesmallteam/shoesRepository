@@ -17,13 +17,14 @@ $('#registerModal .modal-body li:eq(0) .modal-body-l1 input').focus(function(){
 	$('#registerModal .modal-body li:eq(3) .p1').hide();
 	$('#registerModal .modal-body li:eq(5) .p1').hide();
 	$('#registerModal .modal-body li:eq(7) .p1').hide();
+	$('#registerModal .modal-body li:eq(0) .modal-body-l1 input').css('border','1px solid blue');
 });
 $('#registerModal .modal-body li:eq(0) .modal-body-l1 input').blur(function(){
 	$('#registerModal .modal-body li:eq(1) .p1').slideUp();
 	//拿到文本框输入的值
 	var m = $('#registerModal .modal-body li:eq(0) .modal-body-l1 input').val();
-	//用户名仅支持中英文、数字和下划线,且不能为纯数字
- 	var re1 =/([a-z-A-Z\d]|[_])+[a-zA-Z_\d]+[a-zA-Z_]/g;
+	//用户名仅支持中英文、数字和下划线,且不能以数字开头,最长6位
+ 	var re1 =/^[a-z-A-Z_]{1}([a-z-A-Z\d_]){1,5}$/;
  	if (re1.test(m)) {
  			$('#registerModal .modal-body li:eq(1) .p3').slideDown();
  		} else{
@@ -41,6 +42,7 @@ $('#registerModal .modal-body li:eq(2) .modal-body-l1 input').focus(function(){
 	$('#registerModal .modal-body li:eq(1) .p1').hide();
 	$('#registerModal .modal-body li:eq(5) .p1').hide();
 	$('#registerModal .modal-body li:eq(7) .p1').hide();
+	$('#registerModal .modal-body li:eq(2) .modal-body-l1 input').css('border','1px solid blue');
 });
 $('#registerModal .modal-body li:eq(2) .modal-body-l1 input').blur(function(){
 	$('#registerModal .modal-body li:eq(3) .p1').slideUp();
@@ -63,6 +65,7 @@ $('#registerModal .modal-body li:eq(4) .modal-body-l1 input').focus(function(){
 	$('#registerModal .modal-body li:eq(1) .p1').hide();
 	$('#registerModal .modal-body li:eq(3) .p1').hide();
 	$('#registerModal .modal-body li:eq(7) .p1').hide();
+	$('#registerModal .modal-body li:eq(4) .modal-body-l1 input').css('border','1px solid blue');
 });
 $('#registerModal .modal-body li:eq(4) .modal-body-l1 input').blur(function(){
 	$('#registerModal .modal-body li:eq(5) .p1').slideUp();
@@ -86,6 +89,7 @@ $('#registerModal .modal-body li:eq(6) .modal-body-l1 input').focus(function(){
 	$('#registerModal .modal-body li:eq(1) .p1').hide();
 	$('#registerModal .modal-body li:eq(3) .p1').hide();
 	$('#registerModal .modal-body li:eq(5) .p1').hide();
+	$('#registerModal .modal-body li:eq(6) .modal-body-l1 input').css('border','1px solid blue');
 });
 $('#registerModal .modal-body li:eq(6) .modal-body-l1 input').blur(function(){
 	$('#registerModal .modal-body li:eq(7) .p1').slideUp();
@@ -99,9 +103,7 @@ $('#registerModal .modal-body li:eq(6) .modal-body-l1 input').blur(function(){
  			$('#registerModal .modal-body li:eq(7) .p2').slideDown();
  			$('#registerModal .modal-body li:eq(6) .modal-body-l1 input').css('border','1px solid red');
  		};
- 	
 });
-
 //点击更换验证码
 $('#registerModal .modal-body li .modal-body-l2>img').click(function(){
 	//console.log(1);
