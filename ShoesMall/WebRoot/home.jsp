@@ -597,7 +597,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<input type="text" id="checkCode" class="form-control" value="" placeholder="请输入验证码"/>
 									<img id="i" src="img.do"/>
 								</div>
-							</li>
+							</li> 
 							<li>							
 								<p class="p2">验证码错误,请点击验证码刷新</p>
 								<p class="p3"></p>
