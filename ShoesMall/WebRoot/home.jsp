@@ -546,13 +546,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<ul>
 							<li>
 								<div class="modal-body-l1">
-									<span>用户名</span>
+									<span>昵称</span>
 									<input type="text"  value="" class="form-control" placeholder="请设置用户名"/>
 								</div>
 							</li>
 							<li>
-								<p class="p1">设置后不可更改,中英文数字下划线均可</p>
-								<p class="p1">不能以数字开头,最长6位</p>
+								<p class="p1">中英文数字下划线均可,不能以数字开头,最长6位</p>
 								<p class="p2">用户名格式不正确</p>
 								<p class="p3"></p>
 							</li>
