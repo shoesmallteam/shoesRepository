@@ -597,6 +597,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<img id="i" src="img.do"/>
 								</div>
 							</li>
+							<li>							
+								<p class="p2">验证码错误</p>
+								<p class="p3"></p>
+							</li>
 						</ul>
 						<button class="btn" id="register">注册</button>
 					</div>

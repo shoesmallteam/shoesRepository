@@ -7,6 +7,7 @@ import java.net.URLDecoder;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 import cn.shoesmall.util.PrimaryKeyGeneric;
 import net.sf.json.JSONObject;
@@ -44,13 +45,17 @@ public class RegisterAction extends XywAction{
 			ac.setIsassistant(0);
 			ac.setIsvip(0);
 			dao.insert("insertAccount", ac);
-			//成功修改session中验证码,防重复登陆
+			//成功修改session中验证码,防重复登陆s
 			arg0.getSession().setAttribute("code", "、、、");
+			//JOptionPane.showMessageDialog(null, "注册成功！");
 		}
-//		else{
-//			//失败后把提示信息存到session中然后展示到页面上
-//			arg0.getSession().setAttribute("msg", "验证码错误");
-//		}
+		else{
+			//失败后把提示信息存到session中然后展示到页面上
+			//arg0.getSession().setAttribute("msg", "验证码错误");
+			//JOptionPane.showMessageDialog(null, "注册失败，验证码错误！");
+			PrintWriter out = arg1.getWriter();
+			out.write(serverCode);
+		}
 		return null;
 	}
 

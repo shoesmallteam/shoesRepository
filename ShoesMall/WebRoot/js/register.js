@@ -14,7 +14,7 @@
   		pwd = $('#registerModal .modal-body li:eq(4) .modal-body-l1 input').val();
   		email = $('#registerModal .modal-body li:eq(6) .modal-body-l1 input').val();
   		verificationCode = $('#checkCode').val();
-//  	newverificationCode = $('#i').val();
+//  	newverificationCode = $('#newicheckCode').val();
 //  	console.log(userName);
 //  	console.log(phoneNumber);
 //  	console.log(pwd);
@@ -83,8 +83,19 @@
 			success:function(result){
 				//JS设置页面跳转
 				//window.location.href = 'http://localhost:8080/ShoesMall/home.jsp';
-			    $('#registerModal').fadeOut(100).modal('hide');
-			    $('#landModal').fadeIn(100).modal('show');
+				//console.log(result);
+				if (result) {
+					$('#checkCode').focus();
+					$('#checkCode').select();
+					$('#checkCode').css('border','1px solid red');
+					$('#registerModal .modal-body li:eq(9) .p2').slideDown();
+					$('#registerModal .modal-body li:eq(9) .p3').slideUp();
+				} else {
+					$('#registerModal').fadeOut(100).modal('hide');
+					$('#landModal').fadeIn(100).modal('show');
+					$('#registerModal .modal-body li:eq(9) .p2').slideUp();
+					$('#registerModal .modal-body li:eq(9) .p3').slideDown();
+				}
 			}
   		});
   		

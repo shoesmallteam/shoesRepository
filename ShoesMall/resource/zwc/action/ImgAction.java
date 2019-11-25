@@ -44,7 +44,7 @@ public class ImgAction extends XywAction{
 		//验证码
 		String content = sb1.toString();
 		//请求得到一个session,并把验证码存到session中
-		//System.out.println(content);
+		System.out.println(content);
 		arg0.getSession().setAttribute("code", content);
 		//内存中一个缓存的图片对象
 		BufferedImage bi = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
