@@ -148,6 +148,14 @@ img{
 	color: red;
 	display: none;
 }
+#registerModal .modal-body li .p4{
+	background: url(../images/err_small.png) 0 0 no-repeat;
+	margin-left: 190px;
+	padding-left: 20px;
+	font-size: 12px;
+	color: red;
+	display: none;
+}
 #registerModal .modal-body li .p3{
 	background: url(../images/reg_icons.png) -80px 0 no-repeat;
 	margin-left: 190px;

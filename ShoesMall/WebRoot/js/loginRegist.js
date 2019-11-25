@@ -42,20 +42,36 @@ $('#registerModal .modal-body li:eq(2) .modal-body-l1 input').focus(function(){
 	$('#registerModal .modal-body li:eq(1) .p1').hide();
 	$('#registerModal .modal-body li:eq(5) .p1').hide();
 	$('#registerModal .modal-body li:eq(7) .p1').hide();
+	$('#registerModal .modal-body li:eq(3) .p4').slideUp();
 	$('#registerModal .modal-body li:eq(2) .modal-body-l1 input').css('border','1px solid blue');
 });
 $('#registerModal .modal-body li:eq(2) .modal-body-l1 input').blur(function(){
 	$('#registerModal .modal-body li:eq(3) .p1').slideUp();
 	//拿到文本框输入的值
-	var m = $('#registerModal .modal-body li:eq(2) .modal-body-l1 input').val();
-	//手机号码
+	var tel = $('#registerModal .modal-body li:eq(2) .modal-body-l1 input').val();
+	//console.log(tel);
+	//手机号码 
  	var re1 = /^1[3456789]\d{9}$/g;
- 	if (re1.test(m)) {
+ 	if (re1.test(tel)) {
  			$('#registerModal .modal-body li:eq(3) .p3').slideDown();
  		} else{
  			$('#registerModal .modal-body li:eq(3) .p2').slideDown();
+ 			$('#registerModal .modal-body li:eq(3) .p4').slideUp();
  			$('#registerModal .modal-body li:eq(2) .modal-body-l1 input').css('border','1px solid red');
  		};
+ 	//使用ajax无刷新
+  		$.ajax({
+  			type:"post",
+			url:"tel.do",
+			data:"tel="+tel,
+			success:function(result){
+				//console.log(result);
+				if (result) {
+					$('#registerModal .modal-body li:eq(3) .p3').slideUp();
+					$('#registerModal .modal-body li:eq(3) .p4').slideDown();
+				}
+			}
+  		});
 });
 //密码框
 $('#registerModal .modal-body li:eq(4) .modal-body-l1 input').focus(function(){
@@ -89,20 +105,35 @@ $('#registerModal .modal-body li:eq(6) .modal-body-l1 input').focus(function(){
 	$('#registerModal .modal-body li:eq(1) .p1').hide();
 	$('#registerModal .modal-body li:eq(3) .p1').hide();
 	$('#registerModal .modal-body li:eq(5) .p1').hide();
+	$('#registerModal .modal-body li:eq(7) .p4').slideUp();
 	$('#registerModal .modal-body li:eq(6) .modal-body-l1 input').css('border','1px solid blue');
 });
 $('#registerModal .modal-body li:eq(6) .modal-body-l1 input').blur(function(){
 	$('#registerModal .modal-body li:eq(7) .p1').slideUp();
 	//拿到文本框输入的值
-	var m = $('#registerModal .modal-body li:eq(6) .modal-body-l1 input').val();
+	var email = $('#registerModal .modal-body li:eq(6) .modal-body-l1 input').val();
 	//匹配邮箱
  	var re1 = /^\w+@\w+\.(net|com|cn|org)+$/g;
- 	if (re1.test(m)) {
+ 	if (re1.test(email)) {
  			$('#registerModal .modal-body li:eq(7) .p3').slideDown();
  		} else{
+ 			$('#registerModal .modal-body li:eq(7) .p4').slideUp();
  			$('#registerModal .modal-body li:eq(7) .p2').slideDown();
  			$('#registerModal .modal-body li:eq(6) .modal-body-l1 input').css('border','1px solid red');
  		};
+ 		//使用ajax无刷新
+  		$.ajax({
+  			type:"post",
+			url:"email.do",
+			data:"email="+email,
+			success:function(result){
+				//console.log(result);
+				if (result) {
+					$('#registerModal .modal-body li:eq(7) .p3').slideUp();
+					$('#registerModal .modal-body li:eq(7) .p4').slideDown();
+				}
+			}
+  		});
 });
 //点击更换验证码
 $('#registerModal .modal-body li .modal-body-l2>img').click(function(){

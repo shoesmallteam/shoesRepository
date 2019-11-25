@@ -68,13 +68,6 @@
   	 	if (!re4.test(email)) {
   	 		return;
   	 	}
-  	 	//验证码
-//  	 	if (verificationCode != newverificationCode) {
-//			$('#checkCode').focus();
-//			$('#checkCode').select();
-//			$('#checkCode').css('border','1px solid red');
-//			return;
-//		};
   	//使用ajax无刷新
   		$.ajax({
   			type:"post",
@@ -84,13 +77,21 @@
 				//JS设置页面跳转
 				//window.location.href = 'http://localhost:8080/ShoesMall/home.jsp';
 				//console.log(result);
-				if (result) {
+				if (result==phoneNumber) {
+					$('#registerModal .modal-body li:eq(2) .modal-body-l1 input').focus();
+					$('#registerModal .modal-body li:eq(2) .modal-body-l1 input').select();
+					$('#registerModal .modal-body li:eq(2) .modal-body-l1 input').css('border','1px solid red');
+				}else if(result==email){
+					$('#registerModal .modal-body li:eq(6) .modal-body-l1 input').focus();
+					$('#registerModal .modal-body li:eq(6) .modal-body-l1 input').select();
+					$('#registerModal .modal-body li:eq(6) .modal-body-l1 input').css('border','1px solid red');
+				}else if(result==verificationCode){
 					$('#checkCode').focus();
 					$('#checkCode').select();
 					$('#checkCode').css('border','1px solid red');
 					$('#registerModal .modal-body li:eq(9) .p2').slideDown();
 					$('#registerModal .modal-body li:eq(9) .p3').slideUp();
-				} else {
+				}else{
 					$('#registerModal').fadeOut(100).modal('hide');
 					$('#landModal').fadeIn(100).modal('show');
 					$('#registerModal .modal-body li:eq(9) .p2').slideUp();

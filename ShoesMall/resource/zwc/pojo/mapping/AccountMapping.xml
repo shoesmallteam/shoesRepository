@@ -9,10 +9,21 @@
     <property name="isassistant" column="isassistant" type="int"></property>
     <property name="isvip" column="isvip" type="int"></property>
 
-    <insert id="insertAccount" >
+    <insert id="insertAccount">
         insert into account(accountid,account,password,tel,email,isassistant,isvip) 
         values(#{accountid},#{account},#{password},#{tel},#{email},#{isassistant},#{isvip});
     </insert>
+    <select id="selectAccount" returnType="zwc.pojo.Account">
+    	select * from account where tel=#{tel};
+    </select>
+    <select id="selectAccount1" returnType="zwc.pojo.Account">
+    	select * from account where email=#{email};
+    </select>
+    
+    <select id="selectAll" returnType="zwc.pojo.Account">
+    	select * from account
+    </select>
+    
 	
 	
 	

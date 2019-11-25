@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<class name="zwc.pojo.Cart" table="cart">
+    <property name="cartid" column="cartid" type="String"></property>
+    <property name="shoedetailsid" column="shoedetailsid" type="String"></property>
+    <property name="accountid" column="accountid" type="String"></property>
+
+    <insert id="insertCart" >
+        insert into cart(cartid,shoedetailsid,accountid) 
+        values(#{cartid},#{shoedetailsid},#{accountid});
+    </insert>
+	
+	
+	
+</class>

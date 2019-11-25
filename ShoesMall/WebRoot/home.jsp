@@ -565,6 +565,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<p class="p1">请输入中国大陆手机号</p>
 								<p class="p2">手机号码格式不正确</p>
 								<p class="p3"></p>
+								<p class="p4">电话号码已存在</p>
 							</li>
 							<li>
 								<div class="modal-body-l1">
@@ -588,6 +589,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<p class="p1">支持各种邮箱</p>
 								<p class="p2">邮箱格式不正确</p>
 								<p class="p3"></p>
+								<p class="p4">邮箱已存在</p>
 							</li>
 							<li>
 								<div class="modal-body-l2">
@@ -597,7 +599,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 							</li>
 							<li>							
-								<p class="p2">验证码错误</p>
+								<p class="p2">验证码错误,请点击验证码刷新</p>
 								<p class="p3"></p>
 							</li>
 						</ul>
