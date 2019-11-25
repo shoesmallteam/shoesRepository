@@ -1,11 +1,18 @@
 package tan.pojo;
 
 public class ShoesDetail {
+	private String shoesid;
+	public String getShoesid() {
+		return shoesid;
+	}
+	public void setShoesid(String shoesid) {
+		this.shoesid = shoesid;
+	}
 	private String shoesdetialid;
 	private String color;
-	private int size;
+	private String size;
 	private String desc;
-	private int price;
+	private double price;
 	private int count;
 	private int frequence;
 	private String image;
@@ -21,10 +28,10 @@ public class ShoesDetail {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	public int getSize() {
+	public String getSize() {
 		return size;
 	}
-	public void setSize(int size) {
+	public void setSize(String size) {
 		this.size = size;
 	}
 	public String getDesc() {
@@ -33,10 +40,10 @@ public class ShoesDetail {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	public int getCount() {

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="cn.shoesmall.pojo.Shoes" table="shoes">
+	<property name="shoesid" column="shoesid" type="java.lang.String"></property>
+	<property name="shoesname" column="shoesname" type="java.lang.String"></property>
+	<property name="shoestype" column="shoestype" type="java.lang.String"></property>
+	<property name="shoesclassifyid" column="shoesclassifyid" type="java.lang.String"></property>
+</class>

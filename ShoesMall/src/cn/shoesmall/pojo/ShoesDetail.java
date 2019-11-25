@@ -1,20 +1,26 @@
 package cn.shoesmall.pojo;
 
-public class Shoesdetail {
-	private String shoesdetailid;
+public class ShoesDetail {
+	private String shoesid;
+	public String getShoesid() {
+		return shoesid;
+	}
+	public void setShoesid(String shoesid) {
+		this.shoesid = shoesid;
+	}
+	private String shoesdetialid;
 	private String color;
-	private int size;
+	private String size;
 	private String desc;
 	private double price;
 	private int count;
 	private int frequence;
 	private String image;
-	private int inventory;
-	public String getShoesdetailid() {
-		return shoesdetailid;
+	public String getShoesdetialid() {
+		return shoesdetialid;
 	}
-	public void setShoesdetailid(String shoesdetailid) {
-		this.shoesdetailid = shoesdetailid;
+	public void setShoesdetialid(String shoesdetialid) {
+		this.shoesdetialid = shoesdetialid;
 	}
 	public String getColor() {
 		return color;
@@ -22,10 +28,10 @@ public class Shoesdetail {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	public int getSize() {
+	public String getSize() {
 		return size;
 	}
-	public void setSize(int size) {
+	public void setSize(String size) {
 		this.size = size;
 	}
 	public String getDesc() {
@@ -58,20 +64,5 @@ public class Shoesdetail {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public int getInventory() {
-		return inventory;
-	}
-	public void setInventory(int inventory) {
-		this.inventory = inventory;
-	}
-	
-	@Override
-	public String toString() {
-		return "shoesdetail [shoesdetailid=" + shoesdetailid + ", color=" + color + ", size=" + size + ", desc=" + desc
-				+ ", price=" + price + ", count=" + count + ", frequence=" + frequence + ", image=" + image
-				+ ", inventory=" + inventory + "]";
-	}
-	
-	
 	
 }
