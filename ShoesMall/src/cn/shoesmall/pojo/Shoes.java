@@ -13,11 +13,11 @@ public class Shoes {
 	public void setShoesname(String shoesname) {
 		this.shoesname = shoesname;
 	}
-	public String getShoestype() {
-		return shoestype;
+	public String getShoestypeid() {
+		return shoestypeid;
 	}
-	public void setShoestype(String shoestype) {
-		this.shoestype = shoestype;
+	public void setShoestypeid(String shoestypeid) {
+		this.shoestypeid = shoestypeid;
 	}
 	public String getShoesclassifyid() {
 		return shoesclassifyid;
@@ -27,6 +27,6 @@ public class Shoes {
 	}
 	private String shoesid;
 	private String shoesname;
-	private String shoestype;
+	private String shoestypeid;
 	private String shoesclassifyid;
 }

@@ -11,4 +11,16 @@
     	<mapping path="zwc/pojo/mapping/CartMapping.xml"></mapping>
     	<!--mapping path="cn/shoesmall/pojo/mapping/AccountMapping.xml"></mapping-->
     </mappings>
+    <mappings>
+    	<mapping path="cn/shoesmall/pojo/mapping/ShoesDetailMapping.xml"></mapping>
+    </mappings>
+    <mappings>
+    	<mapping path="cn/shoesmall/pojo/mapping/ShoesMapping.xml"></mapping>
+    </mappings>
+    <mappings>
+    	<mapping path="cn/shoesmall/pojo/mapping/ShoestypeMapping.xml"></mapping>
+    </mappings>
+    <mappings>
+    	<mapping path="cn/shoesmall/pojo/mapping/ShoesclassifyMapping.xml"></mapping>
+    </mappings>
 </properties>

@@ -2,4 +2,9 @@
 <class name="cn.shoesmall.pojo.Shoesclassify" table="shoesclassify">
 	<property name="shoesclassifyid" column="shoesclassifyid" type="java.lang.String"></property>
 	<property name="shoescalssifyname" column="shoescalssifyname" type="java.lang.String"></property>
+	
+	<insert id="insertShoesClassify">
+		insert into shoes(shoesclassifyid,shoescalssifyname) 
+		values(#{shoesclassifyid},#{shoescalssifyname});
+	</insert>
 </class>

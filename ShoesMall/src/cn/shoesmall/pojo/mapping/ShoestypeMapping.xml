@@ -3,4 +3,9 @@
 	<property name="shoestypeid" column="shoestypeid" type="java.lang.String"></property>
 	<property name="shoestypename" column="shoestypename" type="java.lang.String"></property>
 	<property name="whether" column="whether" type="java.lang.String"></property>
+	
+	<insert id="insertShoesType">
+		insert into shoes(shoestypeid,shoestypename,whether) 
+		values(#{shoestypeid},#{shoestypename},#{whether});
+	</insert>
 </class>
