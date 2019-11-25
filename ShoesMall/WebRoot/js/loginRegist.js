@@ -96,7 +96,7 @@ $('#registerModal .modal-body li:eq(6) .modal-body-l1 input').blur(function(){
 	//拿到文本框输入的值
 	var m = $('#registerModal .modal-body li:eq(6) .modal-body-l1 input').val();
 	//匹配邮箱
- 	var re1 = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/g;
+ 	var re1 = /^\w+@\w+\.(net|com|cn|org)+$/g;
  	if (re1.test(m)) {
  			$('#registerModal .modal-body li:eq(7) .p3').slideDown();
  		} else{

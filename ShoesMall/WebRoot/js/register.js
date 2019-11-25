@@ -64,7 +64,7 @@
   	 		return;
   	 	}
   	 	//匹配邮箱
-  	 	var re4 = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/g;
+  	 	var re4 = /^\w+@\w+\.(net|com|cn|org)+$/g;
   	 	if (!re4.test(email)) {
   	 		return;
   	 	}
