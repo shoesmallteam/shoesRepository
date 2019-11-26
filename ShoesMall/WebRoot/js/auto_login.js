@@ -16,3 +16,15 @@ function checkLogin(){
     };
 };
 checkLogin();
+$('#exit').click(function(){
+	if (confirm(" Are you sure? ")) {
+		$.ajax({
+			type:"post",
+			url:"exits.do",
+			success:function(result){
+				window.location.href = 'http://localhost:8080/ShoesMall/home.jsp';
+			}
+		});
+	}
+	
+});

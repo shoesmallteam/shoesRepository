@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div class="col-xs-12">
                     	<input type="hidden" value="${nikename}" id="nn"/>
-                    	<p class="navbar-text" id="welcome"></p>
+                    	<a class="navbar-text" id="welcome" style="cursor: pointer;"></a>
                         <p class="cart">
                           <a href=""><span class="glyphicon glyphicon-shopping-cart "></span></a>
                         </p>
@@ -347,7 +347,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<p>Famously Foot Wear</p>
 					</div>
 					<div class="col-xs-4 col-sm-3 text-center">
-						<button class="btn btn-danger" id="exit" data-toggle="modal" data-target="#landModal">退出</button>
+						<button class="btn btn-danger" id="exit">退出</button>
 						<!--注册登陆按钮-->
 						<button class="btn btn-danger" id="regist" data-toggle="modal" data-target="#registerModal">注册</button>
 						<button class="btn btn-danger" id="login" data-toggle="modal" data-target="#landModal">登录</button>
