@@ -17,8 +17,6 @@ public class Test {
 		user.setNikename("tan");
 		user.setAddress("hello thank you");
 		
-		
-		
 		dao.insert("insertUser", user);
 	}
 }
