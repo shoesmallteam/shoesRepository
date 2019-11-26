@@ -19,6 +19,9 @@
     <select id="selectAccount1" returnType="zwc.pojo.Account">
     	select * from account where email=#{email};
     </select>
+    <select id="selectAccount2" returnType="zwc.pojo.Account">
+    	select * from account where account=#{account};
+    </select>
     
     <select id="selectAll" returnType="zwc.pojo.Account">
     	select * from account

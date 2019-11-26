@@ -346,7 +346,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<p>Famously Foot Wear</p>
 					</div>
 					<div class="col-xs-4 col-sm-3 text-center">
-						  <button class="btn btn-danger" id="exit" data-toggle="modal" data-target="#landModal">退出</button>
+						<button class="btn btn-danger" id="exit" data-toggle="modal" data-target="#landModal">退出</button>
 						<!--注册登陆按钮-->
 						<button class="btn btn-danger" id="regist" data-toggle="modal" data-target="#registerModal">注册</button>
 						<button class="btn btn-danger" id="login" data-toggle="modal" data-target="#landModal">登录</button>
@@ -509,8 +509,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li class="text-center">
 								<input  type="text" id="username" class="accountNumber " value="" placeholder="邮箱/手机号码/ID"/>
 							</li>
+							<li>
+								<div class="error">
+									<em></em>
+									<span class="error-con">账号错误</span>
+								</div>
+							</li>
 							<li class="text-center">
-								<input  type="password" id="pwd" class="password" value="" placeholder="密码"/>
+								<input  type="password" id="pwd" class="password " value="" placeholder="密码"/>
+							</li>
+							<li>
+								<div class="error">
+									<em></em>
+									<span class="error-con">密码错误</span>
+								</div>
 							</li>
 							<li>
 								<div class="error">
@@ -621,6 +633,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/wow.min.js"></script>
 <script type="text/javascript" src="js/mainPage.js"></script>
 <script type="text/javascript" src="js/register.js" ></script>
-<script type="text/javascript" src="js/login.js" ></script>
 <script type="text/javascript" src="js/loginRegist.js" ></script>
+<script type="text/javascript" src="js/lo.js" ></script>
 

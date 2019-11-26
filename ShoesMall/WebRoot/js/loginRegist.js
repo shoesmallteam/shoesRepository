@@ -9,6 +9,18 @@
 	$('#registerModal').fadeOut(1000).modal('hide');
 });
 //获得焦点和失去焦点
+//登陆账号框
+   $('#username').focus(function(){
+	$('#landModal .modal-body li:eq(1) .error').hide();
+	$('#landModal .modal-body li:eq(3) .error').hide();
+	$('#landModal .modal-body li:eq(4) .error').hide();
+});
+//登陆密码框
+   $('#pwd').focus(function(){
+	   $('#landModal .modal-body li:eq(1) .error').hide();
+	   $('#landModal .modal-body li:eq(3) .error').hide();
+	   $('#landModal .modal-body li:eq(4) .error').hide();
+   });
 //用户名框
 $('#registerModal .modal-body li:eq(0) .modal-body-l1 input').focus(function(){
 	$('#registerModal .modal-body li:eq(1) .p1').slideDown();

@@ -8,4 +8,6 @@
     </action>
      <action name="email" class="zwc.action.EmailAction">
     </action>
+     <action name="login" class="zwc.action.LoginAction">
+    </action>
 </actions>
