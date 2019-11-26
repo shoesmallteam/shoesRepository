@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -61,6 +62,15 @@ public class LoginAction extends XywAction{
 				out.write(pw);
 			}else{
 				System.out.println("密码正确");
+				//登录成功就往cookie里面存数据
+				Cookie cookie = new Cookie("auto_login",un+"#itheima#"+pw1+"#itheima#"+nc);
+				//设置IP
+				cookie.setDomain("localhost");
+				//设置工程
+				cookie.setPath("/ShoesMall");
+				//设置时间
+				cookie.setMaxAge(60*60*24*7);
+				arg1.addCookie(cookie);
 				PrintWriter out = arg1.getWriter();
 				out.write(nc);//输出昵称
 			}

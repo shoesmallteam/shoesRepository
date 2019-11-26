@@ -45,13 +45,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="row">
                     <div class="col-xs-12 search">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="logo_right_top"/>
+                            <input type="text" value="" class="form-control" id="logo_right_top"/>
                             <span class="input-group-addon">
 						         <span class="glyphicon glyphicon-search"></span>
 						   </span>
                         </div>
                     </div>
                     <div class="col-xs-12">
+                    	<input type="hidden" value="${nikename}" id="nn"/>
                     	<p class="navbar-text" id="welcome"></p>
                         <p class="cart">
                           <a href=""><span class="glyphicon glyphicon-shopping-cart "></span></a>
@@ -507,7 +508,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="modal-body">
 						<ul>
 							<li class="text-center">
-								<input  type="text" id="username" class="accountNumber " value="" placeholder="邮箱/手机号码/ID"/>
+								<input  type="text" id="username" class="accountNumber " value="${uuname}" placeholder="邮箱/手机号码/ID"/>
 							</li>
 							<li>
 								<div class="error">
@@ -516,7 +517,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 							</li>
 							<li class="text-center">
-								<input  type="password" id="pwd" class="password " value="" placeholder="密码"/>
+								<input  type="password" id="pwd" class="password " value="${uupass}" placeholder="密码"/>
 							</li>
 							<li>
 								<div class="error">
@@ -634,5 +635,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/mainPage.js"></script>
 <script type="text/javascript" src="js/register.js" ></script>
 <script type="text/javascript" src="js/loginRegist.js" ></script>
-<script type="text/javascript" src="js/lo.js" ></script>
+<script type="text/javascript" src="js/login.js" ></script>
+<script type="text/javascript" src="js/auto_login.js" ></script>
 

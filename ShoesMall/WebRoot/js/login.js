@@ -17,19 +17,18 @@
 				if(result==un){
 					//账号不存在
 					$('#landModal .modal-body li:eq(1) .error').fadeIn(1000);
-					
 				}else if(result==pw){
 					//密码错误
-					console.log(pw);
+					//console.log(pw);
 					$('#landModal .modal-body li:eq(3) .error').fadeIn(1000);
-					
 				}else{
 					//登陆成功
 					$('#landModal').fadeOut(1000).modal('hide');
 					//登陆注册按钮隐藏，显示购物车退出按钮欢迎XXX
 					$('#regist, #login').hide();
 					$('#welcome, #exit, .cart').show();
-					$('#welcome').html('欢迎'+result);
+					$('#welcome').html(result);
+					
 				}
 			}
 		});

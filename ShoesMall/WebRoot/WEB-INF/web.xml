@@ -33,8 +33,15 @@
         <servlet-name>doAction</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
-  
-  
+  	<!-- 自动登陆 -->
+  	<filter>
+  	<filter-name>cookieFilter</filter-name>
+  	<filter-class>zwc.filter.CookieFilter</filter-class>
+  	</filter>
+  	<filter-mapping>
+  	<filter-name>cookieFilter</filter-name>
+  	<url-pattern>/home.jsp</url-pattern>
+  	</filter-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
