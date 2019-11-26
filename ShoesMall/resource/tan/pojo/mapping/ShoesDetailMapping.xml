@@ -19,5 +19,9 @@
     	insert into shoesdetail(shoesdetialid,shoesid,color,size,desc,price,count,frequence,image) 
     	values(#{shoesdetialid},#{shoesid},#{color},#{size},#{desc},#{price},#{count},#{frequence},#{image});
     </insert>
+    
+    <select id="selectAll" returnType="tan.pojo.ShoesDetail">
+    	select * from shoesdetail
+    </select> 
 	
 </class>

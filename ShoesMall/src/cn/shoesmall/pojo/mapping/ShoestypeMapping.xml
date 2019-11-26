@@ -5,7 +5,7 @@
 	<property name="whether" column="whether" type="java.lang.String"></property>
 	
 	<insert id="insertShoesType">
-		insert into shoes(shoestypeid,shoestypename,whether) 
+		insert into shoestype(shoestypeid,shoestypename,whether) 
 		values(#{shoestypeid},#{shoestypename},#{whether});
 	</insert>
 </class>
