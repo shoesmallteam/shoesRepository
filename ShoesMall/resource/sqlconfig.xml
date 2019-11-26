@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <properties>
     <property name="driver">com.mysql.jdbc.Driver</property>
-    <property name="url">jdbc:mysql://59.110.161.27:3306/shoesmall?charecterEncoding=utf8</property>
+    <property name="url">jdbc:mysql://59.110.161.27:3306/shoesmall?useUnicode=true&amp;characterEncoding=UTF-8</property>
     <property name="name">root</property>
     <property name="password">1234</property>
     <mappings>
     	<mapping path="tan/pojo/mapping/UserMapping.xml"></mapping>
-    </mappings>
-    <mappings>
+    
     	<mapping path="zwc/pojo/mapping/UserMapping.xml"></mapping>
-    </mappings>
-    <mappings>
+    
     	<mapping path="zwc/pojo/mapping/AccountMapping.xml"></mapping>
-    </mappings>
-    <mappings>
-    	<mapping path="cn/shoesmall/pojo/mapping/ShoesDetailMapping.xml"></mapping>
-    </mappings>
-    <mappings>
+    
+    	<mapping path="cn/shoesmall/pojo/mapping/ShoesdetailMapping.xml"></mapping>
+    
     	<mapping path="cn/shoesmall/pojo/mapping/ShoesMapping.xml"></mapping>
-    </mappings>
-    <mappings>
+    
     	<mapping path="cn/shoesmall/pojo/mapping/ShoestypeMapping.xml"></mapping>
-    </mappings>
-    <mappings>
+    
     	<mapping path="cn/shoesmall/pojo/mapping/ShoesclassifyMapping.xml"></mapping>
     </mappings>
 </properties>

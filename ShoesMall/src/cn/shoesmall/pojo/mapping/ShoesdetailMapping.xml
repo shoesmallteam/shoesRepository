@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="cn.shoesmall.pojo.Shoesdetail" table="shoesdetail">
+	<property name="shoesid" column="shoesid" type="java.lang.String"></property>
+	<property name="shoesdetailid" column="shoesdetailid" type="java.lang.String"></property>
+	<property name="color" column="color" type="java.lang.String"></property>
+	<property name="size" column="size" type="java.lang.String"></property>
+	<property name="descs" column="descs" type="java.lang.String"></property>
+	<property name="price" column="price" type="float"></property>
+	<property name="count" column="count" type="int"></property>
+	<property name="frequence" column="frequence" type="int"></property>
+	<property name="image" column="image" type="java.lang.String"></property>
+	
+	<insert id="insertShoesDetail">
+		insert into shoesdetail(shoesid,shoesdetailid,color,size,descs,price,count,frequence,image)
+ values(#{shoesid},#{shoesdetailid},#{color},#{size},#{descs},#{price},#{count},#{frequence},#{image})
+	</insert>
+</class>
