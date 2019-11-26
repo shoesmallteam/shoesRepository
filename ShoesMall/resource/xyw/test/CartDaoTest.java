@@ -1,15 +1,13 @@
 package xyw.test;
 
-import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import cn.shoesmall.pojo.Cart;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
 import xyw.core.db.DBHelper;
+import zwc.pojo.Account;
 
 public class CartDaoTest {
 	
@@ -21,7 +19,9 @@ public class CartDaoTest {
 	
 	@Test
 	public void selectAll() {
-		System.out.println(DBHelper.getDoc(Cart.class));
+		BaseDao dao = new BaseDaoImpl();
+		
+		System.out.println(dao.select("selectAll", new cn.shoesmall.pojo.Cart()));
 	}
 	
 	@After
@@ -30,6 +30,8 @@ public class CartDaoTest {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(DBHelper.getDoc(tan.pojo.ShoesDetail.class));
+		BaseDao dao = new BaseDaoImpl();
+		
+		System.out.println(dao.select("selectAll", new cn.shoesmall.pojo.Cart()));
 	}
 }

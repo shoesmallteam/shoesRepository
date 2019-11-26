@@ -1,13 +1,16 @@
 package xyw.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.shoesmall.pojo.Cart;
+import net.sf.json.JSONArray;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
 import xyw.core.web.action.XywAction;
@@ -35,11 +38,14 @@ public class CartAtion extends XywAction{
 		
 		Cart cart = new Cart();
 		
-		cart.setAccountid(form.getAccountid());
-		List list = dao.select("selectCartsByAcid", cart);
+		//cart.setAccountid(form.getAccountid());
+		List list = dao.select("selectAll", cart);
 		
-		System.out.println(list.size());
-		
+		PrintWriter out = arg1.getWriter();
+		arg1.setHeader("Access-Control-Allow-Origin", "http://localhost:63342"); 
+	
+		out.print(JSONArray.fromObject(list).toString());
+		out.flush();
 		return null;
 	}
 
