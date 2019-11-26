@@ -4,4 +4,8 @@
     </action>
     <action name="register" class="zwc.action.RegisterAction">
     </action>
+     <action name="tel" class="zwc.action.TelAction">
+    </action>
+     <action name="email" class="zwc.action.EmailAction">
+    </action>
 </actions>
