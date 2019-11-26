@@ -9,6 +9,10 @@
         insert into cart(cartid,shoedetailsid,accountid) 
         values(#{cartid},#{shoedetailsid},#{accountid});
     </insert>
+    
+    <select id = "selectAll" returnType = "zwc.pojo.Cart">
+    	select * from cart
+    </select>
 	
 	
 	

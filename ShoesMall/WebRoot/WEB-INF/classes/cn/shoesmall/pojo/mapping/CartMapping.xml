@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class name="cn.shoesmall.pojo.Cart" table="cart">
+<class name="cn.shoesmall.pojo.C art" table="cart">
 	<property name="cartid" column="cartid" type="java.lang.String"></property>
 	<property name="shoedetailsid" column="shoedetailsid" type="java.lang.String"></property>
 	<property name="accountid" column="accountid" type="java.lang.String"></property>
+	
+	
+	<!-- 通过用户id查询购物车 -->
+	<select id="selectCartsByAcid" returnType="cn.shoesmall.pojo.Cart">
+		select * from cart where accountid = #{accountid}
+	</select>
+	
+	
+	<!-- 查询所有购物车  -->
+	<select id = "selectAll" returnType = "cn.shoesmall.pojo.Cart">
+		select * form cart;
+	</select>
 </class>
