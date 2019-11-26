@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<class name="cn.shoesmall.pojo.Account" table="account">
+    <property name="accountid" column="accountid" type="String"></property>
+    <property name="account" column="account" type="String"></property>
+    <property name="password" column="password" type="String"></property>
+    <property name="tel" column="tel" type="String"></property>
+    <property name="email" column="email" type="String"></property>
+    <property name="isassistant" column="isassistant" type="int"></property>
+    <property name="isvip" column="isvip" type="int"></property>
+
+    <insert id="insertAccount" >
+        insert into account(accountid,account,password,tel,email,isassistant,isvip) 
+        values(#{accountid},#{account},#{password},#{tel},#{email},#{isassistant},#{isvip});
+    </insert>
+	
+	<select id="all" returnType="cn.shoesmall.pojo.Account">
+		select * from account
+	</select>
+	
+</class>

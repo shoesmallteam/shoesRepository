@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="cn.shoesmall.pojo.User" table="user">
+	<property name="userid" column="userid" type="java.lang.String"></property>
+	<property name="nikename" column="nikename" type="java.lang.String"></property>
+	<property name="address" column="address" type="java.lang.String"></property>
+	<property name="cartid" column="cartid" type="java.lang.String"></property>
+	<property name="accountid" column="accountid" type="java.lang.String"></property>
+	
+    <insert id="insertUser">
+        insert into user(userid,nikename,address,cartid,accountid) 
+        values(#{userid},#{nikename},#{address},#{cartid},#{accountid});
+    </insert>
+    
+    <delete id="deleteUser">
+    	delete from user where userid = #{userid}
+    </delete>
+    
+    <update id="updateUser">
+    	
+    </update>
+    
+    <select id="selectUser" returnType="cn.shoesmall.pojo.User">
+    	select * from user
+    </select>
+</class>

@@ -1,4 +1,4 @@
-/*全局变量*/
+/*鍏ㄥ眬鍙橀噺*/
 *{
 	margin: 0px;
 	padding: 0px;
@@ -13,8 +13,8 @@ img{
 	border: none;
 	vertical-align: bottom;
 }
-/*登陆模态框*/
-/*中间*/
+/*鐧婚檰妯℃�佹*/
+/*涓棿*/
 .modal-body{
 	padding-top: 20px;
 }
@@ -48,7 +48,7 @@ img{
 	margin-top: 10px;
 	color: white;
 }
-/*下*/
+/*涓�*/
 .modal-footer .modal-footer-l{
 	color: #c40e0e;
 	float: left;
@@ -60,7 +60,7 @@ img{
 	padding-right: 5px;
 }
 
-/*注册模态框*/
+/*娉ㄥ唽妯℃�佹*/
 
 #registerModal .modal-body li .modal-body-l1,.modal-body-l2{
 	height: 40px;
@@ -108,6 +108,16 @@ img{
 	border-top-right-radius:50px;
 	border-bottom-right-radius:50px;
 }
+#registerModal .modal-body li .modal-body-l2>img{
+	height: 35px;
+	width: 150px;
+	float: left;
+	border: 1px solid #666;
+	border-top-right-radius:50px;
+	border-bottom-right-radius:50px;
+	border-top-left-radius:50px;
+	border-bottom-left-radius:50px;
+}
 #registerModal .modal-body li .modal-body-r{
 	height: 40px;
 	width: 150px;
@@ -138,6 +148,14 @@ img{
 	color: red;
 	display: none;
 }
+#registerModal .modal-body li .p4{
+	background: url(../images/err_small.png) 0 0 no-repeat;
+	margin-left: 190px;
+	padding-left: 20px;
+	font-size: 12px;
+	color: red;
+	display: none;
+}
 #registerModal .modal-body li .p3{
 	background: url(../images/reg_icons.png) -80px 0 no-repeat;
 	margin-left: 190px;
@@ -149,3 +167,4 @@ img{
 	background: #666;
 	font-size: 20px;
 }
+

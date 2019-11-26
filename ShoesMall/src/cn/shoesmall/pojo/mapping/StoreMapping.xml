@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="cn.shoesmall.pojo.Store" table="store">
+	<property name="storeid" column="storeid" type="java.lang.String"></property>
+	<property name="storename" column="storename" type="java.lang.String"></property>
+	<property name="shoesid" column="shoesid" type="java.lang.String"></property>
+</class>

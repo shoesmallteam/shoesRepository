@@ -526,7 +526,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        	<div class="modal-footer">
 		        		<a href="" class="modal-footer-l">手机短信登陆</a>
 		        		<a href="#" class="modal-footer-r" data-toggle="modal" data-target="#registerModal">立即注册</a>
-		        		<span class="">|</span>
 		        		<a href="" class="modal-footer-r">忘记密码</a>
 	        		</div>
 	        	</div>
@@ -547,13 +546,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<ul>
 							<li>
 								<div class="modal-body-l1">
-									<span>用户名</span>
+									<span>昵称</span>
 									<input type="text"  value="" class="form-control" placeholder="请设置用户名"/>
 								</div>
 							</li>
 							<li>
-								<p class="p1">设置后不可更改,中英文均可,最长6个英文</p>
-								<p class="p2">用户名仅支持中英文、数字和下划线,且不能为纯数字</p>
+								<p class="p1">中英文数字下划线均可,不能以数字开头,最长6位</p>
+								<p class="p2">用户名格式不正确</p>
 								<p class="p3"></p>
 							</li>
 							<li>
@@ -566,6 +565,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<p class="p1">请输入中国大陆手机号</p>
 								<p class="p2">手机号码格式不正确</p>
 								<p class="p3"></p>
+								<p class="p4">电话号码已存在</p>
 							</li>
 							<li>
 								<div class="modal-body-l1">
@@ -589,22 +589,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<p class="p1">支持各种邮箱</p>
 								<p class="p2">邮箱格式不正确</p>
 								<p class="p3"></p>
+								<p class="p4">邮箱已存在</p>
 							</li>
 							<li>
 								<div class="modal-body-l2">
 									<span>验证码</span>
 									<input type="text" id="checkCode" class="form-control" value="" placeholder="请输入验证码"/>
-									<input type = "button" id="code" class="modal-body-r form-control"/> 
+									<img id="i" src="img.do"/>
 								</div>
+							</li> 
+							<li>							
+								<p class="p2">验证码错误,请点击验证码刷新</p>
+								<p class="p3"></p>
 							</li>
 						</ul>
 						<button class="btn" id="register">注册</button>
-						
 					</div>
 					<div class="modal-footer">
 						<a href="" class="modal-footer-l">手机短信注册</a>
 						<a href="#" class="modal-footer-r" data-toggle="modal" data-target="#landModal">立即登录</a>
-						<span class="">|</span>
 		        		<a href="" class="modal-footer-r">已有帐号</a>
 					</div>
 				</div>
@@ -620,3 +623,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/register.js" ></script>
 <script type="text/javascript" src="js/login.js" ></script>
 <script type="text/javascript" src="js/loginRegist.js" ></script>
+

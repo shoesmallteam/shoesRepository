@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="cn.shoesmall.pojo.Shoes" table="shoes">
+	<property name="shoesid" column="shoesid" type="java.lang.String"></property>
+	<property name="shoesname" column="shoesname" type="java.lang.String"></property>
+	<property name="shoestypeid" column="shoestypeid" type="java.lang.String"></property>
+	<property name="shoesclassifyid" column="shoesclassifyid" type="java.lang.String"></property>
+	
+	<insert id="insertShoes">
+		insert into shoes(shoesid,shoesname,shoestypeid,shoesclassifyid) 
+		values(#{shoesid},#{shoesname},#{shoestypeid},#{shoesclassifyid});
+	</insert>
+</class>
