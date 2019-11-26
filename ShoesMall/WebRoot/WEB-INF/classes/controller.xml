@@ -9,5 +9,8 @@
      <action name="email" class="zwc.action.EmailAction">
     </action>
      <action name="login" class="zwc.action.LoginAction">
+     </action>
+    <action name="cart" class="xyw.action.CartAtion">
+    	
     </action>
 </actions>
