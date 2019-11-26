@@ -1,26 +1,20 @@
 package cn.shoesmall.pojo;
 
-public class ShoesDetail {
+public class Shoesdetail {
 	private String shoesid;
-	public String getShoesid() {
-		return shoesid;
-	}
-	public void setShoesid(String shoesid) {
-		this.shoesid = shoesid;
-	}
-	private String shoesdetialid;
+	private String shoesdetailid;
 	private String color;
 	private String size;
-	private String desc;
-	private double price;
+	private String descs;
+	private float price;
 	private int count;
 	private int frequence;
 	private String image;
-	public String getShoesdetialid() {
-		return shoesdetialid;
+	public String getShoesdetailid() {
+		return shoesdetailid;
 	}
-	public void setShoesdetialid(String shoesdetialid) {
-		this.shoesdetialid = shoesdetialid;
+	public void setShoesdetailid(String shoesdetailid) {
+		this.shoesdetailid = shoesdetailid;
 	}
 	public String getColor() {
 		return color;
@@ -34,16 +28,16 @@ public class ShoesDetail {
 	public void setSize(String size) {
 		this.size = size;
 	}
-	public String getDesc() {
-		return desc;
+	public String getDescs() {
+		return descs;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescs(String desc) {
+		this.descs = desc;
 	}
-	public double getPrice() {
+	public float getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 	public int getCount() {
@@ -63,6 +57,12 @@ public class ShoesDetail {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	public String getShoesid() {
+		return shoesid;
+	}
+	public void setShoesid(String shoesid) {
+		this.shoesid = shoesid;
 	}
 	
 }
