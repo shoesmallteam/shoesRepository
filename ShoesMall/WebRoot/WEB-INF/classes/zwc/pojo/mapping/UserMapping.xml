@@ -11,6 +11,9 @@
         insert into user(userid,nikename,address,cartid,accountid) 
         values(#{userid},#{nikename},#{address},#{cartid},#{accountid});
     </insert>
+    <select id="selectUserAccountid" returnType="zwc.pojo.User">
+    	select * from user where accountid=#{accountid};
+    </select>
 	
 	
 	

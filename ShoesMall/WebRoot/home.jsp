@@ -563,7 +563,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 							</li>
 							<li>
-								<p class="p1">中英文数字下划线均可,不能以数字开头,最长6位</p>
+								<p class="p1">中英文数字下划线均可,不能以数字开头,最长9位</p>
 								<p class="p2">用户名格式不正确</p>
 								<p class="p3"></p>
 							</li>

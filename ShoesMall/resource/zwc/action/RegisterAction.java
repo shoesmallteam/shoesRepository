@@ -73,6 +73,8 @@ public class RegisterAction extends XywAction{
 				dao.insert("insertUser", user);
 				//插入Cart表
 				Cart cart = new Cart();
+				//System.out.println(ac.getAccountid());
+				//System.out.println(user.getCartid());
 				cart.setAccountid(ac.getAccountid());//Account表id
 				cart.setCartid(user.getCartid());//User表购物车id
 				dao.insert("insertCart", cart);

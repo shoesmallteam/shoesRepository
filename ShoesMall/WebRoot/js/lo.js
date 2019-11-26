@@ -29,7 +29,7 @@
 					//登陆注册按钮隐藏，显示购物车退出按钮欢迎XXX
 					$('#regist, #login').hide();
 					$('#welcome, #exit, .cart').show();
-					$('#welcome').html('欢迎啊是第三方 ');
+					$('#welcome').html('欢迎'+result);
 				}
 			}
 		});

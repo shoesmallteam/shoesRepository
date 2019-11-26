@@ -14,6 +14,7 @@ import xyw.core.dao.impl.BaseDaoImpl;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 import zwc.pojo.Account;
+import zwc.pojo.User;
 
 public class LoginAction extends XywAction{
 
@@ -23,15 +24,16 @@ public class LoginAction extends XywAction{
 		//拿到ajax传过来的页面数据
 		String un = arg0.getParameter("un");
 		String pw = arg0.getParameter("pw");
-		//数据库里的拿到的数据（密码）
-		String newpwd = null;
-		//昵称
-		String nc = null;
+		//数据库里的拿到的数据
+		String newpwd = null;//密码
+		String nc = null;//昵称
+		String id = null;//UUID主键id
 		//加密
 		String pw1 = Encoding.encode(pw, "MD5");
 		//调用数据库
 		BaseDao dao = new BaseDaoImpl();
 		Account ac = new Account();//通过账号查询数据
+		User user = new User();
 		ac.setAccount(un);//账号
 		List list = dao.select("selectAccount2", ac);
 		
@@ -44,6 +46,14 @@ public class LoginAction extends XywAction{
 			for (Object object : list) {
 				ac = (Account)object;
 				newpwd= ac.getPassword();
+				id = ac.getAccountid();//获得主键
+				user.setAccountid(id);
+				List list1 = dao.select("selectUserAccountid", user);
+				for (Object object2 : list1) {
+					user = (User)object2;
+					nc = user.getNikename();//获得昵称
+					System.out.println(nc);
+				}
 			}
 			if(!pw1.equals(newpwd)){
 				System.out.println("密码错误");
@@ -52,7 +62,7 @@ public class LoginAction extends XywAction{
 			}else{
 				System.out.println("密码正确");
 				PrintWriter out = arg1.getWriter();
-				out.write(newpwd);
+				out.write(nc);//输出昵称
 			}
 		}
 		return null;
