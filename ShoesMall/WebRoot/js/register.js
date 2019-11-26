@@ -78,13 +78,17 @@
 				//window.location.href = 'http://localhost:8080/ShoesMall/home.jsp';
 				//console.log(result);
 				if (result==phoneNumber) {
-					$('#registerModal .modal-body li:eq(2) .modal-body-l1 input').focus();
-					$('#registerModal .modal-body li:eq(2) .modal-body-l1 input').select();
+					//$('#registerModal .modal-body li:eq(2) .modal-body-l1 input').focus();
+					//$('#registerModal .modal-body li:eq(2) .modal-body-l1 input').select();
 					$('#registerModal .modal-body li:eq(2) .modal-body-l1 input').css('border','1px solid red');
+					$('#registerModal .modal-body li:eq(3) .p3').slideUp();
+					$('#registerModal .modal-body li:eq(3) .p4').slideDown();
 				}else if(result==email){
-					$('#registerModal .modal-body li:eq(6) .modal-body-l1 input').focus();
-					$('#registerModal .modal-body li:eq(6) .modal-body-l1 input').select();
+					//$('#registerModal .modal-body li:eq(6) .modal-body-l1 input').focus();
+					//$('#registerModal .modal-body li:eq(6) .modal-body-l1 input').select();
 					$('#registerModal .modal-body li:eq(6) .modal-body-l1 input').css('border','1px solid red');
+					$('#registerModal .modal-body li:eq(7) .p3').slideUp();
+					$('#registerModal .modal-body li:eq(7) .p4').slideDown();
 				}else if(result==verificationCode){
 					$('#checkCode').focus();
 					$('#checkCode').select();
@@ -92,10 +96,12 @@
 					$('#registerModal .modal-body li:eq(9) .p2').slideDown();
 					$('#registerModal .modal-body li:eq(9) .p3').slideUp();
 				}else{
-					$('#registerModal').fadeOut(100).modal('hide');
-					$('#landModal').fadeIn(100).modal('show');
 					$('#registerModal .modal-body li:eq(9) .p2').slideUp();
 					$('#registerModal .modal-body li:eq(9) .p3').slideDown();
+					$('#registerModal').fadeOut(100).modal('hide');
+					$('#landModal').fadeIn(100).modal('show');
+					$('#username').attr('value', result);
+					$('#pwd').attr('value', pwd);
 				}
 			}
   		});
