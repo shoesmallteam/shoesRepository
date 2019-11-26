@@ -76,8 +76,11 @@ public class RegisterAction extends XywAction{
 				cart.setAccountid(ac.getAccountid());//Account表id
 				cart.setCartid(user.getCartid());//User表购物车id
 				dao.insert("insertCart", cart);
-				//成功修改session中验证码,防重复登陆s
+				//修改session中验证码,防重复登陆s
 				arg0.getSession().setAttribute("code", "、、、");
+				//把账号传过去
+				PrintWriter out = arg1.getWriter();
+				out.write(ac.getAccount());
 			}else{
 				PrintWriter out = arg1.getWriter();
 				out.write(verificationcode);

@@ -135,6 +135,10 @@ $('#registerModal .modal-body li:eq(6) .modal-body-l1 input').blur(function(){
 			}
   		});
 });
+//验证码获得焦点
+$('#checkCode').focus(function(){
+	$('#checkCode').css('border','1px solid bule');
+});
 //点击更换验证码
 $('#registerModal .modal-body li .modal-body-l2>img').click(function(){
 	//console.log(1);
