@@ -53,14 +53,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div class="col-xs-12">
                     	<input type="hidden" value="${nikename}" id="nn"/>
+                    	<input type="hidden" value="${msg}" id="msg"/>
                     	<a class="navbar-text" id="welcome" style="cursor: pointer;"></a>
                         <p class="cart">
-                          <a href=""><span class="glyphicon glyphicon-shopping-cart "></span></a>
+                          <a><span class="glyphicon glyphicon-shopping-cart "></span></a>
                         </p>
-                      <!--  <button class="btn btn-danger" id="exit" data-toggle="modal" data-target="#landModal">退出</button>
+                      <button class="btn btn-danger" id="exit" >退出</button>
                        
 						<button class="btn btn-danger" id="regist" data-toggle="modal" data-target="#registerModal">注册</button>
-						<button class="btn btn-danger" id="login" data-toggle="modal" data-target="#landModal">登录</button>-->
+						<button class="btn btn-danger" id="login" data-toggle="modal" data-target="#landModal">登录</button>
+					 
                     </div>
                 </div>
             </div>
@@ -69,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </header>
     
 <div id="_subnav">
-		<div class="subnav animated fadeInDown wow">
+		<div class="subnav animated  wow">
 			<div class="container">
 				<div class="row">
 					<ul class="col-md-3">
@@ -122,7 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		
-		<div class="subnav animated fadeInDown wow">
+		<div class="subnav animated  wow">
 			<div class="container">
 				<div class="row">
 					<ul class="col-md-3">
@@ -175,7 +177,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		
-		<div class="subnav animated fadeInDown wow">
+		<div class="subnav animated  wow">
 			<div class="container">
 				<div class="row">
 					<ul class="col-md-3">
@@ -222,7 +224,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		
-		<div class="subnav animated fadeInDown wow">
+		<div class="subnav animated  wow">
 			<div class="container">
 				<div class="row">
 					<ul class="col-md-3">
@@ -263,7 +265,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		
-		<div class="subnav animated fadeInDown wow">
+		<div class="subnav animated  wow">
 			<div class="container">
 				<div class="row">
 					<ul class="col-md-12">
@@ -283,7 +285,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		
-		<div class="subnav animated fadeInDown wow">
+		<div class="subnav animated  wow">
 			<div class="container">
 				<div class="row">
 					<ul class="col-md-12">
@@ -313,7 +315,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		
-		<div class="subnav animated fadeInDown wow">
+		<div class="subnav animated  wow">
 			<div class="container">
 				<div class="row">
 					<ul style="padding-left: 70px;" class="col-md-3">
@@ -347,10 +349,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<p>Famously Foot Wear</p>
 					</div>
 					<div class="col-xs-4 col-sm-3 text-center">
+					<!--
 						<button class="btn btn-danger" id="exit">退出</button>
-						<!--注册登陆按钮-->
+						注册登陆按钮!
 						<button class="btn btn-danger" id="regist" data-toggle="modal" data-target="#registerModal">注册</button>
 						<button class="btn btn-danger" id="login" data-toggle="modal" data-target="#landModal">登录</button>
+					-->
 					</div>
 				</div>
 			</div>
@@ -501,7 +505,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="modal-content">
 					<div class="modal-header">
 						<h3 class="modal-title text-center">
-							账号登陆
+							账号登录
 							<span class="close" data-dismiss="modal">&times;</span>
 						</h3>
 					</div>
@@ -532,12 +536,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 							</li>
 							<li class="text-center">
-								<button class="btn" id="loginBtn">登陆</button>
+								<button class="btn" id="loginBtn">登录</button>
 							</li>
 						</ul>
 					</div>
 		        	<div class="modal-footer">
-		        		<a href="" class="modal-footer-l">手机短信登陆</a>
+		        		<a href="" class="modal-footer-l">手机短信登录</a>
 		        		<a href="#" class="modal-footer-r" data-toggle="modal" data-target="#registerModal">立即注册</a>
 		        		<a href="" class="modal-footer-r">忘记密码</a>
 	        		</div>

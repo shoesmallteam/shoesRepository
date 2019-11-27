@@ -3,99 +3,64 @@
  */
 //初始化 33704
 (function(){
-    var goodsid = getUrlVal('goods_id');
-    $.ajaxSettings.async = false;
-    $.get('http://www.wjian.top/shop/api_goods.php',{
-        goods_id : goodsid,
-    },function (event){
-        var goods = JSON.parse(event);
-        console.log(goods);
-        var id = `<span>Style # ${goods.data[0].goods_id}</span>`;
-        var getimg = `<img src="${goods.data[0].goods_thumb}">
-                    <div class="slide"></div>`;
-        var li_img = `<li><img src="${goods.data[0].goods_thumb}"></li>
-                            <li><img src="${goods.data[0].goods_thumb}"></li>
-                            <li><img src="${goods.data[0].goods_thumb}"></li>
-                            <li><img src="${goods.data[0].goods_thumb}"></li>
-                            <li><img src="${goods.data[0].goods_thumb}"></li>`;
-        var name = `<h4>${goods.data[0].goods_name}</h4>`;
-        var price = `<span>${goods.data[0].price}</span>
-                    <span>1000.00</span>`;
-        var color_img = `<li><img src="${goods.data[0].goods_thumb}"></li>
-                            <li><img src="${goods.data[0].goods_thumb}"></li>
-                            <li><img src="${goods.data[0].goods_thumb}"></li>
-                            <li><img src="${goods.data[0].goods_thumb}"></li>`;
-        //添加数据
-        $('.product .topbtn').html(id);
-        $('.product .product-img').html(getimg);
-        $('.product .content-show .navbar .nav').html(li_img);
-        $('.big-img').css({'background-image': 'url('+goods.data[0].goods_thumb+')'});
-        $('.product .banners h4').html(name);
-        $('.banners .price').html(price);
-        $('.banners .navbar #color').html(color_img);
-        $('.banners .navbar #color li .select').css({'background-image': 'url('+goods.data[0].goods_thumb+')'});
-        $('.banners .buy-btns .add-cart').attr('data-goods-id' ,goods.data[0].goods_id);
-
-        addCart();
-    });
-
+//    var goodsid = getUrlVal('goods_id');
+//    $.ajaxSettings.async = false;
+//    $.get('http://www.wjian.top/shop/api_goods.php',{
+//        goods_id : goodsid,
+//    },function (event){
+//        var goods = JSON.parse(event);
+//        console.log(goods);
+//        var id = `<span>Style # ${goods.data[0].goods_id}</span>`;
+//        var getimg = `<img src="${goods.data[0].goods_thumb}">
+//                    <div class="slide"></div>`;
+//        var li_img = `<li><img src="${goods.data[0].goods_thumb}"></li>
+//                            <li><img src="${goods.data[0].goods_thumb}"></li>
+//                            <li><img src="${goods.data[0].goods_thumb}"></li>
+//                            <li><img src="${goods.data[0].goods_thumb}"></li>
+//                            <li><img src="${goods.data[0].goods_thumb}"></li>`;
+//        var name = `<h4>${goods.data[0].goods_name}</h4>`;
+//        var price = `<span>${goods.data[0].price}</span>
+//                    <span>1000.00</span>`;
+//        var color_img = `<li><img src="${goods.data[0].goods_thumb}"></li>
+//                            <li><img src="${goods.data[0].goods_thumb}"></li>
+//                            <li><img src="${goods.data[0].goods_thumb}"></li>
+//                            <li><img src="${goods.data[0].goods_thumb}"></li>`;
+//        //添加数据
+//        $('.product .topbtn').html(id);
+//        $('.product .product-img').html(getimg);
+//        $('.product .content-show .navbar .nav').html(li_img);
+//        $('.big-img').css({'background-image': 'url('+goods.data[0].goods_thumb+')'});
+//        $('.product .banners h4').html(name);
+//        $('.banners .price').html(price);
+//        $('.banners .navbar #color').html(color_img);
+//        $('.banners .navbar #color li .select').css({'background-image': 'url('+goods.data[0].goods_thumb+')'});
+//        $('.banners .buy-btns .add-cart').attr('data-goods-id' ,goods.data[0].goods_id);
+//
+//        addCart();
+//    });
+	
 })();
 
-//加入购物车
-function addCart(){
-    $('.add-cart').click(function(){
-        var token = localStorage.getItem('token');
-        var goodsId = $(this).attr('data-goods-id');
+//http://localhost:8080/ShoesMall/product.do?shoesid=601589564514
 
-        var color_active = false;
-        var size_active = false;
-        //检查是否存在active
-        $('#color li').each(function (i) {
-            if ($(this).prop('className') == 'active'){
-                color_active = true;
-            }
-        });
-        $('.size .prodSpec a').each(function (i) {
-            if ($(this).prop('className') == 'active'){
-                size_active = true;
-            }
-        });
-
-        if (color_active&&size_active){
-            if(token){
-                //加入用户购物车
-                //请求接口
-                $.ajax({
-                    type:"post",
-                    url:"http://www.wjian.top/shop/api_cart.php",
-                    data:{'goods_id':goodsId, 'number':1},
-                    dataType : 'json',
-                    success : function(re){
-                        console.log(re);
-                        //看返回数据，有加入成功   失败可能后台原因
-                    },
-                });
-            }else{
-                //用户没有登录    confirm  返回boolean
-                if(confirm('未登录，点击确定跳转登录页面')){
-                    //跳到登录
-                    location.href = 'index.html?goods_id='+ goodsId;
-                };
-            };
-        }else {
-            if (!color_active){
-                confirm('请选择颜色');
-            };
-            if (!size_active){
-                confirm('请选择尺码');
-            };
-        };
-    });
-};
 
 (function(){
+	//瘦身
+	String.prototype.trim=function(){
+		var l = this.replace(this.match(/^\s+/), "");
+		var r = l.replace(l.match(/\s+$/), "");
+		return r;
+	}
+	
+	var color = null;
+	var size = null;
+	
     //计数
     var count = 1;
+    
+    //首张图片
+    $('.product-img img').attr('src',$('.content-show .nav li').eq(0).children().attr('src'));
+    $('.big-img').css({'background-image': 'url('+$('.content-show .nav li').eq(0).children().attr('src')+')'});
 
     $('.product-img').mouseenter(function(event){
         var width = event.target.width;
@@ -154,8 +119,13 @@ function addCart(){
     $('#color li').each(function(i){
         console.log()
         $(this).click(function () {
-            $(this).append('<i></i>').siblings().children('i').remove('i');
-            $(this).addClass('active').siblings().removeClass('active');
+        	if(/active/.test($(this).attr('class'))){
+        		$(this).children('i').remove('i');
+        		$(this).removeClass('active');
+        	}else{
+        		$(this).append('<i></i>').siblings().children('i').remove('i');
+        		$(this).addClass('active').siblings().removeClass('active');
+        	}
         });
         //鼠标移入显示较大图片
         $(this).mouseenter(function(){
@@ -171,10 +141,15 @@ function addCart(){
     //选择尺码
     $('.banners .size .prodSpec a').each(function(i){
         $(this).click(function(){
-            if ($(this).prop('className') != $('.banners .size .prodSpec a').last().prop('className')){
-                $(this).append('<i></i>').siblings().children('i').remove('i');
-                $(this).addClass('active').siblings().removeClass('active');
-            }
+        	if(/active/.test($(this).attr('class'))){
+        		$(this).children('i').remove('i');
+        		$(this).removeClass('active');
+        	}else{
+        		if ($(this).prop('className') != $('.banners .size .prodSpec a').last().prop('className')){
+        			$(this).append('<i></i>').siblings().children('i').remove('i');
+        			$(this).addClass('active').siblings().removeClass('active');
+        		}
+        	}
         });
     });
 
@@ -215,5 +190,95 @@ function addCart(){
         };
         $('.add').parent().siblings('input').val(count);
     });
+    
+    //选择颜色或尺码，改变库存数
+    $('#color,.size .prodSpec').click(function(){
+    	$('#color li').each(function(){
+    		if($(this).attr('class')!=null){
+    			color = $(this).attr('value');
+    		}
+    	});
+    	$('.banners .size .prodSpec a').each(function(){
+    		if(/active/.test($(this).attr('class'))){
+    			size = $(this).children('span').text();
+    		}
+    	});
+    	var shoesid = $('#shoesid').text();
+    	var shoes = {'shoesid':shoesid,'color':color,'size':size};
+    	if(color != null && size != null){
+    		$.ajax({
+    			type: 'get',
+    			url: 'selectcount.do',
+    			data: {'shoes':JSON.stringify(shoes)},
+    			dataType: "json",
+    			success: function(result){
+    				$('#onlycount').html(result.count);
+    			}
+    		});
+    	}
+    });
+    addCart();
+    selectValue();
+    
+    //从首页回来的实现选择颜色
+    function selectValue(){
+    	color = localStorage.getItem("color");
+    	size = localStorage.getItem("size");
+    	if(color&&size){
+    		alert(11);
+    	}
+    };
+    
+  //加入购物车
+    function addCart(){
+        $('.add-cart').click(function(){
+        	var cookie = document.cookie.match("auto_login");
+            var goodsId = $(this).attr('data-goods-id');
+            
+            var shoes = {'shoesid':shoesid,'color':color,'size':size};
+            if (color != null && size != null){
+            	//查询详情id
+            	$.ajax({
+            		type:"get",
+            		url: 'selectcount.do',
+        			data: {'shoes':JSON.stringify(shoes)},
+        			dataType: "json",
+        			success: function(result){
+        				alert(result.shoesid);
+        				$('#onlycount').html(result.shoesid);
+        			}
+            	});
+                if(cookie){
+                    //加入用户购物车
+                    //请求接口
+                    $.ajax({
+                        type:"post",
+                        url:"http://www.wjian.top/shop/api_cart.php",
+                        data:{'goods_id':goodsId, 'number':1},
+                        dataType : 'json',
+                        success : function(re){
+                            console.log(re);
+                            //看返回数据，有加入成功   失败可能后台原因
+                        },
+                    });
+                }else{
+                    //用户没有登录    confirm  返回boolean
+                    if(confirm('Not logged in, please click to jump to the login interface')){
+                        //跳到登录
+//                        location.href = 'home.jsp?shoesid='+ goodsId;
+//                        localStorage.setItem("color", color);
+//                        localStorage.setItem("size", size);
+                    };
+                };
+            }else {
+                if (color == null){
+                    confirm('Please select a color');
+                };
+                if (size == null){
+                    confirm('Please choose a size');
+                };
+            };
+        });
+    };
 })();
 

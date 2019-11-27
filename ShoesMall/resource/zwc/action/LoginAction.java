@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -27,21 +29,45 @@ public class LoginAction extends XywAction{
 		//拿到ajax传过来的页面数据
 		String un = arg0.getParameter("un");
 		String pw = arg0.getParameter("pw");
+		//正则判断un是账号还是手机号还是邮箱
+		String em = null;
+		String ph = null;
+		String uu = null;
+		Cookie cookie = null;
+		//调用数据库
+		BaseDao dao = new BaseDaoImpl();
+		Account ac = new Account();
+		Pattern email = Pattern.compile("^\\w+@\\w+\\.(net|com|cn|org)+$");
+		Pattern photo = Pattern.compile("^1[3456789]\\d{9}$");
+		List list = null;
+		Matcher m1 = email.matcher(un);
+		Matcher m2 = photo.matcher(un);
+		if(m1.find()){
+			System.out.println("输入的登陆账号是邮箱");
+			em = un;
+			ac.setEmail(em);
+			list = dao.select("selectAccount1", ac);
+		}else if(m2.find()){
+			System.out.println("输入的登陆账号是手机号");
+			ph = un;
+			ac.setTel(ph);
+			list = dao.select("selectAccount", ac);
+		}else{
+			System.out.println("输入的登陆账号就是账号");
+			uu = un;
+			ac.setAccount(un);
+			list = dao.select("selectAccount2", ac);
+		}
+		
 		//数据库里的拿到的数据
 		String newpwd = null;//密码
 		String nc = null;//昵称
 		String id = null;//UUID主键id
 		//加密
 		String pw1 = Encoding.encode(pw, "MD5");
-		//调用数据库
-		BaseDao dao = new BaseDaoImpl();
-		Account ac = new Account();//通过账号查询数据
 		User user = new User();
-		ac.setAccount(un);//账号
-		List list = dao.select("selectAccount2", ac);
-		
 		if (list.size()==0){
-			System.out.println("账号不存在");
+			System.out.println("登陆账号不存在");
 			PrintWriter out = arg1.getWriter();
 			out.write(un);
 		}else{
@@ -65,7 +91,14 @@ public class LoginAction extends XywAction{
 			}else{
 				System.out.println("密码正确");
 				//登录成功就往cookie里面存数据
-				Cookie cookie = new Cookie("auto_login",un+"#itheima#"+pw1+"#itheima#"+nc);
+				if(em!=null){
+					cookie = new Cookie("auto_login",em+"#itheima#"+pw1+"#itheima#"+nc);
+					System.out.println(cookie);
+				}else if(ph!=null){
+					cookie = new Cookie("auto_login",ph+"#itheima#"+pw1+"#itheima#"+nc);
+				}else{
+					cookie = new Cookie("auto_login",uu+"#itheima#"+pw1+"#itheima#"+nc);	
+				}
 				//设置IP
 				cookie.setDomain("localhost");
 				//设置工程
@@ -78,6 +111,7 @@ public class LoginAction extends XywAction{
 				p.setAccount(un);//账号
 				p.setIp(arg0.getRemoteAddr());//IP
 				p.setLoginDate(new Date());//时间
+				//arg0.getServletContext().setAttribute("personInfo",p);
 				arg0.getSession().setAttribute("personInfo",p);//把信息存入session中
 				PrintWriter out = arg1.getWriter();
 				out.write(nc);//输出昵称

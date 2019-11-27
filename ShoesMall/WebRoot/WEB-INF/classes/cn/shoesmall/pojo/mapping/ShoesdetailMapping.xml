@@ -15,8 +15,16 @@
  values(#{shoesid},#{shoesdetailid},#{color},#{size},#{descs},#{price},#{count},#{frequence},#{image})
 	</insert>
 	
+	
+	<select id="selectShoesDetail" returnType="cn.shoesmall.pojo.Shoesdetail">
+		select * from shoesdetail where shoesid=#{shoesid};
+	</select>
+	
 	<select id = "selectByDesc" returnType = "cn.shoesmall.pojo.Shoesdetail">
 		select * from shoesdetail where descs like CONCAT('%',#{descs},'%')
 	</select>
 	
+	<select id="selectCount" returnType="cn.shoesmall.pojo.Shoesdetail">
+		select * from shoesdetail where shoesid=#{shoesid} and color=#{color} and size=#{size};
+	</select>
 </class>

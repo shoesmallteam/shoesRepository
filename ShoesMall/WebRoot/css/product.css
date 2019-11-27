@@ -161,8 +161,8 @@ i{
 
 .product .banners .count{
     padding-top: 25px;
-    width: 200px;
-    height: 37px;
+    width: 300px;
+    height: 59px;
     padding-left: 15px;
 }
 .product .banners .count span{
@@ -208,6 +208,11 @@ i{
     background-position:  -10px -140px;
 }
 
+.product .banners .count .shoescount{
+	float : left;
+	padding-left: 20px;
+}
+
 .product .banners .buy-btns{
     width: 100%;
     display: inline-block;
@@ -251,6 +256,7 @@ i{
     position: absolute;
     top: 0px;
     left: 39px;
+    background-image: ;
     /*background-size: 880px;*/
     background-position: 0px 0px;
     z-index: 999;

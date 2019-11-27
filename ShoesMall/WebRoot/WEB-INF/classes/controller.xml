@@ -12,12 +12,25 @@
     </action>
     <action name="exits" class="zwc.action.ExitAction">
     </action>
-     
+    
     <action name="cart" class="xyw.action.CartAtion">
-    	
+    
+    </action>
+    
+    <action name="removemsg" class="zwc.action.RemoveMsgAction">
     </action>
     
     <action name="classify" class="xyw.action.ClassifyAction">
     	<form>xyw.form.ClassifyForm</form>
+    </action>
+    
+    <action name="product" class="tan.action.ProductAction">
+        <form>tan.form.ProductForm</form>
+        <result name="success" direct="false">product.jsp</result>
+        <result name="error">home.jsp</result>
+    </action>
+    
+    <action name="selectcount" class="tan.action.SelectCountAction">
+    	<form>tan.form.SelectCountForm</form>
     </action>
 </actions>
