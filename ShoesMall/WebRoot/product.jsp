@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="row">
             <div class="col-xs-6 content-show">
                 <div class="topbtn">
-                    <span>style # ${dto.shoesid }</span>
+                    <span>style # <span id="shoesid">${dto.shoesid }</span></span>
                 </div>
                 <div class="product-img">
                     <img src="">
@@ -147,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="javascript:;" class="add"></a>
                         <a href="javascript:;" class="sub"></a>
                     </div>
-                    <span class="shoescount">库存${dto.allcount }件</span>
+                    <span class="shoescount">库存<span id="onlycount">${dto.allcount }</span>件</span>
                 </div>
                 <div class="buy-btns">
                     <a href="javascript:;" class="add-cart">

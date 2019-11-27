@@ -29,4 +29,8 @@
         <result name="success" direct="false">product.jsp</result>
         <result name="error">classify.jsp</result>
     </action>
+    
+    <action name="selectcount" class="tan.action.SelectCountAction">
+    	<form>tan.form.SelectCountForm</form>
+    </action>
 </actions>

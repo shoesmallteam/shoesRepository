@@ -94,6 +94,12 @@ function addCart(){
 };
 
 (function(){
+	String.prototype.trim=function(){
+		var l = this.replace(this.match(/^\s+/), "");
+		var r = l.replace(l.match(/\s+$/), "");
+		return r;
+	}
+	
     //计数
     var count = 1;
     
@@ -158,8 +164,13 @@ function addCart(){
     $('#color li').each(function(i){
         console.log()
         $(this).click(function () {
-            $(this).append('<i></i>').siblings().children('i').remove('i');
-            $(this).addClass('active').siblings().removeClass('active');
+        	if(/active/.test($(this).attr('class'))){
+        		$(this).children('i').remove('i');
+        		$(this).removeClass('active');
+        	}else{
+        		$(this).append('<i></i>').siblings().children('i').remove('i');
+        		$(this).addClass('active').siblings().removeClass('active');
+        	}
         });
         //鼠标移入显示较大图片
         $(this).mouseenter(function(){
@@ -175,10 +186,15 @@ function addCart(){
     //选择尺码
     $('.banners .size .prodSpec a').each(function(i){
         $(this).click(function(){
-            if ($(this).prop('className') != $('.banners .size .prodSpec a').last().prop('className')){
-                $(this).append('<i></i>').siblings().children('i').remove('i');
-                $(this).addClass('active').siblings().removeClass('active');
-            }
+        	if(/active/.test($(this).attr('class'))){
+        		$(this).children('i').remove('i');
+        		$(this).removeClass('active');
+        	}else{
+        		if ($(this).prop('className') != $('.banners .size .prodSpec a').last().prop('className')){
+        			$(this).append('<i></i>').siblings().children('i').remove('i');
+        			$(this).addClass('active').siblings().removeClass('active');
+        		}
+        	}
         });
     });
 
@@ -224,22 +240,28 @@ function addCart(){
     $('#color,.size .prodSpec').click(function(){
     	var color = null;
     	var size = null;
+    	var shoesid = $('#shoesid').text();
     	$('#color li').each(function(){
     		if($(this).attr('class')!=null){
     			color = $(this).attr('value');
     		}
     	});
     	$('.banners .size .prodSpec a').each(function(){
-    		if($(this).attr('class') == 'active'){
-    			alert(111);
+    		if(/active/.test($(this).attr('class'))){
     			size = $(this).children('span').text();
     		}
-    		if($(this).attr('class') == 'more'){
-    			size = null;
-    		}
     	});
+    	var shoes = {'shoesid':shoesid,'color':color,'size':size};
     	if(color != null && size != null){
-    		alert(11);
+    		$.ajax({
+    			type: 'get',
+    			url: 'selectcount.do',
+    			data: {'shoes':JSON.stringify(shoes)},
+    			dataType: "json",
+    			success: function(result){
+    				$('#onlycount').html(result);
+    			}
+    		});
     	}
     });
     
