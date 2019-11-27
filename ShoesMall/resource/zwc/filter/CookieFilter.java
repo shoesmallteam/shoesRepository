@@ -18,7 +18,9 @@ import cn.shoesmall.util.CookieUtil;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
 import zwc.pojo.Account;
-
+/*
+ * 实现自动登陆的过滤器
+ */
 public class CookieFilter implements Filter{
 
 	@Override

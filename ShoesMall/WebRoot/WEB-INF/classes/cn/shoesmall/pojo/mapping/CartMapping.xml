@@ -12,7 +12,7 @@
 	
 	
 	<!-- 查询所有购物车  -->
-	<select id = "selectAll" returnType="cn.shoesmall.pojo.Cart">
-		select * from cart;
+	<select id = "selectAll" returnType="cn.shoesmall.pojo.Shoesdetail">
+		select * from shoesdetail where accountid = #{accountid}
 	</select>
 </class>

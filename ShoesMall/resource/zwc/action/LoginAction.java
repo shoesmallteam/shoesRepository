@@ -2,6 +2,7 @@ package zwc.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
+import zwc.info.PersonInfo;
 import zwc.pojo.Account;
 import zwc.pojo.User;
 
@@ -71,6 +73,12 @@ public class LoginAction extends XywAction{
 				//设置时间
 				cookie.setMaxAge(60*60*24*7);
 				arg1.addCookie(cookie);
+				//把信息存入info,用于单态
+				PersonInfo p = new PersonInfo();
+				p.setAccount(un);//账号
+				p.setIp(arg0.getRemoteAddr());//IP
+				p.setLoginDate(new Date());//时间
+				arg0.getSession().setAttribute("personInfo",p);//把信息存入session中
 				PrintWriter out = arg1.getWriter();
 				out.write(nc);//输出昵称
 			}
