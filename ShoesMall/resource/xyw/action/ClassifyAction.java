@@ -2,11 +2,16 @@ package xyw.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.codec.Decoder;
+import org.apache.tomcat.util.codec.DecoderException;
 
 import cn.shoesmall.pojo.Cart;
 import cn.shoesmall.pojo.Shoes;
@@ -39,19 +44,25 @@ public class ClassifyAction extends XywAction{
 
 		Shoesdetail sd = new Shoesdetail();
 		
-		sd.setDescs(form.getTypename());
-		
-		
+		sd.setDescs(decode(form.getTypename()));
+				
 		List list = dao.select("selectByDesc",sd); 
+		System.out.println(form);
+
 		
 		int number = Integer.parseInt(form.getNumber());
+				
 		int size = Integer.parseInt(form.getSize());
+		System.out.println("共:" +list.size());
 		
-		System.out.println(form);
 		
-		list = list.subList((number - 1) * size, size);
 		
-		System.out.println(list.size());
+		if(list.size() > 0) {
+			System.out.println((number - 1) * size+":"+ number * size);
+			list = list.subList((number - 1) * size, number * size);
+		}
+		
+		System.out.println("需要:" + list.size());
 
 		
 		JSONArray jo = JSONArray.fromObject(list);
@@ -62,6 +73,19 @@ public class ClassifyAction extends XywAction{
 		out.print(jo.toString());
 		
 		return null;
+	}
+	
+	private String decode(String s)
+	{
+		String result = "";
+		try {
+			result = URLDecoder.decode(s, "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 }
