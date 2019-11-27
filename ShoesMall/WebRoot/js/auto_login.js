@@ -4,6 +4,7 @@ function checkLogin(){
     var un = $('#username').val();
     var pw = $('#pwd').val();
     var nn = $('#nn').val();
+    var msg = $('#msg').val();
     //判断
     if(un == '' || pw == ''){
     	$('#regist, #login').show();
@@ -14,6 +15,16 @@ function checkLogin(){
 		$('#welcome, #exit, .cart').show();
 		$('#welcome').html(nn);
     };
+    if (msg != '') {
+    	alert(msg);
+    	$.ajax({
+    		type:"post",
+    		url:"removemsg.do",
+    	});
+    	$('#regist, #login').show();
+    	$('#welcome, #exit, .cart').hide();
+    }
+    
 };
 checkLogin();
 $('#exit').click(function(){
@@ -26,5 +37,4 @@ $('#exit').click(function(){
 			}
 		});
 	}
-	
 });

@@ -3,9 +3,11 @@ package zwc.listener;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpServletRequest;
 
 import zwc.info.PersonInfo;
 /*
@@ -27,6 +29,7 @@ public class MySessionAttributeListener implements HttpSessionAttributeListener{
 					System.out.println("帐号" + oldPersonInfo.getAccount() + "在" + oldPersonInfo.getIp() + "已经登录，该登录将被迫下线。");
 						session.removeAttribute("personInfo");//清除原来的session
 						session.setAttribute("msg", "您的帐号已经在其他机器上登录，您被迫下线。");
+						//session.getServletContext().setAttribute("msg", "您的帐号已经在其他机器上登录，您被迫下线。");
 					}
 					// 将session以用户名为索引，放入map中
 					map.put(personInfo.getAccount(), arg0.getSession());
@@ -61,7 +64,9 @@ public class MySessionAttributeListener implements HttpSessionAttributeListener{
 				// map 中有记录，表明该帐号在其他机器上登录过，将以前的登录失效
 				HttpSession session = map.get(personInfo.getAccount());
 				session.removeAttribute("personInfo");
+				//session.getServletContext().setAttribute("msg", "您的帐号已经在其他机器上登录，您被迫下线。");
 				session.setAttribute("msg", "您的帐号已经在其他机器上登录，您被迫下线。");
+				
 			}
 			map.put(personInfo.getAccount(), arg0.getSession());
 		}

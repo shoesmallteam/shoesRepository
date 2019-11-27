@@ -1,0 +1,28 @@
+package xyw.test;
+
+import java.util.List;
+
+import cn.shoesmall.pojo.Shoes;
+import xyw.core.dao.BaseDao;
+import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
+
+public class ClassisfyTest {
+	public static void main(String[] args) {
+		BaseDao dao = new BaseDaoImpl();
+		Shoes shoes = new Shoes();
+		
+		shoes.setShoesname("男");
+		List list = dao.select("selectShoesByName", shoes);
+		
+		
+		for(int i = 0; i< list.size(); i++)
+		{
+			System.out.println(list.get(i));
+		}
+		
+		System.out.println(list.size());
+		//System.out.println(DBHelper.getDoc(Shoes.class));
+		
+	}
+}

@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div class="col-xs-12 navb text-center">
                         <ul>
-                            <li><a href="./classify.jsp?cartId=62" target="_self">女装</a></li>
+                            <li><a href="./classify.do?typename=girl" target="_self">女装</a></li>
                             <li><a href="./classify.jsp?cartId=69" target="_self">男装</a></li>
                             <li><a href="./classify.jsp?cartId=45" target="_self">孩子们</a></li>
                             <li><a href="./classify.jsp?cartId=92" target="_self">配饰</a></li>
@@ -53,6 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div class="col-xs-12">
                     	<input type="hidden" value="${nikename}" id="nn"/>
+                    	<input type="hidden" value="${msg}" id="msg"/>
                     	<a class="navbar-text" id="welcome" style="cursor: pointer;"></a>
                         <p class="cart">
                           <a href=""><span class="glyphicon glyphicon-shopping-cart "></span></a>

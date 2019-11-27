@@ -78,6 +78,7 @@ public class LoginAction extends XywAction{
 				p.setAccount(un);//账号
 				p.setIp(arg0.getRemoteAddr());//IP
 				p.setLoginDate(new Date());//时间
+				//arg0.getServletContext().setAttribute("personInfo",p);
 				arg0.getSession().setAttribute("personInfo",p);//把信息存入session中
 				PrintWriter out = arg1.getWriter();
 				out.write(nc);//输出昵称

@@ -12,9 +12,16 @@
     </action>
     <action name="exits" class="zwc.action.ExitAction">
     </action>
-     
+    
     <action name="cart" class="xyw.action.CartAtion">
-    	
+    
+    </action>
+    
+    <action name="removemsg" class="zwc.action.RemoveMsgAction">
+    </action>
+    
+    <action name="classify" class="xyw.action.ClassifyAction">
+    	<form>xyw.form.ClassifyForm</form>
     </action>
     
     <action name="product" class="tan.action.ProductAction">

@@ -77,7 +77,7 @@ function addCart(){
                 });
             }else{
                 //用户没有登录    confirm  返回boolean
-                if(confirm('未登录，点击确定跳转登录页面')){
+                if(confirm('未登录，请点击跳转登录界面')){
                     //跳到登录
                     location.href = 'index.html?goods_id='+ goodsId;
                 };
@@ -219,5 +219,30 @@ function addCart(){
         };
         $('.add').parent().siblings('input').val(count);
     });
+    
+    //选择颜色或尺码，改变库存数
+    $('#color,.size .prodSpec').click(function(){
+    	var color = null;
+    	var size = null;
+    	$('#color li').each(function(){
+    		if($(this).attr('class')!=null){
+    			color = $(this).attr('value');
+    		}
+    	});
+    	$('.banners .size .prodSpec a').each(function(){
+    		if($(this).attr('class') == 'active'){
+    			alert(111);
+    			size = $(this).children('span').text();
+    		}
+    		if($(this).attr('class') == 'more'){
+    			size = null;
+    		}
+    	});
+    	if(color != null && size != null){
+    		alert(11);
+    	}
+    });
+    
+    
 })();
 

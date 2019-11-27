@@ -147,6 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="javascript:;" class="add"></a>
                         <a href="javascript:;" class="sub"></a>
                     </div>
+                    <span class="shoescount">库存${dto.allcount }件</span>
                 </div>
                 <div class="buy-btns">
                     <a href="javascript:;" class="add-cart">

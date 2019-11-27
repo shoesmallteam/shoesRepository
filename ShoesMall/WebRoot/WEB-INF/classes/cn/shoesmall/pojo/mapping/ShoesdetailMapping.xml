@@ -15,7 +15,9 @@
  values(#{shoesid},#{shoesdetailid},#{color},#{size},#{descs},#{price},#{count},#{frequence},#{image})
 	</insert>
 	
+	
 	<select id="selectShoesDetail" returnType="cn.shoesmall.pojo.Shoesdetail">
 		select * from shoesdetail where shoesid=#{shoesid};
 	</select>
+	
 </class>
