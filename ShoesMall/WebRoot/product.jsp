@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -84,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="row">
             <div class="col-xs-6 content-show">
                 <div class="topbtn">
-                    <span></span>
+                    <span>style # ${dto.shoesid }</span>
                 </div>
                 <div class="product-img">
                     <img src="">
@@ -93,45 +94,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <nav class="navbar">
                     <div class="container">
                         <ul class="nav navbar-nav">
-                            <li><img src=""></li>
-                            <li><img src=""></li>
-                            <li><img src=""></li>
-                            <li><img src=""></li>
-                            <li><img src=""></li>
+                        	<c:forEach items="${dto.color }" var="color" varStatus="i">
+                        		<li><img src="${color.value }"></li>
+                        	</c:forEach>
                         </ul>
                     </div>
                 </nav>
             </div>
             <div class="col-xs-6 banners" >
                 <a href="#"><img src="images/blowfish.png"></a>
-                <h4></h4>
+                <h4>${dto.descs }</h4>
                 <div class="price">
-                    <span></span>
-                    <span></span>
+                    <span>${dto.price }</span>
+                    <span>${dto.price }</span>
                 </div>
                 <div class="dashedline"></div>
                 <nav class="navbar">
                     <div class="container">
                         <span class="navbar-text navbar-left color">颜色:</span>
                         <ul class="nav navbar-nav" id="color">
-                            <li>
-                                <img src="">
-                            </li>
-                            <li>
-                                <img src="">
-                            </li>
-                            <li>
-                                <img src="">
-                            </li>
-                            <li>
-                                <img src="">
-                            </li>
+                        	<c:forEach items="${dto.color }" var="color" varStatus="i">
+                        		<li value="${color.key }">
+                                	<img src="${color.value }">
+                            	</li>
+                        	</c:forEach>
                         </ul>
                     </div>
                 </nav>
                 <div class="size">
                     <span>尺码:</span>
                     <label class="prodSpec">
+                    	<c:forEach items="${dto.size }" var="size" varStatus="i">
+                    		<a><span>${size }</span></a>
+                    	</c:forEach>
+                    <%-- 
                         <a><span>35</span></a>
                         <a><span>36</span></a>
                         <a><span>37</span></a>
@@ -140,6 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a><span>40</span></a>
                         <a><span>41</span></a>
                         <a><span>42</span></a>
+                        --%>
                         <a class="more"><span>...</span></a>
                     </label>
                 </div>

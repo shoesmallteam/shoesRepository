@@ -3,42 +3,42 @@
  */
 //初始化 33704
 (function(){
-    var goodsid = getUrlVal('goods_id');
-    $.ajaxSettings.async = false;
-    $.get('http://www.wjian.top/shop/api_goods.php',{
-        goods_id : goodsid,
-    },function (event){
-        var goods = JSON.parse(event);
-        console.log(goods);
-        var id = `<span>Style # ${goods.data[0].goods_id}</span>`;
-        var getimg = `<img src="${goods.data[0].goods_thumb}">
-                    <div class="slide"></div>`;
-        var li_img = `<li><img src="${goods.data[0].goods_thumb}"></li>
-                            <li><img src="${goods.data[0].goods_thumb}"></li>
-                            <li><img src="${goods.data[0].goods_thumb}"></li>
-                            <li><img src="${goods.data[0].goods_thumb}"></li>
-                            <li><img src="${goods.data[0].goods_thumb}"></li>`;
-        var name = `<h4>${goods.data[0].goods_name}</h4>`;
-        var price = `<span>${goods.data[0].price}</span>
-                    <span>1000.00</span>`;
-        var color_img = `<li><img src="${goods.data[0].goods_thumb}"></li>
-                            <li><img src="${goods.data[0].goods_thumb}"></li>
-                            <li><img src="${goods.data[0].goods_thumb}"></li>
-                            <li><img src="${goods.data[0].goods_thumb}"></li>`;
-        //添加数据
-        $('.product .topbtn').html(id);
-        $('.product .product-img').html(getimg);
-        $('.product .content-show .navbar .nav').html(li_img);
-        $('.big-img').css({'background-image': 'url('+goods.data[0].goods_thumb+')'});
-        $('.product .banners h4').html(name);
-        $('.banners .price').html(price);
-        $('.banners .navbar #color').html(color_img);
-        $('.banners .navbar #color li .select').css({'background-image': 'url('+goods.data[0].goods_thumb+')'});
-        $('.banners .buy-btns .add-cart').attr('data-goods-id' ,goods.data[0].goods_id);
-
-        addCart();
-    });
-
+//    var goodsid = getUrlVal('goods_id');
+//    $.ajaxSettings.async = false;
+//    $.get('http://www.wjian.top/shop/api_goods.php',{
+//        goods_id : goodsid,
+//    },function (event){
+//        var goods = JSON.parse(event);
+//        console.log(goods);
+//        var id = `<span>Style # ${goods.data[0].goods_id}</span>`;
+//        var getimg = `<img src="${goods.data[0].goods_thumb}">
+//                    <div class="slide"></div>`;
+//        var li_img = `<li><img src="${goods.data[0].goods_thumb}"></li>
+//                            <li><img src="${goods.data[0].goods_thumb}"></li>
+//                            <li><img src="${goods.data[0].goods_thumb}"></li>
+//                            <li><img src="${goods.data[0].goods_thumb}"></li>
+//                            <li><img src="${goods.data[0].goods_thumb}"></li>`;
+//        var name = `<h4>${goods.data[0].goods_name}</h4>`;
+//        var price = `<span>${goods.data[0].price}</span>
+//                    <span>1000.00</span>`;
+//        var color_img = `<li><img src="${goods.data[0].goods_thumb}"></li>
+//                            <li><img src="${goods.data[0].goods_thumb}"></li>
+//                            <li><img src="${goods.data[0].goods_thumb}"></li>
+//                            <li><img src="${goods.data[0].goods_thumb}"></li>`;
+//        //添加数据
+//        $('.product .topbtn').html(id);
+//        $('.product .product-img').html(getimg);
+//        $('.product .content-show .navbar .nav').html(li_img);
+//        $('.big-img').css({'background-image': 'url('+goods.data[0].goods_thumb+')'});
+//        $('.product .banners h4').html(name);
+//        $('.banners .price').html(price);
+//        $('.banners .navbar #color').html(color_img);
+//        $('.banners .navbar #color li .select').css({'background-image': 'url('+goods.data[0].goods_thumb+')'});
+//        $('.banners .buy-btns .add-cart').attr('data-goods-id' ,goods.data[0].goods_id);
+//
+//        addCart();
+//    });
+	addCart();
 })();
 
 //加入购物车
@@ -96,6 +96,10 @@ function addCart(){
 (function(){
     //计数
     var count = 1;
+    
+    //首张图片
+    $('.product-img img').attr('src',$('.content-show .nav li').eq(0).children().attr('src'));
+    $('.big-img').css({'background-image': 'url('+$('.content-show .nav li').eq(0).children().attr('src')+')'});
 
     $('.product-img').mouseenter(function(event){
         var width = event.target.width;

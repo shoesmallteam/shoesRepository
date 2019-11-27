@@ -16,4 +16,10 @@
     <action name="cart" class="xyw.action.CartAtion">
     	
     </action>
+    
+    <action name="product" class="tan.action.ProductAction">
+        <form>tan.form.ProductForm</form>
+        <result name="success" direct="false">product.jsp</result>
+        <result name="error">classify.jsp</result>
+    </action>
 </actions>
