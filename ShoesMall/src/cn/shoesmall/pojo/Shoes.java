@@ -29,4 +29,11 @@ public class Shoes {
 	private String shoesname;
 	private String shoestypeid;
 	private String shoesclassifyid;
+	@Override
+	public String toString() {
+		return "Shoes [shoesid=" + shoesid + ", shoesname=" + shoesname + ", shoestypeid=" + shoestypeid
+				+ ", shoesclassifyid=" + shoesclassifyid + "]";
+	}
+	
+	
 }

@@ -14,4 +14,5 @@
 		insert into shoesdetail(shoesid,shoesdetailid,color,size,descs,price,count,frequence,image)
  values(#{shoesid},#{shoesdetailid},#{color},#{size},#{descs},#{price},#{count},#{frequence},#{image})
 	</insert>
+	
 </class>

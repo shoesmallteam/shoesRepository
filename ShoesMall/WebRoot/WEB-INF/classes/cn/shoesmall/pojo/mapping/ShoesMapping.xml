@@ -9,4 +9,8 @@
 		insert into shoes(shoesid,shoesname,shoestypeid,shoesclassifyid) 
 		values(#{shoesid},#{shoesname},#{shoestypeid},#{shoesclassifyid});
 	</insert>
+	<!-- 模糊分类查询 -->	
+	<select id="selectShoesByName" returnType="cn.shoesmall.pojo.Shoes">
+		select * from shoes where shoesname like CONCAT('%',#{shoesname},'%')
+	</select>
 </class>

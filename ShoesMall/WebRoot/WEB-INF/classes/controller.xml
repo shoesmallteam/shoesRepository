@@ -19,4 +19,8 @@
     
     <action name="removemsg" class="zwc.action.RemoveMsgAction">
     </action>
+    
+    <action name="classify" class="xyw.action.ClassifyAction">
+    	<form>xyw.form.ClassifyForm</form>
+    </action>
 </actions>
