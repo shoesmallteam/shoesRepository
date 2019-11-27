@@ -8,7 +8,7 @@
     	<mapping path="zwc/pojo/mapping/UserMapping.xml"></mapping>
     	<mapping path="zwc/pojo/mapping/AccountMapping.xml"></mapping>
     	<mapping path="zwc/pojo/mapping/CartMapping.xml"></mapping>
-    	<!-- <mapping path="zwc/pojo/mapping/CartMapping.xml"></mapping> -->
+    	
     	<mapping path="cn/shoesmall/pojo/mapping/CartMapping.xml"></mapping>
     	<mapping path="cn/shoesmall/pojo/mapping/ShoesdetailMapping.xml"></mapping>
     	<mapping path="cn/shoesmall/pojo/mapping/ShoesMapping.xml"></mapping>
