@@ -44,6 +44,7 @@
     border-radius: 4px;
     line-height: 30px;
     text-align: center;
+    background-color:#fff;
     color: #000;
 }
 .price-and-star span b{
@@ -53,12 +54,14 @@
 .price-and-star{
     position: absolute;
     left: 15px;
-    bottom: 10%;
+    
 }
 .price-and-star span.goods-price{
     position: relative;
     left: -54px;
-    margin-left: 50%
+    margin-left: 50%;
+   	top:5px;
+    
 }
  
 .price-and-star span.goods-star{
@@ -74,6 +77,8 @@
     margin: 0px auto;
     text-align: center;
     line-height: 30px;
+    margin-top:40px;
+    
 }
 
 .load-more{
