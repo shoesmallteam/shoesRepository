@@ -38,67 +38,22 @@
 //
 //        addCart();
 //    });
-	addCart();
+	
 })();
 
-//加入购物车
-function addCart(){
-    $('.add-cart').click(function(){
-        var token = localStorage.getItem('token');
-        var goodsId = $(this).attr('data-goods-id');
+//http://localhost:8080/ShoesMall/product.do?shoesid=601589564514
 
-        var color_active = false;
-        var size_active = false;
-        //检查是否存在active
-        $('#color li').each(function (i) {
-            if ($(this).prop('className') == 'active'){
-                color_active = true;
-            }
-        });
-        $('.size .prodSpec a').each(function (i) {
-            if ($(this).prop('className') == 'active'){
-                size_active = true;
-            }
-        });
-
-        if (color_active&&size_active){
-            if(token){
-                //加入用户购物车
-                //请求接口
-                $.ajax({
-                    type:"post",
-                    url:"http://www.wjian.top/shop/api_cart.php",
-                    data:{'goods_id':goodsId, 'number':1},
-                    dataType : 'json',
-                    success : function(re){
-                        console.log(re);
-                        //看返回数据，有加入成功   失败可能后台原因
-                    },
-                });
-            }else{
-                //用户没有登录    confirm  返回boolean
-                if(confirm('未登录，请点击跳转登录界面')){
-                    //跳到登录
-                    location.href = 'index.html?goods_id='+ goodsId;
-                };
-            };
-        }else {
-            if (!color_active){
-                confirm('请选择颜色');
-            };
-            if (!size_active){
-                confirm('请选择尺码');
-            };
-        };
-    });
-};
 
 (function(){
+	//瘦身
 	String.prototype.trim=function(){
 		var l = this.replace(this.match(/^\s+/), "");
 		var r = l.replace(l.match(/\s+$/), "");
 		return r;
 	}
+	
+	var color = null;
+	var size = null;
 	
     //计数
     var count = 1;
@@ -238,9 +193,6 @@ function addCart(){
     
     //选择颜色或尺码，改变库存数
     $('#color,.size .prodSpec').click(function(){
-    	var color = null;
-    	var size = null;
-    	var shoesid = $('#shoesid').text();
     	$('#color li').each(function(){
     		if($(this).attr('class')!=null){
     			color = $(this).attr('value');
@@ -251,6 +203,7 @@ function addCart(){
     			size = $(this).children('span').text();
     		}
     	});
+    	var shoesid = $('#shoesid').text();
     	var shoes = {'shoesid':shoesid,'color':color,'size':size};
     	if(color != null && size != null){
     		$.ajax({
@@ -259,12 +212,73 @@ function addCart(){
     			data: {'shoes':JSON.stringify(shoes)},
     			dataType: "json",
     			success: function(result){
-    				$('#onlycount').html(result);
+    				$('#onlycount').html(result.count);
     			}
     		});
     	}
     });
+    addCart();
+    selectValue();
     
+    //从首页回来的实现选择颜色
+    function selectValue(){
+    	color = localStorage.getItem("color");
+    	size = localStorage.getItem("size");
+    	if(color&&size){
+    		alert(11);
+    	}
+    };
     
+  //加入购物车
+    function addCart(){
+        $('.add-cart').click(function(){
+        	var cookie = document.cookie.match("auto_login");
+            var goodsId = $(this).attr('data-goods-id');
+            
+            var shoes = {'shoesid':shoesid,'color':color,'size':size};
+            if (color != null && size != null){
+            	//查询详情id
+            	$.ajax({
+            		type:"get",
+            		url: 'selectcount.do',
+        			data: {'shoes':JSON.stringify(shoes)},
+        			dataType: "json",
+        			success: function(result){
+        				alert(result.shoesid);
+        				$('#onlycount').html(result.shoesid);
+        			}
+            	});
+                if(cookie){
+                    //加入用户购物车
+                    //请求接口
+                    $.ajax({
+                        type:"post",
+                        url:"http://www.wjian.top/shop/api_cart.php",
+                        data:{'goods_id':goodsId, 'number':1},
+                        dataType : 'json',
+                        success : function(re){
+                            console.log(re);
+                            //看返回数据，有加入成功   失败可能后台原因
+                        },
+                    });
+                }else{
+                    //用户没有登录    confirm  返回boolean
+                    if(confirm('Not logged in, please click to jump to the login interface')){
+                        //跳到登录
+//                        location.href = 'home.jsp?shoesid='+ goodsId;
+//                        localStorage.setItem("color", color);
+//                        localStorage.setItem("size", size);
+                    };
+                };
+            }else {
+                if (color == null){
+                    confirm('Please select a color');
+                };
+                if (size == null){
+                    confirm('Please choose a size');
+                };
+            };
+        });
+    };
 })();
 

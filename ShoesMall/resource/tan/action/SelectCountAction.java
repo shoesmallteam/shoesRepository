@@ -31,8 +31,8 @@ public class SelectCountAction extends XywAction{
 		List<Object> list = dao.select("selectCount", detail);
 		for (Object object : list) {
 			detail = (Shoesdetail)object;
-			System.out.println(detail.getCount());
-			out.print(detail.getCount());
+			JSONObject returnshoes = JSONObject.fromObject(detail);
+			out.print(returnshoes.toString());
 		}
 		
 		return null;

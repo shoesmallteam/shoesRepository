@@ -64,21 +64,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </div>
 </header>
-<div class="banner">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-8 col-sm-9">
-                <p>Famously Foot Wear</p>
-            </div>
-            <div class="col-xs-4 col-sm-3 text-center">
-                <button class="btn btn-danger" id="exit" data-toggle="modal" data-target="#landModal">退出</button>
-                <!--注册登陆按钮-->
-                <button class="btn btn-danger" id="regist" data-toggle="modal" data-target="#registerModal">注册</button>
-                <button class="btn btn-danger" id="login" data-toggle="modal" data-target="#landModal">登录</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <section class="product">
     <div class="container">
@@ -150,7 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <span class="shoescount">库存<span id="onlycount">${dto.allcount }</span>件</span>
                 </div>
                 <div class="buy-btns">
-                    <a href="javascript:;" class="add-cart">
+                    <a href="javascript:;" class="add-cart" data-goods-id="${dto.shoesid }">
                         <button>加入购物车</button>
                     </a>
                     <a href="goods_cart.html" class="buy">

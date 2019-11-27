@@ -27,7 +27,7 @@
     <action name="product" class="tan.action.ProductAction">
         <form>tan.form.ProductForm</form>
         <result name="success" direct="false">product.jsp</result>
-        <result name="error">classify.jsp</result>
+        <result name="error">home.jsp</result>
     </action>
     
     <action name="selectcount" class="tan.action.SelectCountAction">
