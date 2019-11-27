@@ -31,13 +31,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div class="col-xs-12 navb text-center">
                         <ul>
-                            <li><a href="./classify.html?cartId=62" target="_self">女装</a></li>
-                            <li><a href="./classify.html?cartId=69" target="_self">男装</a></li>
-                            <li><a href="./classify.html?cartId=45" target="_self">孩子们</a></li>
-                            <li><a href="./classify.html?cartId=92" target="_self">配饰</a></li>
-                            <li><a href="./classify.html?cartId=62" target="_self">发展趋势</a></li>
-                            <li><a href="./classify.html?cartId=69" target="_self">品牌</a></li>
-                            <li><a href="./classify.html?cartId=45" target="_self">特卖</a></li>
+                            <li><a href="./classify.jsp?cartId=62" target="_self">女装</a></li>
+                            <li><a href="./classify.jsp?cartId=69" target="_self">男装</a></li>
+                            <li><a href="./classify.jsp?cartId=45" target="_self">孩子们</a></li>
+                            <li><a href="./classify.jsp?cartId=92" target="_self">配饰</a></li>
+                            <li><a href="./classify.jsp?cartId=62" target="_self">发展趋势</a></li>
+                            <li><a href="./classify.jsp?cartId=69" target="_self">品牌</a></li>
+                            <li><a href="./classify.jsp?cartId=45" target="_self">特卖</a></li>
                         </ul>
                     </div>
                 </div>

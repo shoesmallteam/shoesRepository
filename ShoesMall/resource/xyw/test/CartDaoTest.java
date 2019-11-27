@@ -32,6 +32,6 @@ public class CartDaoTest {
 	public static void main(String[] args) {
 		BaseDao dao = new BaseDaoImpl();
 		
-		System.out.println(dao.select("selectAll", new cn.shoesmall.pojo.Cart()));
+		System.out.println(dao.select("selectCartsByAcid", new cn.shoesmall.pojo.Cart()).size());
 	}
 }

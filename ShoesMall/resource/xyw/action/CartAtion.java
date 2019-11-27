@@ -25,7 +25,7 @@ import xyw.form.CartForm;
 public class CartAtion extends XywAction{
 
 	/**
-	 * 处理
+	 * 处理,根据用户传过来的用户id查询用户的购物车里的所有商品
 	 */
 	@Override
 	public String execute(HttpServletRequest arg0, HttpServletResponse arg1, XywForm arg2)
@@ -42,7 +42,6 @@ public class CartAtion extends XywAction{
 		List list = dao.select("selectAll", cart);
 		
 		PrintWriter out = arg1.getWriter();
-		arg1.setHeader("Access-Control-Allow-Origin", "http://localhost:63342"); 
 	
 		out.print(JSONArray.fromObject(list).toString());
 		out.flush();

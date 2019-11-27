@@ -1,13 +1,14 @@
 
 //分类商品
 var count = 1;
+var cartid = getUrlVal('cartId');
 function listGoods(cartId,page,pageSize) {
     console.log(cartId)
     $.ajax({
         type: 'GET',
         url: 'http://www.wjian.top/shop/api_goods.php',
         data: {
-            'cat_id': cartId,
+            'cat_id': cartid,
             'page': page,
             'pagesize': pageSize
         },
@@ -17,7 +18,6 @@ function listGoods(cartId,page,pageSize) {
             var data = result.data;
             console.log(data);
             var str = ``;
-            console.log(data);
             for (var i = 0; i < data.length; i++) {
                 str += `
             <div class="col-md-3 col-sm-6 col-xs-12 goods-info" data-id="${data[i].goods_id}">
@@ -58,8 +58,11 @@ function listGoods(cartId,page,pageSize) {
     });
 };
 
-listGoods(getUrlVal('cartId'),count++,8);
+listGoods(cartid,count++,8);
+
+
 $('.load-more').click(function () {
-    listGoods(1,count++,8);
+	console.log("id" + cartid);
+    listGoods(cartid,count++,8);
 });
 
