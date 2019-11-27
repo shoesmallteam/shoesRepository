@@ -36,7 +36,7 @@ $('#registerModal .modal-body li:eq(0) .modal-body-l1 input').blur(function(){
 	//拿到文本框输入的值
 	var m = $('#registerModal .modal-body li:eq(0) .modal-body-l1 input').val();
 	//用户名仅支持中英文、数字和下划线,且不能以数字开头,最长6位
- 	var re1 =/^[a-z-A-Z_]{1}([a-z-A-Z\d_]){1,8}$/;
+ 	var re1 =/^[a-z-A-Z_]{1}[a-z-A-Z\d_]{1,8}$/;
  	if (re1.test(m)) {
  			$('#registerModal .modal-body li:eq(1) .p3').slideDown();
  		} else{

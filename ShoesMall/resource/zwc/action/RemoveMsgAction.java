@@ -15,6 +15,7 @@ public class RemoveMsgAction extends XywAction{
 	@Override
 	public String execute(HttpServletRequest arg0, HttpServletResponse arg1, XywForm arg2)
 			throws ServletException, IOException {
+		System.out.println(132);
 		arg0.getSession().setAttribute("msg","");
 		Cookie[] cookies=arg0.getCookies();
 		for(Cookie cookie: cookies){

@@ -3,6 +3,8 @@ package zwc.filter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -53,10 +55,27 @@ public class CookieFilter implements Filter{
 			System.out.println(username);
 			System.out.println(password);
 			System.out.println(nikename);
+			//调用数据库
 			BaseDao dao = new BaseDaoImpl();
 			Account ac = new Account();
-			ac.setAccount(username);
-			List list = dao.select("selectAccount2", ac);
+			Pattern email = Pattern.compile("^\\w+@\\w+\\.(net|com|cn|org)+$");
+			Pattern photo = Pattern.compile("^1[3456789]\\d{9}$");
+			List list = null;
+			Matcher m1 = email.matcher(username);
+			Matcher m2 = photo.matcher(username);
+			if(m1.find()){
+				System.out.println("输入的登陆账号是邮箱");
+				ac.setEmail(username);
+				list = dao.select("selectAccount1", ac);
+			}else if(m2.find()){
+				System.out.println("输入的登陆账号是手机号");
+				ac.setTel(username);
+				list = dao.select("selectAccount", ac);
+			}else{
+				System.out.println("输入的登陆账号就是账号");
+				ac.setAccount(username);
+				list = dao.select("selectAccount2", ac);
+			}
 			if (list.size()>0){
 				request.getSession().setAttribute("uuname", username);
 				request.getSession().setAttribute("uupass", password);

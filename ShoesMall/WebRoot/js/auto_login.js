@@ -27,6 +27,21 @@ function checkLogin(){
     
 };
 checkLogin();
+//点击昵称
+//$('#welcome').click(function(){
+//	console.log(224);
+//	var msg = $('#msg').val();
+//	if (msg != '') {
+//    	alert(msg);
+//    	$.ajax({
+//    		type:"post",
+//    		url:"removemsg.do",
+//    	});
+//    	$('#regist, #login').show();
+//    	$('#welcome, #exit, .cart').hide();
+//    }
+//});
+//点击退出
 $('#exit').click(function(){
 	if (confirm(" Are you sure? ")) {
 		$.ajax({
