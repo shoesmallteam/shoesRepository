@@ -16,4 +16,8 @@
     <action name="cart" class="xyw.action.CartAtion">
     	
     </action>
+    
+    <action name="classify" class="xyw.action.ClassifyAction">
+    	<form>xyw.form.ClassifyForm</form>
+    </action>
 </actions>
