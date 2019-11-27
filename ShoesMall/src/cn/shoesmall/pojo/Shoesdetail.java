@@ -64,5 +64,13 @@ public class Shoesdetail {
 	public void setShoesid(String shoesid) {
 		this.shoesid = shoesid;
 	}
+	@Override
+	public String toString() {
+		return "Shoesdetail [shoesid=" + shoesid + ", shoesdetailid=" + shoesdetailid + ", color=" + color + ", size="
+				+ size + ", descs=" + descs + ", price=" + price + ", count=" + count + ", frequence=" + frequence
+				+ ", image=" + image + "]";
+	}
+	
+	
 	
 }

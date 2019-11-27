@@ -2,6 +2,7 @@ package xyw.test;
 
 import java.util.List;
 
+import cn.shoesmall.pojo.Cart;
 import cn.shoesmall.pojo.Shoes;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
@@ -13,7 +14,7 @@ public class ClassisfyTest {
 		Shoes shoes = new Shoes();
 		
 		shoes.setShoesname("男");
-		List list = dao.select("selectShoesByName", shoes);
+		List list = dao.select("selectAll", new Cart());
 		
 		
 		for(int i = 0; i< list.size(); i++)

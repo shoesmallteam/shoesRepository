@@ -505,7 +505,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="modal-content">
 					<div class="modal-header">
 						<h3 class="modal-title text-center">
-							账号登陆
+							账号登录
 							<span class="close" data-dismiss="modal">&times;</span>
 						</h3>
 					</div>
@@ -536,12 +536,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 							</li>
 							<li class="text-center">
-								<button class="btn" id="loginBtn">登陆</button>
+								<button class="btn" id="loginBtn">登录</button>
 							</li>
 						</ul>
 					</div>
 		        	<div class="modal-footer">
-		        		<a href="" class="modal-footer-l">手机短信登陆</a>
+		        		<a href="" class="modal-footer-l">手机短信登录</a>
 		        		<a href="#" class="modal-footer-r" data-toggle="modal" data-target="#registerModal">立即注册</a>
 		        		<a href="" class="modal-footer-r">忘记密码</a>
 	        		</div>
