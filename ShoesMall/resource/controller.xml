@@ -12,8 +12,11 @@
     </action>
     <action name="exits" class="zwc.action.ExitAction">
     </action>
-     
+    
     <action name="cart" class="xyw.action.CartAtion">
-    	
+    
+    </action>
+    
+    <action name="removemsg" class="zwc.action.RemoveMsgAction">
     </action>
 </actions>
