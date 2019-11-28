@@ -27,4 +27,8 @@
 	<select id="selectCount" returnType="cn.shoesmall.pojo.Shoesdetail">
 		select * from shoesdetail where shoesid=#{shoesid} and color=#{color} and size=#{size};
 	</select>
+	
+	<select id="selectByShoesdetailid" returnType="cn.shoesmall.pojo.Shoesdetail">
+		select * from shoesdetail where shoesdetailid = #{shoesdetailid};
+	</select>
 </class>
