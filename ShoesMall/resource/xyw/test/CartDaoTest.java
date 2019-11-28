@@ -1,6 +1,7 @@
 package xyw.test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.json.JsonArray;
@@ -11,9 +12,11 @@ import org.junit.Test;
 
 import cn.shoesmall.pojo.Cart;
 import net.sf.json.JSONArray;
+import net.sf.json.util.JSONUtils;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
 import xyw.dto.GoodsDto;
+import xyw.utils.JsonUtils;
 
 public class CartDaoTest {
 	
@@ -58,14 +61,21 @@ public class CartDaoTest {
 		lgs.add(gd);
 		
 		
-		JSONArray ja = JSONArray.fromObject(lgs);
 		
-		cart.setGoods(ja.toString());
-		System.out.println(cart);
+		cart.setGoods(JsonUtils.toJsonArrayString(lgs));
 		
 		String gds = cart.getGoods();
 		
+		System.out.println(gds);
 		
-
+		List<GoodsDto> ls = JsonUtils.toBeanList(JsonUtils.stringToArray(gds), GoodsDto.class);
+		
+		GoodsDto gd1 = new GoodsDto();
+		gd1.setShoesdetailid("hello world");
+		
+		gd1.setAmount("20");
+		ls.add(gd1);
+		
+		System.out.println(JsonUtils.toJsonArrayString(ls));
 	}
 }

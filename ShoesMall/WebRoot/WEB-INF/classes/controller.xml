@@ -17,6 +17,10 @@
     
     </action>
     
+    <action name="addGoodsToCart" class="xyw.action.AddToCartActon">
+    
+    </action>
+    
     <action name="removemsg" class="zwc.action.RemoveMsgAction">
     </action>
     

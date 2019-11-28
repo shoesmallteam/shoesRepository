@@ -92,12 +92,12 @@ public class LoginAction extends XywAction{
 				System.out.println("密码正确");
 				//登录成功就往cookie里面存数据
 				if(em!=null){
-					cookie = new Cookie("auto_login",em+"#itheima#"+pw1+"#itheima#"+nc);
-					System.out.println(cookie);
+					cookie = new Cookie("auto_login",em+"#itheima#"+pw1+"#itheima#"+nc+"#itheima#"+id);
+					//System.out.println(cookie);
 				}else if(ph!=null){
-					cookie = new Cookie("auto_login",ph+"#itheima#"+pw1+"#itheima#"+nc);
+					cookie = new Cookie("auto_login",ph+"#itheima#"+pw1+"#itheima#"+nc+"#itheima#"+id);
 				}else{
-					cookie = new Cookie("auto_login",uu+"#itheima#"+pw1+"#itheima#"+nc);	
+					cookie = new Cookie("auto_login",uu+"#itheima#"+pw1+"#itheima#"+nc+"#itheima#"+id);	
 				}
 				//设置IP
 				cookie.setDomain("localhost");

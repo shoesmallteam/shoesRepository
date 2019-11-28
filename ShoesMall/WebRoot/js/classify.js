@@ -26,7 +26,7 @@ function listGoods(typename,number,size) {
                 <div class="price-and-star">
                     <span class="goods-price">￥${data[i].price}</span>
                 </div>
-                <a href="cart.do?shoesdetailid=${data[i].shoesdetailid}" target="_blank" class="join-to-cart">加入购物车</a>
+                <a href="addGoodsToCart.do?shoesdetailid=${data[i].shoesdetailid}" target="_blank" class="join-to-cart">加入购物车</a>
             </div>
             `;
             }
