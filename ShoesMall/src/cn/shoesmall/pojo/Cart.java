@@ -38,6 +38,6 @@ public class Cart {
 
 	@Override
 	public String toString() {
-		return "Cart [cartid=" + cartid + ", shoedetailsid=" + goods + ", accountid=" + accountid + "]";
+		return "Cart [cartid=" + cartid + ", goods=" + goods + ", accountid=" + accountid + "]";
 	}
 }
