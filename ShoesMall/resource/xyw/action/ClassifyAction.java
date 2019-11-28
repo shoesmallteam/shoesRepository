@@ -46,6 +46,7 @@ public class ClassifyAction extends XywAction{
 		sd.setDescs(decode(form.getTypename()));
 				
 		List list = dao.select("selectByDesc",sd); 
+		
 		System.out.println(form);
 
 		

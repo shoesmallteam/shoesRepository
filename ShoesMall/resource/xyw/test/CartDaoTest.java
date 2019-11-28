@@ -1,13 +1,14 @@
 package xyw.test;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import cn.shoesmall.pojo.Cart;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
-import xyw.core.db.DBHelper;
-import zwc.pojo.Account;
 
 public class CartDaoTest {
 	
@@ -31,7 +32,11 @@ public class CartDaoTest {
 	
 	public static void main(String[] args) {
 		BaseDao dao = new BaseDaoImpl();
+		List list = dao.select("selectAll", new Cart());
 		
-		System.out.println(dao.select("selectCartsByAcid", new cn.shoesmall.pojo.Cart()).size());
+		for(Object o:list)
+		{
+			System.out.println(o);
+		}
 	}
 }

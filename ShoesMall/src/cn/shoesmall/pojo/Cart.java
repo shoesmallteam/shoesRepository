@@ -2,7 +2,7 @@ package cn.shoesmall.pojo;
 
 public class Cart {
 	private String cartid;
-	private String shoedetailsid;
+	private String goods;
 	private String accountid;
 	
 	
@@ -16,13 +16,13 @@ public class Cart {
 	}
 
 
-	public String getShoedetailsid() {
-		return shoedetailsid;
+	public String getGoods() {
+		return goods;
 	}
 
 
-	public void setShoedetailsid(String shoedetailsid) {
-		this.shoedetailsid = shoedetailsid;
+	public void setGoods(String goods) {
+		this.goods = goods;
 	}
 
 
@@ -38,6 +38,6 @@ public class Cart {
 
 	@Override
 	public String toString() {
-		return "Cart [cartid=" + cartid + ", shoedetailsid=" + shoedetailsid + ", accountid=" + accountid + "]";
+		return "Cart [cartid=" + cartid + ", shoedetailsid=" + goods + ", accountid=" + accountid + "]";
 	}
 }
