@@ -1,6 +1,7 @@
 package xyw.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -71,7 +72,9 @@ public class AddToCartActon extends XywAction{
 		
 		cart.setGoods(JsonUtils.toJsonArrayString(gds));
 		
-		dao.update("updateCartById", cart);
+		PrintWriter out = new PrintWriter(response.getWriter(),true);
+		
+		out.print(dao.update("updateCartById", cart) == true ? "true" : "false");
 		return null;
 	}
 

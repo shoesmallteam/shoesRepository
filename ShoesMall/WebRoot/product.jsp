@@ -54,16 +54,154 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <div class="col-xs-12">
-                        <p class="navbar-text" id="welcome"></p>
+                    	<input type="hidden" value="${nikename}" id="nn"/>
+                    	<input type="hidden" value="${msg}" id="msg"/>
+                    	<a class="navbar-text" id="welcome" style="cursor: pointer;"></a>
                         <p class="cart">
-                            <a href="goods_cart.html"><span class="glyphicon glyphicon-shopping-cart "></span></a>
+                          <a><span class="glyphicon glyphicon-shopping-cart "></span></a>
                         </p>
+                      	<button class="btn btn-danger" id="exit" >退出</button>
+						<button class="btn btn-danger" id="regist" data-toggle="modal" data-target="#registerModal">注册</button>
+						<button class="btn btn-danger" id="login" data-toggle="modal" data-target="#landModal">登录</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </header>
+		
+		<!--点击弹出模态框(登录)-->
+		<div id="landModal" class="modal fade animated zoomIn wow" data-backdrop = "static">
+			<!--弹出窗口-->
+			<div class="modal-dialog modal-md">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title text-center">
+							账号登录
+							<span class="close" data-dismiss="modal">&times;</span>
+						</h3>
+					</div>
+					<div class="modal-body">
+						<ul>
+							<li class="text-center">
+								<input  type="text" id="username" class="accountNumber " value="${uuname}" placeholder="邮箱/手机号码/ID"/>
+							</li>
+							<li>
+								<div class="error">
+									<em></em>
+									<span class="error-con">账号错误</span>
+								</div>
+							</li>
+							<li class="text-center">
+								<input  type="password" id="pwd" class="password " value="${uupass}" placeholder="密码"/>
+							</li>
+							<li>
+								<div class="error">
+									<em></em>
+									<span class="error-con">密码错误</span>
+								</div>
+							</li>
+							<li>
+								<div class="error">
+									<em></em>
+									<span class="error-con">用户名或密码不能为空</span>
+								</div>
+							</li>
+							<li class="text-center">
+								<button class="btn" id="loginBtn">登录</button>
+							</li>
+						</ul>
+					</div>
+		        	<div class="modal-footer">
+		        		<a href="" class="modal-footer-l">手机短信登录</a>
+		        		<a href="#" class="modal-footer-r" data-toggle="modal" data-target="#registerModal">立即注册</a>
+		        		<a href="" class="modal-footer-r">忘记密码</a>
+	        		</div>
+	        	</div>
+			</div>
+		</div>
+		<!--点击弹出模态框(注册)-->
+		<div id="registerModal" class="modal fade animated rotateInUpLeft wow" data-backdrop = "static">
+			<!--弹出窗口-->
+			<div class="modal-dialog modal-md">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title text-center">
+							账号注册
+							<span class="close" data-dismiss="modal">&times;</span>
+						</h3>
+					</div>
+					<div class="modal-body">
+						<ul>
+							<li>
+								<div class="modal-body-l1">
+									<span>昵称</span>
+									<input type="text"  value="" class="form-control" placeholder="请设置用户名"/>
+								</div>
+							</li>
+							<li>
+								<p class="p1">中英文数字下划线均可,不能以数字开头,最长9位</p>
+								<p class="p2">用户名格式不正确</p>
+								<p class="p3"></p>
+							</li>
+							<li>
+								<div class="modal-body-l1">
+									<span>手机号</span>
+									<input type="text"  value="" class="form-control" placeholder="可用于登陆和找回密码"/>
+								</div>
+							</li>
+							<li>
+								<p class="p1">请输入中国大陆手机号</p>
+								<p class="p2">手机号码格式不正确</p>
+								<p class="p3"></p>
+								<p class="p4">电话号码已存在</p>
+							</li>
+							<li>
+								<div class="modal-body-l1">
+									<span>　密码　</span>
+									<input type="password" class="form-control" placeholder="请设置登陆密码"/>
+								</div>
+							</li>
+							<li>
+								<p class="p1">长度为8～14个字符</p>
+								<p class="p1">支持数字、大小写字母和标点符号,不能有空格</p>
+								<p class="p2">密码格式不正确</p>
+								<p class="p3"></p>
+							</li>
+							<li>
+								<div class="modal-body-l1">
+									<span>　邮箱　</span>
+									<input type="text" value="" class="form-control" placeholder="请设置登陆邮箱"/>
+								</div>
+							</li>
+							<li>
+								<p class="p1">支持各种邮箱</p>
+								<p class="p2">邮箱格式不正确</p>
+								<p class="p3"></p>
+								<p class="p4">邮箱已存在</p>
+							</li>
+							<li>
+								<div class="modal-body-l2">
+									<span>验证码</span>
+									<input type="text" id="checkCode" class="form-control" value="" placeholder="请输入验证码"/>
+									<img id="i" src="img.do"/>
+								</div>
+							</li> 
+							<li>							
+								<p class="p2">验证码错误,请点击验证码刷新</p>
+								<p class="p3"></p>
+							</li>
+						</ul>
+						<button class="btn" id="register">注册</button>
+					</div>
+					<div class="modal-footer">
+						<a href="" class="modal-footer-l">手机短信注册</a>
+						<a href="#" class="modal-footer-r" data-toggle="modal" data-target="#landModal">立即登录</a>
+		        		<a href="" class="modal-footer-r">已有帐号</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
 <section class="product">
     <div class="container">
@@ -237,9 +375,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script type="text/javascript" src="js/wow.min.js"></script>
 <script type="text/javascript" src="js/mainPage.js"></script>
 <script type="text/javascript" src="js/register.js" ></script>
 <script type="text/javascript" src="js/login.js" ></script>
+<script type="text/javascript" src="js/auto_login.js" ></script>
 <script type="text/javascript" src="js/loginRegist.js" ></script>
 <script type="text/javascript" src="js/product.js" ></script>
