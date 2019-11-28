@@ -18,4 +18,8 @@
 	<select id = "selectAll" returnType="cn.shoesmall.pojo.Shoesdetail">
 		select * from shoesdetail where accountid = #{accountid}
 	</select>-->
+	
+	<update id="updateCartById">
+		update cart set goods = #{goods},accountid = #{accountid} where cartid = #{cartid};
+	</update>
 </class>

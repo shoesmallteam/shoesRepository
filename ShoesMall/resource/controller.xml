@@ -18,7 +18,7 @@
     </action>
     
     <action name="addGoodsToCart" class="xyw.action.AddToCartActon">
-    
+    	<form>xyw.form.AddToCartForm</form>
     </action>
     
     <action name="removemsg" class="zwc.action.RemoveMsgAction">

@@ -1,6 +1,7 @@
 package xyw.utils;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import net.sf.json.JSONArray;
@@ -17,9 +18,9 @@ public class JsonUtils {
 	
 	public static List toBeanList(JSONArray src,Class c)
 	{
-		List list = new ArrayList<Object>();
+		List list = new LinkedList<Object>();
 		
-		list = JSONArray.toList(src, c);
+		list = JSONArray.toList(src, c);		
 		
 		return list;
 	}

@@ -13,4 +13,13 @@ public class CookieUtil {
 		}
 		return null;
 	}
+	
+	public static String getValueFromString(String src,String desc) {
+		String result = null;
+		
+		src = src.substring(src.indexOf(desc +"#"));
+		result = src.substring(0,src.indexOf("#"));
+		
+		return result;
+	}
 }
