@@ -1,0 +1,204 @@
+.center{
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.header-center {
+    position: relative;
+    margin-bottom: 15px;
+}
+.header-center h2 {
+    line-height: 25px;
+    color: #333;
+    font-weight: 700;
+    font-size: 14px;
+}
+.items-headers-warp{
+    color: #6c6c6c;
+}
+.items-headers-center{
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border-bottom: 3px solid #b2d1ff;
+    font-size: 12px;
+    margin-left: 2px;
+    vertical-align: bottom;
+}
+.body-products{
+    position: relative;
+    width: 100%;
+    border-top:1px dotted rgb(221, 221, 221);
+    background-color: rgb(251, 252, 255);
+    margin-top: 10px;
+}
+.info-cell{
+    padding: 10px 0px 0px 10px;
+}
+.info-line{
+    display: inline-block;
+    margin-right: 1px;
+    box-sizing: content-box;
+}
+.detail-img{
+    float: left;
+}
+.info-img{
+    display: block;
+    width: 60px;
+    height: 60px;
+}
+.detail-descs{
+    position: absolute;
+    left: 80px;
+    top: 10px;
+}
+.detail-title{
+    color: #3c3c3c;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 70%;
+    display: block;
+    font-size: 12px;
+}
+.count-add:hover,.count-reduce:hover{
+    border: 1px solid orange;
+}
+.count-add,.count-reduce{
+    width: 25%;
+}
+.count-number{
+    width: 40%;
+}
+.count-add,.count-reduce,.count-number{
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    text-align: center;
+    border: 1px solid #6c6c6c;
+    cursor: pointer;
+}
+.xiaoji{
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.address{
+    padding-bottom: 20px;
+}
+.address-detail{
+    width: 100%;
+}
+.address-detail p{
+    align-content: center;
+    text-align: center;
+}
+.address-inner{
+    height: 24px;
+    line-height: 24px;
+    cursor: pointer;
+}
+.address-inner .address-input{
+    vertical-align: top;
+    margin-top: 0px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #c4c6cf;
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear;
+    text-align: left;
+    box-shadow: none;
+    float: left;
+    position: relative;
+}
+.address-inner input{
+	opacity:0;
+	display: block;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    background-color: rgb(130, 176, 245);
+}
+.address-inner input:checked{
+	opacity:1;
+	content: "\2714";
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    background-color: rgb(130, 176, 245);
+}
+.address-inner span{
+    float: left;
+    line-height: 16px;
+    display: inline-block;
+}
+.textarea table{
+    width: 100%;
+}
+.textarea table td{
+    background-color: rgb(211, 224, 243);
+    border: 1px solid white;
+    margin: 1px;
+    padding: 10px;
+}
+.textarea-say{
+    vertical-align: top;
+}
+.textarea table span{
+    color: #3c3c3c;
+}
+.textarea table textarea{
+    overflow: hidden;
+    resize: none;
+    width: 80%;
+    border-radius: 5px;
+    outline: none;
+}
+.textarea table .textarea-allprice{
+    float: right;
+    font-size: 16px;
+}
+.textarea table .textarea-price{
+    float: right;
+    color: red;
+    font-weight: bold;
+}
+.textarea .textarea-tetil{
+    width: 63%;
+}
+.payment{
+	padding-bottom:30px;
+}
+.realpay-title{
+    font-weight: 700;
+    color: #333;
+}
+.realpay-price-symbol{
+    font-size: 26px;
+    margin-right: 4px;
+    color: #999;
+}
+.realpay-price{
+    font-size: 26px;
+    margin-right: 4px;
+    color: rgb(255, 0, 54);
+}
+.order{
+    width: 70%;
+    height: 35px;
+    color: whitesmoke;
+    background-color: rgb(255, 0, 54);
+    text-align: center;
+    font-weight: 700;
+    line-height: 35px;
+    cursor: pointer;
+}

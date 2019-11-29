@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -19,6 +21,7 @@ import xyw.core.db.DBHelper;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 import xyw.form.ClassifyForm;
+import xyw.utils.SDCompare;
 
 /**
  * 分类处理
@@ -51,8 +54,9 @@ public class ClassifyAction extends XywAction{
 				
 		int size = Integer.parseInt(form.getSize());
 		System.out.println("共:" +list.size());
-		
-		
+		SDCompare sdc = new SDCompare();
+
+		Collections.sort(list,sdc);
 		
 		if(list.size() > 0) {
 			System.out.println((number - 1) * size+":"+ number * size);
@@ -60,8 +64,7 @@ public class ClassifyAction extends XywAction{
 		}
 		
 		System.out.println("需要:" + list.size());
-
-		
+				
 		JSONArray jo = JSONArray.fromObject(list);
 		
 		

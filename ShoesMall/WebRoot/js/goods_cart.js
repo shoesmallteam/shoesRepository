@@ -1,15 +1,10 @@
-function addGoodsList(page,pagesize) {
+function addGoodsList() {
+	$.ajaxSettings.async = false;
     $.ajax({
         type:'POST',
-        url:'http://www.wjian.top/shop/api_goods.php',
-        data : {
-            'page' : page,
-            'pagesize' : pagesize
-        } ,
-        contentType: "application/json;charset=UTF-8",
-        dataType : 'json',
+        url:'cart.do',
         success : function (result) {
-            var data = result.data;
+            var data = JSON.parse(result);
             var str = ``;
             //更新购物车数据
             for (var i = 0; i <data.length;i++)
@@ -21,11 +16,11 @@ function addGoodsList(page,pagesize) {
                     <td class="col-sm-3">
                         <div class="selectArea">
                             <input type="checkbox">
-                            <img src="${data[i].goods_thumb}" alt="" data-goods-id="${data[i].goods_id}">
+                            <img src="${data[i].image}" alt="" data-goods-id="${data[i].shoesdetailid}">
                         </div>  
                     </td>
-                    <td class="col-sm-2"><span>${data[i].goods_name}</span></td>
-                    <td class="col-sm-4"><p>${data[i].goods_desc}</p></td>
+                    <td class="col-sm-4"><p>${data[i].descs}</p></td>
+                    <td class="col-sm-2"><span>颜色分类:${data[i].color}<br>尺码：${data[i].size}</span></td>
                     <td class="col-sm-1"><span class="count-add">+</span><span class="count-number">1</span><span class="count-reduce">-</span></td>
                     <td class="col-sm-1">￥<span class="goods-price">${data[i].price}</span></td>
                     <td class="col-sm-1">￥<span class="subtotal">${data[i].price}</span></td>
@@ -98,4 +93,4 @@ function addGoodsList(page,pagesize) {
         }
     })
 };
-addGoodsList(1,6);
+addGoodsList();
