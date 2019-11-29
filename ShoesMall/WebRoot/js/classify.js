@@ -11,6 +11,7 @@ function listGoods(typename,number,size) {
         success: function (result) {
         	$('.load-more').html("加载更多");
         	result = JSON.parse(result);
+        	console.log(result);
         	var data = result;
             var str = ``;
             for (var i = 0; i < data.length; i++) {
