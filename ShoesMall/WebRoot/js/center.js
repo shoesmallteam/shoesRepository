@@ -26,3 +26,33 @@ $('.layout-right-l1-down3').click(function(){
 	$('.layout-right-l1-all2').hide();
 	$('.layout-right-l1-all').show();
 });
+		//点击保存
+		$('.layout-right-l1-down2').click(function(){
+			//拿到上传的照片编码后的字符串
+			var content = $('#content').val();
+			//拿到昵称
+			var nicheng = $('#nicheng').val();
+			//拿到名字
+			var xingming = $('#xingming').val();
+			//拿到性别
+			var xingbie = $('.sexs').val();
+			//拿到生日
+			var nian=$('.year').val();
+			var yue=$('.month').val();
+			var ri=$('.day').val();
+			$.ajax({
+				type:"post",
+				url:"center.do",
+				data:"content="+content+"&nicheng="+nicheng+"&xingming="+xingming+"&xingbie="+xingbie+"&nian="+nian+"&yue="+yue+"&ri="+ri,
+				success:function(result){
+					//alert("修改成功");
+					$('#sheng').html(result);
+				}
+			});
+			$('#img1').attr('src',content);
+			$('#mingzi').html(xingming);
+			$('#sssssix').html(xingbie);
+			$('#ni').html(nicheng);
+			$('.layout-right-l1-all2').hide();
+			$('.layout-right-l1-all').show();
+		});
