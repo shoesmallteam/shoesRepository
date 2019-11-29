@@ -21,7 +21,7 @@ function listGoods(typename,number,size) {
                 <a href="product.jsp?shoesid=${data[i].shoesid}">
                     <img src="${data[i].image}" alt="">
                 </a>
-                <a class="info" href="product.do?shoesid=${data[i].shoesid}">
+                <a class="info" href="product.do?shoesid=${data[i].shoesid}&color=${data[i].color}">
                     <p class="goods-desc">${data[i].descs}</p>
                 </a>
                 <div class="price-and-star">
