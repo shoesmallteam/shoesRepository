@@ -43,4 +43,10 @@
     </action>
     <action name="pass" class="zwc.action.PassAction">
     </action>
+    <action name="photos" class="zwc.action.PhotosAction">
+    </action>
+    <action name="emails" class="zwc.action.EmailsAction">
+    </action>
+    <action name="real" class="zwc.action.RealAction">
+    </action>
 </actions>

@@ -17,7 +17,7 @@ import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 import zwc.pojo.Account;
 
-public class PassAction extends XywAction{
+public class RealAction extends XywAction{
 
 	@Override
 	public String execute(HttpServletRequest arg0, HttpServletResponse arg1, XywForm arg2)
@@ -31,46 +31,35 @@ public class PassAction extends XywAction{
 		String id = value.split("#itheima#")[3];
 		System.out.println(id);
 		//拿到ajax传过来的页面数据
-		String n = arg0.getParameter("n");//原密码
-		System.out.println(n);
-		n = Encoding.encode(n, "MD5");//加密
-		System.out.println(n);
-		String m = arg0.getParameter("m");//新密码
-		System.out.println(m);
-		m = Encoding.encode(m, "MD5");//加密
-		System.out.println(m);
-		String old = null;
-		//定义id
+		String n = arg0.getParameter("n");//真是姓名
+		String m = arg0.getParameter("m");//身份证号
+		String r = null;
+		//调用数据库
 		BaseDao dao = new BaseDaoImpl();
 		Account ac = new Account();
 		ac.setAccountid(id);
 		List list = dao.select("selectAccount3", ac);
 			for (Object object : list) {
 				ac = (Account)object;
-				old = ac.getPassword();
+				r = ac.getSsidnumber();//通过id查到身份证
 			}
-			if (!old.equals(n)) {
-				//返回原密码
-				PrintWriter out = arg1.getWriter();
-				out.write(n);
-			}else{
-				//通过id修改密码
-				Account ac1 = new Account();
-				ac1.setAccountid(id);
-				ac1.setPassword(m);
-				dao.update("updateAccountidpass", ac1);
-				//清除原来得数据
-				Cookie[] cookies=arg0.getCookies();
-				for(Cookie c: cookies){
-				    c.setMaxAge(0);
-				    c.setPath("/ShoesMall");
-				    arg1.addCookie(cookie);
+			if (r==null) {
+				ac.setAccountid(id);
+				ac.setSsidnumber(m);
+				ac.setRealname(n);
+				dao.update("updateAccountidssidnumberandrealname", ac);
+			} else {
+				if (!r.equals(m)) {
+					ac.setAccountid(id);
+					ac.setSsidnumber(m);
+					ac.setRealname(n);
+					dao.update("updateAccountidssidnumberandrealname", ac);
+				} else {
+					PrintWriter out = arg1.getWriter();
+					out.write(m);
 				}
 			}
 			
-		
-		
-		
 		
 		return null;
 	}

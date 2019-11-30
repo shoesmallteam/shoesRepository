@@ -49,28 +49,41 @@ public class CookieFilter implements Filter{
 			request.getSession().setAttribute("uupass", "");
 			arg2.doFilter(request, response);
 		} else {
+			//调用数据库
+			BaseDao dao = new BaseDaoImpl();
 			String value = cookie.getValue();
 			String username = value.split("#itheima#")[0];
 			String password = value.split("#itheima#")[1];
 			String nikename = value.split("#itheima#")[2];
 			String id = value.split("#itheima#")[3];
-			System.out.println(username);
-			System.out.println(password);
-			System.out.println(nikename);
-			//调用数据库
-			BaseDao dao = new BaseDaoImpl();
+			//用id查出手机号和邮箱
+			Account ac1 = new Account();
+			String t = null;//手机号
+			String e = null;//邮箱
+			ac1.setAccountid(id);
+			List list2 = dao.select("selectAccount3", ac1);
+			for (Object object : list2) {
+				ac1 = (Account)object;
+				t = ac1.getTel();
+				e = ac1.getEmail();
+			}
+			
+			
+			
 			Account ac = new Account();
 			Pattern email = Pattern.compile("^\\w+@\\w+\\.(net|com|cn|org)+$");
 			Pattern photo = Pattern.compile("^1[3456789]\\d{9}$");
 			List list = null;
-			Matcher m1 = email.matcher(username);
-			Matcher m2 = photo.matcher(username);
+			Matcher m1 = email.matcher(e);
+			Matcher m2 = photo.matcher(t);
 			if(m1.find()){
 				System.out.println("输入的登陆账号是邮箱");
+				username = e;
 				ac.setEmail(username);
 				list = dao.select("selectAccount1", ac);
 			}else if(m2.find()){
 				System.out.println("输入的登陆账号是手机号");
+				username = t;
 				ac.setTel(username);
 				list = dao.select("selectAccount", ac);
 			}else{

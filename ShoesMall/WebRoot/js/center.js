@@ -86,12 +86,122 @@ $('.layout-right-l1-down3').click(function(){
 						if(result){
 					 		$('#section-big-layout-right li:eq(1) .layout-right-l2-middle1>input').css('border','1px solid red');
 						}else{
-							alert("密码修改成功，请重新登陆");
+							alert(" Password modification succeeded, please login again ");
 							window.location.href = 'http://localhost:8080/ShoesMall/home.jsp';
 						}
 					}
 				});
 	 		};
 		});
-		
+		//原手机号码框获焦
+		$('#section-big-layout-right li:eq(2) .layout-right-l2-middle1>input').focus(function(){
+			$('#section-big-layout-right li:eq(2) .layout-right-l2-middle1>input').css('border','1px solid blue');
+		});
+		//新手机号码框获焦
+		$('#section-big-layout-right li:eq(2) .layout-right-l2-middle2>input').focus(function(){
+			$('#section-big-layout-right li:eq(2) .layout-right-l2-middle2>input').css('border','1px solid blue');
+		});
+		//点击修改
+		$('#section-big-layout-right li:eq(2)>.layout-right-l2-down2').click(function(){
+			//拿到文本框输入的值
+			var n = $('#section-big-layout-right li:eq(2) .layout-right-l2-middle1>input').val();
+			var m = $('#section-big-layout-right li:eq(2) .layout-right-l2-middle2>input').val();
+			//alert(m);
+			//手机号码 
+		 	var re1 = /^1[3456789]\d{9}$/g;
+		 	if (!re1.test(m)) {
+		 		$('#section-big-layout-right li:eq(2) .layout-right-l2-middle2>input').css('border','1px solid red');
+	  			return;
+		 		} else{
+		 			$.ajax({
+						type:"post",
+						url:"photos.do",
+						data:"n="+n+"&m="+m,
+						success:function(result){
+							if(result==n){
+						 		$('#section-big-layout-right li:eq(2) .layout-right-l2-middle1>input').css('border','1px solid red');
+							}else if(result==m){
+								$('#section-big-layout-right li:eq(2) .layout-right-l2-middle2>input').css('border','1px solid red');
+						}else{
+								alert(" Password modification succeeded");
+								$('#section-big-layout-right li:eq(2) .layout-right-l2-middle1>input').val("");
+								$('#section-big-layout-right li:eq(2) .layout-right-l2-middle2>input').val("");
+							}
+						}
+					});
+		 		};
+		});
+		//原邮箱
+		$('#section-big-layout-right li:eq(3) .layout-right-l2-middle1>input').focus(function(){
+			$('#section-big-layout-right li:eq(3) .layout-right-l2-middle1>input').css('border','1px solid blue');
+		});
+		//新邮箱
+		$('#section-big-layout-right li:eq(3) .layout-right-l2-middle2>input').focus(function(){
+			$('#section-big-layout-right li:eq(3) .layout-right-l2-middle2>input').css('border','1px solid blue');
+		});
+		//点击修改
+		$('#section-big-layout-right li:eq(3)>.layout-right-l2-down2').click(function(){
+			//拿到文本框输入的值
+			var n = $('#section-big-layout-right li:eq(3) .layout-right-l2-middle1>input').val();
+			var m = $('#section-big-layout-right li:eq(3) .layout-right-l2-middle2>input').val();
+			//alert(m);
+			//邮箱
+		 	var re1 = /^\w+@\w+\.(net|com|cn|org)+$/g;
+		 	if (!re1.test(m)) {
+		 		$('#section-big-layout-right li:eq(3) .layout-right-l2-middle2>input').css('border','1px solid red');
+	  			return;
+		 		} else{
+		 			$.ajax({
+						type:"post",
+						url:"emails.do",
+						data:"n="+n+"&m="+m,
+						success:function(result){
+							if(result==n){
+						 		$('#section-big-layout-right li:eq(3) .layout-right-l2-middle1>input').css('border','1px solid red');
+							}else if(result==m){
+								$('#section-big-layout-right li:eq(3) .layout-right-l2-middle2>input').css('border','1px solid red');
+						}else{
+								alert(" Password modification succeeded");
+								$('#section-big-layout-right li:eq(3) .layout-right-l2-middle1>input').val("");
+								$('#section-big-layout-right li:eq(3) .layout-right-l2-middle2>input').val("");
+							}
+						}
+					});
+		 		};
+		});
+		//真实姓名
+		$('#section-big-layout-right li:eq(4) .layout-right5-middle1>input').focus(function(){
+			$('#section-big-layout-right li:eq(4) .layout-right5-middle1>input').css('border','1px solid blue');
+		});
+		//身份证号
+		$('#section-big-layout-right li:eq(4) .layout-right5-middle2>input').focus(function(){
+			$('#section-big-layout-right li:eq(4) .layout-right5-middle2>input').css('border','1px solid blue');
+		});
+		//点击修改
+		$('#section-big-layout-right li:eq(4)>.layout-right-l2-down2').click(function(){
+			//拿到文本框输入的值
+			var n = $('#section-big-layout-right li:eq(4) .layout-right5-middle1>input').val();
+			var m = $('#section-big-layout-right li:eq(4) .layout-right5-middle2>input').val();
+			//身份证号
+		 	var re1 = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+		 	if (!re1.test(m)) {
+		 		$('#section-big-layout-right li:eq(4) .layout-right5-middle2>input').css('border','1px solid red');
+	  			return;
+		 		} else{
+		 			$.ajax({
+						type:"post",
+						url:"real.do",
+						data:"n="+n+"&m="+m,
+						success:function(result){
+							if(result==m){
+								$('#section-big-layout-right li:eq(4) .layout-right5-middle2>input').css('border','1px solid red');
+							}else{
+								alert(" Password modification succeeded");
+								$('#section-big-layout-right li:eq(4) .layout-right5-middle1>input').val("");
+								$('#section-big-layout-right li:eq(4) .layout-right5-middle2>input').val("");
+							}
+						}
+					});
+		 		};
+		});
 		

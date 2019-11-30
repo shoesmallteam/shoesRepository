@@ -16,7 +16,14 @@ public class Account implements Serializable{
 	private String sssex;
 	private String ssbirthday;
 	private String ssidnumber;
+	private String realname ;
 	
+	public String getRealname() {
+		return realname;
+	}
+	public void setRealname(String realname) {
+		this.realname = realname;
+	}
 	public String getPhoto() {
 		return photo;
 	}
@@ -94,8 +101,9 @@ public class Account implements Serializable{
 		return "Account [accountid=" + accountid + ", account=" + account + ", password=" + password + ", tel=" + tel
 				+ ", email=" + email + ", isassistant=" + isassistant + ", isvip=" + isvip + ", photo=" + photo
 				+ ", ssname=" + ssname + ", sssex=" + sssex + ", ssbirthday=" + ssbirthday + ", ssidnumber="
-				+ ssidnumber + "]";
+				+ ssidnumber + ", realname=" + realname + "]";
 	}
+	
 	
 	
 	
