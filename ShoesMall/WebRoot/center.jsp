@@ -218,10 +218,10 @@
 						<p>修改密码</p>
 					</div>
 					<div class="layout-right-l2-middle1">
-						<input class="form-control" type="text" placeholder="原密码" name="" id="" value="" />
+						<input class="form-control" type="password" placeholder="原密码" name="" id="" value="" />
 					</div>
 					<div class="layout-right-l2-middle2">
-						<input class="form-control" type="text" placeholder="新密码" name="" id="" value="" />
+						<input class="form-control" type="password" placeholder="新密码" name="" id="" value="" />
 					</div>
 					<div class="layout-right-l2-down">
 						<p>长度为8～14个字符</p>
@@ -303,7 +303,7 @@
 			fr.readAsDataURL(f);
 			fr.onload=function(e){
 				var content = e.target.result;
-				console.log(content);
+				//console.log(content);
 				//预览
 				document.getElementById("img").src=content;
 				//将编码后的字符串（长）放入隐藏域

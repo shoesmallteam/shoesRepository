@@ -47,12 +47,51 @@ $('.layout-right-l1-down3').click(function(){
 				success:function(result){
 					//alert("修改成功");
 					$('#sheng').html(result);
+					$('#img1').attr('src',content);
+					$('#mingzi').html(xingming);
+					$('#sssssix').html(xingbie);
+					$('#ni').html(nicheng);
+					$('.layout-right-l1-all2').hide();
+					$('.layout-right-l1-all').show();
 				}
+			
 			});
-			$('#img1').attr('src',content);
-			$('#mingzi').html(xingming);
-			$('#sssssix').html(xingbie);
-			$('#ni').html(nicheng);
-			$('.layout-right-l1-all2').hide();
-			$('.layout-right-l1-all').show();
+			
 		});
+		
+		//原密码框获焦
+		$('#section-big-layout-right li:eq(1) .layout-right-l2-middle1>input').focus(function(){
+			$('#section-big-layout-right li:eq(1) .layout-right-l2-middle1>input').css('border','1px solid blue');
+		});
+		//新密码框获焦
+		$('#section-big-layout-right li:eq(1) .layout-right-l2-middle2>input').focus(function(){
+			$('#section-big-layout-right li:eq(1) .layout-right-l2-middle2>input').css('border','1px solid blue');
+		});
+		//点击修改密码
+		$('#section-big-layout-right li:eq(1)>.layout-right-l2-down2').click(function(){
+			//拿到文本框输入的值
+			var n = $('#section-big-layout-right li:eq(1) .layout-right-l2-middle1>input').val();
+			var m = $('#section-big-layout-right li:eq(1) .layout-right-l2-middle2>input').val();
+			//长度为8～14个字符支持数字，大小写字母和标点符号,不能有空格
+		 	var re1 = /^([a-z-A-Z\d]|[,.!@]){8,14}$/g;
+		 	if (!re1.test(m)) {
+		 		$('#section-big-layout-right li:eq(1) .layout-right-l2-middle2>input').css('border','1px solid red');
+	  			return;
+	 		}else{
+	 			$.ajax({
+					type:"post",
+					url:"pass.do",
+					data:"n="+n+"&m="+m,
+					success:function(result){
+						if(result){
+					 		$('#section-big-layout-right li:eq(1) .layout-right-l2-middle1>input').css('border','1px solid red');
+						}else{
+							alert("密码修改成功，请重新登陆");
+							window.location.href = 'http://localhost:8080/ShoesMall/home.jsp';
+						}
+					}
+				});
+	 		};
+		});
+		
+		

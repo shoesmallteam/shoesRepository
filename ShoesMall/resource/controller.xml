@@ -41,4 +41,6 @@
     </action>
     <action name="center2" class="zwc.action.CenterAction2">
     </action>
+    <action name="pass" class="zwc.action.PassAction">
+    </action>
 </actions>

@@ -2,12 +2,12 @@
 
 <class name="zwc.pojo.Cart" table="cart">
     <property name="cartid" column="cartid" type="String"></property>
-    <property name="shoedetailsid" column="shoedetailsid" type="String"></property>
+    <property name="goods" column="goods" type="String"></property>
     <property name="accountid" column="accountid" type="String"></property>
 
     <insert id="insertCart">
-        insert into cart(cartid,shoedetailsid,accountid) 
-        values(#{cartid},#{shoedetailsid},#{accountid});
+        insert into cart(cartid,goods,accountid) 
+        values(#{cartid},#{goods},#{accountid});
     </insert>
     
     <select id = "selectAll" returnType = "zwc.pojo.Cart">
