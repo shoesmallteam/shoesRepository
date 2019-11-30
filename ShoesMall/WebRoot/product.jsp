@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="col-xs-12">
                     	<input type="hidden" value="${nikename}" id="nn"/>
                     	<input type="hidden" value="${msg}" id="msg"/>
-                    	<a class="navbar-text" id="welcome" style="cursor: pointer;"></a>
+                    	<a href="http://localhost:8080/ShoesMall/center.jsp" class="navbar-text" id="welcome" style="cursor: pointer;"></a>
                         <p class="cart">
                           <a><span class="glyphicon glyphicon-shopping-cart "></span></a>
                         </p>
@@ -219,10 +219,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <ul class="nav navbar-nav">
                         	<c:forEach items="${dto.color }" var="color" varStatus="i">
                         		<c:set var="endcolor" value="${color }"></c:set>
-                        		<c:if test="${color.key eq endcolor }">
+                        		<%--color.key eq endcolor  --%>
+                        		<c:if test="${i.count eq 1 }">
 	                        		<li><img class="colorImage" src="${color.value }"></li>
                         		</c:if>
-                        		<li><img src="${color.value }"></li>
+                        		<c:if test="${i.count ne 1 }">
+	                        		<li><img src="${color.value }"></li>
+                        		</c:if>
                         	</c:forEach>
                         </ul>
                     </div>
@@ -280,7 +283,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <a href="javascript:;" class="add-cart" data-goods-id="${dto.shoesid }">
                         <button>加入购物车</button>
                     </a>
-                    <a href="goods_cart.html" class="buy">
+                    <a href="javascript:;" class="buy">
                         <button>去结算</button>
                     </a>
                 </div>

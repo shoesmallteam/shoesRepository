@@ -13,5 +13,6 @@
     	<mapping path="cn/shoesmall/pojo/mapping/ShoesMapping.xml"></mapping>
     	<mapping path="cn/shoesmall/pojo/mapping/ShoestypeMapping.xml"></mapping>
     	<mapping path="cn/shoesmall/pojo/mapping/ShoesclassifyMapping.xml"></mapping>
+    	<mapping path="/tan/pojo/mapping/AddressMapping.xml"></mapping>
     </mappings> 
 </properties>

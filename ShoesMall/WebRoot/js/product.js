@@ -6,6 +6,7 @@
 
 (function(){
 	var cookie = $.cookie('auto_login');
+	$.ajaxSettings.async = false;
 	
 	Show();
 	//显示购物车
@@ -27,6 +28,9 @@
 	var color = null;
 	var size = null;
 	var shoes = null;
+	var shoesdetailid = null;//详情id
+	var image = null;
+	var price = null;
 	
     //计数
     var count = 1;
@@ -189,24 +193,26 @@
     			dataType: "json",
     			success: function(result){
     				$('#onlycount').html(result.count);
+    				shoesdetailid = result.shoesdetailid;
+    				image = result.image;
+    				price = result.price;
     				shoes = null;
     			}
     		});
     	}
     });
     addCart();
+    Setaccounts();
     
   //加入购物车
     function addCart(){
         $('.add-cart').click(function(){
             var shoesid = $(this).attr('data-goods-id');
             var amount = $('.banners .count input').val();//数量
-            var shoesdetailid = null;//详情id
             
             //查询库存
             shoes = {'shoesid':shoesid,'color':color,'size':size};
             if (color != null && size != null){
-            	$.ajaxSettings.async = false;
             	//查询详情id
             	$.ajax({
             		type:"get",
@@ -232,6 +238,7 @@
                         	//看返回数据，有加入成功   失败可能后台原因
                         	if(/true/.test(result)){
                         		confirm("Add To Cart,Success!");
+                        		shoesdetailid = null;
                         	}else{
                         		confirm("Failed to join cart");
                         	}
@@ -252,5 +259,23 @@
                 };
             };
         });
+    };
+    
+    //结账
+    function Setaccounts(){
+    	$('.buy').click(function(){
+    		var count = $('.count input').val();
+    		
+    		if (color != null && size != null){
+    			$('.buy').attr('href','confirm_order.do?shoesdetailid='+shoesdetailid+'&count='+count);
+    		}else{
+    			if (color == null){
+                    confirm('Please select a color');
+                };
+                if (size == null){
+                    confirm('Please choose a size');
+                };
+    		};
+    	});
     };
 })();

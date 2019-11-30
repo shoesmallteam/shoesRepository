@@ -32,13 +32,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div class="col-xs-12 navb text-center">
                         <ul>
-                            <li><a href="./classify.html?cartId=62" target="_self">女装</a></li>
-                            <li><a href="./classify.html?cartId=69" target="_self">男装</a></li>
-                            <li><a href="./classify.html?cartId=45" target="_self">孩子们</a></li>
-                            <li><a href="./classify.html?cartId=92" target="_self">配饰</a></li>
-                            <li><a href="./classify.html?cartId=62" target="_self">发展趋势</a></li>
-                            <li><a href="./classify.html?cartId=69" target="_self">品牌</a></li>
-                            <li><a href="./classify.html?cartId=45" target="_self">特卖</a></li>
+                            <li><a href="./classify.jsp?typename=女" target="_self">女装</a></li>
+                            <li><a href="./classify.jsp?cartId=69" target="_self">男装</a></li>
+                            <li><a href="./classify.jsp?cartId=45" target="_self">孩子们</a></li>
+                            <li><a href="./classify.jsp?cartId=92" target="_self">配饰</a></li>
+                            <li><a href="./classify.jsp?cartId=62" target="_self">发展趋势</a></li>
+                            <li><a href="./classify.jsp?cartId=69" target="_self">品牌</a></li>
+                            <li><a href="./classify.jsp?cartId=45" target="_self">特卖</a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,13 +74,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div class="address-detail info-cell info-line">
                     <div class="col-xs-2">
-                        <p class="name">谭发根收</p>
+                        <p class="name">${confirmdto.address.name }收</p>
                     </div>
                     <div class="col-xs-5">
-                        <p class="address-title">湖南省长沙市岳麓区麓谷延农创业大厦六楼</p>
+                        <p class="address-title">${confirmdto.address.province }${confirmdto.address.city }${confirmdto.address.area }${confirmdto.address.detail }</p>
                     </div>
                     <div class="col-xs-2">
-                        <p class="tel">111111111111</p>
+                        <p class="tel">${confirmdto.address.tel }</p>
                     </div>
                     <div class="col-xs-2 address-inner">
                         <span class="address-input">
@@ -109,27 +109,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div class="body-products info-cell info-line">
                     <div class="col-xs-4">
-                        <a href="javascript:;" class="detail-img">
-                            <img class="info-img" src="//img.alicdn.com/imgextra/i1/2271033038/O1CN01pFFW231YJRis1KD8A_!!2271033038.jpg_430x430q90.jpg">
+                        <a href="product.do?shoesid=${confirmdto.detail.shoesid }" class="detail-img">
+                            <img class="info-img" src="${confirmdto.detail.image }">
                         </a>
                         <div class="detail-descs">
-                            <a href="product.do?shoesid=601589564514" class="detail-title">
-                                花花公子秋冬运动鞋2019新款女棉鞋女冬季加绒ins 百搭休闲鞋子潮
+                            <a href="product.do?shoesid=${confirmdto.detail.shoesid }" class="detail-title">
+                                ${confirmdto.detail.descs }
                             </a>
                         </div>
                     </div>
                     <div class="col-xs-3">
                         <p class="color">
                             颜色:
-                            <span>粉色（保暖加绒款）</span>
+                            <span>${confirmdto.detail.color }</span>
                         </p>
                         <p class="size">
                             尺码:
-                            <span>35</span>
+                            <span>${confirmdto.detail.size }</span>
                         </p>
                     </div>
                     <div class="col-xs-1">
-                        <p class="price">199.00</p>
+                        <p class="price">${confirmdto.detail.price }</p>
                     </div>
                     <div class="col-xs-2">
                         <span class="count-reduce">-</span>
