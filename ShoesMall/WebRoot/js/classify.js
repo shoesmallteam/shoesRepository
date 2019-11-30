@@ -18,7 +18,7 @@ function listGoods(typename,number,size) {
                 console.log(data[i].shoesid);
             	str += `
             <div class="col-md-3 col-sm-6 col-xs-12 goods-info" data-id="${data[i].shoesid}">
-                <a href="product.jsp?shoesid=${data[i].shoesid}">
+                <a href="product.jsp?shoesid=${data[i].shoesid}&color=${data[i].color}">
                     <img src="${data[i].image}" alt="">
                 </a>
                 <a class="info" href="product.do?shoesid=${data[i].shoesid}&color=${data[i].color}">
