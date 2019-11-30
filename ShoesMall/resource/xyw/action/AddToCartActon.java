@@ -80,7 +80,7 @@ public class AddToCartActon extends XywAction{
 		PrintWriter out = new PrintWriter(response.getWriter(),true);
 		
 		out.print(dao.update("updateCartById", cart) == true ? "true" : "false");
-		return null;
+		return null; 
 	}
 
 }
