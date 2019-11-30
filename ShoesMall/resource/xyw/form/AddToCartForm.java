@@ -1,7 +1,11 @@
 package xyw.form;
 
 import xyw.core.web.form.XywForm;
-
+/**
+ * 添加购物车所需参数表
+ * @author xyw
+ *
+ */
 public class AddToCartForm extends XywForm{
 
 	@Override
@@ -10,8 +14,9 @@ public class AddToCartForm extends XywForm{
 		return false;
 	}
 	
+	//商品详情id
 	private String shoesdetailid;
-	
+	//数量
 	private String amount;
 	
 	public String getShoesdetailid() {

@@ -70,16 +70,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <span class="">全选</span>
                     </div>
                 </th>
-                <th class="col-sm-2">
-                    <div >
-                        <span class="">商品名</span>
-                    </div>
-                </th>
                 <th  class="col-sm-4">
                     <div>
-                        <span class="">描述</span>
+                        <span class="">商品信息</span>
                     </div>
                 </th>
+                <th class="col-sm-2">
+                    <div >
+                        <span class="">颜色尺码</span>
+                    </div>
+                </th>
+                
                 <th class="col-sm-1">
                     <div >
                         <span class="">数量</span>

@@ -11,16 +11,17 @@ function listGoods(typename,number,size) {
         success: function (result) {
         	$('.load-more').html("加载更多");
         	result = JSON.parse(result);
+        	console.log(result);
         	var data = result;
             var str = ``;
             for (var i = 0; i < data.length; i++) {
                 console.log(data[i].shoesid);
             	str += `
             <div class="col-md-3 col-sm-6 col-xs-12 goods-info" data-id="${data[i].shoesid}">
-                <a href="product.jsp?shoesid=${data[i].shoesid}">
+                <a href="product.jsp?shoesid=${data[i].shoesid}&color=${data[i].color}">
                     <img src="${data[i].image}" alt="">
                 </a>
-                <a class="info" href="product.do?shoesid=${data[i].shoesid}">
+                <a class="info" href="product.do?shoesid=${data[i].shoesid}&color=${data[i].color}">
                     <p class="goods-desc">${data[i].descs}</p>
                 </a>
                 <div class="price-and-star">

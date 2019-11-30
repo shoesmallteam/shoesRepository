@@ -3,6 +3,8 @@ package tan.form;
 import xyw.core.web.form.XywForm;
 
 public class ProductForm extends XywForm{
+	private String color;
+	
 	private String shoesid;
 	
 	public String getShoesid() {
@@ -11,6 +13,14 @@ public class ProductForm extends XywForm{
 
 	public void setShoesid(String shoesid) {
 		this.shoesid = shoesid;
+	}
+	
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
+	public String getColor() {
+		return color;
 	}
 	
 	@Override

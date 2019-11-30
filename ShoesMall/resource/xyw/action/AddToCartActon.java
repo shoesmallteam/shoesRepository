@@ -20,33 +20,38 @@ import xyw.core.web.form.XywForm;
 import xyw.dto.GoodsDto;
 import xyw.form.AddToCartForm;
 import xyw.utils.JsonUtils;
-
+/**
+ * 添加到购物车
+ * @author xyw
+ *
+ */
 public class AddToCartActon extends XywAction{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response, XywForm arg2)
 			throws ServletException, IOException {
-		
+		//获取form
 		AddToCartForm form = (AddToCartForm)arg2;
+		
+		//获取登录的账户id
 		Cookie auto_login = CookieUtil.findCookie(request.getCookies(), "auto_login");
 		
 		String value = auto_login.getValue();
 		
 		String accountid = value.split("#itheima#")[3];
-				
+		//通过账户id查询到用户的购物车		
 		Cart cart = new Cart();
 		cart.setAccountid(accountid);
-		
 		BaseDao dao = new BaseDaoImpl();
 		List list = dao.select("selectCartsByAcid", cart);
 		List<GoodsDto> gds = new LinkedList<GoodsDto>();
 		boolean flag = false;
-
+		
 		if(list.size() > 0)
 		{
 			cart = (Cart)list.get(0);
 			gds = JsonUtils.toBeanList(JsonUtils.stringToArray(cart.getGoods()), GoodsDto.class);
-			
+			//查看是否有此商品，有：累加
 			for(GoodsDto gd:gds)
 			{
 				if(gd != null)
@@ -59,7 +64,7 @@ public class AddToCartActon extends XywAction{
 				}
 			}
 		}
-		
+		//无此商品，添加到购物车
 		if(!flag)
 		{
 			GoodsDto gd = new GoodsDto();
@@ -69,9 +74,9 @@ public class AddToCartActon extends XywAction{
 			gds.add(0, gd);
 		}
 		
-		
 		cart.setGoods(JsonUtils.toJsonArrayString(gds));
 		
+		//抛出更新结果
 		PrintWriter out = new PrintWriter(response.getWriter(),true);
 		
 		out.print(dao.update("updateCartById", cart) == true ? "true" : "false");

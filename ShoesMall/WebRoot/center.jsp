@@ -78,7 +78,7 @@
 								</div>
 								<div class="layout-right-l1-middle1-right">
 								<input type="hidden" value="${ac.photo}" id="imgimg"/>
-									<img id="img1" src="images/mainPage/zong.jpg"/>
+									<img id="img1" src=""/>
 								</div>
 							</div>
 							<div class="layout-right-l1-middle1">
@@ -303,7 +303,7 @@
 			fr.readAsDataURL(f);
 			fr.onload=function(e){
 				var content = e.target.result;
-				//console.log(content);
+				console.log(content);
 				//预览
 				document.getElementById("img").src=content;
 				//将编码后的字符串（长）放入隐藏域
