@@ -14,7 +14,9 @@
     <select id="selectUserAccountid" returnType="zwc.pojo.User">
     	select * from user where accountid=#{accountid};
     </select>
-	
+	<update id="updateUser">
+    	update user set nikename = #{nikename} where accountid=#{accountid};
+    </update>
 	
 	
 </class>

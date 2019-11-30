@@ -11,13 +11,19 @@
 			count = 1;
 		}
 		$('.count-number').html(count);
-		$('.xiaoji').html((count*$('.price').text().trim()).toFixed(2));
+		var price = (count*$('.price').text().trim()).toFixed(2);
+		$('.xiaoji').html(price);
+		$('.textarea-allprice').eq(1).html(price);
+		$('.realpay-price').html(price);
 	});
 	$('.count-add').click(function(){
 		count = $('.count-number').text().trim();
 		count ++;
 		$('.count-number').html(count);
-		$('.xiaoji').html((count*$('.price').text().trim()).toFixed(2));
+		var price = (count*$('.price').text().trim()).toFixed(2);
+		$('.xiaoji').html(price);
+		$('.textarea-allprice').eq(1).html(price);
+		$('.realpay-price').html(price);
 	});
 	
 	$('.order').click(function(){

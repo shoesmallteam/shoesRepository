@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 
 import cn.shoesmall.util.Encoding;
 import cn.shoesmall.util.GenerateAc;
+import cn.shoesmall.util.PhotoToByte;
 import cn.shoesmall.util.PrimaryKeyGeneric;
 import net.sf.json.JSONObject;
 import xyw.core.dao.BaseDao;

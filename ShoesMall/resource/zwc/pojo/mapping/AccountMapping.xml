@@ -8,10 +8,15 @@
     <property name="email" column="email" type="String"></property>
     <property name="isassistant" column="isassistant" type="int"></property>
     <property name="isvip" column="isvip" type="int"></property>
+    <property name="photo" column="photo" type="String"></property>
+    <property name="ssname" column="ssname" type="String"></property>
+    <property name="sssex" column="sssex" type="String"></property>
+    <property name="ssbirthday" column="ssbirthday" type="String"></property>
+    <property name="ssidnumber" column="ssidnumber" type="String"></property>
 
     <insert id="insertAccount">
-        insert into account(accountid,account,password,tel,email,isassistant,isvip) 
-        values(#{accountid},#{account},#{password},#{tel},#{email},#{isassistant},#{isvip});
+        insert into account(accountid,account,password,tel,email,isassistant,isvip,photo,ssname,sssex,ssbirthday,ssidnumber) 
+        values(#{accountid},#{account},#{password},#{tel},#{email},#{isassistant},#{isvip},#{photo},#{ssname},#{sssex},#{ssbirthday},#{ssidnumber});
     </insert>
     <select id="selectAccount" returnType="zwc.pojo.Account">
     	select * from account where tel=#{tel};
@@ -26,7 +31,12 @@
     <select id="selectAll" returnType="zwc.pojo.Account">
     	select * from account
     </select>
-    
+    <update id="updateAccountid">
+    	update account set photo = #{photo},ssname = #{ssname},sssex = #{sssex},ssbirthday = #{ssbirthday} where accountid=#{accountid};
+    </update>
+    <select id="selectAccount3" returnType="zwc.pojo.Account">
+    	select * from account where accountid=#{accountid};
+    </select>
 	
 	
 	

@@ -77,7 +77,8 @@
 									<p>头像</p>
 								</div>
 								<div class="layout-right-l1-middle1-right">
-									<img src="images/mainPage/zong.jpg"/>
+								<input type="hidden" value="${ac.photo}" id="imgimg"/>
+									<img id="img1" src=""/>
 								</div>
 							</div>
 							<div class="layout-right-l1-middle1">
@@ -85,7 +86,8 @@
 									<p>昵称</p>
 								</div>
 								<div class="layout-right-l1-middle1-right">
-									<p>用户124564789</p>
+								<input type="hidden" value="${ni}" id="nn"/>
+									<p id="ni">用户124564789</p>
 								</div>
 							</div>
 						</div>
@@ -96,7 +98,8 @@
 									<p>姓名</p>
 								</div>
 								<div class="layout-right-l1-middle1-right">
-									<p>未填写</p>
+								<input type="hidden" value="${ac.ssname}" id="na"/>
+									<p id="mingzi">未填写</p>
 								</div>
 							</div>
 							<div class="layout-right-l1-middle1">
@@ -104,7 +107,8 @@
 									<p>性别</p>
 								</div>
 								<div class="layout-right-l1-middle1-right">
-									<p>男</p>
+								<input type="hidden" value="${ac.sssex}" id="se"/>
+									<p id="sssssix">男</p>
 								</div>
 							</div>
 							<div class="layout-right-l1-middle1">
@@ -112,14 +116,17 @@
 									<p>生日</p>
 								</div>
 								<div class="layout-right-l1-middle1-right">
-									<p>2019-1-1</p>
+								<input type="hidden" value="${ac.ssbirthday}" id="birth"/>
+									<p id="sheng">未填写</p>
 								</div>
 							</div>
 						</div>
 						<button class="btn layout-right-l1-down" >编辑我的信息</button>
 					</div>
-					
-					
+					<!-- 
+					**
+					**
+					 -->
 					<div class="layout-right-l1-all2">
 						<div class="layout-right-l1-top2">
 							<span class="span1">个人资料</span>
@@ -132,7 +139,11 @@
 									<p>头像</p>
 								</div>
 								<div class="layout-right-l1-middle22-right">
-									<img src="images/mainPage/zong.jpg"/>
+									<img id="img" src="images/mainPage/zong.jpg"/>
+								</div>
+								<div class="layout-right-l1-middle33-right">
+									<input type="file" onchange="show(this)" />
+									<input type="hidden" value="" id="content"/>
 								</div>
 							</div>
 							<div class="layout-right-l1-middle22">
@@ -140,7 +151,7 @@
 									<p>昵称</p>
 								</div>
 								<div class="layout-right-l1-middle22-right">
-									<input class="form-control" type="text" placeholder="请填写昵称" name="" id="" value="用户124564789" />
+									<input class="form-control" type="text" placeholder="请填写昵称" name="" id="nicheng" value="${nikename}" />
 								</div>
 							</div>
 						</div>
@@ -151,7 +162,7 @@
 									<p>姓名</p>
 								</div>
 								<div class="layout-right-l1-middle22-right">
-									<input class="form-control" type="text" placeholder="请填写姓名" name="" id="" value="" />
+									<input class="form-control" type="text" placeholder="请填写姓名" name="" id="xingming" value="" />
 								</div>
 							</div>
 							<div class="layout-right-l1-middle22">
@@ -282,5 +293,21 @@
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/center.js"></script>
+<script type="text/javascript" src="js/center2.js"></script>
 <script type="text/javascript" src="js/linkage.js"></script>
 <script type="text/javascript" src="js/disabled.js"></script>
+<script type="text/javascript">
+		function show(obj){
+			var fr =new  FileReader();
+			var f = obj.files[0];
+			fr.readAsDataURL(f);
+			fr.onload=function(e){
+				var content = e.target.result;
+				console.log(content);
+				//预览
+				document.getElementById("img").src=content;
+				//将编码后的字符串（长）放入隐藏域
+				document.getElementById("content").value=content;
+			}
+		}
+</script>

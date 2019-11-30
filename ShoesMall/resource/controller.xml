@@ -37,4 +37,8 @@
     <action name="selectcount" class="tan.action.SelectCountAction">
     	<form>tan.form.SelectCountForm</form>
     </action>
+    <action name="center" class="zwc.action.CenterAction">
+    </action>
+    <action name="center2" class="zwc.action.CenterAction2">
+    </action>
 </actions>

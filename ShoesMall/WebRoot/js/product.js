@@ -32,8 +32,9 @@
     var count = 1;
     
     //首张图片
-    $('.product-img img').attr('src',$('.content-show .nav li').eq(0).children().attr('src'));
-    $('.big-img').css({'background-image': 'url('+$('.content-show .nav li').eq(0).children().attr('src')+')'});
+    $('.product-img img').attr('src',$('.colorImage').attr('src'));
+    $('.big-img').css({'background-image': 'url('+$('.colorImage').attr('src')+')'});
+    
 
     $('.product-img').mouseenter(function(event){
         var width = event.target.width;

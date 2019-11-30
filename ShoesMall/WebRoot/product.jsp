@@ -218,6 +218,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="container">
                         <ul class="nav navbar-nav">
                         	<c:forEach items="${dto.color }" var="color" varStatus="i">
+                        		<c:set var="endcolor" value="${color }"></c:set>
+                        		<c:if test="${color.key eq endcolor }">
+	                        		<li><img class="colorImage" src="${color.value }"></li>
+                        		</c:if>
                         		<li><img src="${color.value }"></li>
                         	</c:forEach>
                         </ul>

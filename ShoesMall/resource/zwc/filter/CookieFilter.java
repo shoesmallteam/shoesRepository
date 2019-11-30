@@ -20,6 +20,7 @@ import cn.shoesmall.util.CookieUtil;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
 import zwc.pojo.Account;
+import zwc.pojo.User;
 /*
  * 实现自动登陆的过滤器
  */
@@ -52,6 +53,7 @@ public class CookieFilter implements Filter{
 			String username = value.split("#itheima#")[0];
 			String password = value.split("#itheima#")[1];
 			String nikename = value.split("#itheima#")[2];
+			String id = value.split("#itheima#")[3];
 			System.out.println(username);
 			System.out.println(password);
 			System.out.println(nikename);
@@ -76,7 +78,19 @@ public class CookieFilter implements Filter{
 				ac.setAccount(username);
 				list = dao.select("selectAccount2", ac);
 			}
+			
 			if (list.size()>0){
+				for (Object object : list) {
+					ac = (Account)object;
+					password = ac.getPassword();
+				}
+				User u = new User();
+				u.setAccountid(id);
+				List list1 = dao.select("selectUserAccountid", u);
+				for (Object object : list1) {
+					u = (User)object;
+					nikename = u.getNikename();//昵称
+				}
 				request.getSession().setAttribute("uuname", username);
 				request.getSession().setAttribute("uupass", password);
 				request.getSession().setAttribute("nikename", nikename);
