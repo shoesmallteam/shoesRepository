@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import cn.shoesmall.pojo.Shoesdetail;
 import cn.shoesmall.pojo.User;
 import cn.shoesmall.util.CookieUtil;
+import cn.shoesmall.util.PrimaryKeyGeneric;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import tan.dto.ToConfirmDto;
@@ -66,19 +67,19 @@ public class ToSettlementAction extends XywAction{
 			address = (AddressDto)object;
 		}
 		
+		//生成订单id
+		String orderid = PrimaryKeyGeneric.getPrimaryKey();
 		//用DTO像前端传数据
 		ToConfirmDto confirmdto = new ToConfirmDto();
 		confirmdto.setAddress(address);
 		confirmdto.setList(listshoes);
+		confirmdto.setOrderid(orderid);
 		
 		if (address != null && listshoes != null) {
-//			PrintWriter pw = response.getWriter();
-//			JSONObject json = JSONObject.fromObject(confirmdto);
-//			pw.print(json.toString());
 			request.setAttribute("confirmdto", confirmdto);
 			return "success";
 		}
-		return "";
+		return "error";
 	}
 	
 }

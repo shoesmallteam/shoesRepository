@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" type="text/css" href="css/product.css"/>
     <title></title>
   </head>
-  
+  <%request.setAttribute("selectcolor", request.getParameter("color")); %>
   <body>
   	<header>
     <div class="container">
@@ -220,10 +220,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         	<c:forEach items="${dto.color }" var="color" varStatus="i">
                         		<c:set var="endcolor" value="${color }"></c:set>
                         		<%--color.key eq endcolor  --%>
-                        		<c:if test="${i.count eq 1 }">
+                        		<c:if test="${color.key eq selectcolor }">
 	                        		<li><img class="colorImage" src="${color.value }"></li>
                         		</c:if>
-                        		<c:if test="${i.count ne 1 }">
+                        		<c:if test="${color.key ne selectcolor }">
 	                        		<li><img src="${color.value }"></li>
                         		</c:if>
                         	</c:forEach>

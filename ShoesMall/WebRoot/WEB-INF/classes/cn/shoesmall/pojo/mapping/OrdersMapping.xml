@@ -4,4 +4,9 @@
 	<property name="accountid" column="accountid" type="java.lang.String"></property>
 	<property name="shoesdetailid" column="shoesdetailid" type="java.lang.String"></property>
 	<property name="generictime" column="generictime" type="java.lang.String"></property>
+	
+	<insert id="insertOrders">
+		INSERT INTO orders(orderid,accountid,shoesdetailid,generictime) 
+		VALUES(#{orderid},#{accountid},#{shoesdetailid},NOW())
+	</insert>
 </class>

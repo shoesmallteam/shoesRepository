@@ -191,6 +191,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </div>
 </div>
+<input type="hidden" value="${confirmdto.orderid }" class="orderid">
 <footer>
     <div class="col-xs-3 text-center">
         <ul>
