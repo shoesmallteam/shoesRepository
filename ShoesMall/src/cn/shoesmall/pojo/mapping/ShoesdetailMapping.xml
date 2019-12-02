@@ -23,6 +23,9 @@
 	<select id = "selectByDesc" returnType = "cn.shoesmall.pojo.Shoesdetail">
 		select * from shoesdetail where descs like CONCAT('%',#{descs},'%')
 		group by descs
+		<if test="#{price}!=null">
+			order by price asc
+		</if>
 	</select>
 	
 	<select id="selectCount" returnType="cn.shoesmall.pojo.Shoesdetail">

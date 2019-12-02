@@ -1,13 +1,19 @@
 
 //分类商品
 var count = 1;
+var classify = {};
 var typename = getUrlVal('typename');
 function listGoods(typename,number,size) {
+	
+	classify.typename = typename;
+	classify.number = number;
+	classify.size = size;
+	
 	$('.load-more').html("正在加载中...");
 	$.ajax({
     	type : "GET",
         url : "http://localhost:8081/ShoesMall/classify.do",
-        data : {"typename" : typename,"size" : size,"number" : number},
+        data : classify,
         success: function (result) {
         	$('.load-more').html("加载更多");
         	result = JSON.parse(result);
@@ -17,7 +23,7 @@ function listGoods(typename,number,size) {
             for (var i = 0; i < data.length; i++) {
                 console.log(data[i].shoesid);
             	str += `
-            <div class="col-md-3 col-sm-6 col-xs-12 goods-info" data-id="${data[i].shoesid}">
+            <div class="col-md-3 col-sm-6 col-xs-12 goods-info" data-id="${data[i].shoesrid}">
                 <a href="product.jsp?shoesid=${data[i].shoesid}&color=${data[i].color}">
                     <img src="${data[i].image}" alt="">
                 </a>
