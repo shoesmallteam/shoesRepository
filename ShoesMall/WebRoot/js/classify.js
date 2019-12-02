@@ -2,9 +2,14 @@
 //分类商品
 var count = 1;
 var classify = {};
+var curentMaxIndex = 8;
 var typename = getUrlVal('typename');
 function listGoods(typename,number,size) {
-	
+	if(size > curentMaxIndex){
+		$(".no-more").show();
+		$(".load-more").hide();
+		return;
+	}
 	classify.typename = typename;
 	classify.number = number;
 	classify.size = size;
@@ -20,6 +25,7 @@ function listGoods(typename,number,size) {
         	console.log(result);
         	var data = result;
             var str = ``;
+            curentMaxIndex = data.length;
             for (var i = 0; i < data.length; i++) {
                 console.log(data[i].shoesid);
             	str += `

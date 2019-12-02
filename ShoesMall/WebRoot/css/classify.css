@@ -1,3 +1,6 @@
+.classify{
+	width:70%;
+}
 .goods-info{
     position: relative;
     margin-top: 10px;
@@ -93,4 +96,18 @@
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
+}
+.no-more{
+	width: 50%;
+    background-color: #f5333f;
+    height: 50px;
+    border: 1px solid red;
+    margin:30px auto;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display:none;
 }

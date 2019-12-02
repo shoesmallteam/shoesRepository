@@ -1,3 +1,4 @@
+var settlement = 0;
 function addGoodsList() {
 	var amountChanged = true;
 
@@ -120,15 +121,30 @@ function addGoodsList() {
 
             //计算总价
             function calTotalPrice() {
+            	var shoes = [];
                 var sum = 0;
                 $('input[type="checkbox"]:gt(0)').each(function (index) {
                     if ($(this).is(':checked')) {
                         sum += parseFloat($(this).parent().parent().siblings(4).find('.subtotal').html());
+                        var goods = {};
+                        var countNumber = $(this).parent().parent().siblings(2).find(".count-number").html();
+                		var dtid = $(this).parent().parent().siblings(2).find(".count-number").attr("data-goods-id");
+    					goods.shoesdetailid = dtid;
+    					goods.count = countNumber;
+    					shoes.push(goods);
                     }
                 });
-                $('.cart_total').html('总价：' + sum + '.00￥')
+                console.log(shoes);
+                settlement = sum;
+                $('.cart_total').html("总价：" + sum + ".00￥" + "<button class='settlement btn btn-primary'>结算</button>");
+                $(".settlement").click(function(){
+                	
+                	console.log(shoes);
+                	
+                });
             }
         }
     })
 };
+
 addGoodsList();
