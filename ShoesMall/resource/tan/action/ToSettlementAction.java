@@ -40,6 +40,8 @@ public class ToSettlementAction extends XywAction{
 		BaseDao dao = new BaseDaoImpl();
 		//list存查询的shoesdetail
 		List<Shoesdetail> listshoes = new ArrayList<Shoesdetail>();
+		//list存生成的订单id
+		List<String> orderlist = new ArrayList<String>();
 		
 		//对象数组
 		String items = form.getItems();
@@ -56,7 +58,11 @@ public class ToSettlementAction extends XywAction{
 				detail = (Shoesdetail)obj;
 				detail.setCount(Integer.parseInt(shoes.getCount()));
 			}
+			//生成订单id
+			String orderid = PrimaryKeyGeneric.getPrimaryKey();
+			
 			listshoes.add(detail);
+			orderlist.add(orderid);
 		}
 
 		AddressDto dto = new AddressDto();//查询数据库的pojo类
@@ -68,13 +74,12 @@ public class ToSettlementAction extends XywAction{
 			address = (AddressDto)object;
 		}
 		
-		//生成订单id
-		String orderid = PrimaryKeyGeneric.getPrimaryKey();
+		
 		//用DTO像前端传数据
 		ToConfirmDto confirmdto = new ToConfirmDto();
 		confirmdto.setAddress(address);
 		confirmdto.setList(listshoes);
-		confirmdto.setOrderid(orderid);
+		confirmdto.setOrderlist(orderlist);
 		
 		if (address != null && listshoes != null) {
 			request.setAttribute("confirmdto", confirmdto);
