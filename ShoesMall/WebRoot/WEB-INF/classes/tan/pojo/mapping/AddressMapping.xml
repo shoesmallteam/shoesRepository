@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="tan.pojo.AddressDto" table="a">
+	<property name="addressid" column="addressid" type="String"></property>
+	<property name="userid" column="userid" type="String"></property>
+	<property name="province" column="province" type="String"></property>
+	<property name="city" column="city" type="String"></property>
+	<property name="area" column="area" type="String"></property>
+	<property name="detail" column="detail" type="String"></property>
+	<property name="tel" column="tel" type="String"></property>
+	<property name="name" column="name" type="String"></property>
+	<property name="accountid" column="accountid" type="String"></property>
+	
+	<select id="SelectAddress" returnType="tan.pojo.AddressDto">
+		SELECT * FROM (SELECT address.userid,`user`.accountid,addressid,province,city,area,detail,tel,address.`name` 
+		FROM `user` inner JOIN address ON `user`.userid = address.userid ) AS a
+		WHERE accountid = #{accountid};
+	</select>
+</class>

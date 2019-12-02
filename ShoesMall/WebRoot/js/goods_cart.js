@@ -124,9 +124,9 @@ function addGoodsList() {
             	var shoes = [];
                 var sum = 0;
                 $('input[type="checkbox"]:gt(0)').each(function (index) {
+                    var goods = {};
                     if ($(this).is(':checked')) {
                         sum += parseFloat($(this).parent().parent().siblings(4).find('.subtotal').html());
-                        var goods = {};
                         var countNumber = $(this).parent().parent().siblings(2).find(".count-number").html();
                 		var dtid = $(this).parent().parent().siblings(2).find(".count-number").attr("data-goods-id");
     					goods.shoesdetailid = dtid;
@@ -138,9 +138,10 @@ function addGoodsList() {
                 settlement = sum;
                 $('.cart_total').html("总价：" + sum + ".00￥" + "<button class='settlement btn btn-primary'>结算</button>");
                 $(".settlement").click(function(){
-                	
+                	shoes = JSON.stringify(shoes);
+                	shoes = encodeURI(shoes);
                 	console.log(shoes);
-                	
+                	location.href = "confirm_order.do?items=" + shoes;
                 });
             }
         }

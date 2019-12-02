@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.shoesmall.util.Encoding;
+import sun.misc.BASE64Encoder;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
 import xyw.core.web.action.XywAction;
@@ -63,6 +64,9 @@ public class LoginAction extends XywAction{
 		String newpwd = null;//密码
 		String nc = null;//昵称
 		String id = null;//UUID主键id
+		String name = null;//名字
+		String sex = null;//性别
+		String bir = null;//生日
 		//加密
 		String pw1 = Encoding.encode(pw, "MD5");
 		User user = new User();
@@ -76,6 +80,9 @@ public class LoginAction extends XywAction{
 				ac = (Account)object;
 				newpwd= ac.getPassword();
 				id = ac.getAccountid();//获得主键
+				name = ac.getSsname();
+				sex = ac.getSssex();
+				bir = ac.getSsbirthday();
 				user.setAccountid(id);
 				List list1 = dao.select("selectUserAccountid", user);
 				for (Object object2 : list1) {
@@ -92,12 +99,12 @@ public class LoginAction extends XywAction{
 				System.out.println("密码正确");
 				//登录成功就往cookie里面存数据
 				if(em!=null){
-					cookie = new Cookie("auto_login",em+"#itheima#"+pw1+"#itheima#"+nc+"#itheima#"+id);
+					cookie = new Cookie("auto_login",em+"#itheima#"+pw1+"#itheima#"+nc+"#itheima#"+id+"#itheima#"+name+"#itheima#"+sex+"#itheima#"+bir);
 					//System.out.println(cookie);
 				}else if(ph!=null){
-					cookie = new Cookie("auto_login",ph+"#itheima#"+pw1+"#itheima#"+nc+"#itheima#"+id);
+					cookie = new Cookie("auto_login",ph+"#itheima#"+pw1+"#itheima#"+nc+"#itheima#"+id+"#itheima#"+name+"#itheima#"+sex+"#itheima#"+bir);
 				}else{
-					cookie = new Cookie("auto_login",uu+"#itheima#"+pw1+"#itheima#"+nc+"#itheima#"+id);	
+					cookie = new Cookie("auto_login",uu+"#itheima#"+pw1+"#itheima#"+nc+"#itheima#"+id+"#itheima#"+name+"#itheima#"+sex+"#itheima#"+bir);	
 				}
 				//设置IP
 				cookie.setDomain("localhost");

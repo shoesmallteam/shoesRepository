@@ -1,6 +1,7 @@
 package zwc.pojo;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class Account implements Serializable{
 	private String accountid;
@@ -10,6 +11,49 @@ public class Account implements Serializable{
 	private String email;
 	private int isassistant;
 	private int isvip;
+	private String photo;
+	private String ssname;
+	private String sssex;
+	private String ssbirthday;
+	private String ssidnumber;
+	private String realname ;
+	
+	public String getRealname() {
+		return realname;
+	}
+	public void setRealname(String realname) {
+		this.realname = realname;
+	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+	public String getSsname() {
+		return ssname;
+	}
+	public void setSsname(String ssname) {
+		this.ssname = ssname;
+	}
+	public String getSssex() {
+		return sssex;
+	}
+	public void setSssex(String sssex) {
+		this.sssex = sssex;
+	}
+	public String getSsbirthday() {
+		return ssbirthday;
+	}
+	public void setSsbirthday(String ssbirthday) {
+		this.ssbirthday = ssbirthday;
+	}
+	public String getSsidnumber() {
+		return ssidnumber;
+	}
+	public void setSsidnumber(String ssidnumber) {
+		this.ssidnumber = ssidnumber;
+	}
 	public String getAccountid() {
 		return accountid;
 	}
@@ -55,7 +99,12 @@ public class Account implements Serializable{
 	@Override
 	public String toString() {
 		return "Account [accountid=" + accountid + ", account=" + account + ", password=" + password + ", tel=" + tel
-				+ ", email=" + email + ", isassistant=" + isassistant + ", isvip=" + isvip + "]";
+				+ ", email=" + email + ", isassistant=" + isassistant + ", isvip=" + isvip + ", photo=" + photo
+				+ ", ssname=" + ssname + ", sssex=" + sssex + ", ssbirthday=" + ssbirthday + ", ssidnumber="
+				+ ssidnumber + ", realname=" + realname + "]";
 	}
+	
+	
+	
 	
 }

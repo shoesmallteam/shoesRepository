@@ -11,8 +11,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.tomcat.util.codec.Decoder;
-import org.apache.tomcat.util.codec.DecoderException;
 
 import cn.shoesmall.pojo.Cart;
 import cn.shoesmall.pojo.Shoes;

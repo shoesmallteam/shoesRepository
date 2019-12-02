@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
 		<link rel="stylesheet" type="text/css" href="css/base.css"/>
@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="col-xs-12">
                     	<input type="hidden" value="${nikename}" id="nn"/>
                     	<input type="hidden" value="${msg}" id="msg"/>
-                    	<a class="navbar-text" id="welcome" style="cursor: pointer;"></a>
+                    	<a href="http://localhost:8080/ShoesMall/center.jsp" class="navbar-text" id="welcome" style="cursor: pointer;"></a>
                         <p class="cart">
                           <a href="goods_cart.jsp"><span class="glyphicon glyphicon-shopping-cart "></span></a>
                         </p>

@@ -46,6 +46,18 @@
   	<listener>
 		<listener-class>zwc.listener.MySessionAttributeListener</listener-class>
   	</listener>
+  	<listener>
+		<listener-class>zwc.listener.MySessionAttributeListener</listener-class>
+  	</listener>
+  	
+  	<filter>
+	  	<filter-name>sessionCenterFilter</filter-name>
+	  	<filter-class>zwc.filter.SessionCenterFilter</filter-class>
+  	</filter>
+  	<filter-mapping>
+	  	<filter-name>sessionCenterFilter</filter-name>
+	  	<url-pattern>/center.jsp</url-pattern>
+  	</filter-mapping>
   	
   	
   <welcome-file-list>

@@ -37,4 +37,21 @@
     <action name="selectcount" class="tan.action.SelectCountAction">
     	<form>tan.form.SelectCountForm</form>
     </action>
+    <action name="center" class="zwc.action.CenterAction">
+    </action>
+    <action name="center2" class="zwc.action.CenterAction2">
+    </action>
+    <action name="pass" class="zwc.action.PassAction">
+    </action>
+    <action name="photos" class="zwc.action.PhotosAction">
+    </action>
+    <action name="emails" class="zwc.action.EmailsAction">
+    </action>
+    <action name="real" class="zwc.action.RealAction">
+    </action>
+    <action name="confirm_order" class="tan.action.ToSettlementAction">
+    	<form>tan.form.ConfirmForm</form>
+    	<result name="success" direct="false">confirm_order.jsp</result>
+        <result name="error">home.jsp</result>
+    </action>
 </actions>
