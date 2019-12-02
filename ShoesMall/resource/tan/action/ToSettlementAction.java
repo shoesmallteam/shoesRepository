@@ -43,6 +43,7 @@ public class ToSettlementAction extends XywAction{
 		
 		//对象数组
 		String items = form.getItems();
+		System.out.println(items);
 		JSONArray arr = JSONArray.fromObject(items);
 		for (int i = 0; i < arr.size(); i++) {
 			JSONObject jobj = arr.getJSONObject(i);
@@ -79,7 +80,8 @@ public class ToSettlementAction extends XywAction{
 			request.setAttribute("confirmdto", confirmdto);
 			return "success";
 		}
-		return "error";
+
+		return null;
 	}
 	
 }

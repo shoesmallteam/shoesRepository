@@ -59,9 +59,13 @@ public class ClassifyAction extends XywAction{
 
 		//Collections.sort(list,sdc);
 		
-		if(list.size() > 0) {
+		if(list.size() > (number - 1) * size) {
 			System.out.println((number - 1) * size+":"+ number * size);
-			list = list.subList((number - 1) * size, number * size);
+			if(list.size() > size * number) {
+				list = list.subList((number - 1) * size, number * size);				
+			}else {
+				list = list.subList((number - 1) * size, list.size());
+			}
 		}
 		
 		System.out.println("需要:" + list.size());

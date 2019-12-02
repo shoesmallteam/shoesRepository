@@ -73,8 +73,9 @@ public class AddToCartActon extends XywAction{
 			gd.setAmount(form.getAmount());
 			gd.setShoesdetailid(form.getShoesdetailid());
 			gds.add(0, gd);
+			
 		}
-		
+		System.out.println(cart);
 		cart.setGoods(JsonUtils.toJsonArrayString(gds));
 		
 		PrintWriter out = new PrintWriter(response.getWriter(),true);
