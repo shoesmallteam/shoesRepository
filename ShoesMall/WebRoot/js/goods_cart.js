@@ -1,4 +1,6 @@
 function addGoodsList() {
+	var amountChanged = true;
+
 	$.ajaxSettings.async = false;
     $.ajax({
         type:'POST',
@@ -21,7 +23,7 @@ function addGoodsList() {
                     </td>
                     <td class="col-sm-4"><p>${data[i].descs}</p></td>
                     <td class="col-sm-2"><span>颜色分类:${data[i].color}<br>尺码：${data[i].size}</span></td>
-                    <td class="col-sm-1"><span class="count-add">+</span><span class="count-number">1</span><span class="count-reduce">-</span></td>
+                    <td class="col-sm-1"><span class="count-add">+</span><span class="count-number" data-goods-id="${data[i].shoesdetailid}">${data[i].amount}</span><span class="count-reduce">-</span></td>
                     <td class="col-sm-1">￥<span class="goods-price">${data[i].price}</span></td>
                     <td class="col-sm-1">￥<span class="subtotal">${data[i].price}</span></td>
                 </tr>
@@ -48,29 +50,65 @@ function addGoodsList() {
 
             //添加
             $('.count-add').click(function () {
-                var currentCount = parseInt($(this).siblings().eq(0).html());
-                if (currentCount < 20)
-                {
-                    $(this).siblings().eq(0).html(++currentCount);
-                    //更新小计
-                    var price = parseFloat($(this).parent().siblings().eq(3).find('.goods-price').html());
-                    $(this).parent().siblings().eq(4).find('.subtotal').html(price * currentCount + '.00');
-                    //更新总价
-                    calTotalPrice();
+             if(amountChanged){
+                amountChanged=false;
+            	 var currentCount = parseInt($(this).siblings().eq(0).html());
+	             var oCount = $(this).siblings().eq(0);
+	             if (currentCount < 20)
+	             {
+	                 $(this).siblings().eq(0).html(++currentCount);
+	                 //更新小计
+	                 var price = parseFloat($(this).parent().siblings().eq(3).find('.goods-price').html());
+	                 $(this).parent().siblings().eq(4).find('.subtotal').html(price * currentCount + '.00');
+	                    
+	                 //更新数据库
+	                 
+	                 console.log(oCount.attr("data-goods-id"));
+	                 console.log(oCount.html());
+	                 $.ajax({
+	                	 url:"addGoodsToCart.do",
+	                	 data :{"shoesdetailid":oCount.attr("data-goods-id"),"amount":"1"},
+	                	 success : function(result){
+	                		 if(result == "true")
+	                		 {
+	                		 	amountChanged = true;
+	                		 }
+	                	 }
+	                 });
+	                    
+	                 //更新总价
+	                 calTotalPrice();
+	              }
                 }
             });
             //减少
             $('.count-reduce').click(function () {
-                var currentCount = parseInt($(this).siblings().eq(1).html());
-                if (currentCount > 1)
-                {
-                    $(this).siblings().eq(1).html(--currentCount);
-                    //更新小计
-                    var price = parseFloat($(this).parent().siblings().eq(3).find('.goods-price').html());
-                    $(this).parent().siblings().eq(4).find('.subtotal').html(price * currentCount + '.00');
-                    //更新总价
-                    calTotalPrice();
-                }
+             if(amountChanged){
+                amountChanged=false;
+	                var currentCount = parseInt($(this).siblings().eq(1).html());
+		            var oCount = $(this).siblings().eq(1);
+	                if (currentCount > 1)
+	                {
+	                    $(this).siblings().eq(1).html(--currentCount);
+	                    //更新小计
+	                    var price = parseFloat($(this).parent().siblings().eq(3).find('.goods-price').html());
+	                    $(this).parent().siblings().eq(4).find('.subtotal').html(price * currentCount + '.00');
+	                    //更新数据库
+	                    $.ajax({
+		                	 url:"addGoodsToCart.do",
+		                	 data :{"shoesdetailid":oCount.attr("data-goods-id"),"amount":"-1"},
+		                	 success : function(result){
+		                		 if(result == "true")
+		                		 {
+		                		 	amountChanged = true;
+		                		 }
+		                	 }
+		                 });
+	                    
+	                    //更新总价
+	                    calTotalPrice();
+	                }
+             	}
             });
 
             //单选

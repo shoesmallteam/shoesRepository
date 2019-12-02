@@ -98,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </th>
             </tr>
         </table>
-        <div class="cart_total">总价：00.00￥</div>
+        <div class="cart_total">总价：00.00￥<button class="btn btn-primary">结算</button></div>
     </div>
 </body>
 </html>

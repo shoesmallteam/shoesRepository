@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import cn.shoesmall.pojo.Cart;
 import cn.shoesmall.pojo.Shoes;
 import cn.shoesmall.pojo.Shoesdetail;
@@ -38,25 +39,25 @@ public class ClassifyAction extends XywAction{
 		ClassifyForm form = (ClassifyForm)arg2;
 		
 		
+		System.out.println(form);
 		
 		BaseDao dao = new BaseDaoImpl();
-
-		Shoesdetail sd = new Shoesdetail();
 		
+		Shoesdetail sd = new Shoesdetail();
+		sd.setPrice(111);
 		sd.setDescs(decode(form.getTypename()));
 				
 		List list = dao.select("selectByDesc",sd); 
 		
-		System.out.println(form);
 
 		
 		int number = Integer.parseInt(form.getNumber());
 				
 		int size = Integer.parseInt(form.getSize());
 		System.out.println("共:" +list.size());
-		SDCompare sdc = new SDCompare();
+		//SDCompare sdc = new SDCompare();
 
-		Collections.sort(list,sdc);
+		//Collections.sort(list,sdc);
 		
 		if(list.size() > 0) {
 			System.out.println((number - 1) * size+":"+ number * size);

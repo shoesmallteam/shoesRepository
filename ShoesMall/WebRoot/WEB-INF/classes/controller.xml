@@ -50,7 +50,7 @@
     <action name="real" class="zwc.action.RealAction">
     </action>
     <action name="confirm_order" class="tan.action.ToSettlementAction">
-    	<form>tan.form.ToSettlementForm</form>
+    	<form>tan.form.ConfirmForm</form>
     	<result name="success" direct="false">confirm_order.jsp</result>
         <result name="error">home.jsp</result>
     </action>

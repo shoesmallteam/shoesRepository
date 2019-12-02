@@ -62,23 +62,13 @@
     display: block;
     font-size: 12px;
 }
-.count-add:hover,.count-reduce:hover{
-    border: 1px solid orange;
-}
-.count-add,.count-reduce{
-    width: 25%;
-}
-.count-number{
-    width: 40%;
-}
-.count-add,.count-reduce,.count-number{
+.shoescount {
     display: inline-block;
     height: 30px;
     line-height: 30px;
     font-size: 20px;
     text-align: center;
-    border: 1px solid #6c6c6c;
-    cursor: pointer;
+    text-overflow: ellipsis;
 }
 .xiaoji{
     color: red;

@@ -22,6 +22,7 @@ import xyw.core.dao.impl.BaseDaoImpl;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 import xyw.dto.GoodsDto;
+import xyw.pojo.Goods;
 import xyw.utils.JsonUtils;
 
 /**
@@ -58,7 +59,7 @@ public class CartAtion extends XywAction {
 		
 		boolean flag = false;
 		
-		List<Shoesdetail> result = new ArrayList<Shoesdetail>();
+		List<Goods> result = new ArrayList<Goods>();
 		
 		Shoesdetail sd = new Shoesdetail();
 		
@@ -80,8 +81,9 @@ public class CartAtion extends XywAction {
 					
 					if(rs.size() > 0)
 					{
-						
-						result.add((Shoesdetail) rs.get(0));
+						Goods goods = new Goods((Shoesdetail) rs.get(0));
+						goods.setAmount(Integer.parseInt(gd.getAmount()));
+						result.add(goods);
 						
 					}
 				}

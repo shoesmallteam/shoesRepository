@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -20,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" type="text/css" href="css/confirm_order.css">
 	
   </head>
-  
+
   <body>
   	<header>
     <div class="container">
@@ -107,40 +108,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="col-xs-2 items-headers-center">数量</div>
                     <div class="col-xs-1 items-headers-center">小计</div>
                 </div>
-                <div class="body-products info-cell info-line">
-                    <div class="col-xs-4">
-                        <a href="product.do?shoesid=${confirmdto.detail.shoesid }" class="detail-img">
-                            <img class="info-img" src="${confirmdto.detail.image }">
-                        </a>
-                        <div class="detail-descs">
-                            <a href="product.do?shoesid=${confirmdto.detail.shoesid }" class="detail-title">
-                                ${confirmdto.detail.descs }
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xs-3">
-                        <p class="color">
-                            颜色:
-                            <span>${confirmdto.detail.color }</span>
-                        </p>
-                        <p class="size">
-                            尺码:
-                            <span>${confirmdto.detail.size }</span>
-                        </p>
-                    </div>
-                    <div class="col-xs-1">
-                        <p class="price">${confirmdto.detail.price }</p>
-                    </div>
-                    <div class="col-xs-2">
-                        <span class="count-reduce">-</span>
-                        <span class="count-number">1</span>
-                        <span class="count-add">+</span>
-                    </div>
-                    <div class="col-xs-1">
-                        <p class="xiaoji">199.00</p>
-                    </div>
-                </div>
-            </div>
+                <c:forEach items="${confirmdto.list }" var="shoesdetail" varStatus="i">
+	                <div class="body-products info-cell info-line">
+	                    <div class="col-xs-4">
+	                        <a href="product.do?shoesid=${shoesdetail.shoesid }" class="detail-img">
+	                            <img class="info-img" src="${shoesdetail.image}">
+	                        </a>
+	                        <div class="detail-descs">
+	                            <a href="product.do?shoesid=${shoesdetail.shoesid }" class="detail-title">
+	                                ${shoesdetail.descs }
+	                            </a>
+	                        </div>
+	                    </div>
+	                    <div class="col-xs-3">
+	                        <p class="color">
+	                            颜色:
+	                            <span>${shoesdetail.color }</span>
+	                        </p>
+	                        <p class="size">
+	                            尺码:
+	                            <span>${shoesdetail.size }</span>
+	                        </p>
+	                    </div>
+	                    <div class="col-xs-1">
+	                        <p class="price">${shoesdetail.price }</p>
+	                    </div>
+	                    <div class="col-xs-2 shoescount">
+	                        <span class="count-number">${shoesdetail.count }</span>
+	                    </div>
+	                    <div class="col-xs-1">
+	                        <p class="xiaoji">${shoesdetail.price }</p>
+	                    </div>
+	                </div>
+	            	</div>
+                </c:forEach>
         </div>
     </div>
 </div>
@@ -170,7 +171,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td colspan="2">
                         <div class="textarea-allprice">
                             <span>店铺合计(含运费)</span>
-                            <span class="textarea-price">199.00</span>
+                            <span class="textarea-price"></span>
                         </div>
                     </td>
                 </tr>

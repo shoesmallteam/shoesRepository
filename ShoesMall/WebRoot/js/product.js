@@ -266,8 +266,11 @@
     	$('.buy').click(function(){
     		var count = $('.count input').val();
     		
+    		var items = [{"shoesdetailid":shoesdetailid,"count":1},{"shoesdetailid":"007448ff-a7aa-4ee1-92d5-d700deddc528","count":1}];
     		if (color != null && size != null){
-    			$('.buy').attr('href','confirm_order.do?shoesdetailid='+shoesdetailid+'&count='+count);
+    			//跳结账界面
+    			items = encodeURI(JSON.stringify(items));
+    			location.href = 'confirm_order.do?items='+items;
     		}else{
     			if (color == null){
                     confirm('Please select a color');

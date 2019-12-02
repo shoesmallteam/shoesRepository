@@ -1,16 +1,19 @@
 package tan.dto;
 
+import java.util.List;
+
 import cn.shoesmall.pojo.Shoesdetail;
 import tan.pojo.AddressDto;
 
 public class ToConfirmDto {
-	private Shoesdetail detail;
+	private List<Shoesdetail> list;
 	private AddressDto address;
-	public Shoesdetail getDetail() {
-		return detail;
+	
+	public List<Shoesdetail> getList() {
+		return list;
 	}
-	public void setDetail(Shoesdetail detail) {
-		this.detail = detail;
+	public void setList(List<Shoesdetail> list) {
+		this.list = list;
 	}
 	public AddressDto getAddress() {
 		return address;

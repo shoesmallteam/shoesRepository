@@ -3,28 +3,11 @@
  */
 (function(){
 	var count = null;
-	
-	$('.count-reduce').click(function(){
-		count = $('.count-number').text().trim();
-		count --;
-		if(count <= 1){
-			count = 1;
-		}
-		$('.count-number').html(count);
-		var price = (count*$('.price').text().trim()).toFixed(2);
-		$('.xiaoji').html(price);
-		$('.textarea-allprice>span').eq(1).html(price);
-		$('.realpay-price').html(price);
+	$('.xiaoji').each(function(){
+		count += parseInt($(this).text().trim());
 	});
-	$('.count-add').click(function(){
-		count = $('.count-number').text().trim();
-		count ++;
-		$('.count-number').html(count);
-		var price = (count*$('.price').text().trim()).toFixed(2);
-		$('.xiaoji').html(price);
-		$('.textarea-allprice>span').eq(1).html(price);
-		$('.realpay-price').html(price);
-	});
+	$('.textarea-allprice').children('.textarea-price').html(count.toFixed(2));
+	$('.realpay-price').html(count.toFixed(2));
 	
 	$('.order').click(function(){
 		

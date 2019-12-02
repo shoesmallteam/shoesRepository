@@ -15,6 +15,11 @@ public class ClassifyForm extends XywForm implements Serializable{
 	 */
 	private static final long serialVersionUID = 713742402630630741L;
 	
+	private String orderByPriceUp;
+	
+	private String orderByPriceDown;
+	
+	private String color;
 	
 	private String size;
 	
