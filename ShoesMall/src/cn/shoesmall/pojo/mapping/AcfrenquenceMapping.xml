@@ -2,7 +2,20 @@
 <class name="cn.shoesmall.pojo.Acfrenquence" table="acfrenquence">
 	<property name="acfrenquenceid" column="acfrenquenceid" type="java.lang.String"></property>
 	<property name="accountid" column="accountid" type="java.lang.String"></property>
-	<property name="shoesdetailid" column="shoesdetailid" type="java.lang.String"></property>
+	<property name="shoesid" column="shoesid" type="java.lang.String"></property>
 	<property name="frequence" column="frequence" type="int"></property>
 	<property name="maxalive" column="maxalive" type="int"></property>
+	
+	<insert id="insertAcfrenquence">
+		insert into acfrenquence(acfrenquenceid,accountid,shoesid,frequence) 
+		values (#{acfrenquenceid},#{accountid},#{shoesid},#{frequence})
+	</insert>
+	
+	<select id="selectFrenquence" returnType="cn.shoesmall.pojo.Acfrenquence">
+		select * from acfrenquence where accountid = #{accountid} and shoesid = #{shoesid}
+	</select>
+	
+	<update id="updateFrequence">
+		update acfrenquence set frequence = #{frequence} where shoesid = #{shoesid};
+	</update>
 </class>

@@ -215,7 +215,7 @@
             if (color != null && size != null){
             	//查询详情id
             	$.ajax({
-            		type:"get",
+            		type:"post",
             		url: 'selectcount.do',
         			data: {'shoes':JSON.stringify(shoes)},
         			dataType: "json",
@@ -266,7 +266,7 @@
     	$('.buy').click(function(){
     		var count = $('.count input').val();
     		
-    		var items = [{"shoesdetailid":shoesdetailid,"count":1},{"shoesdetailid":shoesdetailid,"count":1}];
+    		var items = [{"shoesdetailid":shoesdetailid,"count":1}];
     		if (color != null && size != null){
     			//跳结账界面
     			items = encodeURI(JSON.stringify(items));

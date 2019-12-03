@@ -3,7 +3,7 @@ package cn.shoesmall.pojo;
 public class Acfrenquence {
 	private String acfrenquenceid;
 	private String accountid;
-	private String shoesdetailid;
+	private String shoesid;
 	private int frequence;
 	private int maxalive;
 	public String getAcfrenquenceid() {
@@ -18,11 +18,11 @@ public class Acfrenquence {
 	public void setAccountid(String accountid) {
 		this.accountid = accountid;
 	}
-	public String getShoesdetailid() {
-		return shoesdetailid;
+	public String getShoesid() {
+		return shoesid;
 	}
-	public void setShoesdetailid(String shoesdetailid) {
-		this.shoesdetailid = shoesdetailid;
+	public void setShoesid(String shoesid) {
+		this.shoesid = shoesid;
 	}
 	public int getFrequence() {
 		return frequence;

@@ -2,12 +2,14 @@ package tan.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.shoesmall.pojo.Orders;
+import cn.shoesmall.pojo.Shoesdetail;
 import net.sf.json.JSONObject;
 import tan.form.AddOrderForm;
 import xyw.core.dao.BaseDao;
@@ -28,6 +30,16 @@ public class AddOrderAction extends XywAction{
 		Orders orders = (Orders)JSONObject.toBean(jobj, Orders.class);
 		System.out.println(orders);
 		
+		//修改库存,先查看库存
+		Shoesdetail detail = new Shoesdetail();
+		detail.setShoesdetailid(orders.getShoesdetailid());
+		List<Object> list = dao.select("selectByShoesdetailid", detail);
+		for (Object object : list) {
+			detail = (Shoesdetail)object;
+			detail.setCount(detail.getCount() - Integer.valueOf(form.getCount()));
+		}
+		
+		dao.update("updateCount", detail);
 		boolean result = dao.insert("insertOrders", orders);
 		PrintWriter out = response.getWriter();
 		if (result) {

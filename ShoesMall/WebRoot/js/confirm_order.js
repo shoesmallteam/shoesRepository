@@ -14,25 +14,27 @@
 	$('.order').click(function(){
 		var accountid = $('.accountid').val();
 		var order = null;
-		var result = null;
 		
 		$('.body-products').each(function(){
 			var orderid = $(this).children('.orderid').val();
 			var shoesdetailid = $(this).children('.shoesdetailid').val();
+			var count = $('.count-number').text().trim();
 			order = {'accountid':accountid,'orderid':orderid,'shoesdetailid':shoesdetailid};
 			
-			$.ajax({
-				type: "post",
-				url:"addOrder.do",
-                data:{'order':JSON.stringify(order)},
-                dataType : 'json',
-                success : function(result){
-                	result = result;
-                }
-			});
+			if(orderid != '' && orderid != null){
+				$.ajax({
+					type: "post",
+					url:"addOrder.do",
+					data:{'order':JSON.stringify(order),'count':count},
+					dataType : 'json',
+					success : function(result){
+						if(result){
+							alert('success');
+							$('.orderid').attr('value','');
+						}
+					}
+				});
+			}
 		});
-		if(result){
-			alert(success);
-		}
 	});
 })();
