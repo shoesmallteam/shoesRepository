@@ -19,4 +19,22 @@ public class GenerateAc {
         }
         return stringBuilder.toString();
     }
+    public static String generateAc1()
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        while(true)
+        {
+            if (stringBuilder.length() > 5)
+            {
+                break;
+            }
+            int number = (int)(Math.random() * 6);
+            if (stringBuilder.length() == 0 && number == 0)
+            {
+                continue;
+            }
+            stringBuilder.append(number);
+        }
+        return stringBuilder.toString();
+    }
 }

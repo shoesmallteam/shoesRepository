@@ -53,12 +53,79 @@ img{
 	color: #c40e0e;
 	float: left;
 }
-.modal-footer .modal-footer-r,
-.modal-footer .modal-footer-r span{
+.modal-footer .modal-footer-r,.modal-footer .modal-footer-r1{
 	color: #999;
 	float: right;
 	padding-right: 5px;
 }
+
+
+
+
+
+#forgetModal .modal-body{
+	padding-top: 20px;
+}
+#forgetModal .modal-body li .accountNumber,.password{
+	height: 40px;
+	width: 300px;
+	border: 1px solid #808080;
+	margin: 10px 0px;
+	padding-left: 10px;
+}
+#forgetname{
+	border: 1px solid #808080;
+	margin: 10px 0px;
+	padding-left: 10px;
+	height: 40px;
+	width: 150px;
+}
+#ObtainBtn{
+	height: 40px;
+	width: 150px;
+	background: #c40e0e;
+	color: white;
+	margin: 10px 0px;
+	padding-left: 10px;
+}
+#forgetModal .modal-body li .error{
+	display: none;
+}
+#forgetModal .modal-body li .error .error-con{
+	color: #ff6700;
+	margin-right: 265px;
+}
+#forgetModal .modal-body li .error em{
+	margin-left: 138px;
+	vertical-align:middle;
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+	background: url(../images/sprite_login.gif);
+	background-position: 0 -69px;
+}
+#ResetBtn{
+	height: 40px;
+	width: 300px;
+	background: #c40e0e;
+	margin-top: 10px;
+	color: white;
+}
+/*涓�*/
+#forgetModal .modal-footer .modal-footer-l{
+	color: #c40e0e;
+	float: left;
+}
+#forgetModal .modal-footer .modal-footer-r,#forgetModal .modal-footer .modal-footer-r1{
+	color: #999;
+	float: right;
+	padding-right: 5px;
+}
+
+
+
+
+
 
 /*娉ㄥ唽妯℃�佹*/
 
