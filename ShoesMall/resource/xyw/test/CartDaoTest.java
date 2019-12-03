@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.json.JsonArray;
 
 import org.junit.After;
 import org.junit.Before;

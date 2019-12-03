@@ -24,9 +24,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="row">
             <div class="col-xs-8 col-sm-9">
                 <div class="row">
-                    <div class="col-xs-12 logo">
+                    <a href="http://localhost:8080/ShoesMall/home.jsp">
                         <img src="images/mainPage/logo.svg"/>
-                    </div>
+                    </a>
                     <div class="col-xs-12 navb text-center">
                         <ul>
                             <li><a href="./classify.jsp?typename=女" target="_self">女装</a></li>
