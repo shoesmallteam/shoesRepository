@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -35,7 +37,7 @@ public class ClassifyAction extends XywAction{
 	public String execute(HttpServletRequest request, HttpServletResponse response, XywForm arg2)
 			throws ServletException, IOException {
 		
-		
+		Connection conn = null;
 		ClassifyForm form = (ClassifyForm)arg2;
 		
 		
@@ -46,8 +48,13 @@ public class ClassifyAction extends XywAction{
 		Shoesdetail sd = new Shoesdetail();
 		sd.setPrice(111);
 		sd.setDescs(decode(form.getTypename()));
-				
-		List list = dao.select("selectByDesc",sd); 
+		List list = new ArrayList<Object>();
+		try {
+			conn = DBHelper.getConnection();
+			list = dao.select("selectByDesc",sd,conn); 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 
 		

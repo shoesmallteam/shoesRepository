@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource
+            name="mysql"
+            auth="Container"
+            factory="org.apache.naming.factory.BeanFactory"
+            type="com.mchange.v2.c3p0.ComboPooledDataSource"
+            driverClass="com.mysql.jdbc.Driver"
+            maxPoolSize="100"
+            minPoolSize="2"
+            user="root"
+            password="1234"
+            jdbcUrl="jdbc:mysql://59.110.161.27:3306/shoesmall?useUnicode=true&characterEncoding=UTF-8"/>
+</Context>
