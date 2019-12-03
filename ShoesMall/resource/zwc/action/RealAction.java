@@ -38,7 +38,9 @@ public class RealAction extends XywAction{
 		BaseDao dao = new BaseDaoImpl();
 		Account ac = new Account();
 		ac.setAccountid(id);
-		List list = dao.select("selectAccount3", ac);
+		List list;
+		try {
+			list = dao.select("selectAccount3", ac, null);
 			for (Object object : list) {
 				ac = (Account)object;
 				r = ac.getSsidnumber();//通过id查到身份证
@@ -47,18 +49,23 @@ public class RealAction extends XywAction{
 				ac.setAccountid(id);
 				ac.setSsidnumber(m);
 				ac.setRealname(n);
-				dao.update("updateAccountidssidnumberandrealname", ac);
+				dao.update("updateAccountidssidnumberandrealname", ac, null);
 			} else {
 				if (!r.equals(m)) {
 					ac.setAccountid(id);
 					ac.setSsidnumber(m);
 					ac.setRealname(n);
-					dao.update("updateAccountidssidnumberandrealname", ac);
+					dao.update("updateAccountidssidnumberandrealname", ac, null);
 				} else {
 					PrintWriter out = arg1.getWriter();
 					out.write(m);
 				}
 			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
 			
 		
 		return null;

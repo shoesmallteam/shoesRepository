@@ -42,52 +42,59 @@ public class RegisterAction extends XywAction{
 		BaseDao dao = new BaseDaoImpl();
 		Account ac = new Account();
 		ac.setTel(phonenumber);//电话
-		List list = dao.select("selectAccount", ac);
-		Account ac1 = new Account();
-		ac1.setEmail(email);//邮箱
-		List list1 = dao.select("selectAccount1", ac1);
-			if (list.size()>0) {
-				System.out.println("手机号码已存在");
-				PrintWriter out = arg1.getWriter();
-				out.write(phonenumber);
-			}else if(list1.size()>0){
-				System.out.println("邮箱已存在");
-				PrintWriter out = arg1.getWriter();
-				out.write(email);
-			}else if(serverCode.equalsIgnoreCase(verificationcode)){
-				//成功将数据存到数据库
-				//插入Account表
-				ac.setAccountid(PrimaryKeyGeneric.getPrimaryKey());//主键id用UUID
-				ac.setAccount(GenerateAc.generateAc());//用户名随机
-				ac.setTel(phonenumber);//电话
-				ac.setPassword(Encoding.encode(pwd, "MD5"));//密码加密
-				ac.setEmail(email);//邮箱
-				ac.setIsassistant(0);
-				ac.setIsvip(0);
-				dao.insert("insertAccount", ac);
-				//插入User表
-				User user = new User();
-				user.setUserid(PrimaryKeyGeneric.getPrimaryKey());//主键id用UUID
-				user.setNikename(username);//昵称
-				user.setCartid(PrimaryKeyGeneric.getPrimaryKey());//购物车id
-				user.setAccountid(ac.getAccountid());//Account表id
-				dao.insert("insertUser", user);
-				//插入Cart表
-				Cart cart = new Cart();
-				//System.out.println(ac.getAccountid());
-				//System.out.println(user.getCartid());
-				cart.setAccountid(ac.getAccountid());//Account表id
-				cart.setCartid(user.getCartid());//User表购物车id
-				dao.insert("insertCart", cart);
-				//修改session中验证码,防重复登陆s
-				arg0.getSession().setAttribute("code", "、、、");
-				//把账号传过去
-				PrintWriter out = arg1.getWriter();
-				out.write(ac.getAccount());
-			}else{
-				PrintWriter out = arg1.getWriter();
-				out.write(verificationcode);
-			}
+		List list;
+		try {
+			list = dao.select("selectAccount", ac, null);
+			Account ac1 = new Account();
+			ac1.setEmail(email);//邮箱
+			List list1 = dao.select("selectAccount1", ac1, null);
+				if (list.size()>0) {
+					System.out.println("手机号码已存在");
+					PrintWriter out = arg1.getWriter();
+					out.write(phonenumber);
+				}else if(list1.size()>0){
+					System.out.println("邮箱已存在");
+					PrintWriter out = arg1.getWriter();
+					out.write(email);
+				}else if(serverCode.equalsIgnoreCase(verificationcode)){
+					//成功将数据存到数据库
+					//插入Account表
+					ac.setAccountid(PrimaryKeyGeneric.getPrimaryKey());//主键id用UUID
+					ac.setAccount(GenerateAc.generateAc());//用户名随机
+					ac.setTel(phonenumber);//电话
+					ac.setPassword(Encoding.encode(pwd, "MD5"));//密码加密
+					ac.setEmail(email);//邮箱
+					ac.setIsassistant(0);
+					ac.setIsvip(0);
+					dao.insert("insertAccount", ac, null);
+					//插入User表
+					User user = new User();
+					user.setUserid(PrimaryKeyGeneric.getPrimaryKey());//主键id用UUID
+					user.setNikename(username);//昵称
+					user.setCartid(PrimaryKeyGeneric.getPrimaryKey());//购物车id
+					user.setAccountid(ac.getAccountid());//Account表id
+					dao.insert("insertUser", user, null);
+					//插入Cart表
+					Cart cart = new Cart();
+					//System.out.println(ac.getAccountid());
+					//System.out.println(user.getCartid());
+					cart.setAccountid(ac.getAccountid());//Account表id
+					cart.setCartid(user.getCartid());//User表购物车id
+					dao.insert("insertCart", cart, null);
+					//修改session中验证码,防重复登陆s
+					arg0.getSession().setAttribute("code", "、、、");
+					//把账号传过去
+					PrintWriter out = arg1.getWriter();
+					out.write(ac.getAccount());
+				}else{
+					PrintWriter out = arg1.getWriter();
+					out.write(verificationcode);
+				}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return null;
 	}

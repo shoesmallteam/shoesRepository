@@ -44,7 +44,9 @@ public class PassAction extends XywAction{
 		BaseDao dao = new BaseDaoImpl();
 		Account ac = new Account();
 		ac.setAccountid(id);
-		List list = dao.select("selectAccount3", ac);
+		List list;
+		try {
+			list = dao.select("selectAccount3", ac, null);
 			for (Object object : list) {
 				ac = (Account)object;
 				old = ac.getPassword();
@@ -58,7 +60,7 @@ public class PassAction extends XywAction{
 				Account ac1 = new Account();
 				ac1.setAccountid(id);
 				ac1.setPassword(m);
-				dao.update("updateAccountidpass", ac1);
+				dao.update("updateAccountidpass", ac1, null);
 				//清除原来得数据
 				Cookie[] cookies=arg0.getCookies();
 				for(Cookie c: cookies){
@@ -67,6 +69,11 @@ public class PassAction extends XywAction{
 				    arg1.addCookie(cookie);
 				}
 			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
 			
 		
 		

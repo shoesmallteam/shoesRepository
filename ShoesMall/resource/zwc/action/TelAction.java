@@ -27,11 +27,17 @@ public class TelAction extends XywAction{
 		Account ac = new Account();
 		//通过查出单个进行比较
 		ac.setTel(tel);
-		List list = dao.select("selectAccount", ac);
-		if (list.size()>0) {
-			System.out.println("已存在");
-			PrintWriter out = arg1.getWriter();
-			out.write(tel);
+		List list;
+		try {
+			list = dao.select("selectAccount", ac, null);
+			if (list.size()>0) {
+				System.out.println("已存在");
+				PrintWriter out = arg1.getWriter();
+				out.write(tel);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		//通过查出所有然后再循环对比数据
 //		List list = dao.select("selectAll", new Account());

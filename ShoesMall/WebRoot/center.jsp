@@ -217,6 +217,7 @@
 				</li>
 				<li>
 					<div class="layout-right-l2-top">
+					<input type="hidden" value="密码修改成功，请重新登录" id="t1"/>
 						<p>修改密码</p>
 					</div>
 					<div class="layout-right-l2-middle1">
@@ -233,6 +234,7 @@
 				</li>
 				<li>
 					<div class="layout-right-l2-top">
+					<input type="hidden" value="修改成功" id="t2"/>
 						<p>修改手机号码</p>
 					</div>
 					<div class="layout-right-l2-middle1">
@@ -248,6 +250,7 @@
 				</li>
 				<li>
 					<div class="layout-right-l2-top">
+					<input type="hidden" value="修改成功" id="t3"/>
 						<p>修改登陆邮箱</p>
 					</div>
 					<div class="layout-right-l2-middle1">
@@ -263,6 +266,7 @@
 				</li>
 				<li>
 					<div class="layout-right5-top">
+					<input type="hidden" value="修改成功" id="t4"/>
 						<p class="layout-right5-top-p1">实名认证</p>
 						<p class="layout-right5-top-p2">请确认是您本人，并填写真实信息</p>
 					</div>

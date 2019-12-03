@@ -65,7 +65,12 @@ public class CookieFilter implements Filter{
 			String dianhua = null;
 			String zhanghao = null;
 			ac2.setAccountid(id);
-			list3 = dao.select("selectAccount3", ac2);
+			try {
+				list3 = dao.select("selectAccount3", ac2, null);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			for (Object object : list3) {
 				ac2 = (Account)object;
 				zhanghao = ac2.getAccount();
@@ -82,15 +87,30 @@ public class CookieFilter implements Filter{
 			if(m1.find()){
 				System.out.println("输入的登陆账号是邮箱");
 				ac.setEmail(youxiang);
-				list = dao.select("selectAccount1", ac);
+				try {
+					list = dao.select("selectAccount1", ac, null);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}else if(m2.find()){
 				System.out.println("输入的登陆账号是手机号");
 				ac.setTel(dianhua);
-				list = dao.select("selectAccount", ac);
+				try {
+					list = dao.select("selectAccount", ac, null);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}else{
 				System.out.println("输入的登陆账号就是账号");
 				ac.setAccount(zhanghao);
-				list = dao.select("selectAccount2", ac);
+				try {
+					list = dao.select("selectAccount2", ac, null);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if (list.size()>0){
 				for (Object object : list) {
@@ -99,10 +119,16 @@ public class CookieFilter implements Filter{
 				}
 				User u = new User();
 				u.setAccountid(id);
-				List list1 = dao.select("selectUserAccountid", u);
-				for (Object object : list1) {
-					u = (User)object;
-					nikename = u.getNikename();//昵称
+				List list1;
+				try {
+					list1 = dao.select("selectUserAccountid", u, null);
+					for (Object object : list1) {
+						u = (User)object;
+						nikename = u.getNikename();//昵称
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 				//把信息存入info,用于单态
 				PersonInfo p = new PersonInfo();

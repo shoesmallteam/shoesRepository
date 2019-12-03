@@ -53,25 +53,32 @@ public class SessionCenterFilter  implements Filter{
 		String ni = null;
 		String p = null;
 		ac.setAccountid(id);
-		List list = dao.select("selectAccount3", ac);
-		for (Object object : list) {
-			ac = (Account)object;
-			p = ac.getPhoto();
-			name = ac.getSsname();//名字
-			sex = ac.getSssex();//性别
-			bir = ac.getSsbirthday();//生日
+		List list;
+		try {
+			list = dao.select("selectAccount3", ac, null);
+			for (Object object : list) {
+				ac = (Account)object;
+				p = ac.getPhoto();
+				name = ac.getSsname();//名字
+				sex = ac.getSssex();//性别
+				bir = ac.getSsbirthday();//生日
+			}
+			User u = new User();
+			u.setAccountid(id);
+			List list1 = dao.select("selectUserAccountid", u, null);
+			for (Object object : list1) {
+				u = (User)object;
+				ni = u.getNikename();//昵称
+			}
+			//保存所有信息到session
+			request.getSession().setAttribute("ac", ac);
+			request.getSession().setAttribute("ni", ni);
+			arg2.doFilter(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		User u = new User();
-		u.setAccountid(id);
-		List list1 = dao.select("selectUserAccountid", u);
-		for (Object object : list1) {
-			u = (User)object;
-			ni = u.getNikename();//昵称
-		}
-		//保存所有信息到session
-		request.getSession().setAttribute("ac", ac);
-		request.getSession().setAttribute("ni", ni);
-		arg2.doFilter(request, response);
+		
 	}
 
 	@Override

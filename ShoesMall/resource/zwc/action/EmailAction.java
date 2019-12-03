@@ -26,11 +26,17 @@ public class EmailAction extends XywAction{
 		Account ac = new Account();
 		//通过查出单个进行比较
 		ac.setEmail(email);
-		List list = dao.select("selectAccount1", ac);
-		if (list.size()>0) {
-			System.out.println("已存在");
-			PrintWriter out = arg1.getWriter();
-			out.write(email);
+		List list;
+		try {
+			list = dao.select("selectAccount1", ac, null);
+			if (list.size()>0) {
+				System.out.println("已存在");
+				PrintWriter out = arg1.getWriter();
+				out.write(email);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return null;
 	}

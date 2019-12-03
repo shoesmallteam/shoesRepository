@@ -53,12 +53,22 @@ public class CenterAction extends XywAction{
 		ac.setSsname(xingming);
 		ac.setSssex(xingbie);
 		ac.setSsbirthday(bir);
-		dao.update("updateAccountid", ac);
+		try {
+			dao.update("updateAccountid", ac, null);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		//更改User表
 		User u = new User();
 		u.setAccountid(id);
 		u.setNikename(nicheng);
-		dao.update("updateUser", u);
+		try {
+			dao.update("updateUser", u, null);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//返回生日
 		PrintWriter out = arg1.getWriter();
 		out.write(bir);

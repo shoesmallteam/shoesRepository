@@ -37,10 +37,16 @@ public class EmailsAction extends XywAction{
 		BaseDao dao = new BaseDaoImpl();
 		Account ac = new Account();
 		ac.setAccountid(id);
-		List list = dao.select("selectAccount3", ac);
-		for (Object object : list) {
-			ac = (Account)object;
-			e = ac.getEmail();
+		List list;
+		try {
+			list = dao.select("selectAccount3", ac, null);
+			for (Object object : list) {
+				ac = (Account)object;
+				e = ac.getEmail();
+			}
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		if (!e.equals(n)) {
 			//返回原邮箱
@@ -50,14 +56,20 @@ public class EmailsAction extends XywAction{
 			//通过邮箱查
 			Account ac1 = new Account();
 			ac1.setEmail(m);
-			List list1 = dao.select("selectAccount1", ac1);
-			if (list1.size()==0) {
-				ac1.setAccountid(id);
-				ac1.setPassword(m);
-				dao.update("updateAccountidemail", ac1);
-			}else{
-				PrintWriter out = arg1.getWriter();
-				out.write(m);
+			List list1;
+			try {
+				list1 = dao.select("selectAccount1", ac1, null);
+				if (list1.size()==0) {
+					ac1.setAccountid(id);
+					ac1.setPassword(m);
+					dao.update("updateAccountidemail", ac1, null);
+				}else{
+					PrintWriter out = arg1.getWriter();
+					out.write(m);
+				}
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		}
 		

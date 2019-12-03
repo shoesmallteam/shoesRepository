@@ -38,29 +38,36 @@ public class PhotosAction extends XywAction{
 		BaseDao dao = new BaseDaoImpl();
 		Account ac = new Account();
 		ac.setAccountid(id);
-		List list = dao.select("selectAccount3", ac);
-		for (Object object : list) {
-			ac = (Account)object;
-			t = ac.getTel();
-		}
-		if (!t.equals(n)) {
-			//返回原手机号码
-			PrintWriter out = arg1.getWriter();
-			out.write(n);
-		}else{
-			//通过电话查
-			Account ac1 = new Account();
-			ac1.setTel(m);
-			List list1 = dao.select("selectAccount", ac1);
-			if (list1.size()==0) {
-				ac1.setAccountid(id);
-				ac1.setPassword(m);
-				dao.update("updateAccountidtel", ac1);
-			}else{
-				PrintWriter out = arg1.getWriter();
-				out.write(m);
+		List list;
+		try {
+			list = dao.select("selectAccount3", ac, null);
+			for (Object object : list) {
+				ac = (Account)object;
+				t = ac.getTel();
 			}
+			if (!t.equals(n)) {
+				//返回原手机号码
+				PrintWriter out = arg1.getWriter();
+				out.write(n);
+			}else{
+				//通过电话查
+				Account ac1 = new Account();
+				ac1.setTel(m);
+				List list1 = dao.select("selectAccount", ac1, null);
+				if (list1.size()==0) {
+					ac1.setAccountid(id);
+					ac1.setPassword(m);
+					dao.update("updateAccountidtel", ac1, null);
+				}else{
+					PrintWriter out = arg1.getWriter();
+					out.write(m);
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 		
 		return null;
 	}

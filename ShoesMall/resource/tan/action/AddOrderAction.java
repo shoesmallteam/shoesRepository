@@ -33,17 +33,22 @@ public class AddOrderAction extends XywAction{
 		//修改库存,先查看库存
 		Shoesdetail detail = new Shoesdetail();
 		detail.setShoesdetailid(orders.getShoesdetailid());
-		List<Object> list = dao.select("selectByShoesdetailid", detail);
-		for (Object object : list) {
-			detail = (Shoesdetail)object;
-			detail.setCount(detail.getCount() - Integer.valueOf(form.getCount()));
-		}
-		
-		dao.update("updateCount", detail);
-		boolean result = dao.insert("insertOrders", orders);
-		PrintWriter out = response.getWriter();
-		if (result) {
-			out.print(result);
+		List<Object> list;
+		try {
+			list = dao.select("selectByShoesdetailid", detail, null);
+			for (Object object : list) {
+				detail = (Shoesdetail)object;
+				detail.setCount(detail.getCount() - Integer.valueOf(form.getCount()));
+			}
+			
+			dao.update("updateCount", detail, null);
+			boolean result = dao.insert("insertOrders", orders, null);
+			PrintWriter out = response.getWriter();
+			if (result) {
+				out.print(result);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		return null;

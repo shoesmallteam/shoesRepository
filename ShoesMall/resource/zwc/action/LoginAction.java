@@ -47,17 +47,32 @@ public class LoginAction extends XywAction{
 			System.out.println("输入的登陆账号是邮箱");
 			em = un;
 			ac.setEmail(em);
-			list = dao.select("selectAccount1", ac);
+			try {
+				list = dao.select("selectAccount1", ac, null);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else if(m2.find()){
 			System.out.println("输入的登陆账号是手机号");
 			ph = un;
 			ac.setTel(ph);
-			list = dao.select("selectAccount", ac);
+			try {
+				list = dao.select("selectAccount", ac, null);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else{
 			System.out.println("输入的登陆账号就是账号");
 			uu = un;
 			ac.setAccount(un);
-			list = dao.select("selectAccount2", ac);
+			try {
+				list = dao.select("selectAccount2", ac, null);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		//数据库里的拿到的数据
@@ -84,11 +99,17 @@ public class LoginAction extends XywAction{
 				sex = ac.getSssex();
 				bir = ac.getSsbirthday();
 				user.setAccountid(id);
-				List list1 = dao.select("selectUserAccountid", user);
-				for (Object object2 : list1) {
-					user = (User)object2;
-					nc = user.getNikename();//获得昵称
-					System.out.println(nc);
+				List list1;
+				try {
+					list1 = dao.select("selectUserAccountid", user, null);
+					for (Object object2 : list1) {
+						user = (User)object2;
+						nc = user.getNikename();//获得昵称
+						System.out.println(nc);
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 			if(!pw1.equals(newpwd)){

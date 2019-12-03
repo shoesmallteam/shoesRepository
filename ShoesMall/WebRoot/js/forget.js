@@ -1,8 +1,24 @@
 (function(){
 	var forgetusername;
+	var flag = true;
 		//点击获取验证码
 		$('#ObtainBtn').click(function(){
-			alert("Verification code sent");
+			//alert("Verification code sent");
+			if(!flag){
+				 return;
+			 }
+			flag=false;
+			var i = 5;
+			var t = $('#t1').val();
+			var interval = setInterval(function() {
+				$('#ObtainBtn').text(i);
+				i = i - 1;
+			}, 1000);
+			setTimeout(function() {
+				clearInterval(interval);
+				flag = true;
+				$('#ObtainBtn').text(t);
+			}, 5000);
 			var f = $('#forgetusername').val();
 			$.ajax({
 				type:"post",

@@ -31,20 +31,26 @@ public class ForgetpwdAction extends XywAction{
 		ac.setEmail(f);
 		String id= null;
 		//通过邮箱查到id
-		List list = dao.select("selectAccount1", ac);
-		for (Object object : list) {
-			ac = (Account)object;
-			id = ac.getAccountid();
-		}
-		if (list.size()>0) {
-			//通过id修改密码
-			Account ac1 = new Account();
-			ac1.setAccountid(id);
-			ac1.setPassword(newforgetpwd);
-			dao.update("updateAccountidpass", ac1);
-		} else {
-			PrintWriter out = arg1.getWriter();
-			out.write(forgetpwd);
+		List list;
+		try {
+			list = dao.select("selectAccount1", ac, null);
+			for (Object object : list) {
+				ac = (Account)object;
+				id = ac.getAccountid();
+			}
+			if (list.size()>0) {
+				//通过id修改密码
+				Account ac1 = new Account();
+				ac1.setAccountid(id);
+				ac1.setPassword(newforgetpwd);
+				dao.update("updateAccountidpass", ac1, null);
+			} else {
+				PrintWriter out = arg1.getWriter();
+				out.write(forgetpwd);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		

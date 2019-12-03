@@ -2,7 +2,8 @@ package xyw.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,6 +17,7 @@ import cn.shoesmall.pojo.Cart;
 import cn.shoesmall.util.CookieUtil;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 import xyw.dto.GoodsDto;
@@ -44,7 +46,16 @@ public class AddToCartActon extends XywAction{
 		Cart cart = new Cart();
 		cart.setAccountid(accountid);
 		BaseDao dao = new BaseDaoImpl();
-		List list = dao.select("selectCartsByAcid", cart);
+		Connection conn = null;
+		List list = new ArrayList<Object>();
+		try {
+			list = dao.select("selectCartsByAcid", cart, conn);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			DBHelper.disConnect(conn);
+		}
 		List<GoodsDto> gds = new LinkedList<GoodsDto>();
 		boolean flag = false;
 		
@@ -79,8 +90,22 @@ public class AddToCartActon extends XywAction{
 		cart.setGoods(JsonUtils.toJsonArrayString(gds));
 		
 		PrintWriter out = new PrintWriter(response.getWriter(),true);
+		boolean result = false;
+		try {
+			conn = DBHelper.getConnection();
+			conn.setAutoCommit(false);
+			result = dao.update("updateCartById", cart,conn);
+			conn.commit();
+		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}
+		out.print((result ? "true" : "false"));
 		
-		out.print(dao.update("updateCartById", cart) == true ? "true" : "false");
 		return null;
 	}
 

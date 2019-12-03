@@ -572,7 +572,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</li>
 							<li class="text-center">
 								<input  type="text" id="forgetname" class="Obtain " value="" placeholder="请输入验证码"/>
-								<button class="btn" id="ObtainBtn">获取验证码</button>
+								<input type="hidden" value="点击发送验证码" id="t1"/>
+								<button class="btn" id="ObtainBtn" >点击发送验证码</button>
 							</li>
 							<li>
 								<div class="error">
