@@ -13,4 +13,8 @@
 	<select id="selectShoesByName" returnType="cn.shoesmall.pojo.Shoes">
 		select * from shoes where shoesname like CONCAT('%',#{shoesname},'%')
 	</select>
+	
+	<select id="selectAllShoes" returnType="cn.shoesmall.pojo.Shoes">
+		select * from shoes
+	</select>
 </class>

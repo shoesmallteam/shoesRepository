@@ -2,6 +2,7 @@ package tan.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import net.sf.json.JSONObject;
 import tan.form.SelectCountForm;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 
@@ -27,17 +29,27 @@ public class SelectCountAction extends XywAction{
 		Shoesdetail detail = (Shoesdetail)JSONObject.toBean(shoes, Shoesdetail.class);
 		PrintWriter out = response.getWriter();
 		
+		Connection conn = DBHelper.getConnection();
 		//拿数据
 		List<Object> list;
 		try {
-			list = dao.select("selectCount", detail, null);
+			conn.setAutoCommit(false);
+			list = dao.select("selectCount", detail, conn);
 			for (Object object : list) {
 				detail = (Shoesdetail)object;
 				JSONObject returnshoes = JSONObject.fromObject(detail);
 				out.print(returnshoes.toString());
 			}
+			conn.commit();
 		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (Exception e2) {
+				e.printStackTrace();
+			}
 			e.printStackTrace();
+		}finally {
+			DBHelper.disConnect(conn);
 		}
 		
 		return null;

@@ -2,6 +2,7 @@ package tan.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ import tan.form.ToSettlementForm;
 import tan.pojo.AddressDto;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 
@@ -31,6 +33,7 @@ public class ToSettlementAction extends XywAction{
 	public String execute(HttpServletRequest request, HttpServletResponse response, XywForm arg2)
 			throws ServletException, IOException {
 		ConfirmForm form = (ConfirmForm)arg2;
+		Connection conn = DBHelper.getConnection();
 		
 		Cookie cookie = CookieUtil.findCookie(request.getCookies(), "auto_login");
 		String value = cookie.getValue();
@@ -55,7 +58,8 @@ public class ToSettlementAction extends XywAction{
 			detail.setShoesdetailid(shoes.getShoesdetailid());
 			List<Object> list;
 			try {
-				list = dao.select("selectByShoesdetailid", detail, null);
+				conn.setAutoCommit(false);
+				list = dao.select("selectByShoesdetailid", detail, conn);
 				for (Object obj : list) {
 					detail = (Shoesdetail)obj;
 					detail.setCount(Integer.parseInt(shoes.getCount()));
@@ -76,13 +80,20 @@ public class ToSettlementAction extends XywAction{
 		//查询地址
 		List<Object> addresslist;
 		try {
-			addresslist = dao.select("SelectAddress", dto, null);
+			addresslist = dao.select("SelectAddress", dto, conn);
 			for (Object object : addresslist) {
 				address = (AddressDto)object;
 			}
+			conn.commit();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			try {
+				conn.rollback();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 			e.printStackTrace();
+		}finally {
+			DBHelper.disConnect(conn);
 		}
 		
 		

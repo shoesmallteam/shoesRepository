@@ -2,6 +2,7 @@ package tan.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import net.sf.json.JSONObject;
 import tan.form.AddOrderForm;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 
@@ -30,25 +32,36 @@ public class AddOrderAction extends XywAction{
 		Orders orders = (Orders)JSONObject.toBean(jobj, Orders.class);
 		System.out.println(orders);
 		
+		Connection conn = DBHelper.getConnection();
+		
 		//修改库存,先查看库存
 		Shoesdetail detail = new Shoesdetail();
 		detail.setShoesdetailid(orders.getShoesdetailid());
 		List<Object> list;
 		try {
-			list = dao.select("selectByShoesdetailid", detail, null);
+			conn.setAutoCommit(false);
+			list = dao.select("selectByShoesdetailid", detail, conn);
 			for (Object object : list) {
 				detail = (Shoesdetail)object;
 				detail.setCount(detail.getCount() - Integer.valueOf(form.getCount()));
 			}
 			
-			dao.update("updateCount", detail, null);
-			boolean result = dao.insert("insertOrders", orders, null);
+			dao.update("updateCount", detail, conn);
+			boolean result = dao.insert("insertOrders", orders, conn);
 			PrintWriter out = response.getWriter();
+			conn.commit();
 			if (result) {
 				out.print(result);
 			}
 		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 			e.printStackTrace();
+		}finally {
+			DBHelper.disConnect(conn);
 		}
 		
 		return null;
