@@ -21,11 +21,39 @@
 	</select>
 	
 	<select id = "selectByDesc" returnType = "cn.shoesmall.pojo.Shoesdetail">
-		select * from shoesdetail where descs like CONCAT('%',#{descs},'%')
-		group by descs
-		<if test="#{price}!=null">
+		select * from shoesdetail where 1=1
+		<if test="(#{price}&amp;4)==4">
+			and price &gt;= 0 and price &lt; 99
+		</if>
+		
+		<if test="(#{price}&amp;8)==8">
+			and price &gt;= 100 and price &lt; 199
+		</if>
+		
+		<if test="(#{price}&amp;16)==16">
+			and price &gt;= 200 and price &lt; 299
+		</if>
+		
+		<if test="(#{price}&amp;32)==32">
+			and price &gt;= 300 and price &lt; 399
+		</if>
+		
+		<if test="(#{price}&amp;64)==64">
+			and price &gt;= 400 and price &lt; 499
+		</if>
+		
+		<if test="1==1">
+			and descs like CONCAT('%',#{descs},'%')
+			group by descs
+		</if>
+		
+		<if test="(#{price}&amp;1)==1">
 			order by price asc
 		</if>
+		<if test="(#{price}&amp;2)==2">
+			order by price desc
+		</if>
+		
 	</select>
 	
 	<select id="selectCount" returnType="cn.shoesmall.pojo.Shoesdetail">
