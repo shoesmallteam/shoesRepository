@@ -72,7 +72,7 @@ public class SessionCenterFilter  implements Filter{
 			}
 			User u = new User();
 			u.setAccountid(id);
-			List list1 = dao.select("selectUserAccountid", u, null);
+			List list1 = dao.select("selectUserAccountid", u, conn);
 			for (Object object : list1) {
 				u = (User)object;
 				ni = u.getNikename();//昵称
