@@ -14,5 +14,7 @@
     	<mapping path="cn/shoesmall/pojo/mapping/ShoestypeMapping.xml"></mapping>
     	<mapping path="cn/shoesmall/pojo/mapping/ShoesclassifyMapping.xml"></mapping>
     	<mapping path="/tan/pojo/mapping/AddressMapping.xml"></mapping>
+    	<mapping path="cn/shoesmall/pojo/mapping/OrdersMapping.xml"></mapping>
+    	<mapping path="cn/shoesmall/pojo/mapping/AcfrenquenceMapping.xml"></mapping>
     </mappings> 
 </properties>

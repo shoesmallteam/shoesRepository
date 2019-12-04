@@ -6,10 +6,14 @@ import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.shoesmall.pojo.Acfrenquence;
 import cn.shoesmall.pojo.Shoesdetail;
+import cn.shoesmall.util.CookieUtil;
+import cn.shoesmall.util.PrimaryKeyGeneric;
 import tan.dto.ShoesDto;
 import tan.form.ProductForm;
 import xyw.core.dao.BaseDao;
@@ -26,6 +30,35 @@ public class ProductAction extends XywAction{
 		Shoesdetail shoesdetail = new Shoesdetail();
 		ShoesDto dto = new ShoesDto();
 		BaseDao dao = new BaseDaoImpl();
+		
+		//访问频率
+		Acfrenquence frenquence = new Acfrenquence();
+		frenquence.setAccountid(getAccountid(request, response));
+		frenquence.setShoesid(from.getShoesid());
+		
+		shoesdetail.setShoesid(from.getShoesid());
+		
+		//查询商品访问频率,有就修改shoesdetail、Acfrenquence的访问频率,没有就新增数据
+		List<Object> aflist = dao.select("selectFrenquence", frenquence);
+		if (!aflist.isEmpty()) {
+			for (Object object : aflist) {
+				frenquence = (Acfrenquence)object;
+			}
+			//修改访问频率
+			frenquence.setFrequence(frenquence.getFrequence()+1);
+			shoesdetail.setFrequence(frenquence.getFrequence());
+			
+			boolean flag = dao.update("updateFrequence", frenquence);
+			boolean sflag = dao.update("updateshoesFrequence", shoesdetail);
+			if(flag && sflag) {
+				frenquence = null;
+			}
+		}else {
+			//增加商品访问频率
+			frenquence.setAcfrenquenceid(PrimaryKeyGeneric.getPrimaryKey());
+			frenquence.setFrequence(1);
+			dao.insert("insertAcfrenquence", frenquence);
+		}
 		
 		HashMap<String, String> map = new HashMap<String, String>();
 		HashSet<String> size = new HashSet<String>();
@@ -64,5 +97,13 @@ public class ProductAction extends XywAction{
 		
 		return "error";
 	}
-
+	
+	public String getAccountid(HttpServletRequest request, HttpServletResponse response) {
+		String accountid = null;
+		Cookie cookie = CookieUtil.findCookie(request.getCookies(), "auto_login");
+		String value = cookie.getValue();
+		accountid = value.split("#itheima#")[3];
+		
+		return accountid;
+	}
 }

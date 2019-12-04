@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </div>
 </header>
-    <div class="address">
+<div class="address">
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
             <div class="items-headers">
@@ -94,6 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </div>
 </div>
+<input type="hidden" class="accountid" value="${confirmdto.address.accountid }">
 <div class="center">
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
@@ -110,6 +111,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <c:forEach items="${confirmdto.list }" var="shoesdetail" varStatus="i">
 	                <div class="body-products info-cell info-line">
+	                	<input type="hidden" value="${confirmdto.orderlist[i.index] }" class="orderid">
+	                	<input type="hidden" value="${shoesdetail.shoesdetailid }" class="shoesdetailid">
 	                    <div class="col-xs-4">
 	                        <a href="product.do?shoesid=${shoesdetail.shoesid }" class="detail-img">
 	                            <img class="info-img" src="${shoesdetail.image}">
@@ -140,8 +143,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                        <p class="xiaoji">${shoesdetail.price }</p>
 	                    </div>
 	                </div>
-	            	</div>
-                </c:forEach>
+              	</c:forEach>
+	            </div>
+            </div>
         </div>
     </div>
 </div>

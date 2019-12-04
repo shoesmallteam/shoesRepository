@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import cn.shoesmall.pojo.Shoesdetail;
 import cn.shoesmall.pojo.User;
 import cn.shoesmall.util.CookieUtil;
+import cn.shoesmall.util.PrimaryKeyGeneric;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import tan.dto.ToConfirmDto;
@@ -39,6 +40,8 @@ public class ToSettlementAction extends XywAction{
 		BaseDao dao = new BaseDaoImpl();
 		//list存查询的shoesdetail
 		List<Shoesdetail> listshoes = new ArrayList<Shoesdetail>();
+		//list存生成的订单id
+		List<String> orderlist = new ArrayList<String>();
 		
 		//对象数组
 		String items = form.getItems();
@@ -55,7 +58,11 @@ public class ToSettlementAction extends XywAction{
 				detail = (Shoesdetail)obj;
 				detail.setCount(Integer.parseInt(shoes.getCount()));
 			}
+			//生成订单id
+			String orderid = PrimaryKeyGeneric.getPrimaryKey();
+			
 			listshoes.add(detail);
+			orderlist.add(orderid);
 		}
 
 		AddressDto dto = new AddressDto();//查询数据库的pojo类
@@ -67,18 +74,18 @@ public class ToSettlementAction extends XywAction{
 			address = (AddressDto)object;
 		}
 		
+		
 		//用DTO像前端传数据
 		ToConfirmDto confirmdto = new ToConfirmDto();
 		confirmdto.setAddress(address);
 		confirmdto.setList(listshoes);
+		confirmdto.setOrderlist(orderlist);
 		
 		if (address != null && listshoes != null) {
-//			PrintWriter pw = response.getWriter();
-//			JSONObject json = JSONObject.fromObject(confirmdto);
-//			pw.print(json.toString());
 			request.setAttribute("confirmdto", confirmdto);
 			return "success";
 		}
+
 		return null;
 	}
 	

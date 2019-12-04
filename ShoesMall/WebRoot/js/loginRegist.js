@@ -4,11 +4,46 @@
   $('#landModal .modal-footer .modal-footer-r').click(function(){
   	$('#landModal').fadeOut(1000).modal('hide');
 });
+//登陆界面点击忘记密码
+  $('#landModal .modal-footer .modal-footer-r1').click(function(){
+	  	$('#landModal').fadeOut(1000).modal('hide');
+});
 //注册界面点击登陆
    $('#registerModal .modal-footer .modal-footer-r').click(function(){
 	$('#registerModal').fadeOut(1000).modal('hide');
 });
+//忘记密码界面点击登陆和注册
+   $('#forgetModal .modal-footer-r').click(function(){
+		$('#forgetModal').fadeOut(1000).modal('hide');
+   });
+   $('#forgetModal .modal-footer-r1').click(function(){
+		$('#forgetModal').fadeOut(1000).modal('hide');
+  });
 //获得焦点和失去焦点
+//忘记密码邮箱框
+   $('#forgetusername').focus(function(){
+	   $('#forgetModal .modal-body li:eq(6) .error').hide();
+	   $('#forgetModal .modal-body li:eq(3) .error').hide();
+	   $('#forgetModal .modal-body li:eq(1) .error').hide();
+	   $('#forgetModal .modal-body li:eq(5) .error').hide();
+	   $('#forgetModal .modal-body li:eq(7) .error').hide();
+   });
+//验证码框
+   $('#forgetname').focus(function(){
+	   $('#forgetModal .modal-body li:eq(6) .error').hide();
+	   $('#forgetModal .modal-body li:eq(3) .error').hide();
+	   $('#forgetModal .modal-body li:eq(1) .error').hide();
+	   $('#forgetModal .modal-body li:eq(5) .error').hide();
+	   $('#forgetModal .modal-body li:eq(7) .error').hide();
+   });
+//新密码框
+   $('#forgetpwd').focus(function(){
+	   $('#forgetModal .modal-body li:eq(6) .error').hide();
+	   $('#forgetModal .modal-body li:eq(3) .error').hide();
+	   $('#forgetModal .modal-body li:eq(1) .error').hide();
+	   $('#forgetModal .modal-body li:eq(5) .error').hide();
+	   $('#forgetModal .modal-body li:eq(7) .error').hide();
+   });
 //登陆账号框
    $('#username').focus(function(){
 	$('#landModal .modal-body li:eq(1) .error').hide();

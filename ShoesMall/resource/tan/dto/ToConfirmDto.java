@@ -8,6 +8,7 @@ import tan.pojo.AddressDto;
 public class ToConfirmDto {
 	private List<Shoesdetail> list;
 	private AddressDto address;
+	private List<String> orderlist;
 	
 	public List<Shoesdetail> getList() {
 		return list;
@@ -20,6 +21,12 @@ public class ToConfirmDto {
 	}
 	public void setAddress(AddressDto address) {
 		this.address = address;
+	}
+	public List<String> getOrderlist() {
+		return orderlist;
+	}
+	public void setOrderlist(List<String> orderlist) {
+		this.orderlist = orderlist;
 	}
 	
 }

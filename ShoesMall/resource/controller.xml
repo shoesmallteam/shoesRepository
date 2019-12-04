@@ -54,4 +54,12 @@
     	<result name="success" direct="false">confirm_order.jsp</result>
         <result name="error">home.jsp</result>
     </action>
+    <action name="addOrder" class="tan.action.AddOrderAction">
+    	<form>tan.form.AddOrderForm</form>
+    </action>
+    <action name="obtain" class="zwc.action.ObtainAction">
+    </action>
+    <action name="forgetpwd" class="zwc.action.ForgetpwdAction">
+    </action>
+    
 </actions>

@@ -35,4 +35,12 @@
 	<select id="selectByShoesdetailid" returnType="cn.shoesmall.pojo.Shoesdetail">
 		select * from shoesdetail where shoesdetailid = #{shoesdetailid};
 	</select>
+	
+	<update id="updateCount">
+		update shoesdetail set count = #{count} where shoesdetailid = #{shoesdetailid};
+	</update>
+	
+	<update id="updateshoesFrequence">
+		update shoesdetail set frequence = #{frequence} where shoesid = #{shoesid};
+	</update>
 </class>

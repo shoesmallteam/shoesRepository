@@ -220,10 +220,10 @@
 						<p>修改密码</p>
 					</div>
 					<div class="layout-right-l2-middle1">
-						<input class="form-control" type="password" placeholder="原密码" name="" id="" value="" />
+						<input class="form-control" type="password" placeholder="原密码" name="" value="" />
 					</div>
 					<div class="layout-right-l2-middle2">
-						<input class="form-control" type="password" placeholder="新密码" name="" id="" value="" />
+						<input class="form-control" type="password" placeholder="新密码" name="" value="" />
 					</div>
 					<div class="layout-right-l2-down">
 						<p>长度为8～14个字符</p>
@@ -236,10 +236,10 @@
 						<p>修改手机号码</p>
 					</div>
 					<div class="layout-right-l2-middle1">
-						<input class="form-control" type="text" placeholder="原手机号码" name="" id="" value="" />
+						<input class="form-control" type="text" placeholder="原手机号码" name="" value="" />
 					</div>
 					<div class="layout-right-l2-middle2">
-						<input class="form-control" type="text" placeholder="新手机号码" name="" id="" value="" />
+						<input class="form-control" type="text" placeholder="新手机号码" name="" value="" />
 					</div>
 					<div class="layout-right-l2-down">
 						<p>请输入中国大陆手机号</p>
@@ -251,10 +251,10 @@
 						<p>修改登陆邮箱</p>
 					</div>
 					<div class="layout-right-l2-middle1">
-						<input class="form-control" type="text" placeholder="原邮箱" name="" id="" value="" />
+						<input class="form-control" type="text" placeholder="原邮箱" name="" value="" />
 					</div>
 					<div class="layout-right-l2-middle2">
-						<input class="form-control" type="text" placeholder="新邮箱" name="" id="" value="" />
+						<input class="form-control" type="text" placeholder="新邮箱" name="" value="" />
 					</div>
 					<div class="layout-right-l2-down">
 						<p>支持各种邮箱</p>
@@ -268,11 +268,11 @@
 					</div>
 					<div class="layout-right5-middle1">
 						<span>真实姓名</span>
-						<input class="form-control" type="text" placeholder="请输入真实姓名 " name="" id="" value="" />
+						<input class="form-control" type="text" placeholder="请输入真实姓名 " name="" value="" />
 					</div>
 					<div class="layout-right5-middle2">
 						<span>身份证号</span>
-						<input class="form-control" type="text" placeholder="请输入本人身份证号" name="" id="" value="" />
+						<input class="form-control" type="text" placeholder="请输入本人身份证号" name="" value="" />
 					</div>
 					<button disabled class="btn layout-right-l2-down2" >确定</button>
 				</li>

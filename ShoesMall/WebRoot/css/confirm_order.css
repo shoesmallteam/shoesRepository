@@ -150,6 +150,7 @@
     overflow: hidden;
     resize: none;
     width: 80%;
+    height: 60px;
     border-radius: 5px;
     outline: none;
 }
