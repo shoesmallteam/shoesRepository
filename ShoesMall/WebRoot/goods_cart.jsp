@@ -362,6 +362,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 <div class="goods-cart container">
+	<div>
+		<font class="go-home">首页</font>
+		<font>&gt;</font>
+		<font class="currentPage">购物车</font>
+	</div>
         <table cellpadding="0px" cellspacing="0px">
 <!--        表头-->
             <tr class="row">

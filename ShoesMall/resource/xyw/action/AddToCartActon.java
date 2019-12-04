@@ -46,9 +46,12 @@ public class AddToCartActon extends XywAction{
 		Cart cart = new Cart();
 		cart.setAccountid(accountid);
 		BaseDao dao = new BaseDaoImpl();
+		System.out.println(11111);
 		Connection conn = null;
+		System.out.println(22222);
 		List list = new ArrayList<Object>();
 		try {
+			conn = DBHelper.getConnection();
 			list = dao.select("selectCartsByAcid", cart, conn);
 			
 		} catch (Exception e) {
@@ -106,7 +109,7 @@ public class AddToCartActon extends XywAction{
 		}
 		out.print((result ? "true" : "false"));
 		
-		return null;
+		return "success";
 	}
 
 }
