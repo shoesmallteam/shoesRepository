@@ -53,7 +53,7 @@ public class PassAction extends XywAction{
 		Connection conn = DBHelper.getConnection();
 		try {
 			conn.setAutoCommit(false);
-			list = dao.select("selectAccount3", ac, null);
+			list = dao.select("selectAccount3", ac, conn);
 			for (Object object : list) {
 				ac = (Account)object;
 				old = ac.getPassword();

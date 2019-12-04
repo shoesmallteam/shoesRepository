@@ -599,7 +599,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li>
 								<div class="error">
 									<em></em>
-									<span class="error-con">邮箱,验证码,密码不能为空</span>
+									<span class="error-con">信息不能为空</span>
 								</div>
 							</li>
 							<li class="text-center">
