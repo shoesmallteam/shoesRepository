@@ -81,8 +81,6 @@ public class CookieFilter implements Filter{
 					e1.printStackTrace();
 				}
 				e.printStackTrace();
-			}finally {
-				DBHelper.disConnect(conn);
 			}
 			for (Object object : list3) {
 				ac2 = (Account)object;
@@ -111,8 +109,6 @@ public class CookieFilter implements Filter{
 						e1.printStackTrace();
 					}
 					e.printStackTrace();
-				}finally {
-					DBHelper.disConnect(conn);
 				}
 			}else if(m2.find()){
 				System.out.println("输入的登陆账号是手机号");
@@ -129,8 +125,6 @@ public class CookieFilter implements Filter{
 						e1.printStackTrace();
 					}
 					e.printStackTrace();
-				}finally {
-					DBHelper.disConnect(conn);
 				}
 			}else{
 				System.out.println("输入的登陆账号就是账号");
@@ -147,8 +141,6 @@ public class CookieFilter implements Filter{
 						e1.printStackTrace();
 					}
 					e.printStackTrace();
-				}finally{
-					DBHelper.disConnect(conn);
 				}
 			}
 			if (list.size()>0){
