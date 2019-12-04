@@ -58,9 +58,6 @@
   	<listener>
 		<listener-class>zwc.listener.MySessionAttributeListener</listener-class>
   	</listener>
-  	<listener>
-		<listener-class>zwc.listener.MySessionAttributeListener</listener-class>
-  	</listener>
   	
   	<filter>
 	  	<filter-name>sessionCenterFilter</filter-name>
