@@ -21,21 +21,16 @@ import xyw.core.db.DBHelper;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 import xyw.dto.GoodsDto;
-import xyw.form.AddToCartForm;
+import xyw.form.DeleteCartGoodForm;
 import xyw.utils.JsonUtils;
-/**
- * 添加到购物车
- * @author xyw
- *
- */
-public class AddToCartActon extends XywAction{
+
+public class DeleteCartGoodAction extends XywAction{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response, XywForm arg2)
 			throws ServletException, IOException {
-		//获取form
-		AddToCartForm form = (AddToCartForm)arg2;
-		
+		DeleteCartGoodForm form = (DeleteCartGoodForm)arg2;
+		System.out.println(form);
 		//获取登录的账户id
 		Cookie auto_login = CookieUtil.findCookie(request.getCookies(), "auto_login");
 		
@@ -46,9 +41,7 @@ public class AddToCartActon extends XywAction{
 		Cart cart = new Cart();
 		cart.setAccountid(accountid);
 		BaseDao dao = new BaseDaoImpl();
-		System.out.println(11111);
 		Connection conn = null;
-		System.out.println(22222);
 		List list = new ArrayList<Object>();
 		try {
 			conn = DBHelper.getConnection();
@@ -60,8 +53,7 @@ public class AddToCartActon extends XywAction{
 			DBHelper.disConnect(conn);
 		}
 		List<GoodsDto> gds = new LinkedList<GoodsDto>();
-		boolean flag = false;
-		
+
 		if(list.size() > 0)
 		{
 			cart = (Cart)list.get(0);
@@ -69,30 +61,14 @@ public class AddToCartActon extends XywAction{
 			//查看是否有此商品，有：累加
 			for(GoodsDto gd:gds)
 			{
-				if(gd != null)
+				if(gd.getShoesdetailid().equals(form.getShoesdetailid()))
 				{
-					if(gd.getShoesdetailid().equals(form.getShoesdetailid()))
-					{
-						gd.setAmount((Integer.parseInt(gd.getAmount()) + (Integer.parseInt(form.getAmount())) + ""));
-						flag = true;
-					}
+					gds.remove(gd);
+					break;
 				}
 			}
 		}
-		//无此商品，添加到购物车
-		if(!flag)
-		{
-			GoodsDto gd = new GoodsDto();
-			
-			gd.setAmount(form.getAmount());
-			gd.setShoesdetailid(form.getShoesdetailid());
-			gds.add(0, gd);
-			
-		}
-		System.out.println(cart);
 		cart.setGoods(JsonUtils.toJsonArrayString(gds));
-		
-		PrintWriter out = new PrintWriter(response.getWriter(),true);
 		boolean result = false;
 		try {
 			conn = DBHelper.getConnection();
@@ -107,9 +83,12 @@ public class AddToCartActon extends XywAction{
 			}
 			e.printStackTrace();
 		}
-		out.print((result ? "true" : "false"));
 		
-		return "success";
+		PrintWriter out = new PrintWriter(response.getWriter(),true);
+		
+		out.print(result ? "true" : "false");
+		
+		return null;
 	}
 
 }
