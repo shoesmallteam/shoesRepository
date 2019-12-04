@@ -2,6 +2,8 @@ package zwc.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -16,12 +18,15 @@ import cn.shoesmall.util.Encoding;
 import sun.misc.BASE64Encoder;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 import zwc.info.PersonInfo;
 import zwc.pojo.Account;
 import zwc.pojo.User;
-
+/*
+ * 登陆的servlet
+ */
 public class LoginAction extends XywAction{
 
 	@Override
@@ -35,6 +40,7 @@ public class LoginAction extends XywAction{
 		String ph = null;
 		String uu = null;
 		Cookie cookie = null;
+		Connection conn = DBHelper.getConnection();
 		//调用数据库
 		BaseDao dao = new BaseDaoImpl();
 		Account ac = new Account();
@@ -48,30 +54,54 @@ public class LoginAction extends XywAction{
 			em = un;
 			ac.setEmail(em);
 			try {
-				list = dao.select("selectAccount1", ac, null);
+				conn.setAutoCommit(false);
+				list = dao.select("selectAccount1", ac, conn);
+				conn.commit();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 				e.printStackTrace();
+			}finally{
+				DBHelper.disConnect(conn);
 			}
 		}else if(m2.find()){
 			System.out.println("输入的登陆账号是手机号");
 			ph = un;
 			ac.setTel(ph);
 			try {
-				list = dao.select("selectAccount", ac, null);
+				conn.setAutoCommit(false);
+				list = dao.select("selectAccount", ac, conn);
+				conn.commit();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 				e.printStackTrace();
+			}finally{
+				DBHelper.disConnect(conn);
 			}
 		}else{
 			System.out.println("输入的登陆账号就是账号");
 			uu = un;
 			ac.setAccount(un);
 			try {
-				list = dao.select("selectAccount2", ac, null);
+				conn.setAutoCommit(false);
+				list = dao.select("selectAccount2", ac, conn);
+				conn.commit();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 				e.printStackTrace();
+			}finally{
+				DBHelper.disConnect(conn);
 			}
 		}
 		
@@ -101,15 +131,23 @@ public class LoginAction extends XywAction{
 				user.setAccountid(id);
 				List list1;
 				try {
-					list1 = dao.select("selectUserAccountid", user, null);
+					conn.setAutoCommit(false);
+					list1 = dao.select("selectUserAccountid", user, conn);
 					for (Object object2 : list1) {
 						user = (User)object2;
 						nc = user.getNikename();//获得昵称
 						System.out.println(nc);
 					}
+					conn.commit();
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
+					try {
+						conn.rollback();
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
 					e.printStackTrace();
+				}finally{
+					DBHelper.disConnect(conn);
 				}
 			}
 			if(!pw1.equals(newpwd)){

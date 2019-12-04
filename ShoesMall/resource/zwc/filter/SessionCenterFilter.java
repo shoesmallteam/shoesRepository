@@ -1,6 +1,8 @@
 package zwc.filter;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.Filter;
@@ -17,9 +19,12 @@ import cn.shoesmall.util.CookieUtil;
 import sun.misc.BASE64Encoder;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
 import zwc.pojo.Account;
 import zwc.pojo.User;
-
+/*
+ * 这是个人中心页面的监听器
+ */
 public class SessionCenterFilter  implements Filter{
 
 	@Override
@@ -54,8 +59,10 @@ public class SessionCenterFilter  implements Filter{
 		String p = null;
 		ac.setAccountid(id);
 		List list;
+		Connection conn = DBHelper.getConnection();
 		try {
-			list = dao.select("selectAccount3", ac, null);
+			conn.setAutoCommit(false);
+			list = dao.select("selectAccount3", ac, conn);
 			for (Object object : list) {
 				ac = (Account)object;
 				p = ac.getPhoto();
@@ -74,9 +81,17 @@ public class SessionCenterFilter  implements Filter{
 			request.getSession().setAttribute("ac", ac);
 			request.getSession().setAttribute("ni", ni);
 			arg2.doFilter(request, response);
+			conn.commit();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
+		}finally{
+			DBHelper.disConnect(conn);
 		}
 		
 	}

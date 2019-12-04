@@ -3,6 +3,8 @@ package zwc.action;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLDecoder;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -17,12 +19,15 @@ import cn.shoesmall.util.PrimaryKeyGeneric;
 import net.sf.json.JSONObject;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 import zwc.pojo.Account;
 import zwc.pojo.Cart;
 import zwc.pojo.User;
-
+/*
+ * 注册界面的servlet
+ */
 public class RegisterAction extends XywAction{
 
 	@Override
@@ -43,11 +48,13 @@ public class RegisterAction extends XywAction{
 		Account ac = new Account();
 		ac.setTel(phonenumber);//电话
 		List list;
+		Connection conn = DBHelper.getConnection();
 		try {
-			list = dao.select("selectAccount", ac, null);
+			conn.setAutoCommit(false);
+			list = dao.select("selectAccount", ac, conn);
 			Account ac1 = new Account();
 			ac1.setEmail(email);//邮箱
-			List list1 = dao.select("selectAccount1", ac1, null);
+			List list1 = dao.select("selectAccount1", ac1, conn);
 				if (list.size()>0) {
 					System.out.println("手机号码已存在");
 					PrintWriter out = arg1.getWriter();
@@ -66,21 +73,21 @@ public class RegisterAction extends XywAction{
 					ac.setEmail(email);//邮箱
 					ac.setIsassistant(0);
 					ac.setIsvip(0);
-					dao.insert("insertAccount", ac, null);
+					dao.insert("insertAccount", ac, conn);
 					//插入User表
 					User user = new User();
 					user.setUserid(PrimaryKeyGeneric.getPrimaryKey());//主键id用UUID
 					user.setNikename(username);//昵称
 					user.setCartid(PrimaryKeyGeneric.getPrimaryKey());//购物车id
 					user.setAccountid(ac.getAccountid());//Account表id
-					dao.insert("insertUser", user, null);
+					dao.insert("insertUser", user, conn);
 					//插入Cart表
 					Cart cart = new Cart();
 					//System.out.println(ac.getAccountid());
 					//System.out.println(user.getCartid());
 					cart.setAccountid(ac.getAccountid());//Account表id
 					cart.setCartid(user.getCartid());//User表购物车id
-					dao.insert("insertCart", cart, null);
+					dao.insert("insertCart", cart, conn);
 					//修改session中验证码,防重复登陆s
 					arg0.getSession().setAttribute("code", "、、、");
 					//把账号传过去
@@ -90,10 +97,17 @@ public class RegisterAction extends XywAction{
 					PrintWriter out = arg1.getWriter();
 					out.write(verificationcode);
 				}
-			
+				conn.commit();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
+		}finally{
+			DBHelper.disConnect(conn);
 		}
 		
 		return null;

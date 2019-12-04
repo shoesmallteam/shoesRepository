@@ -2,6 +2,8 @@ package zwc.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 import zwc.pojo.Account;
-
+/*
+ * 查询电话是不是唯一的servlet
+ */
 public class TelAction extends XywAction{
 	@Override
 	public String execute(HttpServletRequest arg0, HttpServletResponse arg1, XywForm arg2)
@@ -28,16 +33,26 @@ public class TelAction extends XywAction{
 		//通过查出单个进行比较
 		ac.setTel(tel);
 		List list;
+		Connection conn = DBHelper.getConnection();
 		try {
-			list = dao.select("selectAccount", ac, null);
+			conn.setAutoCommit(false);
+			list = dao.select("selectAccount", ac, conn);
 			if (list.size()>0) {
 				System.out.println("已存在");
 				PrintWriter out = arg1.getWriter();
 				out.write(tel);
 			}
+			conn.commit();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
+		}finally{
+			DBHelper.disConnect(conn);
 		}
 		//通过查出所有然后再循环对比数据
 //		List list = dao.select("selectAll", new Account());

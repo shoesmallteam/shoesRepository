@@ -11,7 +11,9 @@ import cn.shoesmall.util.GenerateAc;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 import xyw.util.SendmailUtil;
-
+/*
+ * 生成邮箱验证码的servlet
+ */
 public class ObtainAction extends XywAction{
 
 	@Override
