@@ -93,4 +93,3 @@ $(".search-by-price").click(function(){
 	price = (parseInt(psort) + parseInt(pstep));
 	listGoods(typename,count++,8,price);
 });
-

@@ -50,7 +50,8 @@ $('#exit').click(function(){
 			type:"post",
 			url:"exits.do",
 			success:function(result){
-				window.location.href = 'http://localhost:8080/ShoesMall/home.jsp';
+				$('#regist, #login').show();
+		    	$('#welcome, #exit, .cart').hide();
 			}
 		});
 	}

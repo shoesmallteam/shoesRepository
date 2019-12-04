@@ -606,8 +606,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="./js/jquery-3.4.1.min.js"></script>
 <script src="./js/bootstrap.min.js"></script>
 <script src="./js/goods_cart.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
 <script type="text/javascript" src="js/register.js" ></script>
 <script type="text/javascript" src="js/loginRegist.js" ></script>
 <script type="text/javascript" src="js/login.js" ></script>
-<script type="text/javascript" src="js/auto_login.js" ></script>
 <script type="text/javascript" src="js/forget.js" ></script>

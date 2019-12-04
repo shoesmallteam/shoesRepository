@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="row">
             <div class="col-xs-8 col-sm-9">
                 <div class="row">
-                    <a href="http://localhost:8080/ShoesMall/home.jsp">
+                    <a href="home.jsp">
                         <img src="images/mainPage/logo.svg"/>
                     </a>
                     <div class="col-xs-12 navb text-center">
