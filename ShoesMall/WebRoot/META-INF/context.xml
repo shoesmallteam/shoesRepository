@@ -10,5 +10,5 @@
             minPoolSize="2"
             user="root"
             password="1234"
-            jdbcUrl="jdbc:mysql://59.110.161.27:3306/shoesmall?useUnicode=true&characterEncoding=utf-8;"/>
+            jdbcUrl="jdbc:mysql://59.110.161.27:3306/shoesmall?useUnicode=true&amp;characterEncoding=utf-8"/>
 </Context>
