@@ -1,18 +1,25 @@
 
 //分类商品
 var count = 1;
+var price = 5;
 var classify = {};
 var curentMaxIndex = 8;
 var typename = getUrlVal('typename');
-function listGoods(typename,number,size) {
+function listGoods(typename,number,size,price) {
 	if(size > curentMaxIndex){
 		$(".no-more").show();
 		$(".load-more").hide();
 		return;
 	}
+	var flag = false;
+	
+	if(price != classify.price){
+		flag = true;
+	}
 	classify.typename = typename;
 	classify.number = number;
 	classify.size = size;
+	classify.price = price;
 	
 	$('.load-more').html("正在加载中...");
 	$.ajax({
@@ -25,6 +32,10 @@ function listGoods(typename,number,size) {
         	console.log(result);
         	var data = result;
             var str = ``;
+            if(flag == true)
+            {            	
+            	$('.classify>.row').html("");
+            }
             curentMaxIndex = data.length;
             for (var i = 0; i < data.length; i++) {
                 console.log(data[i].shoesid);
@@ -64,11 +75,22 @@ function listGoods(typename,number,size) {
     });
 };
 
-listGoods(typename,count++,8);
+listGoods(typename,count++,8,price);
 
 
 $('.load-more').click(function () {
     $('.load-more').html("正在加载中...")
-    listGoods(typename,count++,8);
+    listGoods(typename,count++,8,price);
+});
+
+$(".search-by-price").click(function(){
+
+	var price_sort = $(this).siblings(".price-sort");
+	var price_step = $(this).siblings(".price-step");
+	
+	var psort = price_sort.find("select option:checked").val();
+	var pstep = price_step.find("select option:checked").val();
+	price = (parseInt(psort) + parseInt(pstep));
+	listGoods(typename,count++,8,price);
 });
 

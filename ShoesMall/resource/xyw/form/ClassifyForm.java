@@ -27,6 +27,16 @@ public class ClassifyForm extends XywForm implements Serializable{
 	
 	private String typename;
 	
+	private String price;
+	
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	
+	public String getPrice() {
+		return price;
+	}
+	
 
 	public String getSize() {
 		return size;
