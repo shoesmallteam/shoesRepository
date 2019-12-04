@@ -19,6 +19,7 @@
     
     <action name="addGoodsToCart" class="xyw.action.AddToCartActon">
     	<form>xyw.form.AddToCartForm</form>
+    	<result name="success" direct="true">goods_cart.jsp</result>
     </action>
     
     <action name="removemsg" class="zwc.action.RemoveMsgAction">
@@ -68,5 +69,9 @@
     
     <action name="SelectAllShoes" class="tan.action.SelectAllShoesAction">
     	<form>tan.form.SelectAllShoesform</form>
+	</action>
+	
+    <action name="deleteCartGood" class="xyw.action.DeleteCartGoodAction">
+    	<form>xyw.form.DeleteCartGoodForm</form>
     </action>
 </actions>

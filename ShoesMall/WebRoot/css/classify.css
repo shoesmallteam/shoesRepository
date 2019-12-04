@@ -111,3 +111,35 @@
     cursor: pointer;
     display:none;
 }
+.conditionquery{
+    width:70%;
+    margin:10px auto;
+    display:block;
+    padding-bottom:50px;
+}
+
+.price-sort{
+	margin-right:20px;
+	float:right;
+}
+.price-step{
+    margin-right:20px;
+    float:right;
+}
+.search-by-price{
+	width:50px;
+	float:right;
+	border:1px solid #666;
+	text-align:center;
+	background: #eee;
+	cursor:pointer;
+	border-radius: 3px;
+}
+
+.search-by-price:hover{
+	background: #ddd;
+}
+.search-by-price:active{
+	background: #ccc;
+}
+

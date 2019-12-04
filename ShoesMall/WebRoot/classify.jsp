@@ -340,11 +340,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		
-		
-		</div>
+</div>
 					
-	
-		<div class="banner">
+<div class="banner">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-8 col-sm-9">
@@ -361,6 +359,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 		</div>
+
+<div class="conditionquery">
+	<div class = "search-by-price">
+		<span>搜索</span>
+	</div>
+	<div class = "price-sort">
+		<select>
+			<option value = "1">
+				价格从低到高
+				
+			</option>
+			<option value = "2">
+				价格从高到低				
+			</option>
+		</select>
+	</div>
+	<div class="price-step">
+		<select >
+			<option value = "4">0-99</option>
+			<option value = "8">100-199</option>
+			<option value = "16">200-299</option>
+			<option value = "32">300-399</option>
+			<option value = "64">400-499</option>
+		</select>
+	</div>
+	
+</div>
+
 <section>
     <div class="container classify">
         <div class="row">

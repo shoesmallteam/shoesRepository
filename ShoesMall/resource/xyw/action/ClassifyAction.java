@@ -46,7 +46,8 @@ public class ClassifyAction extends XywAction{
 		BaseDao dao = new BaseDaoImpl();
 		
 		Shoesdetail sd = new Shoesdetail();
-		sd.setPrice(111);
+		sd.setPrice(Integer.parseInt(form.getPrice()));
+		System.out.println("price:" + form.getPrice());
 		sd.setDescs(decode(form.getTypename()));
 		List list = new ArrayList<Object>();
 		try {
@@ -54,6 +55,8 @@ public class ClassifyAction extends XywAction{
 			list = dao.select("selectByDesc",sd,conn); 
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			DBHelper.disConnect(conn);
 		}
 		
 
