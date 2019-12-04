@@ -70,8 +70,6 @@ public class CenterAction extends XywAction{
 				e.printStackTrace();
 			}
 			e1.printStackTrace();
-		}finally {
-			DBHelper.disConnect(conn);
 		}
 		//更改User表
 		User u = new User();

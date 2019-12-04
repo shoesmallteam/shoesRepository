@@ -64,8 +64,6 @@ public class LoginAction extends XywAction{
 					e1.printStackTrace();
 				}
 				e.printStackTrace();
-			}finally{
-				DBHelper.disConnect(conn);
 			}
 		}else if(m2.find()){
 			System.out.println("输入的登陆账号是手机号");
@@ -82,8 +80,6 @@ public class LoginAction extends XywAction{
 					e1.printStackTrace();
 				}
 				e.printStackTrace();
-			}finally{
-				DBHelper.disConnect(conn);
 			}
 		}else{
 			System.out.println("输入的登陆账号就是账号");
@@ -100,8 +96,6 @@ public class LoginAction extends XywAction{
 					e1.printStackTrace();
 				}
 				e.printStackTrace();
-			}finally{
-				DBHelper.disConnect(conn);
 			}
 		}
 		

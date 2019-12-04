@@ -59,8 +59,6 @@ public class EmailsAction extends XywAction{
 				e2.printStackTrace();
 			}
 			e1.printStackTrace();
-		}finally {
-			DBHelper.disConnect(conn);
 		}
 		if (!e.equals(n)) {
 			//返回原邮箱
