@@ -70,6 +70,7 @@ $('.layout-right-l1-down3').click(function(){
 		//点击修改密码
 		$('#section-big-layout-right li:eq(1)>.layout-right-l2-down2').click(function(){
 			//拿到文本框输入的值
+			var t = $('#t1').val();
 			var n = $('#section-big-layout-right li:eq(1) .layout-right-l2-middle1>input').val();
 			var m = $('#section-big-layout-right li:eq(1) .layout-right-l2-middle2>input').val();
 			//长度为8～14个字符支持数字，大小写字母和标点符号,不能有空格
@@ -86,7 +87,7 @@ $('.layout-right-l1-down3').click(function(){
 						if(result){
 					 		$('#section-big-layout-right li:eq(1) .layout-right-l2-middle1>input').css('border','1px solid red');
 						}else{
-							alert(" Password modification succeeded, please login again ");
+							alert(t);
 							window.location.href = 'http://localhost:8080/ShoesMall/home.jsp';
 						}
 					}
@@ -104,6 +105,7 @@ $('.layout-right-l1-down3').click(function(){
 		//点击修改
 		$('#section-big-layout-right li:eq(2)>.layout-right-l2-down2').click(function(){
 			//拿到文本框输入的值
+			var t = $('#t2').val();
 			var n = $('#section-big-layout-right li:eq(2) .layout-right-l2-middle1>input').val();
 			var m = $('#section-big-layout-right li:eq(2) .layout-right-l2-middle2>input').val();
 			//alert(m);
@@ -123,7 +125,7 @@ $('.layout-right-l1-down3').click(function(){
 							}else if(result==m){
 								$('#section-big-layout-right li:eq(2) .layout-right-l2-middle2>input').css('border','1px solid red');
 						}else{
-								alert(" Password modification succeeded");
+								alert(t);
 								$('#section-big-layout-right li:eq(2) .layout-right-l2-middle1>input').val("");
 								$('#section-big-layout-right li:eq(2) .layout-right-l2-middle2>input').val("");
 							}
@@ -142,6 +144,7 @@ $('.layout-right-l1-down3').click(function(){
 		//点击修改
 		$('#section-big-layout-right li:eq(3)>.layout-right-l2-down2').click(function(){
 			//拿到文本框输入的值
+			var t = $('#t3').val();
 			var n = $('#section-big-layout-right li:eq(3) .layout-right-l2-middle1>input').val();
 			var m = $('#section-big-layout-right li:eq(3) .layout-right-l2-middle2>input').val();
 			//alert(m);
@@ -161,7 +164,7 @@ $('.layout-right-l1-down3').click(function(){
 							}else if(result==m){
 								$('#section-big-layout-right li:eq(3) .layout-right-l2-middle2>input').css('border','1px solid red');
 						}else{
-								alert(" Password modification succeeded");
+								alert(t);
 								$('#section-big-layout-right li:eq(3) .layout-right-l2-middle1>input').val("");
 								$('#section-big-layout-right li:eq(3) .layout-right-l2-middle2>input').val("");
 							}
@@ -180,6 +183,7 @@ $('.layout-right-l1-down3').click(function(){
 		//点击修改
 		$('#section-big-layout-right li:eq(4)>.layout-right-l2-down2').click(function(){
 			//拿到文本框输入的值
+			var t = $('#t4').val();
 			var n = $('#section-big-layout-right li:eq(4) .layout-right5-middle1>input').val();
 			var m = $('#section-big-layout-right li:eq(4) .layout-right5-middle2>input').val();
 			//身份证号
@@ -196,7 +200,7 @@ $('.layout-right-l1-down3').click(function(){
 							if(result==m){
 								$('#section-big-layout-right li:eq(4) .layout-right5-middle2>input').css('border','1px solid red');
 							}else{
-								alert(" Password modification succeeded");
+								alert(t);
 								$('#section-big-layout-right li:eq(4) .layout-right5-middle1>input').val("");
 								$('#section-big-layout-right li:eq(4) .layout-right5-middle2>input').val("");
 							}

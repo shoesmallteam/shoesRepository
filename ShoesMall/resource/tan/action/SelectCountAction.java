@@ -28,11 +28,16 @@ public class SelectCountAction extends XywAction{
 		PrintWriter out = response.getWriter();
 		
 		//拿数据
-		List<Object> list = dao.select("selectCount", detail);
-		for (Object object : list) {
-			detail = (Shoesdetail)object;
-			JSONObject returnshoes = JSONObject.fromObject(detail);
-			out.print(returnshoes.toString());
+		List<Object> list;
+		try {
+			list = dao.select("selectCount", detail, null);
+			for (Object object : list) {
+				detail = (Shoesdetail)object;
+				JSONObject returnshoes = JSONObject.fromObject(detail);
+				out.print(returnshoes.toString());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		return null;

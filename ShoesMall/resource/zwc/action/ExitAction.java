@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import cn.shoesmall.util.CookieUtil;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
-
+/*
+ * 退出的servlet
+ */
 public class ExitAction extends XywAction{
 
 	@Override

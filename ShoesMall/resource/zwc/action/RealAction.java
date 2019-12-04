@@ -2,6 +2,8 @@ package zwc.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,10 +15,13 @@ import cn.shoesmall.util.CookieUtil;
 import cn.shoesmall.util.Encoding;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 import zwc.pojo.Account;
-
+/*
+ * 个人中心真实姓名和身份证号码的servlet
+ */
 public class RealAction extends XywAction{
 
 	@Override
@@ -38,7 +43,11 @@ public class RealAction extends XywAction{
 		BaseDao dao = new BaseDaoImpl();
 		Account ac = new Account();
 		ac.setAccountid(id);
-		List list = dao.select("selectAccount3", ac);
+		List list;
+		Connection conn = DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list = dao.select("selectAccount3", ac, conn);
 			for (Object object : list) {
 				ac = (Account)object;
 				r = ac.getSsidnumber();//通过id查到身份证
@@ -47,19 +56,30 @@ public class RealAction extends XywAction{
 				ac.setAccountid(id);
 				ac.setSsidnumber(m);
 				ac.setRealname(n);
-				dao.update("updateAccountidssidnumberandrealname", ac);
+				dao.update("updateAccountidssidnumberandrealname", ac, null);
 			} else {
 				if (!r.equals(m)) {
 					ac.setAccountid(id);
 					ac.setSsidnumber(m);
 					ac.setRealname(n);
-					dao.update("updateAccountidssidnumberandrealname", ac);
+					dao.update("updateAccountidssidnumberandrealname", ac, null);
 				} else {
 					PrintWriter out = arg1.getWriter();
 					out.write(m);
 				}
 			}
-			
+			conn.commit();
+		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}finally{
+			DBHelper.disConnect(conn);
+		}
 		
 		return null;
 	}

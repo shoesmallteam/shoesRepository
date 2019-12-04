@@ -3,6 +3,8 @@ package zwc.action;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLDecoder;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -17,12 +19,15 @@ import cn.shoesmall.util.PrimaryKeyGeneric;
 import net.sf.json.JSONObject;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 import zwc.pojo.Account;
 import zwc.pojo.Cart;
 import zwc.pojo.User;
-
+/*
+ * 注册界面的servlet
+ */
 public class RegisterAction extends XywAction{
 
 	@Override
@@ -42,52 +47,68 @@ public class RegisterAction extends XywAction{
 		BaseDao dao = new BaseDaoImpl();
 		Account ac = new Account();
 		ac.setTel(phonenumber);//电话
-		List list = dao.select("selectAccount", ac);
-		Account ac1 = new Account();
-		ac1.setEmail(email);//邮箱
-		List list1 = dao.select("selectAccount1", ac1);
-			if (list.size()>0) {
-				System.out.println("手机号码已存在");
-				PrintWriter out = arg1.getWriter();
-				out.write(phonenumber);
-			}else if(list1.size()>0){
-				System.out.println("邮箱已存在");
-				PrintWriter out = arg1.getWriter();
-				out.write(email);
-			}else if(serverCode.equalsIgnoreCase(verificationcode)){
-				//成功将数据存到数据库
-				//插入Account表
-				ac.setAccountid(PrimaryKeyGeneric.getPrimaryKey());//主键id用UUID
-				ac.setAccount(GenerateAc.generateAc());//用户名随机
-				ac.setTel(phonenumber);//电话
-				ac.setPassword(Encoding.encode(pwd, "MD5"));//密码加密
-				ac.setEmail(email);//邮箱
-				ac.setIsassistant(0);
-				ac.setIsvip(0);
-				dao.insert("insertAccount", ac);
-				//插入User表
-				User user = new User();
-				user.setUserid(PrimaryKeyGeneric.getPrimaryKey());//主键id用UUID
-				user.setNikename(username);//昵称
-				user.setCartid(PrimaryKeyGeneric.getPrimaryKey());//购物车id
-				user.setAccountid(ac.getAccountid());//Account表id
-				dao.insert("insertUser", user);
-				//插入Cart表
-				Cart cart = new Cart();
-				//System.out.println(ac.getAccountid());
-				//System.out.println(user.getCartid());
-				cart.setAccountid(ac.getAccountid());//Account表id
-				cart.setCartid(user.getCartid());//User表购物车id
-				dao.insert("insertCart", cart);
-				//修改session中验证码,防重复登陆s
-				arg0.getSession().setAttribute("code", "、、、");
-				//把账号传过去
-				PrintWriter out = arg1.getWriter();
-				out.write(ac.getAccount());
-			}else{
-				PrintWriter out = arg1.getWriter();
-				out.write(verificationcode);
+		List list;
+		Connection conn = DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list = dao.select("selectAccount", ac, conn);
+			Account ac1 = new Account();
+			ac1.setEmail(email);//邮箱
+			List list1 = dao.select("selectAccount1", ac1, conn);
+				if (list.size()>0) {
+					System.out.println("手机号码已存在");
+					PrintWriter out = arg1.getWriter();
+					out.write(phonenumber);
+				}else if(list1.size()>0){
+					System.out.println("邮箱已存在");
+					PrintWriter out = arg1.getWriter();
+					out.write(email);
+				}else if(serverCode.equalsIgnoreCase(verificationcode)){
+					//成功将数据存到数据库
+					//插入Account表
+					ac.setAccountid(PrimaryKeyGeneric.getPrimaryKey());//主键id用UUID
+					ac.setAccount(GenerateAc.generateAc());//用户名随机
+					ac.setTel(phonenumber);//电话
+					ac.setPassword(Encoding.encode(pwd, "MD5"));//密码加密
+					ac.setEmail(email);//邮箱
+					ac.setIsassistant(0);
+					ac.setIsvip(0);
+					dao.insert("insertAccount", ac, conn);
+					//插入User表
+					User user = new User();
+					user.setUserid(PrimaryKeyGeneric.getPrimaryKey());//主键id用UUID
+					user.setNikename(username);//昵称
+					user.setCartid(PrimaryKeyGeneric.getPrimaryKey());//购物车id
+					user.setAccountid(ac.getAccountid());//Account表id
+					dao.insert("insertUser", user, conn);
+					//插入Cart表
+					Cart cart = new Cart();
+					//System.out.println(ac.getAccountid());
+					//System.out.println(user.getCartid());
+					cart.setAccountid(ac.getAccountid());//Account表id
+					cart.setCartid(user.getCartid());//User表购物车id
+					dao.insert("insertCart", cart, conn);
+					//修改session中验证码,防重复登陆s
+					arg0.getSession().setAttribute("code", "、、、");
+					//把账号传过去
+					PrintWriter out = arg1.getWriter();
+					out.write(ac.getAccount());
+				}else{
+					PrintWriter out = arg1.getWriter();
+					out.write(verificationcode);
+				}
+				conn.commit();
+		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
+			e.printStackTrace();
+		}finally{
+			DBHelper.disConnect(conn);
+		}
 		
 		return null;
 	}

@@ -2,6 +2,8 @@ package zwc.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,10 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 import zwc.pojo.Account;
-
+/*
+ * 查询邮箱是不是唯一的servlet
+ */
 public class EmailAction extends XywAction{
 
 	@Override
@@ -26,11 +31,26 @@ public class EmailAction extends XywAction{
 		Account ac = new Account();
 		//通过查出单个进行比较
 		ac.setEmail(email);
-		List list = dao.select("selectAccount1", ac);
-		if (list.size()>0) {
-			System.out.println("已存在");
-			PrintWriter out = arg1.getWriter();
-			out.write(email);
+		List list;
+		Connection conn = DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list = dao.select("selectAccount1", ac, conn);
+			if (list.size()>0) {
+				System.out.println("已存在");
+				PrintWriter out = arg1.getWriter();
+				out.write(email);
+			}
+			conn.commit();
+		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}finally {
+			DBHelper.disConnect(conn);
 		}
 		return null;
 	}

@@ -1,6 +1,8 @@
 package zwc.filter;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.Filter;
@@ -17,9 +19,12 @@ import cn.shoesmall.util.CookieUtil;
 import sun.misc.BASE64Encoder;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
 import zwc.pojo.Account;
 import zwc.pojo.User;
-
+/*
+ * 这是个人中心页面的监听器
+ */
 public class SessionCenterFilter  implements Filter{
 
 	@Override
@@ -53,25 +58,42 @@ public class SessionCenterFilter  implements Filter{
 		String ni = null;
 		String p = null;
 		ac.setAccountid(id);
-		List list = dao.select("selectAccount3", ac);
-		for (Object object : list) {
-			ac = (Account)object;
-			p = ac.getPhoto();
-			name = ac.getSsname();//名字
-			sex = ac.getSssex();//性别
-			bir = ac.getSsbirthday();//生日
+		List list;
+		Connection conn = DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list = dao.select("selectAccount3", ac, conn);
+			for (Object object : list) {
+				ac = (Account)object;
+				p = ac.getPhoto();
+				name = ac.getSsname();//名字
+				sex = ac.getSssex();//性别
+				bir = ac.getSsbirthday();//生日
+			}
+			User u = new User();
+			u.setAccountid(id);
+			List list1 = dao.select("selectUserAccountid", u, null);
+			for (Object object : list1) {
+				u = (User)object;
+				ni = u.getNikename();//昵称
+			}
+			//保存所有信息到session
+			request.getSession().setAttribute("ac", ac);
+			request.getSession().setAttribute("ni", ni);
+			arg2.doFilter(request, response);
+			conn.commit();
+		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}finally{
+			DBHelper.disConnect(conn);
 		}
-		User u = new User();
-		u.setAccountid(id);
-		List list1 = dao.select("selectUserAccountid", u);
-		for (Object object : list1) {
-			u = (User)object;
-			ni = u.getNikename();//昵称
-		}
-		//保存所有信息到session
-		request.getSession().setAttribute("ac", ac);
-		request.getSession().setAttribute("ni", ni);
-		arg2.doFilter(request, response);
+		
 	}
 
 	@Override

@@ -53,25 +53,36 @@ public class ToSettlementAction extends XywAction{
 			shoes.invalidate();
 			//查询商品详情
 			detail.setShoesdetailid(shoes.getShoesdetailid());
-			List<Object> list = dao.select("selectByShoesdetailid", detail);
-			for (Object obj : list) {
-				detail = (Shoesdetail)obj;
-				detail.setCount(Integer.parseInt(shoes.getCount()));
+			List<Object> list;
+			try {
+				list = dao.select("selectByShoesdetailid", detail, null);
+				for (Object obj : list) {
+					detail = (Shoesdetail)obj;
+					detail.setCount(Integer.parseInt(shoes.getCount()));
+				}
+				//生成订单id
+				String orderid = PrimaryKeyGeneric.getPrimaryKey();
+				
+				listshoes.add(detail);
+				orderlist.add(orderid);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-			//生成订单id
-			String orderid = PrimaryKeyGeneric.getPrimaryKey();
-			
-			listshoes.add(detail);
-			orderlist.add(orderid);
 		}
 
 		AddressDto dto = new AddressDto();//查询数据库的pojo类
 		AddressDto address = null;
 		dto.setAccountid(accountid);
 		//查询地址
-		List<Object> addresslist = dao.select("SelectAddress", dto);
-		for (Object object : addresslist) {
-			address = (AddressDto)object;
+		List<Object> addresslist;
+		try {
+			addresslist = dao.select("SelectAddress", dto, null);
+			for (Object object : addresslist) {
+				address = (AddressDto)object;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		

@@ -2,6 +2,8 @@ package zwc.filter;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -20,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import cn.shoesmall.util.CookieUtil;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
 import zwc.info.PersonInfo;
 import zwc.pojo.Account;
 import zwc.pojo.User;
@@ -61,11 +64,26 @@ public class CookieFilter implements Filter{
 			//进来就去数据库查最新的数据，避免已经修改了cookie还没更新
 			Account ac2 = new Account();
 			List list3 = null;
+			Connection conn = DBHelper.getConnection();
 			String youxiang = null;
 			String dianhua = null;
 			String zhanghao = null;
 			ac2.setAccountid(id);
-			list3 = dao.select("selectAccount3", ac2);
+			try {
+				conn.setAutoCommit(false);
+				list3 = dao.select("selectAccount3", ac2, conn);
+				conn.commit();
+			} catch (Exception e) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				e.printStackTrace();
+			}finally {
+				DBHelper.disConnect(conn);
+			}
 			for (Object object : list3) {
 				ac2 = (Account)object;
 				zhanghao = ac2.getAccount();
@@ -82,15 +100,56 @@ public class CookieFilter implements Filter{
 			if(m1.find()){
 				System.out.println("输入的登陆账号是邮箱");
 				ac.setEmail(youxiang);
-				list = dao.select("selectAccount1", ac);
+				try {
+					conn.setAutoCommit(false);
+					list = dao.select("selectAccount1", ac, conn);
+					conn.commit();
+				} catch (Exception e) {
+					try {
+						conn.rollback();
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+					e.printStackTrace();
+				}finally {
+					DBHelper.disConnect(conn);
+				}
 			}else if(m2.find()){
 				System.out.println("输入的登陆账号是手机号");
 				ac.setTel(dianhua);
-				list = dao.select("selectAccount", ac);
+				try {
+					conn.setAutoCommit(false);
+					list = dao.select("selectAccount", ac, conn);
+					conn.commit();
+				} catch (Exception e) {
+					try {
+						conn.rollback();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					e.printStackTrace();
+				}finally {
+					DBHelper.disConnect(conn);
+				}
 			}else{
 				System.out.println("输入的登陆账号就是账号");
 				ac.setAccount(zhanghao);
-				list = dao.select("selectAccount2", ac);
+				try {
+					conn.setAutoCommit(false);
+					list = dao.select("selectAccount2", ac, conn);
+					conn.commit();
+				} catch (Exception e) {
+					try {
+						conn.rollback();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					e.printStackTrace();
+				}finally{
+					DBHelper.disConnect(conn);
+				}
 			}
 			if (list.size()>0){
 				for (Object object : list) {
@@ -99,10 +158,24 @@ public class CookieFilter implements Filter{
 				}
 				User u = new User();
 				u.setAccountid(id);
-				List list1 = dao.select("selectUserAccountid", u);
-				for (Object object : list1) {
-					u = (User)object;
-					nikename = u.getNikename();//昵称
+				List list1;
+				try {
+					conn.setAutoCommit(false);
+					list1 = dao.select("selectUserAccountid", u, conn);
+					for (Object object : list1) {
+						u = (User)object;
+						nikename = u.getNikename();//昵称
+					}
+					conn.commit();
+				} catch (Exception e) {
+					try {
+						conn.rollback();
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+					e.printStackTrace();
+				}finally{
+					DBHelper.disConnect(conn);
 				}
 				//把信息存入info,用于单态
 				PersonInfo p = new PersonInfo();

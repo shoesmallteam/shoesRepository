@@ -39,60 +39,65 @@ public class ProductAction extends XywAction{
 		shoesdetail.setShoesid(from.getShoesid());
 		
 		//查询商品访问频率,有就修改shoesdetail、Acfrenquence的访问频率,没有就新增数据
-		List<Object> aflist = dao.select("selectFrenquence", frenquence);
-		if (!aflist.isEmpty()) {
-			for (Object object : aflist) {
-				frenquence = (Acfrenquence)object;
+		List<Object> aflist;
+		try {
+			aflist = dao.select("selectFrenquence", frenquence, null);
+			if (!aflist.isEmpty()) {
+				for (Object object : aflist) {
+					frenquence = (Acfrenquence)object;
+				}
+				//修改访问频率
+				frenquence.setFrequence(frenquence.getFrequence()+1);
+				shoesdetail.setFrequence(frenquence.getFrequence());
+				
+				boolean flag = dao.update("updateFrequence", frenquence, null);
+				boolean sflag = dao.update("updateshoesFrequence", shoesdetail, null);
+				if(flag && sflag) {
+					frenquence = null;
+				}
+			}else {
+				//增加商品访问频率
+				frenquence.setAcfrenquenceid(PrimaryKeyGeneric.getPrimaryKey());
+				frenquence.setFrequence(1);
+				dao.insert("insertAcfrenquence", frenquence, null);
 			}
-			//修改访问频率
-			frenquence.setFrequence(frenquence.getFrequence()+1);
-			shoesdetail.setFrequence(frenquence.getFrequence());
 			
-			boolean flag = dao.update("updateFrequence", frenquence);
-			boolean sflag = dao.update("updateshoesFrequence", shoesdetail);
-			if(flag && sflag) {
-				frenquence = null;
+			HashMap<String, String> map = new HashMap<String, String>();
+			HashSet<String> size = new HashSet<String>();
+			String shoesid = null;
+			String descs = null;
+			float price = 0;
+			int frequence = 0;
+			int allcount = 0;
+			
+			//查询
+			shoesdetail.setShoesid(from.getShoesid());
+			List<Object> list = dao.select("selectShoesDetail", shoesdetail, null);
+			if (!list.isEmpty()) {
+				for (Object object : list) {
+					shoesdetail = (Shoesdetail)object;
+					shoesid = shoesdetail.getShoesid();
+					descs = shoesdetail.getDescs();
+					price = shoesdetail.getPrice();
+					frequence = shoesdetail.getFrequence();
+					allcount += shoesdetail.getCount();
+					map.put(shoesdetail.getColor(), shoesdetail.getImage());
+					size.add(shoesdetail.getSize());
+				}
+				dto.setShoesid(shoesid);
+				dto.setDescs(descs);
+				dto.setPrice(price);
+				dto.setFrequence(frequence);
+				dto.setAllcount(allcount);
+				dto.setColor(map);
+				dto.setSize(size);
+				
+				request.setAttribute("dto", dto);
+				
+				return "success";
 			}
-		}else {
-			//增加商品访问频率
-			frenquence.setAcfrenquenceid(PrimaryKeyGeneric.getPrimaryKey());
-			frenquence.setFrequence(1);
-			dao.insert("insertAcfrenquence", frenquence);
-		}
-		
-		HashMap<String, String> map = new HashMap<String, String>();
-		HashSet<String> size = new HashSet<String>();
-		String shoesid = null;
-		String descs = null;
-		float price = 0;
-		int frequence = 0;
-		int allcount = 0;
-		
-		//查询
-		shoesdetail.setShoesid(from.getShoesid());
-		List<Object> list = dao.select("selectShoesDetail", shoesdetail);
-		if (!list.isEmpty()) {
-			for (Object object : list) {
-				shoesdetail = (Shoesdetail)object;
-				shoesid = shoesdetail.getShoesid();
-				descs = shoesdetail.getDescs();
-				price = shoesdetail.getPrice();
-				frequence = shoesdetail.getFrequence();
-				allcount += shoesdetail.getCount();
-				map.put(shoesdetail.getColor(), shoesdetail.getImage());
-				size.add(shoesdetail.getSize());
-			}
-			dto.setShoesid(shoesid);
-			dto.setDescs(descs);
-			dto.setPrice(price);
-			dto.setFrequence(frequence);
-			dto.setAllcount(allcount);
-			dto.setColor(map);
-			dto.setSize(size);
-			
-			request.setAttribute("dto", dto);
-			
-			return "success";
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		return "error";

@@ -2,6 +2,8 @@ package zwc.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,10 +15,13 @@ import cn.shoesmall.util.CookieUtil;
 import cn.shoesmall.util.Encoding;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 import zwc.pojo.Account;
-
+/*
+ * 个人中心修改密码的servlet
+ */
 public class PassAction extends XywAction{
 
 	@Override
@@ -44,7 +49,11 @@ public class PassAction extends XywAction{
 		BaseDao dao = new BaseDaoImpl();
 		Account ac = new Account();
 		ac.setAccountid(id);
-		List list = dao.select("selectAccount3", ac);
+		List list;
+		Connection conn = DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list = dao.select("selectAccount3", ac, null);
 			for (Object object : list) {
 				ac = (Account)object;
 				old = ac.getPassword();
@@ -58,7 +67,7 @@ public class PassAction extends XywAction{
 				Account ac1 = new Account();
 				ac1.setAccountid(id);
 				ac1.setPassword(m);
-				dao.update("updateAccountidpass", ac1);
+				dao.update("updateAccountidpass", ac1, conn);
 				//清除原来得数据
 				Cookie[] cookies=arg0.getCookies();
 				for(Cookie c: cookies){
@@ -67,11 +76,18 @@ public class PassAction extends XywAction{
 				    arg1.addCookie(cookie);
 				}
 			}
-			
-		
-		
-		
-		
+			conn.commit();
+		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}finally{
+			DBHelper.disConnect(conn);
+		}
+				
 		return null;
 	}
 

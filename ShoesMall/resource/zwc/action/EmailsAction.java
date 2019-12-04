@@ -2,6 +2,8 @@ package zwc.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,10 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import cn.shoesmall.util.CookieUtil;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 import zwc.pojo.Account;
-
+/*
+ * 个人中心修改邮箱的servlet
+ */
 public class EmailsAction extends XywAction{
 
 	@Override
@@ -37,10 +42,25 @@ public class EmailsAction extends XywAction{
 		BaseDao dao = new BaseDaoImpl();
 		Account ac = new Account();
 		ac.setAccountid(id);
-		List list = dao.select("selectAccount3", ac);
-		for (Object object : list) {
-			ac = (Account)object;
-			e = ac.getEmail();
+		List list;
+		Connection conn = DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list = dao.select("selectAccount3", ac, conn);
+			for (Object object : list) {
+				ac = (Account)object;
+				e = ac.getEmail();
+			}
+			conn.commit();
+		} catch (Exception e1) {
+			try {
+				conn.rollback();
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+			e1.printStackTrace();
+		}finally {
+			DBHelper.disConnect(conn);
 		}
 		if (!e.equals(n)) {
 			//返回原邮箱
@@ -50,14 +70,28 @@ public class EmailsAction extends XywAction{
 			//通过邮箱查
 			Account ac1 = new Account();
 			ac1.setEmail(m);
-			List list1 = dao.select("selectAccount1", ac1);
-			if (list1.size()==0) {
-				ac1.setAccountid(id);
-				ac1.setPassword(m);
-				dao.update("updateAccountidemail", ac1);
-			}else{
-				PrintWriter out = arg1.getWriter();
-				out.write(m);
+			List list1;
+			try {
+				conn.setAutoCommit(false);
+				list1 = dao.select("selectAccount1", ac1, conn);
+				if (list1.size()==0) {
+					ac1.setAccountid(id);
+					ac1.setPassword(m);
+					dao.update("updateAccountidemail", ac1, conn);
+				}else{
+					PrintWriter out = arg1.getWriter();
+					out.write(m);
+				}
+				conn.commit();
+			} catch (Exception e1) {
+				try {
+					conn.rollback();
+				} catch (SQLException e2) {
+					e2.printStackTrace();
+				}
+				e1.printStackTrace();
+			}finally{
+				DBHelper.disConnect(conn);
 			}
 		}
 		

@@ -2,6 +2,8 @@ package zwc.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,10 +15,13 @@ import cn.shoesmall.util.CookieUtil;
 import cn.shoesmall.util.Encoding;
 import xyw.core.dao.BaseDao;
 import xyw.core.dao.impl.BaseDaoImpl;
+import xyw.core.db.DBHelper;
 import xyw.core.web.action.XywAction;
 import xyw.core.web.form.XywForm;
 import zwc.pojo.Account;
-
+/*
+ * 个人中心修改手机号码的servlet
+ */
 public class PhotosAction extends XywAction{
 
 	@Override
@@ -38,28 +43,43 @@ public class PhotosAction extends XywAction{
 		BaseDao dao = new BaseDaoImpl();
 		Account ac = new Account();
 		ac.setAccountid(id);
-		List list = dao.select("selectAccount3", ac);
-		for (Object object : list) {
-			ac = (Account)object;
-			t = ac.getTel();
-		}
-		if (!t.equals(n)) {
-			//返回原手机号码
-			PrintWriter out = arg1.getWriter();
-			out.write(n);
-		}else{
-			//通过电话查
-			Account ac1 = new Account();
-			ac1.setTel(m);
-			List list1 = dao.select("selectAccount", ac1);
-			if (list1.size()==0) {
-				ac1.setAccountid(id);
-				ac1.setPassword(m);
-				dao.update("updateAccountidtel", ac1);
-			}else{
-				PrintWriter out = arg1.getWriter();
-				out.write(m);
+		List list;
+		Connection conn = DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list = dao.select("selectAccount3", ac, conn);
+			for (Object object : list) {
+				ac = (Account)object;
+				t = ac.getTel();
 			}
+			if (!t.equals(n)) {
+				//返回原手机号码
+				PrintWriter out = arg1.getWriter();
+				out.write(n);
+			}else{
+				//通过电话查
+				Account ac1 = new Account();
+				ac1.setTel(m);
+				List list1 = dao.select("selectAccount", ac1, conn);
+				if (list1.size()==0) {
+					ac1.setAccountid(id);
+					ac1.setPassword(m);
+					dao.update("updateAccountidtel", ac1, null);
+				}else{
+					PrintWriter out = arg1.getWriter();
+					out.write(m);
+				}
+			}
+			conn.commit();
+		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}finally{
+			DBHelper.disConnect(conn);
 		}
 		
 		return null;
