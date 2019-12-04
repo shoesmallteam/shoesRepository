@@ -26,9 +26,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="row">
             <div class="col-xs-8 col-sm-9">
                 <div class="row">
-                    <div class="col-xs-12 logo">
+                    <a href="home.jsp">
                         <img src="images/mainPage/logo.svg"/>
-                    </div>
+                    </a>
                     <div class="col-xs-12 navb text-center">
                         <ul>
                             <li><a href="./classify.jsp?typename=女" target="_self">女装</a></li>
@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="col-xs-12">
                     	<input type="hidden" value="${nikename}" id="nn"/>
                     	<input type="hidden" value="${msg}" id="msg"/>
-                    	<a class="navbar-text" id="welcome" style="cursor: pointer;"></a>
+                    	<a href="center.jsp" class="navbar-text" id="welcome" style="cursor: pointer;"></a>
                         <p class="cart">
                           <a href="goods_cart.jsp"><span class="glyphicon glyphicon-shopping-cart "></span></a>
                         </p>
