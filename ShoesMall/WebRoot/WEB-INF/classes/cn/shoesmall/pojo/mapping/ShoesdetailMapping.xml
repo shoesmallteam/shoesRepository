@@ -73,6 +73,6 @@
 	</update>
 	
 	<delete id="deleteShoesDetailById">
-    	delete from shoesdetail where shoesid = #{shoesid}
+    	delete from shoesdetail where shoesid = #{shoesid};
     </delete>
 </class>

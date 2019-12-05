@@ -15,14 +15,15 @@
 	</select>
 	
 	<select id="selectAllShoes" returnType="cn.shoesmall.pojo.Shoes">
-		select * from shoes
+		select * from shoes;
 	</select>
 	
-	<select id="DelectShoesById">
-		delect form shoes where shoesid = #{shoesid}
-	</select>
+	<delete id="DelectShoesById">
+		delete from shoes where shoesid=#{shoesid}
+	</delete>
 	
 	<select id="selectShoesById" returnType="cn.shoesmall.pojo.Shoes">
-		select * from shoes where shoesid = #{shoesid}
+		select * from shoes where shoesid = #{shoesid};
 	</select>
+	
 </class>

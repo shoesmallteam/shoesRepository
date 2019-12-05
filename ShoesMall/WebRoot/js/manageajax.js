@@ -60,7 +60,7 @@ function shoes(){
 	var str = `<thead>
 		<td>商品编号</td>
 		<td>商品名称</td>
-		<td><input type="text" value="商品详情id"></td>
+		<td><input type="hidden" value="商品详情id"></td>
 		</thead>`;
 	$.ajax({
 		type:"post",

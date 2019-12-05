@@ -7,4 +7,5 @@
 		insert into shoesclassify(shoesclassifyid,shoescalssifyname) 
 		values(#{shoesclassifyid},#{shoescalssifyname});
 	</insert>
+	
 </class>
