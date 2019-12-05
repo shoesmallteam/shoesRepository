@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="col-xs-12">
                     	<input type="hidden" value="${nikename}" id="nn"/>
                     	<input type="hidden" value="${msg}" id="msg"/>
-                    	<a href="http://localhost:8080/ShoesMall/center.jsp" class="navbar-text" id="welcome" style="cursor: pointer;"></a>
+                    	<a href="center.jsp" class="navbar-text" id="welcome" style="cursor: pointer;"></a>
                         <p class="cart">
                           <a><span class="glyphicon glyphicon-shopping-cart "></span></a>
                         </p>

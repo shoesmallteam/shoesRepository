@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="cn.shoesmall.pojo.Address" table="address">
+	<property name="addressid" column="addressid" type="java.lang.String"></property>
+	<property name="userid" column="userid" type="java.lang.String"></property>
+	<property name="province" column="province" type="java.lang.String"></property>
+	<property name="city" column="city" type="java.lang.String"></property>
+	<property name="area" column="area" type="java.lang.String"></property>
+	<property name="detail" column="detail" type="java.lang.String"></property>
+	<property name="tel" column="tel" type="java.lang.String"></property>
+	<property name="name" column="name" type="java.lang.String"></property>
+
+	<insert id="insertAddress">
+		 insert into address(addressid,userid,province,city,area,detail,tel,name) 
+		 values(#{addressid},#{userid},#{province},#{city},#{area},#{detail},#{tel},#{name});
+	</insert>
+	
+	<select id="selectAddress" returnType="cn.shoesmall.pojo.Address">
+		select * from address where userid = #{userid};
+	</select>
+	
+	<delete id="deleteAddress">
+		delete from address where addressid = #{addressid};
+	</delete>
+	
+	<update id="updateAddress">
+		update address set province = #{province},city = #{city},area = #{area},detail = #{detail},tel = #{tel},name = #{name}
+		where addressid = #{addressid};
+	</update>
+</class>
