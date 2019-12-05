@@ -35,14 +35,15 @@ public class LoginAction extends XywAction{
 		//拿到ajax传过来的页面数据
 		String un = arg0.getParameter("un");
 		String pw = arg0.getParameter("pw");
+		//调用数据库
+		BaseDao dao = new BaseDaoImpl();
 		//正则判断un是账号还是手机号还是邮箱
 		String em = null;
 		String ph = null;
 		String uu = null;
+		int isa = 0;
 		Cookie cookie = null;
 		Connection conn = DBHelper.getConnection();
-		//调用数据库
-		BaseDao dao = new BaseDaoImpl();
 		Account ac = new Account();
 		Pattern email = Pattern.compile("^\\w+@\\w+\\.(net|com|cn|org)+$");
 		Pattern photo = Pattern.compile("^1[3456789]\\d{9}$");
@@ -122,6 +123,7 @@ public class LoginAction extends XywAction{
 				name = ac.getSsname();
 				sex = ac.getSssex();
 				bir = ac.getSsbirthday();
+				isa = ac.getIsassistant();
 				user.setAccountid(id);
 				List list1;
 				try {
@@ -173,8 +175,16 @@ public class LoginAction extends XywAction{
 				p.setLoginDate(new Date());//时间
 				//arg0.getServletContext().setAttribute("personInfo",p);
 				arg0.getSession().setAttribute("personInfo",p);//把信息存入session中
-				PrintWriter out = arg1.getWriter();
-				out.write(nc);//输出昵称
+				//如果要管理员就跳到管理员界面
+				if(isa==1) {
+					System.out.println("登录的帐号是管理员");
+					PrintWriter out = arg1.getWriter();
+					out.write(un+pw);
+				}else {
+					System.out.println("登录的帐号是普通用户");
+					PrintWriter out = arg1.getWriter();
+					out.write(nc);//输出昵称
+				}
 			}
 		}
 		return null;

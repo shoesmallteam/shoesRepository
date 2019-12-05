@@ -52,6 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                     <div class="col-xs-12">
+                    	<input type="hidden" value="${isa}" id="isa"/>
                     	<input type="hidden" value="${nikename}" id="nn"/>
                     	<input type="hidden" value="${msg}" id="msg"/>
                     	<a href="center.jsp" class="navbar-text" id="welcome" style="cursor: pointer;"></a>

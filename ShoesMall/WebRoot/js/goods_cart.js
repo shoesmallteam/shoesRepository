@@ -220,15 +220,20 @@ function checkLogin1(){
     var pw = $('#pwd').val();
     var nn = $('#nn').val();
     var msg = $('#msg').val();
+    var isa = $('#isa').val();
     //判断
     if(un == '' || pw == ''){
     	$('#regist, #login').show();
         $('#welcome, #exit, .cart').hide();
         $('#welcome').html('');
     }else{
-		$('#regist, #login').hide();
-		$('#welcome, #exit, .cart').show();
-		$('#welcome').html(nn);
+    	if(isa == ''){
+    		$('#regist, #login').hide();
+    		$('#welcome, #exit, .cart').show();
+    		$('#welcome').html(nn);
+    	}else{
+    		window.location.href = 'manage.jsp';
+    	}
     };
     if (msg != '') {
     	alert(msg);

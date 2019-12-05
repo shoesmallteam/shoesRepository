@@ -1,6 +1,4 @@
 
-
-
 function exitDelete(){
 	$(".transparent").css("display","none");
 	$(".center-delete").css("display","none");
@@ -12,14 +10,14 @@ $(".close-ask").click(exitDelete);
 
 $(".no-update").click(exitDelete);
 					
-//ÉèÖÃÈ·ÈÏÄãÉ¾³ý½çÃæµÄ´óÐ¡
+//ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½Ð¡
 function autoSize(){
-	//»ñµÃ´°¿ÚµÄ´óÐ¡
+	//ï¿½ï¿½Ã´ï¿½ï¿½ÚµÄ´ï¿½Ð¡
 	
 	var windowWidth = document.body.clientWidth;
 	var windowHeight = document.body.clientHeight;
-	/*alert("¿í£º"+windowWidth + ",¸ß"+ windowHeight);*/
-	//»ñµÃ
+	/*alert("ï¿½ï¿½"+windowWidth + ",ï¿½ï¿½"+ windowHeight);*/
+	//ï¿½ï¿½ï¿½
 	var width = $(".center-delete").width();
 	var height = $(".center-delete").height();
 	
@@ -63,7 +61,7 @@ $('.delete_shoes').click(function(){
 	//-----------------------------------------------------------------
 	$(".enter-delete").click(function(){
 		alert(shoesid);
-		//»ñµÃµ±Ç°µÄ»áÔ±ID
+		//ï¿½ï¿½Ãµï¿½Ç°ï¿½Ä»ï¿½Ô±ID
 		/*alert("detailid====="+detailid);*/
 		if(shoesid != ``){
 			$.ajax({
@@ -105,7 +103,7 @@ $(".update_account").click(function(){
 		account = $('#account').val();
 		isassistant = $('#isassistant').val();
 		isvip = $('#isvip').val();
-		//»ñµÃµ±Ç°µÄ»áÔ±ID
+		//ï¿½ï¿½Ãµï¿½Ç°ï¿½Ä»ï¿½Ô±ID
 		/*alert("detailid====="+detailid);*/
 		if(account != ``){
 			
