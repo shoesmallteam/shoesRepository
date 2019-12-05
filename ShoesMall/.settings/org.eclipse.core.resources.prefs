@@ -2,15 +2,14 @@
 <<<<<<<=HEAD
 >>>>>>>=branch 'master' of https\://github.com/shoesmallteam/shoesRepository.git
 eclipse.preferences.version=1
+encoding//WebRoot/404.html=GBK
+encoding//WebRoot/500.html=GBK
 encoding//WebRoot/css/loginRegist.css=UTF-8
 encoding//WebRoot/css/product.css=UTF-8
 encoding//WebRoot/js/address.js=UTF-8
 encoding//WebRoot/js/center.js=UTF-8
 encoding//WebRoot/js/manage.js=GBK
-<<<<<<< HEAD
-encoding//WebRoot/js/submitOrder.js=GBK
-=======
 encoding//WebRoot/js/manageajax.js=GBK
->>>>>>> branch 'master' of https://github.com/shoesmallteam/shoesRepository.git
+encoding//WebRoot/js/submitOrder.js=GBK
 encoding//resource/zwc/action/RegisterAction.java=UTF-8
 encoding/<project>=UTF-8
