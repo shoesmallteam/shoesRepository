@@ -4,7 +4,9 @@
 eclipse.preferences.version=1
 encoding//WebRoot/css/loginRegist.css=UTF-8
 encoding//WebRoot/css/product.css=UTF-8
+encoding//WebRoot/js/address.js=UTF-8
 encoding//WebRoot/js/center.js=UTF-8
 encoding//WebRoot/js/manage.js=GBK
+encoding//WebRoot/js/submitOrder.js=GBK
 encoding//resource/zwc/action/RegisterAction.java=UTF-8
 encoding/<project>=UTF-8

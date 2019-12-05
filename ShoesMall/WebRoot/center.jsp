@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="col-xs-8 col-sm-9">
                 <div class="row">
                     <div class="col-xs-12 logo">
-                    <a href="http://localhost:8080/ShoesMall/home.jsp">
+                    <a href="home.jsp">
                         <img src="images/mainPage/logo.svg"/>
                     </a>
                     </div>
@@ -33,11 +33,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <ul>
                             <li><a href="./classify.do?typename=girl" target="_self">女装</a></li>
                             <li><a href="./classify.jsp?cartId=69" target="_self">男装</a></li>
-                            <li><a href="./classify.jsp?cartId=45" target="_self">孩子们</a></li>
-                            <li><a href="./classify.jsp?cartId=92" target="_self">配饰</a></li>
-                            <li><a href="./classify.jsp?cartId=62" target="_self">发展趋势</a></li>
-                            <li><a href="./classify.jsp?cartId=69" target="_self">品牌</a></li>
-                            <li><a href="./classify.jsp?cartId=45" target="_self">特卖</a></li>
+                            <li><a href="./classify.jsp?cartId=45" target="_self">童装</a></li>
+                            <li><a href="./classify.jsp?cartId=92" target="_self">安踏</a></li>
+                            <li><a href="./classify.jsp?cartId=62" target="_self">耐克</a></li>
+                            <li><a href="./classify.jsp?cartId=69" target="_self">老人</a></li>
+                            <li><a href="./classify.jsp?cartId=45" target="_self">秋冬款</a></li>
                         </ul>
                     </div>
                 </div>
@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<li><a>安全邮箱</a></li>
 				<li><a>实名认证</a></li>
 				<li><a>我的订单</a></li>
-				<li><a>配送地址</a></li>
+				<li><a href="selectAddress.do">配送地址</a></li>
 				<li><a>评价晒单</a></li>
 				<li><a>我的资产</a></li>
 				<li><a>消息通知</a></li>

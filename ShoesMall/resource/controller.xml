@@ -74,4 +74,28 @@
     <action name="deleteCartGood" class="xyw.action.DeleteCartGoodAction">
     	<form>xyw.form.DeleteCartGoodForm</form>
     </action>
+    
+    <!-- 查询地址信息 -->
+    <action name="selectAddress" class="fyq.action.AddressAction">
+    	<result name="success" direct="false">address.jsp</result>
+    </action>
+	
+	<!-- 插入地址信息 -->
+	<action name="insertAddress" class="fyq.action.InsertAddressAction">
+		<form>fyq.form.InsertAddressForm</form>
+		<result name="success" direct="false">address.jsp</result>
+	</action>
+	
+	<!-- 删除地址信息 -->
+	<action name="deleteAddress" class="fyq.action.DeleteAddress">
+		<form>fyq.form.DeleteAddressForm</form>
+		<result name="success" direct="false">address.jsp</result>
+	</action>
+	
+	<!-- 修改地址信息 -->
+	<action name="updateAddress" class="fyq.action.UpdateAddressAction">
+		<form>fyq.form.UpdateAddressForm</form>
+		<result name="success" direct="false">address.jsp</result>
+	</action>
+    
 </actions>
