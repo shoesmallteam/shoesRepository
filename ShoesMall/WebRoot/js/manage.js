@@ -56,6 +56,7 @@ $(".update_account button").css({"border-radius":"5px"});
 $('.delete_shoes').click(function(){
 	autoSize();
 	var shoesid = $(this).attr("data-detailid");
+	alert(shoesid);
 	$(".transparent").css({"display":"block"});
 	$(".center-delete").css({"display":"block"});	
 	
@@ -68,7 +69,7 @@ $('.delete_shoes').click(function(){
 			$.ajax({
 				type:"post",
 				url:"delectShoes.do",
-				data:"shoesid="+shoesid,
+				data:"shoesid=1",
 				success:function(){
 					$(".transparent").css("display","none");
 					$(".center-delete").css("display","none");
