@@ -18,11 +18,11 @@ function account(){
 	$(".shoes_info>table").empty();
 	$(".account_info").css({"display":"block"});
 	var str = `<thead>
-						<td>账户</td>
-						<td>密码</td>
-						<td>电话</td>
-						<td>邮箱</td>
-						<td>是否为管理员</td>
+						<td>璐︽埛</td>
+						<td>瀵嗙爜</td>
+						<td>鐢佃瘽</td>
+						<td>閭</td>
+						<td>鏄惁涓虹鐞嗗憳</td>
 						<td>vip</td>
 					</thead>`;
 	
@@ -42,7 +42,7 @@ function account(){
 					<td>${data[i].isassistant}</td>
 					<td>${data[i].isvip}</td>
 					<td>
-					<span class="update_account" account="${data[i].account}" data-isassistant="${data[i].isassistant}" data-isvip="${data[i].isvip}"><a>修改</a></span>
+					<span class="update_account" account="${data[i].account}" data-isassistant="${data[i].isassistant}" data-isvip="${data[i].isvip}"><a>淇敼</a></span>
 					</td>
 				</tr>
 					`;
@@ -58,9 +58,9 @@ function shoes(){
 	$(".account_info").css("display","none");
 	$(".account_info>table").empty();
 	var str = `<thead>
-		<td>商品编号</td>
-		<td>商品名称</td>
-		<td><input type="text" value="商品详情id"></td>
+		<td>鍟嗗搧缂栧彿</td>
+		<td>鍟嗗搧鍚嶇О</td>
+		<td><input type="text" value="鍟嗗搧璇︽儏id"></td>
 		</thead>`;
 	$.ajax({
 		type:"post",
@@ -73,7 +73,7 @@ function shoes(){
 						<td>${data[i].shoesid}</td>
 						<td>${data[i].descs}</td>
 						<td><input type="hidden" value="${data[i].shoesdetailid}"></td>
-						<td><span class="delete_shoes" data-detailid="${data[i].shoesid}"><a>删除</a></span></td>
+						<td><span class="delete_shoes" data-detailid="${data[i].shoesid}"><a>鍒犻櫎</a></span></td>
 					</tr>
 					`;
 			}

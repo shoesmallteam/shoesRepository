@@ -75,7 +75,6 @@
     	<form>xyw.form.DeleteCartGoodForm</form>
     </action>
     
-<<<<<<< HEAD
     <!-- 查询地址信息 -->
     <action name="selectAddress" class="fyq.action.AddressAction">
     	<result name="success" direct="false">address.jsp</result>
@@ -99,7 +98,6 @@
 		<result name="success" direct="false">address.jsp</result>
 	</action>
     
-=======
     <action name="updateAccount" class="tan.action.UpdateAccountAction">
     	<form>tan.form.UpdateAccountForm</form>
     </action>
@@ -107,5 +105,4 @@
     <action name="delectShoes" class="tan.action.DelectShoesAction">
     	<form>tan.form.DelectShoesForm</form>
     </action>
->>>>>>> branch 'master' of https://github.com/shoesmallteam/shoesRepository.git
 </actions>

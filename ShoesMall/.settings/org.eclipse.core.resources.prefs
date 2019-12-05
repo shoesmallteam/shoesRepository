@@ -6,11 +6,8 @@ encoding//WebRoot/css/loginRegist.css=UTF-8
 encoding//WebRoot/css/product.css=UTF-8
 encoding//WebRoot/js/address.js=UTF-8
 encoding//WebRoot/js/center.js=UTF-8
-encoding//WebRoot/js/manage.js=GBK
-<<<<<<< HEAD
+encoding//WebRoot/js/manage.js=UTF-8
+encoding//WebRoot/js/manageajax.js=UTF-8
 encoding//WebRoot/js/submitOrder.js=GBK
-=======
-encoding//WebRoot/js/manageajax.js=GBK
->>>>>>> branch 'master' of https://github.com/shoesmallteam/shoesRepository.git
 encoding//resource/zwc/action/RegisterAction.java=UTF-8
 encoding/<project>=UTF-8

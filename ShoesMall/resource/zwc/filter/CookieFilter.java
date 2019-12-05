@@ -68,6 +68,7 @@ public class CookieFilter implements Filter{
 			String youxiang = null;
 			String dianhua = null;
 			String zhanghao = null;
+			int isa = 0;
 			ac2.setAccountid(id);
 			try {
 				conn.setAutoCommit(false);
@@ -147,6 +148,7 @@ public class CookieFilter implements Filter{
 				for (Object object : list) {
 					ac = (Account)object;
 					password = ac.getPassword();
+					isa = ac.getIsassistant();
 				}
 				User u = new User();
 				u.setAccountid(id);
@@ -178,6 +180,7 @@ public class CookieFilter implements Filter{
 				request.getSession().setAttribute("uuname", username);
 				request.getSession().setAttribute("uupass", password);
 				request.getSession().setAttribute("nikename", nikename);
+				request.getSession().setAttribute("isa", isa);
 				arg2.doFilter(request, response);
 			}
 		}

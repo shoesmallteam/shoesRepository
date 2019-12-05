@@ -55,7 +55,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </div>
 </header>
-
 <center>
 	<div class="contant">
 		<hr/>
@@ -80,24 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
 </center>
-<section class="transparent"></section>
-		<div class="center-delete">
-			<div class="ask-delete">确认删除？</div>
-				<input type="button" value="确认" class="enter-delete"/>
-				<input type="button" value="取消" class="no-delete"/>
-			<div class="close-ask"></div>
-		</div>
-		
-		<div class="center-update">
-				accountid<input type="text" id="account"/><br/>
-				管理员权限：<input type="text" id="isassistant"/><br/>
-				　 vip:　　　<input type="text" id="isvip"/><br/>
-				
-				<input type="button" value="修改" class="enter-update"/>
-				<input type="button" value="取消" class="no-update"/>
-			<div class="close-update"></div>
-		</div>
   </body>
 </html>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js" charset="UTF-8"></script>
-<script type="text/javascript" src="js/manageajax.js"></script>
+<script type="text/javascript" src="js/manage.js"></script>
