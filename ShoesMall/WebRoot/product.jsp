@@ -26,9 +26,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="row">
             <div class="col-xs-8 col-sm-9">
                 <div class="row">
-                    <div class="col-xs-12 logo">
-                        <a href="index.html"><img src="images/mainPage/logo.svg"/></a>
-                    </div>
+                    <a href="home.jsp">
+                        <img src="images/mainPage/logo.svg"/>
+                    </a>
                     <div class="col-xs-12 navb text-center">
                         <ul>
                             <li><a href="./classify.html?cartId=62" target="_self">女装</a></li>
@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 </header>
 		
-		<!--点击弹出模态框(登录)-->
+		 <!--点击弹出模态框(登陆)-->
 		<div id="landModal" class="modal fade animated zoomIn wow" data-backdrop = "static">
 			<!--弹出窗口-->
 			<div class="modal-dialog modal-md">
@@ -115,7 +115,74 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        	<div class="modal-footer">
 		        		<a href="" class="modal-footer-l">手机短信登录</a>
 		        		<a href="#" class="modal-footer-r" data-toggle="modal" data-target="#registerModal">立即注册</a>
-		        		<a href="" class="modal-footer-r">忘记密码</a>
+		        		<a href="#" class="modal-footer-r1" data-toggle="modal" data-target="#forgetModal">忘记密码</a>
+	        		</div>
+	        	</div>
+			</div>
+		</div>
+		<!--忘记密码模态框-->
+		<div id="forgetModal" class="modal fade animated zoomIn wow" data-backdrop = "static">
+			<!--弹出窗口-->
+			<div class="modal-dialog modal-md">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title text-center">
+							忘记密码
+							<span class="close" data-dismiss="modal">&times;</span>
+						</h3>
+					</div>
+					<div class="modal-body">
+						<ul>
+							<li class="text-center">
+								<input  type="text" id="forgetusername" class="accountNumber " value="" placeholder="邮箱"/>
+							</li>
+							<li>
+								<div class="error">
+									<em></em>
+									<span class="error-con">邮箱错误</span>
+								</div>
+							</li>
+							<li class="text-center">
+								<input  type="text" id="forgetname" class="Obtain " value="" placeholder="请输入验证码"/>
+								<input type="hidden" value="点击发送验证码" id="t1"/>
+								<button class="btn" id="ObtainBtn" >点击发送验证码</button>
+							</li>
+							<li>
+								<div class="error">
+									<em></em>
+									<span class="error-con">验证码错误</span>
+								</div>
+							</li>
+							<li class="text-center">
+								<input  type="password" id="forgetpwd" class="password " value="" placeholder="请设置新密码"/>
+							</li>
+							<li>
+								<div class="error">
+									<em></em>
+									<span class="error-con">密码格式错误</span>
+								</div>
+							</li>
+							<li>
+								<div class="error">
+									<em></em>
+									<span class="error-con">必须8-14位不能有空格</span>
+								</div>
+							</li>
+							<li>
+								<div class="error">
+									<em></em>
+									<span class="error-con">信息不能为空</span>
+								</div>
+							</li>
+							<li class="text-center">
+								<button class="btn" id="ResetBtn">确认重置</button>
+							</li>
+						</ul>
+					</div>
+		        	<div class="modal-footer">
+		        		<a href="" class="modal-footer-l">手机短信登录</a>
+		        		<a href="#" class="modal-footer-r" data-toggle="modal" data-target="#registerModal">立即注册</a>
+		        		<a href="#" class="modal-footer-r1" data-toggle="modal" data-target="#landModal">立即登陆</a>
 	        		</div>
 	        	</div>
 			</div>
@@ -147,7 +214,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li>
 								<div class="modal-body-l1">
 									<span>手机号</span>
-									<input type="text"  value="" class="form-control" placeholder="可用于登陆和找回密码"/>
+									<input type="text"  value="" class="form-control" placeholder="请设置手机号码"/>
 								</div>
 							</li>
 							<li>
@@ -171,7 +238,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li>
 								<div class="modal-body-l1">
 									<span>　邮箱　</span>
-									<input type="text" value="" class="form-control" placeholder="请设置登陆邮箱"/>
+									<input type="text" value="" class="form-control" placeholder="可用于登陆和找回密码"/>
 								</div>
 							</li>
 							<li>
@@ -202,6 +269,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 		</div>
+		
+		
 
 <section class="product">
     <div class="container">
@@ -399,3 +468,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/auto_login.js" ></script>
 <script type="text/javascript" src="js/loginRegist.js" ></script>
 <script type="text/javascript" src="js/product.js" ></script>
+<script type="text/javascript" src="js/forget.js" ></script>

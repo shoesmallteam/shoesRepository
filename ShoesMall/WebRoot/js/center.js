@@ -1,3 +1,19 @@
+function msgs(){
+	var msg = $('#msg').val();
+	//alert(msg);
+	if (msg != '') {
+    	alert(msg);
+    	//$('#welcome').attr("href","javascript:;");
+    	$.ajax({
+    		type:"post",
+    		url:"removemsg.do",
+    		success:function(result){
+				window.location.href = 'home.jsp';
+			}
+    	});
+    }
+};
+msgs();
 //默认选中第一个且显示
 $('#section-big-layout-left li:first>a').css({
       	fontSize : 18,

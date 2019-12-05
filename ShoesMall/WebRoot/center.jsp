@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath(); 
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -88,6 +92,7 @@
 									<p>昵称</p>
 								</div>
 								<div class="layout-right-l1-middle1-right">
+								<input type="hidden" value="${msg}" id="msg"/>
 								<input type="hidden" value="${ni}" id="nn"/>
 									<p id="ni">用户124564789</p>
 								</div>

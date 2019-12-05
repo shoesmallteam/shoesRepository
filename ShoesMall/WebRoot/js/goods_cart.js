@@ -213,3 +213,45 @@ function addGoodsList() {
 };
 
 addGoodsList();
+//自动登陆与单态
+function checkLogin1(){
+	//拿到账号和密码
+    var un = $('#username').val();
+    var pw = $('#pwd').val();
+    var nn = $('#nn').val();
+    var msg = $('#msg').val();
+    //判断
+    if(un == '' || pw == ''){
+    	$('#regist, #login').show();
+        $('#welcome, #exit, .cart').hide();
+        $('#welcome').html('');
+    }else{
+		$('#regist, #login').hide();
+		$('#welcome, #exit, .cart').show();
+		$('#welcome').html(nn);
+    };
+    if (msg != '') {
+    	alert(msg);
+    	$.ajax({
+    		type:"post",
+    		url:"removemsg.do",
+    		success:function(result){
+				window.location.href = 'home.jsp';
+			}
+    	});
+    }
+    
+};
+checkLogin1();
+//点击退出
+$('#exit').click(function(){
+	if (confirm(" Are you sure? ")) {
+		$.ajax({
+			type:"post",
+			url:"exits.do",
+			success:function(result){
+				window.location.href = 'home.jsp';
+			}
+		});
+	}
+});

@@ -64,12 +64,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="shoes_tag">商品管理</div>
 		</div>
 		<div class="info">
-			<div class="account_info" page_show="">
+			<div class="account_info">
 				<table>
 					
 				</table>
 			</div>
-			<div class="shoes_info" page_show="">
+			<div class="shoes_info">
 				<table>
 					
 				</table>

@@ -54,10 +54,19 @@
   	<filter-name>cookieFilter</filter-name>
   	<url-pattern>/home.jsp</url-pattern>
   	</filter-mapping>
+  	<filter-mapping>
+  	<filter-name>cookieFilter</filter-name>
+  	<url-pattern>/goods_cart.jsp</url-pattern>
+  	</filter-mapping>
+  	<filter-mapping>
+  	<filter-name>cookieFilter</filter-name>
+  	<url-pattern>/classify.jsp</url-pattern>
+  	</filter-mapping>
+  	<filter-mapping>
+  	<filter-name>cookieFilter</filter-name>
+  	<url-pattern>/product.jsp</url-pattern>
+  	</filter-mapping>
   	<!-- 单态 -->
-  	<listener>
-		<listener-class>zwc.listener.MySessionAttributeListener</listener-class>
-  	</listener>
   	<listener>
 		<listener-class>zwc.listener.MySessionAttributeListener</listener-class>
   	</listener>
