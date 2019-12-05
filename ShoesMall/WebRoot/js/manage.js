@@ -1,10 +1,20 @@
 $.ajaxSettings.async = false;
 var pagesize = $('.pagesize').val();
 
+(function(){
+	$(".account_tag").attr('page_show','active');
+	$(".shoes_tag").attr('page_show','');
+	account();
+})();
+
 $(".account_tag").click(function(){
+	$(".account_tag").attr('page_show','active');
+	$(".shoes_tag").attr('page_show','');
 	account();
 });
 $(".shoes_tag").click(function(){
+	$(".account_tag").attr('page_show','');
+	$(".shoes_tag").attr('page_show','active');
 	shoes();
 });
 
@@ -77,10 +87,18 @@ $('.prve').click(function(){
 	if(pagesize <= 1){
 		pagesize = 1;
 	}
-	shoes();
+	if($(".account_tag").attr('page_show') != null && $(".account_tag").attr('page_show') != ''){
+		account();
+	}else{
+		shoes();
+	}
 });
 
 $('.next').click(function(){
 	pagesize ++;
-	shoes();
+	if($(".account_tag").attr('page_show') != null && $(".account_tag").attr('page_show') != ''){
+		account();
+	}else{
+		shoes();
+	}
 });

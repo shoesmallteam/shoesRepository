@@ -21,4 +21,8 @@
 	<select id="SelectAll" returnType="tan.pojo.AccountPageDto">
 		select accountid,account,password,tel,email,isassistant,isvip from account
 	</select>
+	
+	<update id="updateIsassistant">
+		update cart set isassistant = #{isassistant} where accountid = #{accountid};
+	</update>
 </class>
