@@ -1,86 +1,125 @@
-$.ajaxSettings.async = false;
-var pagesize = $('.pagesize').val();
 
-$(".account_tag").click(function(){
-	account();
-});
-$(".shoes_tag").click(function(){
-	shoes();
-});
 
-function account(){
-	$(".shoes_info").css({"display":"none"});
-	$(".shoes_info>table").empty();
-	$(".account_info").css({"display":"block"});
-	var str = `<thead>
-						<td>账户</td>
-						<td>密码</td>
-						<td>电话</td>
-						<td>邮箱</td>
-						<td>是否为管理员</td>
-					</thead>`;
+
+function exitDelete(){
+	$(".transparent").css("display","none");
+	$(".center-delete").css("display","none");
+	$(".center-update").css("display","none");
+};
+
+$(".no-delete").click(exitDelete);
+$(".close-ask").click(exitDelete);
+
+$(".no-update").click(exitDelete);
+					
+//设置确认你删除界面的大小
+function autoSize(){
+	//获得窗口的大小
 	
-	$.ajax({
-		type:"get",
-		url:"SelectAccount.do?pagesize="+pagesize,
-//		data: {"pagesize" : JSON.stringify(pagesize)},
-		success:function(result){
-			var data = JSON.parse(result);
-			for(var i=0;i< data.length;i++){
-				str += `
-				<tr>
-				<td>${data[i].account}</td>
-					<td>******</td>
-					<td>${data[i].tel}</td>
-					<td>${data[i].email}</td>
-					<td>${data[i].isassistant}</td>
-					<td>${data[i].isvip}</td>
-					</tr>
-					`;
-			}
-			 $(".account_info>table").html(str);			
-		}
+	var windowWidth = document.body.clientWidth;
+	var windowHeight = document.body.clientHeight;
+	/*alert("宽："+windowWidth + ",高"+ windowHeight);*/
+	//获得
+	var width = $(".center-delete").width();
+	var height = $(".center-delete").height();
+	
+	$(".transparent").css({
+		"width" : windowWidth,
+		"height" : windowHeight
 	});
-}
-
-
-function shoes(){
-	$(".shoes_info").css("display","block");
-	$(".account_info").css("display","none");
-	$(".account_info>table").empty();
-	var str = `<thead>
-		<td>商品编号</td>
-		<td>商品名称</td>
-		<td><input type="text" value="商品详情id"></td>
-		</thead>`;
-	$.ajax({
-		type:"post",
-		url:"SelectAllShoes.do",
-		data: {"pagesize" : pagesize},
-		success:function(result){
-			var data = JSON.parse(result);
-			for(var i=0;i<data.length;i++){
-				str += `<tr>
-					<td>${data[i].shoesid}</td>
-					<td>${data[i].descs}</td>
-					<td><input type="text" value="${data[i].shoesdetailid}"></td>
-					</tr>
-					`;
-			}
-			$(".shoes_info>table").html(str);			
-		}
+	
+	$(".center-delete").css({
+		"left" : (windowWidth-width)/2,
+		"top" : (windowHeight-height)/2
 	});
-}
+	$(".center-update").css({
+		"left" : (windowWidth-width)/2,
+		"top" : (windowHeight-height)/2
+	});
+};
 
-$('.prve').click(function(){
-	pagesize --;
-	if(pagesize <= 1){
-		pagesize = 1;
-	}
-	shoes();
+$(".info table tr").mouseover(function(){
+	$(this).css({"border-color":"#c40e0e",
+		});
 });
 
-$('.next').click(function(){
-	pagesize ++;
-	shoes();
+$(".info table tr").mouseout(function(){
+	$(this).css({"border-color":"#eee",
+	});
+});
+
+$(".info table tr td").css("padding-top","10px");
+$(".delete_shoes button").css({"border-radius":"5px"});
+$(".update_account button").css({"border-radius":"5px"});
+
+
+$('.delete_shoes').click(function(){
+	autoSize();
+	var shoesid = $(this).attr("data-detailid");
+	$(".transparent").css({"display":"block"});
+	$(".center-delete").css({"display":"block"});	
+	
+	//-----------------------------------------------------------------
+	$(".enter-delete").click(function(){
+		alert(shoesid);
+		//获得当前的会员ID
+		/*alert("detailid====="+detailid);*/
+		if(shoesid != ``){
+			$.ajax({
+				type:"post",
+				url:"delectShoes.do",
+				data:"shoesid="+shoesid,
+				success:function(){
+					$(".transparent").css("display","none");
+					$(".center-delete").css("display","none");
+					$(".account_tag").attr('page_show','');
+					$(".shoes_tag").attr('page_show','active');
+					
+					window.location.reload();
+					
+				}
+			});
+		}
+		
+		detailid = ``;
+	});	
+});
+
+
+$(".update_account").click(function(){
+	autoSize();
+	var account = $(this).attr('account');
+	var isassistant = $(this).attr("data-isassistant");
+	var isvip = $(this).attr("data-isvip");
+	
+	$(".transparent").css({"display":"block"});
+	$(".center-update").css({"display":"block"});	
+	
+	$('#account').val(account);
+	$("#isassistant").val(isassistant);
+	$("#isvip").val(isvip);
+	
+	//-----------------------------------------------------------------
+	$(".enter-update").click(function(){
+		account = $('#account').val();
+		isassistant = $('#isassistant').val();
+		isvip = $('#isvip').val();
+		//获得当前的会员ID
+		/*alert("detailid====="+detailid);*/
+		if(account != ``){
+			
+			$.ajax({
+				type:"post",
+				url:"updateAccount.do",
+				data:"account="+account+"&isassistant="+isassistant+"&isvip="+isvip,
+				success:function(){
+					$(".transparent").css("display","none");
+					$(".center-update").css("display","none");
+					window.location.reload();
+					
+				}
+			});
+		}
+		detailid = ``;
+	});	
 });

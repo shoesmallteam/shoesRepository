@@ -71,4 +71,8 @@
 	<update id="updateshoesFrequence">
 		update shoesdetail set frequence = #{frequence} where shoesid = #{shoesid};
 	</update>
+	
+	<delete id="deleteShoesDetailById">
+    	delete from shoesdetail where shoesid = #{shoesid}
+    </delete>
 </class>
