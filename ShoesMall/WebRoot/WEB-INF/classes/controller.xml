@@ -76,7 +76,7 @@
     </action>
     
     <action name="updateAccount" class="tan.action.UpdateAccountAction">
-    	<form>xyw.form.UpdateAccountForm</form>
+    	<form>tan.form.UpdateAccountForm</form>
     </action>
     
     <action name="delectShoes" class="tan.action.DelectShoesAction">

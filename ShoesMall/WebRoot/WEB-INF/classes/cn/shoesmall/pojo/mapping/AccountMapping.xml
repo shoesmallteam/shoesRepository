@@ -23,6 +23,6 @@
 	</select>
 	
 	<update id="updateIsassistant">
-		update cart set isassistant = #{isassistant} where accountid = #{accountid};
+		update account set isassistant = #{isassistant},isvip = #{isvip} where account = #{account};
 	</update>
 </class>

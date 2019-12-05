@@ -1,9 +1,7 @@
-@charset "UTF-8";
-
 .contant{
 	width:1000px;
 	height:480px;
-	
+	overflow:hidden;
 }
 .tag{
 	width:200px;
@@ -43,8 +41,76 @@ hr{
 	 background-color:#c40e0e; 
 }
 table{
+	text-align:center;
 	margin-top:30px;
 }
 tr,thead{
+	
 	border-bottom:1px solid #ddd;
+}
+/*确认删除界面*/
+section.transparent{
+	display: none;
+    background-color: #000000;
+    opacity: 0.7;
+    z-index: 999;
+	position: fixed;
+    left: 0px;
+    top: 0px;
+}
+.center-delete,
+.center-update{
+	display: none;
+	width: 600px;
+	height: 200px;
+	/* padding: 10px 0px; */
+	background: #FFFFFF;
+    text-align: center;
+    z-index: 1000;
+	position: fixed;
+}
+.center-update{
+	height: 300px;
+}
+.ask-delete{
+	height: 100px;
+	padding-top: 30px;
+	line-height: 30px;
+	font-size: 24px;
+	color: #333333;
+}
+.center-delete input[type=button],
+.center-update input[type=button]{
+	width: 200px;
+	height: 60px;
+	margin-left: 20px;
+	/* margin-top: 20px; */
+	background: #c40e0e;
+	border: none;
+	cursor: pointer;
+	font-size: 20px;
+	color: white;
+	border-radius: 3px;
+}
+.center-delete input.no-delete,
+.center-update input.no-update{
+	background: #CDCDCD;
+}
+.center-update input[type=text]{
+	margin:10px;
+	border:none;
+	border-bottom:1px solid #c40e0e;
+}
+.close-ask{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background: url(../img/icon.png) no-repeat 0px -230px;
+	cursor: pointer;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+.close-ask:hover{
+	background-position: 0px -263px;
 }

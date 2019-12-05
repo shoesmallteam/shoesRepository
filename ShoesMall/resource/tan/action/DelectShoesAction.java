@@ -28,6 +28,8 @@ public class DelectShoesAction extends XywAction{
 		shoes.setShoesid(form.getShoesid());
 		Shoesdetail detail = new Shoesdetail();
 		detail.setShoesid(form.getShoesid());
+		System.out.println(shoes.toString());
+		System.out.println(detail.toString());
 		
 		boolean falg = false;
 		boolean dfalg = false;

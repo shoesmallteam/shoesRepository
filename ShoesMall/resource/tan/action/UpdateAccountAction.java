@@ -25,8 +25,9 @@ public class UpdateAccountAction extends XywAction{
 		
 		BaseDao dao = new BaseDaoImpl();
 		Account account = new Account();
-		account.setAccountid(form.getAccountid());
-		account.setIsassistant(form.getIsassistant());
+		account.setAccount(form.getAccount());
+		account.setIsassistant(Integer.valueOf(form.getIsassistant()));
+		account.setIsvip(Integer.valueOf(form.getIsvip()));
 		
 		boolean flag = false;
 		try {
