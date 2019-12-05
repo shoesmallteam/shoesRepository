@@ -88,6 +88,7 @@ var pagesize = $('.pagesize').val();
 (function(){
 	$(".account_tag").attr('page_show','active');
 	$(".shoes_tag").attr('page_show','');
+	
 	account();
 })();
 

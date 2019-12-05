@@ -39,16 +39,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <div class="col-xs-4 col-sm-3" id="logo_right">
                 <div class="row">
-                    <div class="col-xs-12 search">
-                        <div class="input-group">
-                           <!--  <input type="text" value="" class="form-control" id="logo_right_top"/> -->
-                            <span class="input-group-addon">
+                	<div class="col-xs-12">
+                          <span class="input-group-addon">
 						       管理员，欢迎您！   <span class="glyphicon glyphicon-heart"></span>
 						   </span>
-                        </div>
-                    </div>
-                    <div class="col-xs-12">
-                      <button class="btn btn-danger" id="exit" >退出</button>
+                      <button class="btn" id="exit" >退出</button>
                     </div>
                 </div>
             </div>
@@ -82,4 +77,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </body>
 </html>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js" charset="UTF-8"></script>
-<script type="text/javascript" src="js/manage.js"></script>
+<script type="text/javascript" src="js/manageajax.js"></script>
