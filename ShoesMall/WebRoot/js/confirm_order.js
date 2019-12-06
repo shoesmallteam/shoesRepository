@@ -22,25 +22,29 @@
 		var accountid = $('.accountid').val();
 		var order = null;
 		
-		$('.body-products').each(function(){
-			var orderid = $(this).children('.orderid').val();
-			var shoesdetailid = $(this).children('.shoesdetailid').val();
-			var count = $('.count-number').text().trim();
-			order = {'accountid':accountid,'orderid':orderid,'shoesdetailid':shoesdetailid,'addressid':addressid};
-			if(orderid != '' && orderid != null){
-				$.ajax({
-					type: "post",
-					url:"addOrder.do",
-					data:{'order':JSON.stringify(order),'count':count},
-					dataType : 'json',
-					success : function(result){
-						if(result){
-							alert('success');
-							$('.orderid').attr('value','');
+		if(addressid == null && addressid == ''){
+			alert('Please select an address');
+		}else{
+			$('.body-products').each(function(){
+				var orderid = $(this).children('.orderid').val();
+				var shoesdetailid = $(this).children('.shoesdetailid').val();
+				var count = $('.count-number').text().trim();
+				order = {'accountid':accountid,'orderid':orderid,'shoesdetailid':shoesdetailid,'addressid':addressid};
+				if(orderid != '' && orderid != null){
+					$.ajax({
+						type: "post",
+						url:"addOrder.do",
+						data:{'order':JSON.stringify(order),'count':count},
+						dataType : 'json',
+						success : function(result){
+							if(result){
+								alert('success');
+								$('.orderid').attr('value','');
+							}
 						}
-					}
-				});
-			}
-		});
+					});
+				}
+			});
+		}
 	});
 })();

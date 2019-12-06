@@ -32,6 +32,7 @@ public class ProductAction extends XywAction{
 		Shoesdetail shoesdetail = new Shoesdetail();
 		ShoesDto dto = new ShoesDto();
 		BaseDao dao = new BaseDaoImpl();
+		Connection conn = DBHelper.getConnection();
 		
 		//访问频率
 		Acfrenquence frenquence = new Acfrenquence();
@@ -39,33 +40,39 @@ public class ProductAction extends XywAction{
 		frenquence.setShoesid(from.getShoesid());
 		
 		shoesdetail.setShoesid(from.getShoesid());
-		
-		Connection conn = DBHelper.getConnection();
+		//判断是否登录，没有就不修改访问频率
 		//查询商品访问频率,有就修改shoesdetail、Acfrenquence的访问频率,没有就新增数据
 		List<Object> aflist;
+		if(getAccountid(request, response) != null) {
+			try {
+				conn.setAutoCommit(false);
+				aflist = dao.select("selectFrenquence", frenquence, conn);
+				if (!aflist.isEmpty()) {
+					for (Object object : aflist) {
+						frenquence = (Acfrenquence)object;
+					}
+					//修改访问频率
+					frenquence.setFrequence(frenquence.getFrequence()+1);
+					shoesdetail.setFrequence(frenquence.getFrequence());
+					
+					boolean flag = dao.update("updateFrequence", frenquence, conn);
+					boolean sflag = dao.update("updateshoesFrequence", shoesdetail, conn);
+					if(flag && sflag) {
+						frenquence = null;
+					}
+				}else {
+					//增加商品访问频率
+					frenquence.setAcfrenquenceid(PrimaryKeyGeneric.getPrimaryKey());
+					frenquence.setFrequence(1);
+					dao.insert("insertAcfrenquence", frenquence, conn);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		try {
 			conn.setAutoCommit(false);
-			aflist = dao.select("selectFrenquence", frenquence, conn);
-			if (!aflist.isEmpty()) {
-				for (Object object : aflist) {
-					frenquence = (Acfrenquence)object;
-				}
-				//修改访问频率
-				frenquence.setFrequence(frenquence.getFrequence()+1);
-				shoesdetail.setFrequence(frenquence.getFrequence());
-				
-				boolean flag = dao.update("updateFrequence", frenquence, conn);
-				boolean sflag = dao.update("updateshoesFrequence", shoesdetail, conn);
-				if(flag && sflag) {
-					frenquence = null;
-				}
-			}else {
-				//增加商品访问频率
-				frenquence.setAcfrenquenceid(PrimaryKeyGeneric.getPrimaryKey());
-				frenquence.setFrequence(1);
-				dao.insert("insertAcfrenquence", frenquence, conn);
-			}
-			
 			HashMap<String, String> map = new HashMap<String, String>();
 			HashSet<String> size = new HashSet<String>();
 			String shoesid = null;
@@ -118,9 +125,12 @@ public class ProductAction extends XywAction{
 	public String getAccountid(HttpServletRequest request, HttpServletResponse response) {
 		String accountid = null;
 		Cookie cookie = CookieUtil.findCookie(request.getCookies(), "auto_login");
-		String value = cookie.getValue();
-		accountid = value.split("#itheima#")[3];
+		if(cookie != null) {
+			String value = cookie.getValue();
+			accountid = value.split("#itheima#")[3];
+			return accountid;
+		}
 		
-		return accountid;
+		return null;
 	}
 }

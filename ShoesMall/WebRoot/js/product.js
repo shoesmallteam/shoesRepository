@@ -269,8 +269,12 @@
     		var items = [{"shoesdetailid":shoesdetailid,"count":1}];
     		if (color != null && size != null){
     			//跳结账界面
-    			items = encodeURI(JSON.stringify(items));
-    			location.href = 'confirm_order.do?items='+items;
+    			if(cookie){
+    				items = encodeURI(JSON.stringify(items));
+    				location.href = 'confirm_order.do?items='+items;
+    			}else{
+    				confirm('Please log in');
+    			}
     		}else{
     			if (color == null){
                     confirm('Please select a color');
