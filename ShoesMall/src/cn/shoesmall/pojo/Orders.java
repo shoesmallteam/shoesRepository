@@ -5,6 +5,8 @@ public class Orders {
 	private String accountid;
 	private String shoesdetailid;
 	private String generictime;
+	private String addressid;
+	private int count;
 	public String getOrderid() {
 		return orderid;
 	}
@@ -29,4 +31,17 @@ public class Orders {
 	public void setGenerictime(String generictime) {
 		this.generictime = generictime;
 	}
+	public String getAddressid() {
+		return addressid;
+	}
+	public void setAddressid(String addressid) {
+		this.addressid = addressid;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
 }

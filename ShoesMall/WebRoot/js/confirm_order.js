@@ -4,12 +4,19 @@
 (function(){
 	var count = null;
 	$.ajaxSettings.async = false;
+	var addressid = null;
 	
 	$('.xiaoji').each(function(){
 		count += parseInt($(this).text().trim());
 	});
 	$('.textarea-allprice').children('.textarea-price').html(count.toFixed(2));
 	$('.realpay-price').html(count.toFixed(2));
+	
+	$('.address-input').click(function(){
+		$(this).children('input').each(function(){
+			addressid = $(this).val();
+		});
+	});
 	
 	$('.order').click(function(){
 		var accountid = $('.accountid').val();
@@ -19,8 +26,7 @@
 			var orderid = $(this).children('.orderid').val();
 			var shoesdetailid = $(this).children('.shoesdetailid').val();
 			var count = $('.count-number').text().trim();
-			order = {'accountid':accountid,'orderid':orderid,'shoesdetailid':shoesdetailid};
-			
+			order = {'accountid':accountid,'orderid':orderid,'shoesdetailid':shoesdetailid,'addressid':addressid};
 			if(orderid != '' && orderid != null){
 				$.ajax({
 					type: "post",

@@ -30,6 +30,7 @@ public class AddOrderAction extends XywAction{
 		String order = form.getOrder();
 		JSONObject jobj = JSONObject.fromObject(order);
 		Orders orders = (Orders)JSONObject.toBean(jobj, Orders.class);
+		orders.setCount(Integer.valueOf(form.getCount()));
 		System.out.println(orders);
 		
 		Connection conn = DBHelper.getConnection();

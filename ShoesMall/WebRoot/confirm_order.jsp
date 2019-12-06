@@ -73,23 +73,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="col-xs-2 items-headers-center">联系电话</div>
                     <div class="col-xs-2 items-headers-center">确认地址</div>
                 </div>
-                <div class="address-detail info-cell info-line">
-                    <div class="col-xs-2">
-                        <p class="name">${confirmdto.address.name }收</p>
-                    </div>
-                    <div class="col-xs-5">
-                        <p class="address-title">${confirmdto.address.province }${confirmdto.address.city }${confirmdto.address.area }${confirmdto.address.detail }</p>
-                    </div>
-                    <div class="col-xs-2">
-                        <p class="tel">${confirmdto.address.tel }</p>
-                    </div>
-                    <div class="col-xs-2 address-inner">
-                        <span class="address-input">
-                            <input type="checkbox">
-                        </span>
-                        <span>确认地址</span>
-                    </div>
-                </div>
+                <c:forEach items="${confirmdto.dtolist }" var="dto" varStatus="i">
+	                <div class="address-detail info-cell info-line">
+	                    <div class="col-xs-2">
+	                        <p class="name">${dto.name }收</p>
+	                    </div>
+	                    <div class="col-xs-5">
+	                        <p class="address-title">${dto.province }${dto.city }${dto.area }${dto.detail }</p>
+	                    </div>
+	                    <div class="col-xs-2">
+	                        <p class="tel">${dto.tel }</p>
+	                    </div>
+	                    <div class="col-xs-2 address-inner">
+	                        <span class="address-input">
+	                            <input type="radio" class="checkbox-address" name="check" value="${dto.addressid }">
+	                        </span>
+	                        <span>确认地址</span>
+	                    </div>
+	                </div>
+                </c:forEach>
             </div>
         </div>
     </div>

@@ -9,6 +9,7 @@ public class ToConfirmDto {
 	private List<Shoesdetail> list;
 	private AddressDto address;
 	private List<String> orderlist;
+	private List<AddressDto> dtolist;
 	
 	public List<Shoesdetail> getList() {
 		return list;
@@ -27,6 +28,12 @@ public class ToConfirmDto {
 	}
 	public void setOrderlist(List<String> orderlist) {
 		this.orderlist = orderlist;
+	}
+	public List<AddressDto> getDtolist() {
+		return dtolist;
+	}
+	public void setDtolist(List<AddressDto> dtolist) {
+		this.dtolist = dtolist;
 	}
 	
 }

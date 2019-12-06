@@ -4,9 +4,11 @@
 	<property name="accountid" column="accountid" type="java.lang.String"></property>
 	<property name="shoesdetailid" column="shoesdetailid" type="java.lang.String"></property>
 	<property name="generictime" column="generictime" type="java.lang.String"></property>
+	<property name="addressid" column="addressid" type="java.lang.String"></property>
+	<property name="count" column="count" type="int"></property>
 	
 	<insert id="insertOrders">
-		INSERT INTO orders(orderid,accountid,shoesdetailid,generictime) 
-		VALUES(#{orderid},#{accountid},#{shoesdetailid},NOW())
+		INSERT INTO orders(orderid,accountid,shoesdetailid,generictime,addressid,count) 
+		VALUES(#{orderid},#{accountid},#{shoesdetailid},NOW(),#{addressid},#{count})
 	</insert>
 </class>

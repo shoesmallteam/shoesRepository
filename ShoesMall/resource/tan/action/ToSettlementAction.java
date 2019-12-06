@@ -76,6 +76,7 @@ public class ToSettlementAction extends XywAction{
 
 		AddressDto dto = new AddressDto();//查询数据库的pojo类
 		AddressDto address = null;
+		List<AddressDto> dtolist = new ArrayList<AddressDto>();
 		dto.setAccountid(accountid);
 		//查询地址
 		List<Object> addresslist;
@@ -83,6 +84,7 @@ public class ToSettlementAction extends XywAction{
 			addresslist = dao.select("SelectAddress", dto, conn);
 			for (Object object : addresslist) {
 				address = (AddressDto)object;
+				dtolist.add(address);
 			}
 			conn.commit();
 		} catch (Exception e) {
@@ -102,6 +104,7 @@ public class ToSettlementAction extends XywAction{
 		confirmdto.setAddress(address);
 		confirmdto.setList(listshoes);
 		confirmdto.setOrderlist(orderlist);
+		confirmdto.setDtolist(dtolist);
 		
 		if (address != null && listshoes != null) {
 			request.setAttribute("confirmdto", confirmdto);
