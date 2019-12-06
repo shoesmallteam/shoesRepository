@@ -33,6 +33,7 @@ public class AddToCartActon extends XywAction{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response, XywForm arg2)
 			throws ServletException, IOException {
+		System.out.println("add to cart");
 		//获取form
 		AddToCartForm form = (AddToCartForm)arg2;
 		
@@ -46,9 +47,7 @@ public class AddToCartActon extends XywAction{
 		Cart cart = new Cart();
 		cart.setAccountid(accountid);
 		BaseDao dao = new BaseDaoImpl();
-		System.out.println(11111);
 		Connection conn = null;
-		System.out.println(22222);
 		List list = new ArrayList<Object>();
 		try {
 			conn = DBHelper.getConnection();
@@ -73,7 +72,8 @@ public class AddToCartActon extends XywAction{
 				{
 					if(gd.getShoesdetailid().equals(form.getShoesdetailid()))
 					{
-						gd.setAmount((Integer.parseInt(gd.getAmount()) + (Integer.parseInt(form.getAmount())) + ""));
+						System.out.println("+++++++++++++++++1");
+						gd.setAmount((Integer.parseInt(gd.getAmount()) + (Integer.parseInt(form.getAmount())))+ "");
 						flag = true;
 					}
 				}
@@ -83,15 +83,14 @@ public class AddToCartActon extends XywAction{
 		if(!flag)
 		{
 			GoodsDto gd = new GoodsDto();
-			
+			System.out.println("new ++++++++++++++++ 1");
 			gd.setAmount(form.getAmount());
 			gd.setShoesdetailid(form.getShoesdetailid());
 			gds.add(0, gd);
 			
 		}
-		System.out.println(cart);
 		cart.setGoods(JsonUtils.toJsonArrayString(gds));
-		
+		System.out.println(cart);
 		PrintWriter out = new PrintWriter(response.getWriter(),true);
 		boolean result = false;
 		try {
@@ -107,9 +106,10 @@ public class AddToCartActon extends XywAction{
 			}
 			e.printStackTrace();
 		}
+		System.out.println("update result :" + result);
 		out.print((result ? "true" : "false"));
-		
-		return "success";
+		return null;
+		//return "success";
 	}
 
 }

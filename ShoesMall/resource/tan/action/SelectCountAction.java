@@ -3,6 +3,7 @@ package tan.action;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.shoesmall.pojo.Shoesdetail;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import tan.form.SelectCountForm;
 import xyw.core.dao.BaseDao;
@@ -30,6 +32,7 @@ public class SelectCountAction extends XywAction{
 		PrintWriter out = response.getWriter();
 		
 		Connection conn = DBHelper.getConnection();
+		List<Shoesdetail> detaillist = new ArrayList<Shoesdetail>();
 		//拿数据
 		List<Object> list;
 		try {
@@ -37,8 +40,7 @@ public class SelectCountAction extends XywAction{
 			list = dao.select("selectCount", detail, conn);
 			for (Object object : list) {
 				detail = (Shoesdetail)object;
-				JSONObject returnshoes = JSONObject.fromObject(detail);
-				out.print(returnshoes.toString());
+				detaillist.add(detail);
 			}
 			conn.commit();
 		} catch (Exception e) {
@@ -50,6 +52,12 @@ public class SelectCountAction extends XywAction{
 			e.printStackTrace();
 		}finally {
 			DBHelper.disConnect(conn);
+		}
+		
+		if(detaillist != null) {
+			JSONArray arr = JSONArray.fromObject(detaillist);
+			System.out.println(arr.toString());
+			out.print(arr.toString());
 		}
 		
 		return null;

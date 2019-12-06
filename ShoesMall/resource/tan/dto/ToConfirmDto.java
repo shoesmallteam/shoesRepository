@@ -35,5 +35,10 @@ public class ToConfirmDto {
 	public void setDtolist(List<AddressDto> dtolist) {
 		this.dtolist = dtolist;
 	}
+	@Override
+	public String toString() {
+		return "ToConfirmDto [list=" + list + ", address=" + address + ", orderlist=" + orderlist + ", dtolist="
+				+ dtolist + "]";
+	}
 	
 }

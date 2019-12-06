@@ -11,7 +11,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.shoesmall.pojo.Account;
 import cn.shoesmall.pojo.Address;
+import cn.shoesmall.pojo.User;
 import cn.shoesmall.util.CookieUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.util.JSONUtils;
@@ -32,18 +34,26 @@ public class AddressAction extends XywAction{
 		Cookie cookie = CookieUtil.findCookie(cs, "auto_login");
 		String value = cookie.getValue();
 		//拿到主键id
-		String uid = value.split("#itheima#")[3];
+		String accountid = value.split("#itheima#")[3];
 		BaseDao dao = new BaseDaoImpl();
+		User user = new User();
+		user.setAccountid(accountid);
+		
 		Address address = new Address();
-		address.setUserid(uid);
 		DBHelper.getDoc(address.getClass());
 		List list;
 		Connection conn = DBHelper.getConnection();
 		try {
 			conn.setAutoCommit(false);
+			list = dao.select("selectUserById", user, conn);
+			for (Object object : list) {
+				user = (User)object;
+			}
+			address.setUserid(user.getUserid());
+			
 			list = dao.select("selectAddress", address, conn);
 			req.setAttribute("addressList", list);
-			req.setAttribute("uid", uid);
+			req.setAttribute("userid", user.getUserid());
 			conn.commit();
 		} catch (Exception e) {
 			try {

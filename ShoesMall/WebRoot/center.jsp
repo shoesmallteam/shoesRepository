@@ -32,13 +32,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div class="col-xs-12 navb text-center">
                         <ul>
-                            <li><a href="./classify.do?typename=girl" target="_self">女装</a></li>
-                            <li><a href="./classify.jsp?cartId=69" target="_self">男装</a></li>
-                            <li><a href="./classify.jsp?cartId=45" target="_self">童装</a></li>
-                            <li><a href="./classify.jsp?cartId=92" target="_self">安踏</a></li>
-                            <li><a href="./classify.jsp?cartId=62" target="_self">耐克</a></li>
-                            <li><a href="./classify.jsp?cartId=69" target="_self">老人</a></li>
-                            <li><a href="./classify.jsp?cartId=45" target="_self">秋冬款</a></li>
+                            <li><a href="./classify.jsp?typename=女" target="_self">女装</a></li>
+                            <li><a href="./classify.jsp?typename=男" target="_self">男装</a></li>
+                            <li><a href="./classify.jsp?typename=童" target="_self">童装</a></li>
+                            <li><a href="./classify.jsp?typename=安踏" target="_self">安踏</a></li>
+                            <li><a href="./classify.jsp?typename=nike" target="_self">耐克</a></li>
+                            <li><a href="./classify.jsp?typename=老人" target="_self">老人</a></li>
+                            <li><a href="./classify.jsp?typename=秋冬" target="_self">秋冬款</a></li>
                         </ul>
                     </div>
                 </div>

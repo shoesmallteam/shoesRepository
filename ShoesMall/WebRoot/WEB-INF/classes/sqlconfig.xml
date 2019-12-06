@@ -18,5 +18,6 @@
     	<mapping path="cn/shoesmall/pojo/mapping/AcfrenquenceMapping.xml"></mapping>
     	<mapping path="cn/shoesmall/pojo/mapping/AccountMapping.xml"></mapping>
     	<mapping path="cn/shoesmall/pojo/mapping/AddressMapping.xml"></mapping>
+    	<mapping path="cn/shoesmall/pojo/mapping/UserMapping.xml"></mapping>
     </mappings> 
 </properties>

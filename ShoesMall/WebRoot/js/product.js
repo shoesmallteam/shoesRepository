@@ -192,11 +192,13 @@
     			data: {'shoes':JSON.stringify(shoes)},
     			dataType: "json",
     			success: function(result){
-    				$('#onlycount').html(result.count);
-    				shoesdetailid = result.shoesdetailid;
-    				image = result.image;
-    				price = result.price;
-    				shoes = null;
+    				if(result){
+    					$('#onlycount').html(result[0].count);
+    					shoesdetailid = result[0].shoesdetailid;
+    					image = result[0].image;
+    					price = result[0].price;
+    					shoes = null;
+    				}
     			}
     		});
     	}
@@ -213,19 +215,6 @@
             //查询库存
             shoes = {'shoesid':shoesid,'color':color,'size':size};
             if (color != null && size != null){
-            	//查询详情id
-            	$.ajax({
-            		type:"post",
-            		url: 'selectcount.do',
-        			data: {'shoes':JSON.stringify(shoes)},
-        			dataType: "json",
-        			success: function(result){
-        				$('#onlycount').html(result.shoesid);
-        				shoesdetailid = result.shoesdetailid;
-        				sheos = null;
-        			}
-            	});
-            	
             	//加入用户购物车
                 if(cookie){
                     //请求接口
@@ -233,14 +222,15 @@
                         type:"get",
                         url:"addGoodsToCart.do",
                         data:{'shoesdetailid':shoesdetailid,'amount':amount},
-                        dataType : 'json',
                         success : function(result){
+                        	console.log(result);
                         	//看返回数据，有加入成功   失败可能后台原因
+                        	console.log(shoesdetailid)
                         	if(/true/.test(result)){
                         		confirm("Add To Cart,Success!");
                         		shoesdetailid = null;
                         	}else{
-                        		confirm("Failed to joi.n cart");
+                        		confirm("Failed to join cart");
                         	}
                         },
                     });

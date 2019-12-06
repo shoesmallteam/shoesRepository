@@ -22,4 +22,8 @@
     <select id="selectUser" returnType="cn.shoesmall.pojo.User">
     	select * from user
     </select>
+    
+    <select id="selectUserById" returnType="cn.shoesmall.pojo.User">
+    	select * from user where accountid =#{accountid};
+    </select>
 </class>

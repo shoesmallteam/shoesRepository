@@ -31,13 +31,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </a>
                     <div class="col-xs-12 navb text-center">
                         <ul>
-                            <li><a href="./classify.html?cartId=62" target="_self">女装</a></li>
-                            <li><a href="./classify.html?cartId=69" target="_self">男装</a></li>
-                            <li><a href="./classify.html?cartId=45" target="_self">孩子们</a></li>
-                            <li><a href="./classify.html?cartId=92" target="_self">配饰</a></li>
-                            <li><a href="./classify.html?cartId=62" target="_self">发展趋势</a></li>
-                            <li><a href="./classify.html?cartId=69" target="_self">品牌</a></li>
-                            <li><a href="./classify.html?cartId=45" target="_self">特卖</a></li>
+                            <li><a href="./classify.jsp?typename=女" target="_self">女装</a></li>
+                            <li><a href="./classify.jsp?typename=男" target="_self">男装</a></li>
+                            <li><a href="./classify.jsp?typename=童" target="_self">童装</a></li>
+                            <li><a href="./classify.jsp?typename=安踏" target="_self">安踏</a></li>
+                            <li><a href="./classify.jsp?typename=nike" target="_self">耐克</a></li>
+                            <li><a href="./classify.jsp?typename=老人" target="_self">老人</a></li>
+                            <li><a href="./classify.jsp?typename=秋冬" target="_self">秋冬款</a></li>
                         </ul>
                     </div>
                 </div>
@@ -58,8 +58,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     	<input type="hidden" value="${nikename}" id="nn"/>
                     	<input type="hidden" value="${msg}" id="msg"/>
                     	<a href="center.jsp" class="navbar-text" id="welcome" style="cursor: pointer;"></a>
-                        <p class="cart">
-                          <a><span class="glyphicon glyphicon-shopping-cart "></span></a>
+                         <p class="cart">
+                          <a href="goods_cart.jsp"><span class="glyphicon glyphicon-shopping-cart "></span></a>
                         </p>
                       	<button class="btn btn-danger" id="exit" >退出</button>
 						<button class="btn btn-danger" id="regist" data-toggle="modal" data-target="#registerModal">注册</button>
@@ -351,7 +351,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div class="count">
                     <span>数量:</span>
-                    <input type="text" value="1" maxlength="2">
+                    <input type="text" value="1" maxlength="1">
                     <div class="buttons">
                         <a href="javascript:;" class="add"></a>
                         <a href="javascript:;" class="sub"></a>

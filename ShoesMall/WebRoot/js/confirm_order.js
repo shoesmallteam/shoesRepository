@@ -5,9 +5,13 @@
 	var count = null;
 	$.ajaxSettings.async = false;
 	var addressid = null;
+	var xiaoji = null;
 	
 	$('.xiaoji').each(function(){
-		count += parseInt($(this).text().trim());
+		var num = $(this).parent().siblings('.shoescount').children().text().trim();
+		xiaoji = parseInt($(this).text().trim())*num;
+		$(this).html(xiaoji.toFixed(2));
+		count += xiaoji;
 	});
 	$('.textarea-allprice').children('.textarea-price').html(count.toFixed(2));
 	$('.realpay-price').html(count.toFixed(2));

@@ -9,6 +9,6 @@
 	
 	<insert id="insertOrders">
 		INSERT INTO orders(orderid,accountid,shoesdetailid,generictime,addressid,count) 
-		VALUES(#{orderid},#{accountid},#{shoesdetailid},NOW(),#{addressid},#{count})
+		VALUES(#{orderid},#{accountid},#{shoesdetailid},#{generictime},#{addressid},#{count})
 	</insert>
 </class>

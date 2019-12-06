@@ -69,6 +69,7 @@ public class CookieFilter implements Filter{
 			String dianhua = null;
 			String zhanghao = null;
 			int isa = 0;
+			String s = null;
 			ac2.setAccountid(id);
 			try {
 				conn.setAutoCommit(false);
@@ -172,6 +173,8 @@ public class CookieFilter implements Filter{
 					DBHelper.disConnect(conn);
 				}
 				//把信息存入info,用于单态
+				s = String.valueOf(isa);
+				System.out.println(s);
 				PersonInfo p = new PersonInfo();
 				p.setAccount(id);//账号
 				p.setIp(arg0.getRemoteAddr());//IP
@@ -180,7 +183,7 @@ public class CookieFilter implements Filter{
 				request.getSession().setAttribute("uuname", username);
 				request.getSession().setAttribute("uupass", password);
 				request.getSession().setAttribute("nikename", nikename);
-				request.getSession().setAttribute("isa", isa);
+				request.getSession().setAttribute("isa", s);
 				arg2.doFilter(request, response);
 			}
 		}

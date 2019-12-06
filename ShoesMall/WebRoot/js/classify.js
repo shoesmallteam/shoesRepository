@@ -50,7 +50,7 @@ function listGoods(typename,number,size,price) {
                 <div class="price-and-star">
                     <span class="goods-price">￥${data[i].price}</span>
                 </div>
-                <a href="addGoodsToCart.do?shoesdetailid=${data[i].shoesdetailid}&amount=1" target="_blank" class="join-to-cart">加入购物车</a>
+                <a href="javascript:;" data-shoesdetailid = "${data[i].shoesdetailid}" class="join-to-cart">加入购物车</a>
             </div>
             `;
             }
@@ -66,6 +66,24 @@ function listGoods(typename,number,size,price) {
 
             $('.goods-info img').mouseenter(function () {
                 $(this).parent().siblings('.info').show();
+            });
+            //加入购物车
+            $('.join-to-cart').click(function(){
+            	console.log($(this).attr("data-shoesdetailid"));
+            	$.ajax({
+                        type:"get",
+                        url:"addGoodsToCart.do",
+                        data:{'shoesdetailid':$(this).attr("data-shoesdetailid"),'amount':1},
+                        success : function(result){
+                        	console.log(result);
+                        	//看返回数据，有加入成功   失败可能后台原因
+                        	if(/true/.test(result)){
+                        		confirm("Add To Cart,Success!");
+                        	}else{
+                        		confirm("Failed to join cart");
+                        	}
+                        },
+                    });
             });
 
             $('.info').mouseleave(function () {

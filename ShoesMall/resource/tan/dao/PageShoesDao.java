@@ -15,7 +15,7 @@ public class PageShoesDao {
 		Shoes shoes = null;
 		String sql = "select * from shoes limit ?,?";
 		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setInt(1, (pagesize-1)*10);
+		ps.setInt(1, (pagesize-1)*6);
 		ps.setInt(2, 10);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()) {

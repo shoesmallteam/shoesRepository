@@ -3,6 +3,8 @@ package tan.action;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -31,6 +33,9 @@ public class AddOrderAction extends XywAction{
 		JSONObject jobj = JSONObject.fromObject(order);
 		Orders orders = (Orders)JSONObject.toBean(jobj, Orders.class);
 		orders.setCount(Integer.valueOf(form.getCount()));
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		orders.setGenerictime(sdf.format(date));
 		System.out.println(orders);
 		
 		Connection conn = DBHelper.getConnection();

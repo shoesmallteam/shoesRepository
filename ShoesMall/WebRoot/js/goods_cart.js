@@ -227,7 +227,7 @@ function checkLogin1(){
         $('#welcome, #exit, .cart').hide();
         $('#welcome').html('');
     }else{
-    	if(isa == ''){
+    	if(isa == '0'){
     		$('#regist, #login').hide();
     		$('#welcome, #exit, .cart').show();
     		$('#welcome').html(nn);

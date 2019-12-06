@@ -105,6 +105,7 @@ public class ToSettlementAction extends XywAction{
 		confirmdto.setList(listshoes);
 		confirmdto.setOrderlist(orderlist);
 		confirmdto.setDtolist(dtolist);
+		System.out.println(confirmdto.toString());
 		
 		if (address != null && listshoes != null) {
 			request.setAttribute("confirmdto", confirmdto);
